@@ -17,6 +17,10 @@
     height: 140vh;
     border: 1px solid black;
     background-color: white;
+    margin: -1 auto;
+    padding: 20px;
+    background-color: white;
+    color: black; 
 }
 
 .a2 {
@@ -42,7 +46,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 93%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -56,41 +60,33 @@ header {
     text-decoration: none;
 }
 
-.centralSquareToPlaceContent {
-    width: 90%;
-    margin: -1 auto;
-    padding: 20px;
-    background-color: white;
-    color: black; 
-}
-
 .content {
     margin: 7vh auto;
     width: 100%;
 }
 
-.q1, .q2, .q3, .q4, .q5, .q6, .q7, .q8 { 
+.square1, .square2, .square3, .square4, .square5, .square6, .square7, .square8 { 
     margin: 0px auto;
-    width: 200px;
+    width: 240px;
     height: 150px;
     background-color: #fffdf9;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
 }
 
-.s1, .s2 {
+.separation1, .separation2 {
     display: flex;
     justify-content: space-around;
     margin-bottom: 70px;
 }
 
-.a1 {
+.designLink1 {
     display: block;
     padding: 10% 0;
     color: black; 
 }
 
-.a2 {
+.designLink2 {
     display: block;
     margin: 10px 0;
     color: black; 
@@ -101,8 +97,8 @@ header {
     color: rgb(255, 255, 255);
 }
 
-.barra hr {
-    width: 1080px;
+.barDesign hr {
+    width: 1160px;
     height: 0px;
     border: 2px solid #dbdde2;
     margin-top: -40px;
@@ -113,7 +109,7 @@ header {
 }
 
 .links {
-    margin-left: 112%;
+    margin-left: 100%;
     justify-content: space-around;
     display: flex;
 }
@@ -124,15 +120,24 @@ header {
 
 .other {
     position: absolute;
-    margin-left: 3%;
+    margin-left: 2%;
+    margin-top: -15px;
 }
 
-.login-item {
-    margin-left: -70px;
-}
-
-.class {
+.siteSeparation {
     margin-left: auto;
     margin-right: auto;
-    width:1080px;
+    width:1220px;
+}
+
+.singIn {
+    margin-left: -110px;
+}
+
+.addFile {
+
+}
+
+.separation3 {
+
 }
