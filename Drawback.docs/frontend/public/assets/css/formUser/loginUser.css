@@ -15,11 +15,6 @@
     background-color: white;
 }
 
-.a2 {
-    display: block;
-    margin: 10px 0;
-}
-
 body {
     background-color: #fbfafb;
     text-align: center;
@@ -34,7 +29,7 @@ header {
     padding: 1rem 0;
 }
 
-.menu {
+.menuLinks {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,12 +37,12 @@ header {
     margin: 0 auto;
 }
 
-.menu-lista,.menu-login {
+.listMenu,.linkLogin {
     display: flex;
     gap: 1rem;
 }
 
-.menu-lista a,.menu-login a {
+.listMenu a,.linkLogin a {
     color: white;
     text-decoration: none;
 }
@@ -60,39 +55,12 @@ header {
     color: black; 
 }
 
-.texto {
+.content {
     margin: 7vh auto;
     width: 100%;
 }
 
-.q1, .q2, .q3, .q4, .q5, .q6, .q7, .q8 {
-    margin: 0px auto;
-    min-width: 250px;
-    height: 150px;
-    background-color: #fffdf9;
-    border: 1px solid #d9d9d9;
-    border-radius: 5px;
-}
-
-.s1, .s2 {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 70px;
-}
-
-.a1 {
-    display: block;
-    padding: 10% 0;
-    color: black; 
-}
-
-.a2 {
-    display: block;
-    margin: 10px 0;
-    color: black; 
-}
-
-.logo a{
+.websiteLogo a{
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }
@@ -108,12 +76,12 @@ header {
     border-radius: 5px;
 }
 
-.cont {
+.links {
     margin-left: 430px;
     justify-content: space-around;
     display: flex;
 }
 
-.cont a {
+.links a {
     margin-left: 30px;
 }

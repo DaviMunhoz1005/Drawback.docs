@@ -36,7 +36,7 @@ header {
     padding: 1rem 0;
 }
 
-.menu {
+.menuLinks {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,12 +44,12 @@ header {
     margin: 0 auto;
 }
 
-.menu-lista,.menu-login {
+.listMenu,.linkLogin {
     display: flex;
     gap: 1rem;
 }
 
-.menu-lista a,.menu-login a {
+.listMenu a,.linkLogin a {
     color: white;
     text-decoration: none;
 }
@@ -94,7 +94,7 @@ header {
     color: black; 
 }
 
-.logo a{
+.websiteLogo a{
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }
@@ -110,13 +110,13 @@ header {
     border-radius: 5px;
 }
 
-.cont {
-    margin-left: 430px;
+.links {
+    margin-left: 100%;
     justify-content: space-around;
     display: flex;
 }
 
-.cont a {
+.links a {
     margin-left: 30px;
 }
 .button{
@@ -161,14 +161,4 @@ header {
 .websiteLogo a {
     justify-content: space-around;
     color: rgb(255, 255, 255);
-}
-
-.links {
-    margin-left: 100%;
-    justify-content: space-around;
-    display: flex;
-}
-
-.login {
-    margin-left: -110px;
 }
