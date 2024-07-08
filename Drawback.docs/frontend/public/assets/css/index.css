@@ -9,25 +9,6 @@
     list-style: none;
 }
 
-.centralSquareToPlaceContent {
-    width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    height: 140vh;
-    border: 1px solid black;
-    background-color: white;
-    margin: -1 auto;
-    padding: 20px;
-    background-color: white;
-    color: black; 
-}
-
-.a2 {
-    display: block;
-    margin: 10px 0;
-}
-
 body {
     background-color: #fbfafb;
     text-align: center;
@@ -50,6 +31,10 @@ header {
     margin: 0 auto;
 }
 
+.menuLinks a {
+    margin-left: 30px;
+}
+
 .listMenu,.linkLogin {
     display: flex;
     gap: 1rem;
@@ -60,9 +45,50 @@ header {
     text-decoration: none;
 }
 
+.websiteLogo a {
+    justify-content: space-around;
+    color: rgb(255, 255, 255);
+}
+
+.links {
+    margin-left: 100%;
+    justify-content: space-around;
+    display: flex;
+}
+
+.singIn {
+    margin-left: -110px;
+}
+
+.centralSquareToPlaceContent {
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    height: 140vh;
+    border: 1px solid black;
+    background-color: white;
+    margin: -1 auto;
+    padding: 20px;
+    background-color: white;
+    color: black; 
+}
+
 .content {
     margin: 7vh auto;
     width: 100%;
+}
+
+.siteSeparation {
+    margin-left: auto;
+    margin-right: auto;
+    width:1220px;
+}
+
+.separation1, .separation2 {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 70px;
 }
 
 .square1, .square2, .square3, .square4, .square5, .square6, .square7, .square8 { 
@@ -74,27 +100,10 @@ header {
     border-radius: 5px;
 }
 
-.separation1, .separation2 {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 70px;
-}
-
 .designLink1 {
     display: block;
     padding: 10% 0;
     color: black; 
-}
-
-.designLink2 {
-    display: block;
-    margin: 10px 0;
-    color: black; 
-}
-
-.websiteLogo a {
-    justify-content: space-around;
-    color: rgb(255, 255, 255);
 }
 
 .barDesign hr {
@@ -108,28 +117,14 @@ header {
     border-radius: 5px;
 }
 
-.links {
-    margin-left: 100%;
-    justify-content: space-around;
-    display: flex;
-}
-
-.menuLinks a {
-    margin-left: 30px;
-}
-
 .other {
     position: absolute;
     margin-left: 2%;
     margin-top: -15px;
 }
 
-.siteSeparation {
-    margin-left: auto;
-    margin-right: auto;
-    width:1220px;
-}
-
-.singIn {
-    margin-left: -110px;
+.designLink2 {
+    display: block;
+    margin: 10px 0;
+    color: black; 
 }

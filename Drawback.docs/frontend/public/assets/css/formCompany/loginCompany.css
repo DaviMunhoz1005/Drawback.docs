@@ -5,17 +5,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, 'Merriweather';
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: none;
     list-style: none;
-}
-
-.centralSquareToPlaceContent {
-    width: 1400px;
-    margin: -1px auto;
-    height: 50vh;
-    border: 1px solid black;
-    background-color: white;
 }
 
 body {
@@ -27,60 +19,62 @@ body {
 header {
     background-color: black;
     color: white;
-    position:fixed;
+    position: fixed;
     width: 100%;
     padding: 1rem 0;
 }
 
-.menu {
+.menuLinks {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
 }
 
-.menu-lista,.menu-login {
+.menuLinks a {
+    margin-left: 30px;
+}
+
+.listMenu,.linkLogin {
     display: flex;
     gap: 1rem;
 }
 
-.menu-lista a,.menu-login a {
+.listMenu a,.linkLogin a {
     color: white;
     text-decoration: none;
 }
 
-.centro {
-    width: 80%;
-    padding: 30px;
-    background-color: white;
-    color: black; 
-}
-
-.logo a{
+.websiteLogo a {
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }
 
-.barra hr {
-    width: 92%;
-    height: 0px;
-    border: 2px solid #dbdde2;
-    margin-top: -40px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-}
-
-.cont {
-    margin-left: 430px;
+.links {
+    margin-left: 100%;
     justify-content: space-around;
     display: flex;
 }
 
-.cont a {
-    margin-left: 30px;
+.singIn {
+    margin-left: -110px;
+}
+
+.centralSquareToPlaceContent {
+    width: 1400px;
+    margin: -1px auto;
+    height: 50vh;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.formLogin{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    padding: 30px;
 }
 
 .inpt {
@@ -114,10 +108,4 @@ header {
     src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
-.container-login{
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    padding: 30px;
-}
+
