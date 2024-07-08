@@ -21,21 +21,19 @@ header {
     position: fixed;
     width: 100%;
     padding: 1rem 0;
+    text-align: center;
+    height: 5vh;
 }
 
-.menuLinks {
+.menuLinks, .group {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 95%;
-    margin: 0 auto;
 }
 
 .menuLinks a {
     margin-left: 30px;
 }
 
-.listMenu,.linkLogin {
+.listMenu{
     display: flex;
     gap: 1rem;
 }
@@ -46,20 +44,26 @@ header {
 }
 
 .websiteLogo a {
+    position: absolute;
+    margin-left: 3.8%;
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }
 
 .links {
-    margin-left: 100%;
-    justify-content: space-around;
     display: flex;
 }
 
-.singIn {
-    margin-left: -110px;
+.group {
+    position: absolute;
+    margin-left: 40%;
 }
 
+.groupText{ 
+    position: relative;
+    margin-right: 120%;
+    margin-left: -30px;
+}
 .centralSquareToPlaceContent {
     width: 1440px;
     margin-left: auto;
@@ -128,3 +132,4 @@ header {
     margin: 10px 0;
     color: black; 
 }
+
