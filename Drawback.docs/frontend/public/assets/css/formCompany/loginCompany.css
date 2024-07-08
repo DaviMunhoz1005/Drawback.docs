@@ -36,12 +36,12 @@ header {
     margin-left: 30px;
 }
 
-.listMenu,.linkLogin {
+.listMenu,.linkRegister {
     display: flex;
     gap: 1rem;
 }
 
-.listMenu a,.linkLogin a {
+.listMenu a,.linkRegister a {
     color: white;
     text-decoration: none;
 }
@@ -57,7 +57,7 @@ header {
     display: flex;
 }
 
-.singIn {
+.singUp {
     margin-left: -110px;
 }
 
@@ -84,7 +84,8 @@ header {
     background-color: rgb(255, 255, 255);
     border: 1px solid #3e3e2e8c;
     border-radius: 3px;
-    padding: 8px 5px 5px;    font-family: 'Merriweather';
+    padding: 8px 5px 5px;    
+    font-family: 'Merriweather';
     font-style: normal;
     font-weight: 300;
 
