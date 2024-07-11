@@ -144,19 +144,54 @@ header {
     color: black; 
 }
 
-.progCircle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    background: 
-      radial-gradient(closest-side, white 79%, transparent 80% 100%),
-      conic-gradient(rgb(85, 16, 196) 13%, rgb(245, 245, 245) 0);    
+.outer {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+    -6px -6px 10px -1px rgba(255,255,255,0.7);
 }
 
-.progCircle::before {
-    font-size: 30px;
-    content: "1/8";
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+                -0.5px -0.5px 0px rgba(255,255,255,1),
+                0.5px 0.5px 0px rgba(0,0,0,0.15),
+                0px 12px 10px -10px rgba(0,0,0,0.05);
+}
+
+#number {
+    font-weight: 600px;
+    color: #555;
+
+}
+
+circle {
+    fill: none;
+    stroke: url(#GradientColor);
+    stroke-width: 20px;
+    stroke-dasharray: 472;
+    animation: anim 0s linear forwards;
+    stroke-dashoffset: 0;
+}
+
+svg {
+    position: relative;
+    display: flex;
+    transform: rotate(300deg);
+    margin-top: -160px;
+}
+
+
+@keyframes anim{
+    100%{
+        stroke-dashoffset: 404.5;
+    }
 }
