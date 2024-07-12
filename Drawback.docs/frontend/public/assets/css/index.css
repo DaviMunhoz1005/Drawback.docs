@@ -22,7 +22,7 @@ header {
     width: 100%;
     padding: 1rem 0;
     text-align: center;
-    height: 5vh;
+    height: 6vh;
 }
 
 .menuLinks, .group {
@@ -65,12 +65,12 @@ header {
     margin-left: -30px;
 }
 .centralSquareToPlaceContent {
-    width: 1440px;
+    width: 1300px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    height: 140vh;
-    border: 1px solid black;
+    height: 100vh;
+    border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
     margin: -1 auto;
     padding: 20px;
@@ -96,6 +96,7 @@ header {
 }
 
 .square1, .square2, .square3, .square4, .square5, .square6, .square7, .square8 { 
+    font-weight: 100;
     margin: 0px auto;
     width: 240px;
     height: 150px;
@@ -140,37 +141,43 @@ header {
 }
 
 .progressionText {
+    width: 200px;
     text-align: none;
     color: black; 
 }
 
 .outer {
-    height: 160px;
-    width: 160px;
+    height: 180px;
+    width: 180px;
     border-radius: 50%;
+    margin-left: 0px;
     padding: 20px;
-    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
-    -6px -6px 10px -1px rgba(255,255,255,0.7);
+    border: 1px solid #cbd1da;
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.15),
+    0px 0px 10px -1px rgba(0,0,0,0.15);
 }
 
 .inner {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 120px;
-    width: 120px;
+    height: 140px;
+    width: 140px;
     border-radius: 50%;
-    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
-                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
-                -0.5px -0.5px 0px rgba(255,255,255,1),
-                0.5px 0.5px 0px rgba(0,0,0,0.15),
-                0px 12px 10px -10px rgba(0,0,0,0.05);
+
 }
 
 #number {
-    font-weight: 600px;
-    color: #555;
+    font-size: 30px;
+    font-weight: 700px;
+    margin-top: -5px;
+    margin-left: 5px;
+    color: #97a6b9;
 
+}
+
+:root {
+    --size: 472;
 }
 
 circle {
@@ -179,19 +186,155 @@ circle {
     stroke-width: 20px;
     stroke-dasharray: 472;
     animation: anim 0s linear forwards;
-    stroke-dashoffset: 0;
+    stroke-dashoffset: var(--size);
 }
 
 svg {
     position: relative;
     display: flex;
-    transform: rotate(300deg);
-    margin-top: -160px;
+    transform: rotate(263deg);
+    margin-top: -171px;
+    margin-left: 50px;
+}
+
+.circleProg {
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.circle {
+    transform: scale(1.3);
+}
+
+.progressionText {
+    position: relative;
+    display: flex;
+    margin-left: 40px;
+    font-weight: 0;
+    font-size: 16px
+}
+
+.reports {
+    text-align: start;
+    margin-top: -180px;
+    margin-left: 175px;
+    position: relative;
+}
+
+.sizeAmount {
+    font-size: 14px;
+    position: absolute;
+}
+
+.progress-bar {
+    margin-top: 3px;
+    width: 200px;
+    height: 10px;
+    border-radius: 10px;
+    margin-left: 0px;
+    background-color: #98a5eb;
+    
+}
+
+.sizeAmount {
+   font-size: 12px;
+}
+
+.sameLine {
+    display: flex;
+}
+
+#pb1 {
+    margin-left: 10px;
+}
+
+#pb2 {
+    margin-left: 35px;
+    background-color: #e4e6f2;
+}
+
+#pb3 {
+    margin-left: 35px;
+    background-color: #e4e6f2;
+}
+
+#pb4 {
+    background-color: #e4e6f2;
+}
+
+#a1 {
+    margin-left: 215px;
+}
+
+#a2 {
+    margin-left: 242px;
+}
+
+#a3 {
+    margin-left: 242px;
+}
+
+#a4 {
+    margin-left: 206px;
 }
 
 
-@keyframes anim{
-    100%{
-        stroke-dashoffset: 404.5;
-    }
+.wholeArea {
+    width: 600px;
+    margin-top: -10px;
+    margin-left: -20px;
 }
+
+.barDesign2 hr {
+    width: 1px;
+    height: 300px;
+    border: 1px solid #dbdde2;
+    margin-top: -240px;
+    margin-bottom: 30px;
+    margin-left: 800px;
+    border-radius: 5px;
+}
+
+.wholeArea2 {
+    margin-left: 850px;
+    margin-top: -300px;
+    font-size: 16px;
+    text-align: start;
+}
+
+.inpt {
+    margin-top: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    width: 300px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #3e3e2e8c;
+    border-radius: 3px;
+    padding: 8px 8px 8px;  
+    margin-bottom: 15px;
+    /*Não esquecer de trocar depois, não é necessário puxar o src aqui, apenas lá em cima YAHOOOOOOOOOO */    
+    src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+.wholeArea2 a {
+    text-decoration: underline;
+    color: black;
+}
+
+.addFile {
+    font-size: 16px;
+    display: flex;
+}
+
+.plusIcon {
+    transform:scale(1.6); 
+    margin-top: -1px;
+    display: flex;
+}
+
+.designLink2 {
+    font-size: 16px;
+}
+

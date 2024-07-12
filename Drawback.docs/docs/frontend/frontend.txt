@@ -10,11 +10,6 @@ Corrigir html dos formulários:
     - loginCompany;
     - registerCompany.
 
-Fazer no index.html: 
-    - barra de progresso de forma que seja possível manipular com js;
-    - aumentar tamanho da barra de progresso;
-    - mini relatório ao lado da barra de progresso.
-
 Fazer html das páginas: 
     - Dúvidas;
     - Contado;

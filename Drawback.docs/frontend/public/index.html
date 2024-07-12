@@ -37,25 +37,27 @@
     </header>
     <main class="centralSquareToPlaceContent">
         <section class="content">
-            <div class="siteSeparation">
-                <div class="separation1">
+            <div class="amountSquares" id="amount">
+                <div class="siteSeparation">
+                    <div class="separation1">
 
-                    <div class="square1"><a class="designLink1" href="#">Certificado de origem</a></div>
-                    <div class="square2"><a class="designLink1" href="#">Licenciamento de importação</a></div>
-                    <div class="square3"><a class="designLink1" href="#">Romaneio de carga</a></div>
-                    <div class="square4"><a class="designLink1" href="#">Fatura proforma</a></div>
+                        <div class="square1"><a class="designLink1" href="#">Certificado de origem</a></div>
+                        <div class="square2"><a class="designLink1" href="#">Licenciamento de importação</a></div>
+                        <div class="square3"><a class="designLink1" href="#">Romaneio de carga</a></div>
+                        <div class="square4"><a class="designLink1" href="#">Fatura proforma</a></div>
 
-                </div>
-            </div>    
-                <div class="barDesign"><hr></div>
-            <div class="siteSeparation">    
-                <div class="separation2">
+                    </div>
+                </div>    
+                    <div class="barDesign"><hr></div>
+                <div class="siteSeparation">    
+                    <div class="separation2">
 
-                    <div class="square5"><a class="designLink1" href="#">Fatura comercial</a></div>
-                    <div class="square6"><a class="designLink1" href="#">Conhecimento de embarque</a></div>
-                    <div class="square7"><a class="designLink1" href="#">Declaração de importação</a></div>
-                    <div class="square8"><a class="designLink1" href="#">Adicionar</a></div>
+                        <div class="square5"><a class="designLink1" href="#">Fatura comercial</a></div>
+                        <div class="square6"><a class="designLink1" href="#">Conhecimento de embarque</a></div>
+                        <div class="square7"><a class="designLink1" href="#">Declaração de importação</a></div>
+                        <div class="square8"><a class="designLink1" href="#">Adicionar</a></div>
 
+                    </div>
                 </div>
             </div>
                 <div class="barDesign"><hr></div>
@@ -68,11 +70,11 @@
                     </div>
                     <div class="addFile">
                         <p>
-                        <a class="designLink2" href="#">+&nbsp;&nbsp;&nbsp;&nbsp;Adicionar arquivo</a>
+                        <a class="designLink2" href="#"><div class="plusIcon">+</div>&nbsp;&nbsp;&nbsp;Adicionar arquivo</a>
                         </p>
                     </div>
                     
-                    <div class="progession">
+                    <div class="progression">
                         <br>
                         <br>
                         <br>
@@ -84,26 +86,101 @@
                             <div class="barDesign"><hr></div>
                         <a class="progressionText" href="#">Progresso</a>
                         <p>
-                        <div class="outer">
-                            <div class="inner">
-                                <div id="number">
-                                    1/8
+                        <div class="wholeArea">
+                            <div class="circleProg">
+                                <div class="outer">
+                                    <div class="inner">
+                                        <div id="number">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="circle">
+                                    <svg width="160px" height="160px">
+                                        <defs>
+                                        <linearGradient id="GradientColor">
+                                            <stop offset="0%" stop-color="#a60df1" />
+                                        </linearGradient>
+                                        </defs>
+                                        <circle cx="80" cy="80" r="70" stroke-linecap="round" style="stroke-width:11px" />/>
+                                    </svg>
+                                </div>
+                                <div class="reports">
+
+                                    <div class="report1">
+                                        <label>
+                                            Fatura comercial
+                                        </label><br>
+                                        <div class="sameLine">
+                                            <div class="progress-bar" id="pb1">
+                                                <progress value="1" max="1" style="visibility:hidden;height:0;width:0;"></progress>
+                                            </div> 
+                                            <span class="sizeAmount" id="a1">(1/1)</span>
+                                        </div>                           
+                                    </div><br>
+
+                                    <div class="report2">
+                                        <label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            Conhecimento de embarque
+                                        </label><br>
+                                            <div class="sameLine">
+                                                <div class="progress-bar" id="pb2">
+                                                    <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress>
+                                                </div>
+                                            <span class="sizeAmount" id="a2">(0/1)</span>
+                                        </div>
+                                    </div><br>
+
+                                    <div class="report3">
+                                        <label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            Romaneio de carga
+                                        </label><br>
+                                        <div class="sameLine">
+                                            <div class="progress-bar" id="pb3">
+                                                <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress>
+                                            </div>
+                                            <span class="sizeAmount" id="a3">(0/1)</span>
+                                        </div>
+                                    </div><br>
+
+                                    <div class="report4">
+                                        <label>
+                                            &nbsp;
+                                            Outros
+                                        </label><br>
+                                        <div class="sameLine">
+                                            <div class="progress-bar" id="pb4">
+                                                <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress> 
+                                            </div>
+                                            <span class="sizeAmount" id="a4">(0/4)</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                            <defs>
-                               <linearGradient id="GradientColor">
-                                  <stop offset="0%" stop-color="#e91e63" />
-                                  <stop offset="100%" stop-color="#673ab7" />
-                               </linearGradient>
-                            </defs>
-                            <circle cx="80" cy="80" r="70" stroke-linecap="round" />
-                        </svg>
+                    </div>
+                    <div class="barDesign2"><hr></div>
+                    <div class="wholeArea2">
+                        Entrar em uma equipe<br>
+                        <input class="inpt" type="email" name="email" placeholder=" Email ou CNPJ da empresa"><br>
+                        <a class="designLink3" href="#">Registrar empresa</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <script>
+        let totalAmount = 1;
+        let progress = 7;
+        let number = document.getElementById("number");
+        var amount = document.querySelectorAll(".amountSquares");
+        var size = (472/progress);
+        for (var counter = 0; counter < totalAmount; counter++);
+        number.innerHTML = counter + "/" + progress;
+        document.body.style.setProperty('--size', 472-size*totalAmount);
+        
+    </script>
 </body>
 </html>
