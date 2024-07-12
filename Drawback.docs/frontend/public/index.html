@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drawback</title>
     <link rel="stylesheet" href="assets/css/index.css">
+    <script src="../../backend/src/index/index.js"></script>
 
 </head>
 <body>
@@ -165,22 +166,11 @@
                     <div class="wholeArea2">
                         Entrar em uma equipe<br>
                         <input class="inpt" type="email" name="email" placeholder=" Email ou CNPJ da empresa"><br>
-                        <a class="designLink3" href="#">Registrar empresa</a>
+                        <a class="designLink3" href="../src/pages/formCompany/registerCompany.html">Registrar empresa</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <script>
-        let totalAmount = 1;
-        let progress = 7;
-        let number = document.getElementById("number");
-        var amount = document.querySelectorAll(".amountSquares");
-        var size = (472/progress);
-        for (var counter = 0; counter < totalAmount; counter++);
-        number.innerHTML = counter + "/" + progress;
-        document.body.style.setProperty('--size', 472-size*totalAmount);
-        
-    </script>
 </body>
 </html>
