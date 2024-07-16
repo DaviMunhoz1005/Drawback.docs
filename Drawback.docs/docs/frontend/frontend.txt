@@ -4,15 +4,12 @@ Fazer css dos formulários:
     - loginCompany;
     - registerCompany.
 
-Corrigir html dos formulários: 
-    - loginUser;
-    - registerUser;
-    - loginCompany;
-    - registerCompany.
-
 Fazer html das páginas: 
     - Dúvidas;
     - Contado;
     - Configurações;
     - Homepage do site sobre quem nós somos e o que é o Drawback;
 
+
+
+- Copiar e colar padrão em documentos css

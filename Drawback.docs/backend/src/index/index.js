@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let totalAmount, progress, number, amount, size, counter; 
 
     totalAmount = 1;
-    progress = 8;
+    progress = 7;
 
     number = document.getElementById("number");
     amount = document.querySelectorAll(".amountSquares");

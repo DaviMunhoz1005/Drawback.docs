@@ -64,6 +64,7 @@ header {
     margin-right: 120%;
     margin-left: -30px;
 }
+
 .centralSquareToPlaceContent {
     width: 1300px;
     margin-left: auto;
@@ -338,3 +339,6 @@ svg {
     font-size: 16px;
 }
 
+.user {
+    color: rgb(146, 146, 146);
+}
