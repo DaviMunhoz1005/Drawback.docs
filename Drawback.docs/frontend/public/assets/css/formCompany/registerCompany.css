@@ -1,3 +1,5 @@
+/*padrão*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 * {
@@ -7,6 +9,7 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: none;
     list-style: none;
+   
 }
 
 body {
@@ -21,21 +24,20 @@ header {
     position: fixed;
     width: 100%;
     padding: 1rem 0;
+    text-align: center;
+    height: 6vh;
+     overflow-y: hidden;
 }
 
-.menuLinks {
+.menuLinks, .group {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 95%;
-    margin: 0 auto;
 }
 
 .menuLinks a {
     margin-left: 30px;
 }
 
-.listMenu,.linkLogin {
+.listMenu{
     display: flex;
     gap: 1rem;
 }
@@ -46,65 +48,144 @@ header {
 }
 
 .websiteLogo a {
+    position: absolute;
+    margin-left: 3.8%;
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }
 
 .links {
-    margin-left: 100%;
-    justify-content: space-around;
     display: flex;
 }
 
-.singIn {
-    margin-left: -110px;
+.group {
+    position: absolute;
+    margin-left: 40%;
+}
+
+.groupText{ 
+    position: relative;
+    margin-right: 120%;
+    margin-left: -30px;
 }
 
 .centralSquareToPlaceContent {
-    width: 1400px;
-    margin: -1px auto;
-    height: 50vh;
-    border: 1px solid black;
+    width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    height: auto;
+    border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
+    margin: -1 auto;
+    padding: 20px;
+    background-color: white;
+    color: black; 
+    
 }
 
-.formRegister{
-    margin: auto;
+.barDesign hr {
+    width: 1160px;
+    height: 0px;
+    border: 2px solid #dbdde2;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+.content {
+    margin: 7vh auto;
+    width: 100%;
+}
+
+.siteSeparation {
+    margin-left: auto;
+    margin-right: auto;
+    width:1220px;
+}
+
+/*padrão*/
+
+.formLogin{
     display: flex;
+    position: relative;
     flex-direction: column;
-    width: 600px;
-    padding: 30px;
+    width: 400px;
+    margin-left: 30px;
 }
 
 .inpt {
-    font-family: "Merriweather", serif;
+    margin-top: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 300;
-    font-style: normal;
+    font-size: 18px;
     background-color: rgb(255, 255, 255);
     border: 1px solid #3e3e2e8c;
     border-radius: 3px;
-    padding: 8px 5px 5px;    
-    font-family: 'Merriweather';
-    font-style: normal;
-    font-weight: 300;
-
+    padding: 10px 10px 10px;  
+    margin-bottom: 25px;
+    width: 400px;
     /*Não esquecer de trocar depois, não é necessário puxar o src aqui, apenas lá em cima YAHOOOOOOOOOO */    
     src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
 .button{
-    font-family: "Merriweather", serif;
-    font-weight: 300;
-    font-style: normal;
+    /*Aqui também irra YAHOOOOO*/
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
     background-color: rgb(0, 0, 0);
     border-radius: 5px;
-    width: 90px;
-    height: 25px;
+    width: 120px;
+    height: 40px;
     border: 2px;
-
-    /*Aqui também irra YAHOOOOO*/
+    margin-top: 20px;
+    margin-bottom: -100px;
+    margin-left: -200px;
     src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+
+.linkLoginPage {
+    position: absolute;
+    margin-top: -35px;
+    margin-left: -550px;
+    color: black;
+    font-size: 23px;
+    text-align: start;
+}
+
+.size {
+    margin-top: 18px;
+    margin-left: -20px;
+    font-size: 21px;
+}
+
+.inputBoxes {
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+.user {
+    color: #bdc0c5;
+}
+
+.nt {
+    margin-left: -180px;
+    margin-top: 15px;
+}
+
+.otherLinks {
+    text-decoration:underline;
+    list-style: none;
+    color: black;
+    font-size: 18px;
+}
+
+.externalLinks {
+    text-align: start;
+    margin-left: 25px;
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Cadastro Usuário</title>
     <link rel="stylesheet" href="../../../public/assets/css/formUser/registerUser.css">
-    
+
 </head>
 <body>
     <header>  
@@ -34,46 +34,45 @@
             </div>
         </nav>
     </header>
-
     <br>
     <br>
     <br>
-    <br>
-    <br>
-
     <main class="centralSquareToPlaceContent">
-
-        <a class="linkLoginPage" href="cadastro_empresa.html"> Cadastrar | Usuário |</a>
-
-        <form> <hr> 
-                <div class="formLogin">
-                    <section class="content">
-                    
-                        <p>Preencha os campos para continuar</p>
-
-                        <input class="inpt" type="text" name="nome" placeholder="Nome da conta *">
+        <section class="content">
+            <a class="linkLoginPage" href="#"><&nbsp; CADASTRAR SUA CONTA <span class="user">| USUÁRIO |</span></a>
+            <div class="barDesign"><hr></div>   
+            <form> 
+                <div class="siteSeparation">
+                    <div class="formLogin">
+                        <p class="size">Preencha os campos para continuar</p>
+                        <div class="inputBoxes">
+                            <input class="inpt" type="text" name="email" placeholder="Nome da conta *"> 
+                            <br>
+                            <input class="inpt" type="password" name="senha" placeholder="Senha *">
+                            <br> 
+                            <input class="inpt" type="password" name="confirmSenha" placeholder="Confirmar Senha *">
+                            <br> 
+                            <input class="inpt" type="text" name="telefonePessoal" placeholder="Email Pessoal">
+                            <br> 
+                            <input class="inpt" type="text" name="telefonePessoal" placeholder="Telefone Pessoal">
+                            <br> 
+                            <div class="sameLine">
+                                <input class="nt" type="checkbox" id="manteracesso">
+                                <label class="linear" for="manteracesso"> Lembrar de mim</label>
+                            </div>
+                            <br>
+                            <button class="button">Cadastrar</button> 
+                        </div>
                         <br>
-                        <input class="inpt" type="email" name="email" placeholder="Email *"> 
-                        <br>
-                        <input class="inpt" type="password" name="senha" placeholder="Senha *">
-                        <br> 
-                        <input class="inpt" type="number" name="cnae" id="CNAE" placeholder="Telefone Pessoal">
-                        <br>
-                        <input class="inpt" type="password" name="senha" id="SENHA" placeholder="Confirmar senha *">
-                        <br>
-                        <br>
-                        <button class="button">Criar</button>
-                        <br>
-                        <br>
-                        
-                        <hr>
-                        
-                    </section>
-                </div>
-                
-                <a class="otherLinks" href="loginUser.html">Já tenho uma conta </a><br>
-
-        </form>
+                        <br>  
+                        <div class="barDesign"><hr></div>   
+                        <div class="externalLinks">
+                            <a class="otherLinks" href="loginUser.html">Já tenho uma conta</a><br><br> 
+                        </div>
+                    </div>
+                </div>    
+            </form>
+        </section>
     </main>
 </body>
 </html>

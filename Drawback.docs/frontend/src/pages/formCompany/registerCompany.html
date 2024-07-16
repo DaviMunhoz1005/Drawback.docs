@@ -3,9 +3,9 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Cadastro Empresarial</title>
+    <title>Cadastro Empresa</title>
     <link rel="stylesheet" href="../../../public/assets/css/formCompany/registerCompany.css">
-    
+
 </head>
 <body>
     <header>  
@@ -34,48 +34,47 @@
             </div>
         </nav>
     </header>
-
     <br>
     <br>
     <br>
-    <br>
-    <br>
-
     <main class="centralSquareToPlaceContent">
-
-        <a class="linkPageRegister" href="cadastro_empresa.html"> Cadastrar | Empresa |</a>
-
-        <form>  <hr> 
-                <div class="formRegister">
-                    <section class="content">
-                    
-                        <p>Preencha os campos para continuar</p>
-
-                        <input class="inpt" type="text" name="nome" placeholder="Nome da empresa *">
+        <section class="content">
+            <a class="linkLoginPage" href="#"><&nbsp; CADASTRAR SUA CONTA <span class="user">| EMPRESA |</span></a>
+            <div class="barDesign"><hr></div>   
+            <form> 
+                <div class="siteSeparation">
+                    <div class="formLogin">
+                        <p class="size">Preencha os campos para continuar</p>
+                        <div class="inputBoxes">
+                            <input class="inpt" type="text" name="email" placeholder="Nome da empresa *"> 
+                            <br>
+                            <input class="inpt" type="text" name="emailProprietario" placeholder="Email do Proprietário">
+                            <br> 
+                            <input class="inpt" type="password" name="senha" placeholder="Senha *">
+                            <br> 
+                            <input class="inpt" type="password" name="confirmSenha" placeholder="Confirmar Senha *">
+                            <br> 
+                            <input class="inpt" type="text" name="cnpj" placeholder="CNPJ da empresa *">
+                            <br> 
+                            <input class="inpt" type="text" name="cnae" placeholder="CNAE da empresa *">
+                            <br> 
+                            <div class="sameLine">
+                                <input class="nt" type="checkbox" id="manteracesso">
+                                <label class="linear" for="manteracesso"> Lembrar de mim</label>
+                            </div>
+                            <br>
+                            <button class="button">Cadastrar</button> 
+                        </div>
                         <br>
-                        <input class="inpt" type="email" name="email" placeholder="Email do Proprietário"> 
-                        <br>
-                        <input class="inpt" type="password" name="senha" placeholder="Senha *">
-                        <br> 
-                        <input class="inpt" type="number" name="cnae" id="CNAE" placeholder="CNPJ da Empresa *">
-                        <br>
-                        <input class="inpt" type="number" name="cnpj" placeholder="CNAE *">
-                        <br>
-                        <input class="inpt" type="password" name="senha" id="SENHA" placeholder="Confirmar senha *">
-                        <br>
-                        <br>
-                        <button class="button">Cadastrar</button>
-                        <br>
-                        <br>
-                        
-                        <hr>
-                        
-                    </section>
-                </div>
-                
-                <a class="otherLinks" href="loginCompany.html"> Minha empresa já está cadastrada </a><br>
-     
-        </form>
+                        <br>  
+                        <div class="barDesign"><hr></div>   
+                        <div class="externalLinks">
+                            <a class="otherLinks" href="loginCompany.html">Já cadastrei minha empresa</a><br><br> 
+                        </div>
+                    </div>
+                </div>    
+            </form>
+        </section>
     </main>
 </body>
 </html>
