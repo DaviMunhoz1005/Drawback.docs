@@ -15,6 +15,7 @@ body {
     background-color: #fbfafb;
     text-align: center;
     color: black;
+    overflow-y: hidden;
 }
 
 header {
@@ -25,7 +26,7 @@ header {
     padding: 1rem 0;
     text-align: center;
     height: 6vh;
-     overflow-y: hidden;
+    z-index: 2;
 }
 
 .menuLinks, .group {
@@ -73,7 +74,7 @@ header {
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    height: auto;
+    height: 100vh;
     border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
     margin: -1 auto;
@@ -140,7 +141,7 @@ header {
     border: 2px;
     margin-top: 20px;
     margin-bottom: -100px;
-    margin-left: -200px;
+    margin-left: -170px;
     src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -162,8 +163,8 @@ header {
 }
 
 .inputBoxes {
-    margin-top: 30px;
-    margin-left: 80px;
+    margin-top: 170px;
+    margin-left: 108px;
 }
 
 .user {
@@ -186,3 +187,107 @@ header {
     text-align: start;
     margin-left: 25px;
 }
+
+
+.emailMover {
+    position: absolute;
+    margin-left: 400px;
+    margin-top: -191px;
+}
+
+.passwordMover {
+    position: absolute;
+    margin-left: 400px;
+    margin-top: -77.5px;
+}
+
+.telephoneMover {
+    position: absolute;
+    margin-top: -57px;
+    margin-left: -146px;
+}
+
+.sameLine {
+    margin-left: 27px;
+    margin-top: -08px;
+    margin-bottom: -13px;
+}
+
+
+.barDesign2 hr{
+    width: 146px;
+    position: absolute;
+    height: 0px;
+    margin-left: 400px;
+    margin-top: -84px;
+    border: 1px solid #dbdde2;
+}
+
+.iconEye {
+    position: absolute;
+    margin-top: -53.5px;
+    margin-left: 365px;
+    width:18px;
+    height:auto;
+}
+
+svg {
+    filter: opacity(0.3);
+}
+
+
+.iconQuestion {
+    width: 18px;
+    margin-top: -55px;
+    height: auto;
+    margin-left: 365px;
+    z-index: 1;
+    position: absolute;
+}
+
+
+.absolute1 {
+    display:block;
+    position: absolute;
+    margin-top: -153.3px;
+}
+
+
+.absolute2 {
+    display:block;
+    position: absolute;
+    margin-top: -76.9px;
+}
+
+.eye2 {
+    position: absolute;
+    margin-left: 400px;
+}
+
+
+.absolute3 {
+    display:block;
+    position: absolute;
+    margin-top: -18px;
+    margin-bottom: 100px;
+    margin-left: 146px;
+}
+
+.absolute4 {
+    display:block;
+    position: absolute;
+    margin-top: -18px;
+    margin-bottom: 100px;
+    margin-left: 146px;
+}
+
+.absolute5 {
+    display:block;
+    margin-top: 2px;
+}
+
+.straightLine2 {
+    position: absolute;
+    margin-top: -8px;
+}
+

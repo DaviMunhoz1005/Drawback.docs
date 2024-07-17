@@ -1,7 +1,4 @@
-Fazer css dos formulários: 
-    - registerUser;
-    - loginCompany;
-    - registerCompany.
+4 paginas dog 🐶
 
 Fazer html das páginas: 
     - Dúvidas;
