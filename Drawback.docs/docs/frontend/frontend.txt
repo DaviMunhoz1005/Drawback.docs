@@ -5,3 +5,5 @@ Fazer html das páginas:
     - Contado;
     - Configurações;
     - Homepage do site sobre quem nós somos e o que é o Drawback;
+
+Criar css's padrões das páginas para limpar o código
