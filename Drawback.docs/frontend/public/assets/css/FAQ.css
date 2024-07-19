@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 * {
@@ -8,7 +7,6 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: none;
     list-style: none;
-   
 }
 
 body {
@@ -84,18 +82,6 @@ header {
     padding: 20px;
     background-color: white;
     color: black; 
-    
-}
-
-.barDesign hr {
-    width: 1160px;
-    height: 0px;
-    border: 2px solid #dbdde2;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
 }
 
 .content {
@@ -103,196 +89,21 @@ header {
     width: 100%;
 }
 
-.siteSeparation {
-    margin-left: auto;
-    margin-right: auto;
-    width:1220px;
-}
-
-.formLogin{
+.sizeImage  {
+    position: absolute;
     display: flex;
-    position: relative;
-    flex-direction: column;
-    width: 400px;
-    margin-left: 30px;
-}
-
-.inpt {
-    margin-top: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #3e3e2e8c;
-    border-radius: 3px;
-    padding: 10px 10px 10px;  
-    margin-bottom: 25px;
-    width: 400px;
-    /*Não esquecer de trocar depois, não é necessário puxar o src aqui, apenas lá em cima YAHOOOOOOOOOO */    
-    src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-
-.button{
-    /*Aqui também irra YAHOOOOO*/
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: white;
-    background-color: rgb(0, 0, 0);
-    border-radius: 5px;
-    width: 120px;
-    height: 40px;
-    border: 2px;
-    margin-top: 20px;
-    margin-bottom: -100px;
-    margin-left: -170px;
-    src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-    cursor:pointer;
-}
-
-
-.linkLoginPage {
-    position: absolute;
-    margin-top: -35px;
-    margin-left: -550px;
-    color: black;
-    font-size: 23px;
-    text-align: start;
-}
-
-.size {
-    margin-top: 18px;
+    margin-top: -1600px;
+    width: 1299px;
+    max-height: auto;
+    opacity: 0.4;
     margin-left: -20px;
-    font-size: 21px;
 }
 
-.inputBoxes {
-    margin-top: 170px;
-    margin-left: 108px;
-}
-
-.user {
-    color: #bdc0c5;
-}
-
-.nt {
-    margin-left: -180px;
-    margin-top: 15px;
-}
-
-.otherLinks {
-    text-decoration:underline;
-    list-style: none;
+.titleBody {
+    margin-top: 250px;
+    margin-bottom: 1000px;
+    font-size: 100px;
     color: black;
-    font-size: 18px;
-}
-
-.externalLinks {
-    text-align: start;
-    margin-left: 55px;
-}
-
-
-.emailMover {
-    position: absolute;
-    margin-left: 400px;
-    margin-top: -191px;
-}
-
-.passwordMover {
-    position: absolute;
-    margin-left: 400px;
-    margin-top: -77.5px;
-}
-
-.telephoneMover {
-    position: absolute;
-    margin-top: -57px;
-    margin-left: -146px;
-}
-
-.sameLine {
-    margin-left: 27px;
-    margin-top: -08px;
-    margin-bottom: -13px;
-}
-
-
-.barDesign2 hr{
-    width: 146px;
-    position: absolute;
-    height: 0px;
-    margin-left: 400px;
-    margin-top: -84px;
-    border: 1px solid #dbdde2;
-}
-
-.iconEye {
-    position: absolute;
-    margin-top: -53.5px;
-    margin-left: 365px;
-    width:18px;
-    height:auto;
-}
-
-svg {
-    filter: opacity(0.3);
-}
-
-
-.iconQuestion {
-    width: 18px;
-    margin-top: -55px;
-    height: auto;
-    margin-left: 365px;
-    z-index: 1;
-    position: absolute;
-}
-
-
-.absolute1 {
-    display:block;
-    position: absolute;
-    margin-top: -153.3px;
-}
-
-
-.absolute2 {
-    display:block;
-    position: absolute;
-    margin-top: -76.9px;
-}
-
-.eye2 {
-    position: absolute;
-    margin-left: 400px;
-}
-
-
-.absolute3 {
-    display:block;
-    position: absolute;
-    margin-top: -18px;
-    margin-bottom: 100px;
-    margin-left: 146px;
-}
-
-.absolute4 {
-    display:block;
-    position: absolute;
-    margin-top: -18px;
-    margin-bottom: 100px;
-    margin-left: 146px;
-}
-
-.absolute5 {
-    display:block;
-    margin-top: 2px;
-}
-
-.straightLine2 {
-    position: absolute;
-    margin-top: -8px;
 }
 
 :root {

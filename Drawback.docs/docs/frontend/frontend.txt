@@ -7,3 +7,18 @@ Fazer html das páginas:
     - Homepage do site sobre quem nós somos e o que é o Drawback;
 
 Criar css's padrões das páginas para limpar o código
+
+
+mudar informações do footer
+
+mudar o header
+
+js de tudo
+
+mudar as fontes
+
+resolver responsividade (rem)
+
+banco de dados
+
+colocar os links
