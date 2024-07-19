@@ -1,24 +1,43 @@
-4 paginas dog 🐶
+Corrigir responsividade do site usando a forma de medida rem no css;
+
+Modificar header informações do todas as páginas;
+
+Modificar footer informações do todas as páginas;
+
+Modificar font e tamanho da font de todas as páginas;
+
+Colocar os links certos de redirecionamento das páginas;
 
 Fazer html das páginas: 
     - Dúvidas;
-    - Contado;
     - Configurações;
     - Homepage do site sobre quem nós somos e o que é o Drawback;
 
-Criar css's padrões das páginas para limpar o código
+Fazer js das páginas: 
 
+    - index.html;
+        > função de se vincular a uma empresa;
+        >> função de adicionar documentos;
+        >>> função de atualizar documentos;
+        >>>> função de atualizar a validade dos documentos;
+        >>>>> fazer com que a cada documento adicionado e a cada campo de documento, apareça na barra e relatório de progresso
 
-mudar informações do footer
+    - loginUser:
+        > conectar com banco de dados;
+        >> checar dados no banco de dados;
+        >>> criar uma sessão para esse usuário.
 
-mudar o header
+    - registerUser:
+        > conectar com banco de dados;
+        >> persistir informações no bando de dados;
+        >>> mandar usuário para fazer login.
 
-js de tudo
+    - loginCompany:
+        > conectar com banco de dados;
+        >> checar dados no banco de dados;
+        >>> criar uma sessão para esse usuário.
 
-mudar as fontes
-
-resolver responsividade (rem)
-
-banco de dados
-
-colocar os links
+    - registerCompany:
+        > conectar com banco de dados;
+        >> persistir informações no bando de dados;
+        >>> mandar usuário para fazer login.
