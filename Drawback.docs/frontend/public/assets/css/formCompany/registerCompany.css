@@ -193,7 +193,7 @@ header {
 
 .sameLine {
     margin-left: 27px;
-    margin-top: 170px;
+    margin-top: 190px;
     margin-bottom: 10px;
 }
 
@@ -203,7 +203,7 @@ header {
     position: absolute;
     height: 0px;
     margin-left: 400px;
-    margin-top: 45px;
+    margin-top: 25px;
     border: 1px solid #dbdde2;
 }
 
@@ -213,6 +213,7 @@ header {
     margin-left: 365px;
     width:18px;
     height:auto;
+
 }
 
 svg {
@@ -240,19 +241,19 @@ svg {
 .absolute2 {
     display:block;
     position: absolute;
-    margin-top: 0px;
+    margin-top: -10px;
 }
 
 .absolute3 {
     display:block;
     position: absolute;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .absolute4 {
     display:block;
     position: absolute;
-    margin-top: 41.6px;
+    margin-top: 20.6px;
     margin-left: 546px;
 }
 
@@ -275,7 +276,7 @@ svg {
 
 .absolute6 {
     position: absolute;
-    margin-top: 118px;
+    margin-top: 140px;
 }
 
 .straightLine1 {
@@ -285,7 +286,11 @@ svg {
 .straightLine2 {
     margin-top: 5px;
 }
-
+.absolute7{
+    display:block;
+    position: absolute;
+    margin-top: 67px;
+}
 :root {
     --color-neutral-0: #0e0c0c;
     --color-neutral-10: #171717;
