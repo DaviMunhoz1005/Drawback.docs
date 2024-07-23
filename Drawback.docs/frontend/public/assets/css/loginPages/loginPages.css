@@ -219,7 +219,7 @@ footer {
     color: black;
 }
 .container-fisica{
-    background-color: rgba(0, 0, 0, 0.238);
+    background-color: rgba(149, 148, 148, 0.238);
     height: 300px;
     width: 400px;
     border: solid;
@@ -227,7 +227,7 @@ footer {
     flex-direction: column;
 }
 .container-juridica{
-    background-color: rgba(0, 0, 0, 0.238);
+    background-color: rgba(149, 148, 148, 0.238);
     height: 300px;
     width: 400px;
     border: solid;
@@ -237,14 +237,14 @@ footer {
 }
 
 .container-funcionario{
-    background-color: rgba(0, 0, 0, 0.238);
+    background-color: rgba(149, 148, 148, 0.238);
     height: 300px;
     width: 400px;
     margin-left: 958px;
     margin-top: -300px;
     border: solid;
     border-radius: 5%;
-    
+    text-align: center;
 }
 .inpt{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -265,6 +265,22 @@ footer {
 }
 .T1{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+.t2{  
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
+    margin: 2vh;
+}
+.p1{
+    font-size: larger;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 4vh;
+}
+.p2{
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 2vh;
 }
 .btn{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
