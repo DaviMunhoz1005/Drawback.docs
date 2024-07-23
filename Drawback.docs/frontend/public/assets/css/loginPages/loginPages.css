@@ -282,7 +282,7 @@ footer {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 2vh;
 }
-.btn{
+.button{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
     background-color: rgb(0, 0, 0);
@@ -294,4 +294,17 @@ footer {
     src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
     cursor:pointer;
+    
+}
+.button:hover{
+    background-color: #0e0c0cec;
+}
+.linkLoginPage {
+    position: absolute;
+    margin-top: -35px;
+    margin-left: -210px;
+    color: black;
+    font-size: 27px;
+    text-align: center;
+    
 }
