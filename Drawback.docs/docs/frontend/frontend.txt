@@ -4,7 +4,7 @@ Modificar header informações do todas as páginas;
 
 Modificar footer informações do todas as páginas;
 
-Modificar font e tamanho da font de todas as páginas;
+Modificar font e tamanho da font de todas as páginas; x 
 
 Colocar os links certos de redirecionamento das páginas;
 

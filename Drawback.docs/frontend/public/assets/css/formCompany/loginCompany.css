@@ -20,14 +20,70 @@ body {
 }
 
 header {
-    background-color: black;
+    background-color: #242223;
     color: white;
     position: fixed;
     width: 100%;
-    padding: 1rem 0;
+    padding: 1.1rem 0;
     text-align: center;
-    height: 3.5rem;
+    height: 4.6rem;
     z-index: 2;
+}
+
+
+.title1 {
+    font-size: 27px;
+    position: absolute;
+    margin-left: -17.2px;
+    margin-top: 39.55px;
+}
+
+.title2 {
+    position: absolute;
+    margin-left: 46px;
+    margin-top: 41.8px;
+}
+
+.barDesign3 hr {
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+    height: 50px;
+}
+
+
+.hv:hover {
+    color: #eee5d1;
+}
+
+.barDesign4 hr {
+    position: absolute;
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 144%;
+    height: 50px;
+}
+
+.barDesign5 hr {
+    position: absolute;
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 168%;
+    height: 50px;
+}
+
+#w {
+    margin-left: 1.2rem;
+}
+
+nav {
+    justify-content: space-around;
+}
+
+
+.group {
+    margin-top: 0.5rem;
 }
 
 .menuLinks {
@@ -39,7 +95,7 @@ header {
 }
 
 .menuLinks a {
-    margin-left: 30px;
+    margin-left: 1.4rem;
 }
 
 .listMenu{
@@ -52,11 +108,25 @@ header {
     text-decoration: none;
 }
 
-.websiteLogo a {
+.signIn {
     position: absolute;
-    margin-left: 3.8%;
+    margin-left: 240%;
+}
+
+.websiteLogo  {
+    letter-spacing: 3px;
+    margin-top: -30px;
+    font-size: 23px;
+    margin-left: -55rem;
     justify-content: space-around;
     color: rgb(255, 255, 255);
+}
+
+#logo {
+    position: absolute;
+    margin-top: 0.72rem;
+    width: 2.8rem;
+    height: auto;
 }
 
 .links {
@@ -65,14 +135,14 @@ header {
 
 .group {
     position: absolute;
-    margin-left: 40%;
+    margin-left: 0%;
 }
 
 .groupText{ 
     position: relative;
-    margin-right: 120%;
-    margin-left: -30px;
+    margin-left: -19rem;
 }
+
 
 .centralSquareToPlaceContent {
     width: 1300px;
@@ -206,6 +276,7 @@ header {
 }
 
 footer {
+    position: absolute;
     font-family: "inter", "sans-serif" ;
     margin: 0;
     padding: 0;
