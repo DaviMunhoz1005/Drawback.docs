@@ -1,3 +1,5 @@
+Implementar o normalize css do github para normalizar para todos os navegadores
+
 Corrigir responsividade do site usando a forma de medida rem no css;
 
 Modificar header informações do todas as páginas;
