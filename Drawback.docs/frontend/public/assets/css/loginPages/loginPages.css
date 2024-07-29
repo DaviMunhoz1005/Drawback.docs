@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -9,12 +12,81 @@
     text-decoration: none;
     list-style: none;
 }
+
 body {
     background-color: #fbfafb;
     text-align: center;
     color: black;
     overflow-x: hidden;
 }
+
+header {
+    background-color: #242223;
+    color: white;
+    position: fixed;
+    width: 100%;
+    padding: 1.1rem 0;
+    text-align: center;
+    height: 4.6rem;
+    z-index: 2;
+}
+
+
+.title1 {
+    font-size: 27px;
+    position: absolute;
+    margin-left: -17.2px;
+    margin-top: 39.55px;
+}
+
+.title2 {
+    position: absolute;
+    margin-left: 46px;
+    margin-top: 41.8px;
+}
+
+.barDesign3 hr {
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+    height: 50px;
+}
+
+
+.hv:hover {
+    color: #eee5d1;
+}
+
+.barDesign4 hr {
+    position: absolute;
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 144%;
+    height: 50px;
+}
+
+.barDesign5 hr {
+    position: absolute;
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 168%;
+    height: 50px;
+}
+
+#w {
+    margin-left: 1.2rem;
+}
+
+nav {
+    justify-content: space-around;
+}
+
+
+.group {
+    margin-top: 0.5rem;
+}
+
 .menuLinks {
     margin-top: 3px;
 }
@@ -24,7 +96,7 @@ body {
 }
 
 .menuLinks a {
-    margin-left: 30px;
+    margin-left: 1.4rem;
 }
 
 .listMenu{
@@ -37,11 +109,25 @@ body {
     text-decoration: none;
 }
 
-.websiteLogo a {
+.signIn {
     position: absolute;
-    margin-left: 3.8%;
+    margin-left: 240%;
+}
+
+.websiteLogo  {
+    letter-spacing: 3px;
+    margin-top: -30px;
+    font-size: 23px;
+    margin-left: -55rem;
     justify-content: space-around;
     color: rgb(255, 255, 255);
+}
+
+#logo {
+    position: absolute;
+    margin-top: 0.72rem;
+    width: 2.8rem;
+    height: auto;
 }
 
 .links {
@@ -50,13 +136,12 @@ body {
 
 .group {
     position: absolute;
-    margin-left: 40%;
+    margin-left: 0%;
 }
 
 .groupText{ 
     position: relative;
-    margin-right: 120%;
-    margin-left: -30px;
+    margin-left: -19rem;
 }
 
 .centralSquareToPlaceContent {
@@ -64,7 +149,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    height: 100vh;
+    height: 108vh;
     border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
     margin: -1 auto;
@@ -78,16 +163,6 @@ body {
     width: 100%;
 }
 
-header {
-    background-color: black;
-    color: white;
-    position: fixed;
-    width: 100%;
-    padding: 1rem 0;
-    text-align: center;
-    height: 3.5rem;
-    z-index: 2;
-}
 footer {
     font-family: "inter", "sans-serif" ;
     margin: 0;
