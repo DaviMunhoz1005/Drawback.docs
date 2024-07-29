@@ -13,7 +13,7 @@ Fazer html das páginas:
 
 Fazer js das páginas: 
 
-    - index.html;
+    - index.html:
         > função de se vincular a uma empresa;
         >> função de adicionar documentos;
         >>> função de atualizar documentos;
