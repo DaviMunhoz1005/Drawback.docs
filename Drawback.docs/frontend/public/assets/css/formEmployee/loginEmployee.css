@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 * {
     margin: 0;
@@ -14,10 +14,7 @@ body {
     background-color: #fbfafb;
     text-align: center;
     color: black;
-}
-
-.menuLinks {
-    margin-top: 3px;
+    overflow-x: hidden;
 }
 
 header {
@@ -89,6 +86,10 @@ nav {
     margin-left: 0%;
 }
 
+.menuLinks {
+    margin-top: 3px;
+}
+
 .menuLinks, .group {
     display: flex;
 }
@@ -137,41 +138,29 @@ nav {
     margin-left: -19rem;
 }
 
-
 .centralSquareToPlaceContent {
-    width: 1300px;
+    width: 1400px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    height: 100vh;
+    height: 108vh;
     border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
     padding: 20px;
     color: black; 
-    
-}
-
-.barDesign hr {
-    width: 1160px;
-    height: 0px;
-    border: 2px solid #dbdde2;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
 }
 
 .content {
     margin: 7vh auto;
     width: 100%;
 }
-
 .siteSeparation {
     margin-left: auto;
     margin-right: auto;
     width:1220px;
 }
+
+/*padrão*/
 
 .formLogin{
     display: flex;
@@ -207,7 +196,7 @@ nav {
     border: 2px;
     margin-top: 20px;
     margin-bottom: -100px;
-    margin-left: -170px;
+    margin-left: -200px;
     src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
     cursor:pointer;
 }
@@ -231,8 +220,8 @@ nav {
 }
 
 .inputBoxes {
-    margin-top: 170px;
-    margin-left: 108px;
+    margin-top: 30px;
+    margin-left: 80px;
 }
 
 .user {
@@ -256,104 +245,6 @@ nav {
     margin-left: 25px;
 }
 
-.sameLine {
-    margin-left: 27px;
-    margin-top: 190px;
-    margin-bottom: 10px;
-}
-
-
-.barDesign2 hr{
-    width: 146px;
-    position: absolute;
-    height: 0px;
-    margin-left: 400px;
-    margin-top: 25px;
-    border: 1px solid #dbdde2;
-}
-
-.iconEye {
-    position: absolute;
-    margin-top: -53.5px;
-    margin-left: 365px;
-    width:18px;
-    height:auto;
-
-}
-
-svg {
-    filter: opacity(0.3);
-}
-
-
-.iconQuestion {
-    width: 18px;
-    margin-top: -55px;
-    height: auto;
-    margin-left: 365px;
-    z-index: 1;
-    position: absolute;
-}
-
-
-.absolute1 {
-    display:block;
-    position: absolute;
-    margin-top: -147px;
-}
-
-
-.absolute2 {
-    display:block;
-    position: absolute;
-    margin-top: -10px;
-}
-
-.absolute3 {
-    display:block;
-    position: absolute;
-    margin-top: 40px;
-}
-
-.absolute4 {
-    display:block;
-    position: absolute;
-    margin-top: 20.6px;
-    margin-left: 546px;
-}
-
-
-.absolute5 {
-    display:block;
-    position: absolute;
-    margin-top: -133px;
-    margin-left: 546px;
-}
-
-.straightLine2 {
-    position: absolute;
-    margin-top: -8px;
-    margin-top: 5px;
-}
-
-.up {
-    margin-top: -70px;
-}
-
-.absolute6 {
-    position: absolute;
-    margin-top: 140px;
-}
-
-.straightLine1 {
-    margin-top: -6px;
-}
-
-.absolute7{
-    display:block;
-    position: absolute;
-    margin-top: 67px;
-}
 :root {
     --color-neutral-0: #0e0c0c;
     --color-neutral-10: #171717;

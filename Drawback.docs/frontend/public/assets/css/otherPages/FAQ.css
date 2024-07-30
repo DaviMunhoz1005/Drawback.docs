@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 * {
     margin: 0;
@@ -9,12 +8,82 @@
     text-decoration: none;
     list-style: none;
 }
+
 body {
     background-color: #fbfafb;
     text-align: center;
     color: black;
-    overflow-x: hidden;
 }
+
+header {
+    background-color: #242223;
+    color: white;
+    position: fixed;
+    width: 100%;
+    padding: 1.1rem 0;
+    text-align: center;
+    height: 4.6rem;
+    z-index: 2;
+}
+
+
+.title1 {
+    font-size: 27px;
+    position: absolute;
+    margin-left: -17.2px;
+    margin-top: 39.55px;
+}
+
+.title2 {
+    position: absolute;
+    margin-left: 46px;
+    margin-top: 41.8px;
+}
+
+.barDesign3 hr {
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+    height: 50px;
+}
+
+
+.hv:hover {
+    color: #eee5d1;
+}
+
+.barDesign4 hr {
+    position: absolute;
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 144%;
+    height: 50px;
+}
+
+.barDesign5 hr {
+    position: absolute;
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 168%;
+    height: 50px;
+}
+
+#w {
+    margin-left: 1.2rem;
+}
+
+nav {
+    justify-content: space-around;
+}
+
+
+.group {
+    margin-top: 0.5rem;
+    position: absolute;
+    margin-left: 0%;
+}
+
 .menuLinks {
     margin-top: 3px;
 }
@@ -24,7 +93,7 @@ body {
 }
 
 .menuLinks a {
-    margin-left: 30px;
+    margin-left: 1.4rem;
 }
 
 .listMenu{
@@ -37,39 +106,46 @@ body {
     text-decoration: none;
 }
 
-.websiteLogo a {
+.signIn {
     position: absolute;
-    margin-left: 3.8%;
+    margin-left: 240%;
+}
+
+.websiteLogo  {
+    letter-spacing: 3px;
+    margin-top: -30px;
+    font-size: 23px;
+    margin-left: -55rem;
     justify-content: space-around;
     color: rgb(255, 255, 255);
+}
+
+#logo {
+    position: absolute;
+    margin-top: 0.72rem;
+    width: 2.8rem;
+    height: auto;
 }
 
 .links {
     display: flex;
 }
 
-.group {
-    position: absolute;
-    margin-left: 40%;
-}
-
 .groupText{ 
     position: relative;
-    margin-right: 120%;
-    margin-left: -30px;
+    margin-left: -19rem;
 }
 
+
 .centralSquareToPlaceContent {
-    width: 1400px;
+    width: 1300px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     height: 100vh;
     border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
-    margin: -1 auto;
     padding: 20px;
-    background-color: white;
     color: black; 
 }
 
@@ -78,32 +154,40 @@ body {
     width: 100%;
 }
 
-header {
-    background-color: black;
-    color: white;
-    position: fixed;
-    width: 100%;
-    padding: 1rem 0;
-    text-align: center;
-    height: 3.5rem;
-    z-index: 2;
+.sizeImage  {
+    position: absolute;
+    display: flex;
+    margin-top: -1600px;
+    width: 1299px;
+    max-height: auto;
+    opacity: 0.4;
+    margin-left: -20px;
 }
-footer {
-    font-family: "inter", "sans-serif" ;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    letter-spacing: 1px;
-    width: 100%;
-    color: var(--color-neutral-40);
 
+.titleBody {
+    margin-top: 250px;
+    margin-bottom: 1000px;
+    font-size: 100px;
+    color: black;
 }
+
 :root {
     --color-neutral-0: #0e0c0c;
     --color-neutral-10: #171717;
     --color-neutral-30: #a8a29e;
     --color-neutral-40: #f5f5f5;
 }
+
+footer {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    width: 100%;
+    color: var(--color-neutral-40);
+}
+
 .footer-link {
     text-decoration: none;
 }
@@ -114,9 +198,11 @@ footer {
     grid-template-columns: repeat(4, 1fr);
     padding: 3rem 3.5rem;
 }
+
 #footer_contacts h1{
     margin-bottom: 0.75rem;
 }
+
 #footer_social_media {
     display: flex;
     gap: 2rem;
@@ -124,6 +210,7 @@ footer {
     margin-left: 7.7rem;
     margin-right: 7.7rem;
 }
+
 #footer_social_media .footer-link {
     display: flex;
     align-items: center;
@@ -134,50 +221,63 @@ footer {
     border-radius: 50%;
     transition: all 04s;
 }
+
 #footer_social_media .footer-link:hover {
     opacity: 0.8;
 }
+
 #instagram {
     background: linear-gradient(#7f37c9, #ff2992, #ff9807)
 }
+
 #facebook {
     background-color: #4267b3;
 }
+
 #whatsapp {
     background-color: #25d366;
 }
+
 .footer-list {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     list-style:none;
 }
+
+
 .footer-list .footer-link {
     color: var(--color-neutral-30);
     transition: all 0.4s;
 }
+
 .footer-list .footer-link:hover {
     color: #7f37c9
 }
+
 #footer_subscribe {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
+
 #footer_subscribe p {
     color: var(--color-neutral-30);
 }
+
 #input_group {
     display: flex;
     align-items: center;
     background-color: var(--color-neutral-0);
     border-radius: 4px;
 }
+
 #input_group input {
     all: unset;
     padding: 0.75rem;
     width: 100%;
 }
+
 #input_group button {
     background-color: #7f37c9;
     border: none;
@@ -188,9 +288,12 @@ footer {
     cursor: pointer;
     transition: all 0.4s;
 }
+
+
 #input_group button:hover {
     opacity: 0.8;
 }
+
 #footer_copyright {
     display: flex;
     justify-content: center;
@@ -199,112 +302,40 @@ footer {
     padding: 1.5rem;
     font-weight: 100;
 }
+
 @media screen and (max-width:768px) {
     #footer_content {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }   
 }
+
 @media screen and (max-width:426px) {
     #footer_content {
         grid-template-columns: repeat(1, 1fr);
         padding: 3rem 2rem;
     }
 }
-.Others {
-    color: black;
-}
-.wholeArea2 a {
-    text-decoration: underline;
-    color: black;
-}
-.container-fisica{
-    background-color: rgba(149, 148, 148, 0.238);
-    height: 300px;
-    width: 400px;
-    border: solid;
-    border-radius: 5%;
-    flex-direction: column;
-}
-.container-juridica{
-    background-color: rgba(149, 148, 148, 0.238);
-    height: 300px;
-    width: 400px;
-    border: solid;
-    border-radius: 5%;
-    margin-left: 480px;
-    margin-top:-300px;
+.T3{
+    margin-left: -65rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.container-funcionario{
-    background-color: rgba(149, 148, 148, 0.238);
-    height: 300px;
-    width: 400px;
-    margin-left: 958px;
-    margin-top: -300px;
-    border: solid;
-    border-radius: 5%;
-    text-align: center;
-}
-.inpt{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    margin-top: 100px;
-    margin-left: 150px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #3e3e2e8c;
-    border-radius: 3px;
-    padding: 10px 10px 10px;  
-    width: 100px;
-    height: 50px;
-    /*Não esquecer de trocar depois, não é necessário puxar o src aqui, apenas lá em cima YAHOOOOOOOOOO */    
-    src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+.T2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: -56rem;
 
 }
-.T1{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
-}
-.t2{  
-    font-size: large;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
-    margin: 2vh;
-}
+
 .p1{
-    font-size: larger;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin: 4vh;
-}
-.p2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: large;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin: 2vh;
+    text-align: justify;
+    margin-left: 15px;
+
 }
-.button{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: white;
-    background-color: rgb(0, 0, 0);
-    border-radius: 5px;
-    width: 120px;
-    height: 40px;
-    border: 2px;
-    margin-top: 20px;
-    src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-    cursor:pointer;
-    
-}
-.button:hover{
-    background-color: #0e0c0cec;
-}
-.linkLoginPage {
-    position: absolute;
-    margin-top: -35px;
-    margin-left: -210px;
-    color: black;
-    font-size: 27px;
-    text-align: center;
-    
+.barra{
+    max-width:1239px;
+    margin-left: 10px;
+
 }
