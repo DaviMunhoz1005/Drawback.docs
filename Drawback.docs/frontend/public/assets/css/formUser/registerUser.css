@@ -82,6 +82,9 @@ nav {
 
 .group {
     margin-top: 0.5rem;
+    position: absolute;
+    margin-left: 0%;
+
 }
 
 .menuLinks {
@@ -131,11 +134,6 @@ nav {
     display: flex;
 }
 
-.group {
-    position: absolute;
-    margin-left: 0%;
-}
-
 .groupText{ 
     position: relative;
     margin-left: -19rem;
@@ -150,9 +148,7 @@ nav {
     height: 100vh;
     border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
-    margin: -1 auto;
     padding: 20px;
-    background-color: white;
     color: black; 
     
 }
@@ -200,7 +196,6 @@ nav {
     width: 400px;
     /*Não esquecer de trocar depois, não é necessário puxar o src aqui, apenas lá em cima YAHOOOOOOOOOO */    
     src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
 .button{
@@ -216,7 +211,6 @@ nav {
     margin-bottom: -100px;
     margin-left: -170px;
     src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
     cursor:pointer;
 }
 .button:hover{
@@ -375,7 +369,6 @@ svg {
 
 footer {
     position: absolute;
-    font-family: "inter", "sans-serif" ;
     margin: 0;
     padding: 0;
     box-sizing: border-box;

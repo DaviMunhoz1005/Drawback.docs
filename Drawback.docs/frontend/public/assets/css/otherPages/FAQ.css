@@ -80,6 +80,8 @@ nav {
 
 .group {
     margin-top: 0.5rem;
+    position: absolute;
+    margin-left: 0%;
 }
 
 .menuLinks {
@@ -129,11 +131,6 @@ nav {
     display: flex;
 }
 
-.group {
-    position: absolute;
-    margin-left: 0%;
-}
-
 .groupText{ 
     position: relative;
     margin-left: -19rem;
@@ -148,9 +145,7 @@ nav {
     height: 100vh;
     border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
-    margin: -1 auto;
     padding: 20px;
-    background-color: white;
     color: black; 
 }
 
@@ -185,7 +180,6 @@ nav {
 
 footer {
     position: absolute;
-    font-family: "inter", "sans-serif" ;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -323,10 +317,8 @@ footer {
     }
 }
 .T3{
-    margin-left: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-left: -65rem;
-
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .T2{
