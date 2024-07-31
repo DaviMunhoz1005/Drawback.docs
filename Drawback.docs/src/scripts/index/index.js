@@ -15,3 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     number.innerHTML = counter + "/" + progress;
     document.body.style.setProperty('--size', 472 - size * totalAmount);
 });
+
+
+
+
