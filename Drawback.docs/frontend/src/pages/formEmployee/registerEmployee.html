@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <title>Cadastro Funcionário</title>
-    <link rel="stylesheet" href="../../../public/assets/css/formEmployee/registerEmployee.css">
+    <link rel="stylesheet" href="../../../public/assets/css/formUser/registerUser.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
@@ -13,26 +13,26 @@
         <nav class="menuLinks">
             <ul class="listMenu">
                 <div class="websiteLogo">
-                    
-                    <span class="title1">D</span><img  id="logo" src="../../../public/assets/images/logo.png" alt="logoImg"><span class="title2">ocs</span>
+
+                    <li><a href="#">Drawback</a></li>
 
                 </div>
-            <div class="group">
-                <div class="groupText">
-                    <span class="links">
-                        <div class="barDesign3"><hr></div><li><a class="hv" href="#">Documentos</a></li><div class="barDesign3"><hr></div>
-                            <li><a class="hv" href="#">Dúvidas</a></li><div class="barDesign3"><hr></div>
-                            <li><a class="hv" href="#">Contato</a></li><div class="barDesign3"><hr></div>
-                            <li><a class="hv" href="#">Configurações</a></li><div class="barDesign3"><hr></div>
-                    </div><div class="barDesign4" id="w"><hr></div>
-                    <div class="signIn" >
-
-                        <li><a href="#" class="hv" id="w1">Entrar</a></li>
-
-                    </div><div class="barDesign5" id="w"><hr></div>
-                </span>
-            </div>
-        </nav>
+                <div class="group">
+                    <div class="groupText">
+                        <span class="links">
+                            <div class="barDesign3"><hr></div><li><a class="hv" href="../../../public/index.html">Documentos</a></li><div class="barDesign3"><hr></div>
+                                <li><a class="hv" href="../../frontend/src/pages/FAQ.html">Dúvidas</a></li><div class="barDesign3"><hr></div>
+                                <li><a class="hv" href="#">Contato</a></li><div class="barDesign3"><hr></div>
+                                <li><a class="hv" href="#">Configurações</a></li><div class="barDesign3"><hr></div>
+                        </div><div class="barDesign4" id="w"><hr></div>
+                        <div class="signIn" >
+    
+                            <li><a href="../../frontend/src/pages/typeLogin.html" class="hv" id="w1">Entrar</a></li>
+    
+                        </div><div class="barDesign5" id="w"><hr></div>
+                    </span>
+                </div>
+            </nav>
     </header>
     <main class="centralSquareToPlaceContent"> 
         <section class="content">
@@ -115,8 +115,23 @@
             </form>
         </section>
     </main>
-    <footer class="zindex">
+    <footer>
         <div id="footer_content">
+            <div id="footer_contacts">
+                <h1>Logo</h1>
+                <p>Trabalho de termino de curso</p>
+                <div id="footer_social_media">
+                    <a href="#" class="footer-link" id="instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-link" id="facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" class="footer-link" id="whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>    
             <ul class="footer-list">
                 <li>
                     <h3>Front & Back end</h3>
@@ -145,6 +160,19 @@
                     <a href="#" class="footer-link"> Talita Ferreira </a>
                 </li>
             </ul>
+            <div id="footer_subscribe">
+                <h3>Inscrever-se</h3>
+                        <p>
+                            Coloque seu email para podermos 
+                            enviar nossos novos projetos para você
+                        </p>
+                <div id="input_group">
+                    <input type="email" id="email">
+                        <button>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                </div>
+            </div>
         </div>
             <div id="footer_copyright">
                 &#169
