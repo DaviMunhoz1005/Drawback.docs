@@ -3,9 +3,10 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Login Funcionário</title>
-    <link rel="stylesheet" href="../../../public/assets/css/formEmployee/loginEmployee.css">
+    <title>Login Usuário</title>
+    <link rel="stylesheet" href="../../assets/css/formUser/loginUser.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../../../../backend/src/formUser/loginUser.js"></script>
 
 </head>
 <body>
@@ -14,13 +15,13 @@
             <ul class="listMenu">
                 <div class="websiteLogo">
                     
-                    <span class="title1">D</span><img  id="logo" src="../../../public/assets/images/logo.png" alt="logoImg"><span class="title2">ocs</span>
+                    <a href="../otherPages/homepage.html"><span class="title1">D</span><img id="logo" src="../../../public/assets/images/logo.png" alt="logoImg"><span class="title2">ocs</span></a>
 
                 </div>
             <div class="group">
                 <div class="groupText">
                     <span class="links">
-                        <div class="barDesign3"><hr></div><li><a class="hv" href="#">Documentos</a></li><div class="barDesign3"><hr></div>
+                        <div class="barDesign3"><hr></div><li><a class="hv" href="../../../public/index.html">Documentos</a></li><div class="barDesign3"><hr></div>
                             <li><a class="hv" href="#">Dúvidas</a></li><div class="barDesign3"><hr></div>
                             <li><a class="hv" href="#">Contato</a></li><div class="barDesign3"><hr></div>
                             <li><a class="hv" href="#">Configurações</a></li><div class="barDesign3"><hr></div>
@@ -39,29 +40,29 @@
             <br>
             <br>
             <br>
-            <a class="linkLoginPage" href="#"><&nbsp; ENTRAR NA SUA CONTA <span class="user">| Funcionário|</span></a>
+            <a class="linkLoginPage" href="#"><&nbsp; ENTRAR NA SUA CONTA <span class="user">| PESSOA FÍSICA |</span></a>
             <div class="barDesign"><hr></div>   
             <form> 
                 <div class="siteSeparation">
                     <div class="formLogin">
                         <p class="size">Preencha os campos para continuar</p>
                         <div class="inputBoxes">
-                            <input class="inpt" type="text" name="email" placeholder="Nome da conta ou Email"> 
+                            <input class="inpt" type="text" name="email" placeholder="Nome da conta" id="username"> 
                             <br>
-                            <input class="inpt" type="password" name="senha" placeholder="Senha">
+                            <input class="inpt" type="password" name="senha" placeholder="Senha" id="password">
                             <br> 
                             <div class="sameLine">
                                 <input class="nt" type="checkbox" id="manteracesso">
                                 <label class="linear" for="manteracesso"> Lembrar de mim</label>
                             </div>
                             <br>
-                            <button class="button">Acessar</button> 
+                            <button class="button" id="login">Acessar</button> 
                         </div>
                         <br>
                         <br>  
                         <div class="barDesign"><hr></div>   
                         <div class="externalLinks">
-                            <a class="otherLinks" href="registerEmployee.html">Não tenho uma conta</a><br><br> 
+                            <a class="otherLinks" href="registerUser.html">Não tenho uma conta</a><br><br> 
                             <a class="otherLinks" href="#">Esqueci meu email ou senha</a><br><br> 
                             <a class="otherLinks" href="#">Não consigo acessar minha conta</a>
                         </div>
