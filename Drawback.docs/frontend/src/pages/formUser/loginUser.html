@@ -6,6 +6,7 @@
     <title>Login Usuário</title>
     <link rel="stylesheet" href="../../../public/assets/css/formUser/loginUser.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../../../../backend/src/formUser/loginUser.js"></script>
 
 </head>
 <body>
@@ -46,16 +47,16 @@
                     <div class="formLogin">
                         <p class="size">Preencha os campos para continuar</p>
                         <div class="inputBoxes">
-                            <input class="inpt" type="text" name="email" placeholder="Nome da conta ou Email"> 
+                            <input class="inpt" type="text" name="email" placeholder="Nome da conta" id="username"> 
                             <br>
-                            <input class="inpt" type="password" name="senha" placeholder="Senha">
+                            <input class="inpt" type="password" name="senha" placeholder="Senha" id="password">
                             <br> 
                             <div class="sameLine">
                                 <input class="nt" type="checkbox" id="manteracesso">
                                 <label class="linear" for="manteracesso"> Lembrar de mim</label>
                             </div>
                             <br>
-                            <button class="button">Acessar</button> 
+                            <button class="button" id="login">Acessar</button> 
                         </div>
                         <br>
                         <br>  
