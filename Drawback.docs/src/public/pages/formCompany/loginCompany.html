@@ -3,10 +3,9 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Login Funcionário</title>
-    <link rel="stylesheet" href="../../../public/assets/css/formEmployee/loginEmployee.css">
+    <title>Login Empresa</title>
+    <link rel="stylesheet" href="../../assets/css/formCompany/loginCompany.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 <body>
     <header>  
@@ -39,17 +38,19 @@
             <br>
             <br>
             <br>
-            <a class="linkLoginPage" href="#"><&nbsp; ENTRAR NA SUA CONTA <span class="user">| Funcionário|</span></a>
+            <a class="linkLoginPage" href="#"><&nbsp; ENTRAR NA SUA CONTA <span class="user">| PESSOA JURÍDICA |</span></a>
             <div class="barDesign"><hr></div>   
             <form> 
                 <div class="siteSeparation">
                     <div class="formLogin">
                         <p class="size">Preencha os campos para continuar</p>
                         <div class="inputBoxes">
-                            <input class="inpt" type="text" name="email" placeholder="Nome da conta ou Email"> 
+                            <input class="inpt" type="email" name="email" placeholder="Email do proprietário *"> 
                             <br>
-                            <input class="inpt" type="password" name="senha" placeholder="Senha">
+                            <input class="inpt" type="password" name="senha" placeholder="Senha *">
                             <br> 
+                            <input class="inpt" type="number" name="cnpj" placeholder="CNPJ *">
+                            <br>
                             <div class="sameLine">
                                 <input class="nt" type="checkbox" id="manteracesso">
                                 <label class="linear" for="manteracesso"> Lembrar de mim</label>
@@ -60,10 +61,10 @@
                         <br>
                         <br>  
                         <div class="barDesign"><hr></div>   
+                        
                         <div class="externalLinks">
-                            <a class="otherLinks" href="registerEmployee.html">Não tenho uma conta</a><br><br> 
-                            <a class="otherLinks" href="#">Esqueci meu email ou senha</a><br><br> 
-                            <a class="otherLinks" href="#">Não consigo acessar minha conta</a>
+                            <a class="otherLinks" href="registerCompany.html">Não cadastrei minha empresa</a><br><br>
+                            <a class="otherLinks" href="#">Não consigo acessar minha empresa</a>
                         </div>
                     </div>
                 </div>    
