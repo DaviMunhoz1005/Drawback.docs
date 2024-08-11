@@ -25,7 +25,7 @@ header {
     padding: 1.1rem 0;
     text-align: center;
     height: 4.6rem;
-    z-index: 2;
+    z-index: 4;
 }
 
 
@@ -482,17 +482,19 @@ footer {
     background-color: rgba(0,0,0,0.5);
     transform: scale(1.1);
     opacity: 0;
+    z-index: 3;
     visibility: hidden;
     transition: visibility 0.25s ease-in-out, tranform 0.25s ease-in-out, opacity 0.25s ease-in-out;
 
 }
 
 .modal-content{
-
+    height: 500px;
     background-color: white;
     padding: 16px 24px;
-    width: 368px;
+    width: 550px;
     border-radius: 0.5rem;
+    
 }
 
 .span{
