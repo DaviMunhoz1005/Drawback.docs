@@ -25,7 +25,8 @@ header {
     padding: 1.1rem 0;
     text-align: center;
     height: 4.6rem;
-    z-index: 2;
+    z-index: 4;
+
 }
 
 
@@ -484,6 +485,7 @@ footer {
     opacity: 0;
     visibility: hidden;
     transition: visibility 0.25s ease-in-out, tranform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    z-index: 3;
 
 }
 
