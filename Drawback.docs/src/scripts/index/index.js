@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
+//Modal para documentos
 function showModal(){
     var element = document.getElementById("modal");
     element.classList.add("show-modal");
@@ -28,6 +28,36 @@ function hideModal(){
     element.classList.remove("show-modal");
 }
 
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+}
 
 
+//Modal para header 
+
+
+
+var modal = document.getElementById("modalentrar");
+btn.onclick = function(){
+    modal.style.display = "block"
+}
+
+
+function showModalentrar() {
+    document.getElementById('modalentrar').style.display = 'block';
+}
+
+// Função para ocultar o modal
+function hideModalentrar() {
+    document.getElementById('modalentrar').style.display = 'none';
+}
+
+// Fechar o modal se o usuário clicar fora dele
+window.onclick = function(event) {
+    if (event.target === document.getElementById('modalentrar')) {
+        hideModalentrar();
+    }
+}
 
