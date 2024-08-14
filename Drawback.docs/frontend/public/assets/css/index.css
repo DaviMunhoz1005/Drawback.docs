@@ -25,7 +25,11 @@ header {
     padding: 1.1rem 0;
     text-align: center;
     height: 4.6rem;
+<<<<<<< Updated upstream:Drawback.docs/frontend/public/assets/css/index.css
     z-index: 2;
+=======
+    z-index: 4;
+>>>>>>> Stashed changes:Drawback.docs/src/public/assets/css/index.css
 }
 
 
@@ -59,7 +63,7 @@ header {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 144%;
+    margin-left: 237%;
     height: 50px;
 }
 
@@ -67,9 +71,10 @@ header {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 168%;
+    margin-left: 292%;
     height: 50px;
 }
+
 
 #w {
     margin-left: 1.2rem;
@@ -110,7 +115,7 @@ nav {
 
 .signIn {
     position: absolute;
-    margin-left: 240%;
+    margin-left: 355%;
 }
 
 .websiteLogo  {
@@ -135,7 +140,7 @@ nav {
 
 .groupText{ 
     position: relative;
-    margin-left: -19rem;
+    margin-left: -15.3rem;
 }
 
 .centralSquareToPlaceContent {
@@ -469,3 +474,142 @@ footer {
     color: black;
 }
 
+<<<<<<< Updated upstream:Drawback.docs/frontend/public/assets/css/index.css
+=======
+.modal{
+    position: fixed;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    transform: scale(1.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.25s ease-in-out, tranform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    z-index: 3;
+    
+}
+
+.modal-content{
+
+    background-color: white;
+    padding: 16px 24px;
+    width: 368px;
+    border-radius: 0.5rem;
+    float: right;
+}
+
+.span{
+    float: right;
+    width: 30px;
+    cursor: pointer;
+    background-color: lightblue;
+    text-align: center;
+    line-height: 24px;
+}
+
+.span:hover{
+    background-color: darkgray;
+
+
+
+}
+.show-modal{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+}
+
+
+.modalentrar {
+    font-size: 13px;
+    display: none; /* Ocultar o modal por padrão */
+    position: absolute; /* Fixa o modal na tela */
+    right: -53px; /* Ajusta a posição à direita do botão "Entrar" */
+    top: 2.85rem; /* Define o modal logo abaixo do header */
+    width: auto; /* Ajusta a largura do modal para caber seu conteúdo */
+}
+
+.modalentrar-content {
+    background-color: #242223;
+    margin: 0; /* Remove a centralização automática */
+    margin-top: -1px;
+    border: 1px solid #242223;
+    width: 148px; /* Define uma largura fixa para o modal */
+    height: 114px;
+    position: relative; /* Necessário para posicionar o botão de fechar */
+}
+
+
+.modalentrar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.modalentrar ul li {
+    margin: 10px 0;
+}
+
+.options a {
+    color: white;
+    margin-left: -1px;
+}
+
+.butlog {
+    margin-left: -9px;
+    color: white;
+}
+
+.butlog:hover {
+    color: #eee5d1;
+}
+
+button {
+    background: none; /* Remove o fundo do botão */
+    border: none;     /* Remove a borda do botão */
+    padding: 0;       /* Remove o preenchimento padrão */
+    margin: 0;        /* Remove a margem padrão */
+    font: inherit;    /* Faz com que o botão herde a fonte do pai */
+    cursor: pointer;  /* Adiciona o cursor de ponteiro para o botão */
+    outline: none;    /* Remove o contorno padrão ao focar o botão */
+}
+
+/* Remove a aparência de botão no estilo padrão */
+button:focus {
+    outline: none;    /* Remove o contorno quando o botão está focado */
+}
+
+.options {
+    margin-top: 0px;
+}
+
+.barDesign6 hr {
+    margin-left: -22px;
+    width: 155px; 
+    border: 1px solid #fbfafb;;
+}
+
+#doc {
+    color: #eee5d1;
+}
+
+.barDesign7 hr {
+    margin-top: 25px;
+    width: 120px; 
+    position: absolute;
+    margin-left: -122px;
+    border: 1px solid #eee5d1;;
+}
+
+.barDesign8 hr {
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+    height: 50px;
+}
+>>>>>>> Stashed changes:Drawback.docs/src/public/assets/css/index.css

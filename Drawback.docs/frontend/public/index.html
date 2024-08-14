@@ -22,6 +22,7 @@
             <div class="group">
                 <div class="groupText">
                     <span class="links">
+<<<<<<< Updated upstream:Drawback.docs/frontend/public/index.html
                         <div class="barDesign3"><hr></div><li><a class="hv" href="#">Documentos</a></li><div class="barDesign3"><hr></div>
                             <li><a class="hv" href="../../frontend/src/pages/FAQ.html">Dúvidas</a></li><div class="barDesign3"><hr></div>
                             <li><a class="hv" href="#">Contato</a></li><div class="barDesign3"><hr></div>
@@ -30,12 +31,42 @@
                     <div class="signIn" >
 
                         <li><a href="../../frontend/src/pages/typeLogin.html" class="hv" id="w1">Entrar</a></li>
+=======
+                        <div class="barDesign3"><hr></div><li><a class="hv" id="doc" href="index.html">Documentos</a></li>
+                        <div class="barDesign7" id="w"><hr></div>
+                        <div class="barDesign8"><hr></div>
+                            <li><a class="hv" href="../public/pages/otherPages/FAQ.html">Dúvidas</a></li><div class="barDesign3"><hr></div>
+                            <li><a class="hv" href="#footer" id="contato-link">Contato</a></li><div class="barDesign3"><hr></div>
+                    </div><div class="barDesign4" id="w"><hr></div>
+                    <div class="signIn" >
+
+                        <li>
+                            <div class="list-login">
+                                <button class="butlog" onclick="showModalentrar()">Entrar</button>
+                                <div class="modalentrar" id="modalentrar">
+                                    <div class="modalentrar-content">
+                                        <div class="options">
+                                        <ul><div class="barDesign6" id="w"><hr></div>
+                                            <li><a href="pages/formUser/registerUser.html">Pessoa Física</a></li>
+                                            <div class="barDesign6" id="w"><hr></div>
+                                            <li><a href="pages/formCompany/registerCompany.html">Pessoa Jurídica</a></li>
+                                            <div class="barDesign6" id="w"><hr></div>
+                                            <li><a href="pages/formEmployee/registerEmployee.html">Funcionário</a></li>
+                                            <div class="barDesign6" id="w"><hr></div>
+                                        </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+>>>>>>> Stashed changes:Drawback.docs/src/public/index.html
 
                     </div><div class="barDesign5" id="w"><hr></div>
                 </span>
             </div>
         </nav>
     </header>
+    <span class="close" onclick="hideModalentrar()">
     <div class="bodyDiv">
         <main class="centralSquareToPlaceContent">
             <section class="content">
@@ -175,7 +206,7 @@
                 </div>
             </section>
         </main>
-        <footer class="zindex">
+        <footer id="footer" class="zindex">
             <div id="footer_content">
                 <ul class="footer-list">
                     <li>
@@ -213,5 +244,12 @@
             </div>
         </footer>
     </div>
+    </span>
+    <script>
+        document.getElementById("contato-link").addEventListener("click", function(event){
+            event.preventDefault(); // Previne o comportamento padrão do link
+            document.getElementById("footer").scrollIntoView({ behavior: "smooth" });
+        });
+    </script>
 </body>
 </html>
