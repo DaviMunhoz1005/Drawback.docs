@@ -25,11 +25,7 @@ header {
     padding: 1.1rem 0;
     text-align: center;
     height: 4.6rem;
-<<<<<<< Updated upstream:Drawback.docs/frontend/public/assets/css/index.css
-    z-index: 2;
-=======
     z-index: 4;
->>>>>>> Stashed changes:Drawback.docs/src/public/assets/css/index.css
 }
 
 
@@ -474,8 +470,6 @@ footer {
     color: black;
 }
 
-<<<<<<< Updated upstream:Drawback.docs/frontend/public/assets/css/index.css
-=======
 .modal{
     position: fixed;
     padding: 0;
@@ -528,21 +522,21 @@ footer {
 
 .modalentrar {
     font-size: 13px;
-    display: none; /* Ocultar o modal por padrão */
-    position: absolute; /* Fixa o modal na tela */
-    right: -53px; /* Ajusta a posição à direita do botão "Entrar" */
-    top: 2.85rem; /* Define o modal logo abaixo do header */
-    width: auto; /* Ajusta a largura do modal para caber seu conteúdo */
+    display: none;
+    position: absolute; 
+    right: -53px; 
+    top: 2.85rem;
+    width: auto; 
 }
 
 .modalentrar-content {
     background-color: #242223;
-    margin: 0; /* Remove a centralização automática */
+    margin: 0; 
     margin-top: -1px;
     border: 1px solid #242223;
-    width: 148px; /* Define uma largura fixa para o modal */
+    width: 148px; 
     height: 114px;
-    position: relative; /* Necessário para posicionar o botão de fechar */
+    position: relative;
 }
 
 
@@ -569,18 +563,17 @@ footer {
 }
 
 button {
-    background: none; /* Remove o fundo do botão */
-    border: none;     /* Remove a borda do botão */
-    padding: 0;       /* Remove o preenchimento padrão */
-    margin: 0;        /* Remove a margem padrão */
-    font: inherit;    /* Faz com que o botão herde a fonte do pai */
-    cursor: pointer;  /* Adiciona o cursor de ponteiro para o botão */
-    outline: none;    /* Remove o contorno padrão ao focar o botão */
+    background: none;
+    border: none;     
+    padding: 0;      
+    margin: 0;    
+    font: inherit;   
+    cursor: pointer;  
+    outline: none;  
 }
 
-/* Remove a aparência de botão no estilo padrão */
 button:focus {
-    outline: none;    /* Remove o contorno quando o botão está focado */
+    outline: none;    
 }
 
 .options {
@@ -612,4 +605,3 @@ button:focus {
     margin-right: 0.5rem;
     height: 50px;
 }
->>>>>>> Stashed changes:Drawback.docs/src/public/assets/css/index.css
