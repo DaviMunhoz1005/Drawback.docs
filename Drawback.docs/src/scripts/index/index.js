@@ -17,47 +17,41 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-//Modal para documentos
-function showModal(){
-    var element = document.getElementById("modal");
-    element.classList.add("show-modal");
+
+function showModal() {
+    document.getElementById('modal').style.display = 'block';
 }
 
-function hideModal(){
-    var element = document.getElementById("modal"); 
-    element.classList.remove("show-modal");
+function hideModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+// Não sei se você vai salvar assim mas ta aí
+function saveDocument() {
+    var fileInput = document.getElementById('documentFile');
+    var dateInput = document.getElementById('expirationDate');
+
+    var file = fileInput.files[0]; 
+    var expirationDate = dateInput.value; validade
+
+    if (file && expirationDate) {
+        // Forma de processar o arquivo e a data caso necessário
+        console.log('Arquivo selecionado:', file.name);
+        console.log('Data de validade:', expirationDate);
+        alert('Documento salvo com sucesso!');
+        hideModal();
+    } else {
+        alert('Por favor, preencha todos os campos.');
+    }
 }
 
 window.onclick = function(event) {
+    var modal = document.getElementById('modal');
     if (event.target == modal) {
-      modal.style.display = "none";
+        hideModal();
     }
 }
 
+// Modal para header 
 
-//Modal para header 
-
-
-
-var modal = document.getElementById("modalentrar");
-btn.onclick = function(){
-    modal.style.display = "block"
-}
-
-
-function showModalentrar() {
-    document.getElementById('modalentrar').style.display = 'block';
-}
-
-// Função para ocultar o modal
-function hideModalentrar() {
-    document.getElementById('modalentrar').style.display = 'none';
-}
-
-// Fechar o modal se o usuário clicar fora dele
-window.onclick = function(event) {
-    if (event.target === document.getElementById('modalentrar')) {
-        hideModalentrar();
-    }
-}
 

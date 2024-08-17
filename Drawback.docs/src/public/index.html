@@ -29,25 +29,21 @@
                             <li><a class="hv" href="#">Dúvidas</a></li><div class="barDesign3"><hr></div>
                             <li><a class="hv" href="#">Contato</a></li><div class="barDesign3"><hr></div>
                             <li><a class="hv" href="#">Configurações</a></li><div class="barDesign3"><hr></div>
-                    </div><div class="barDesign4" id="w"><hr></div>
+                    </div><div class="barDesign4" id="w"></div>
                     <div class="signIn" >
 
-                        <li>
-                            <div class="list-login">
-                                <button class="butlog" onclick="showModalentrar()">Entrar</button>
-                                <div class="modalentrar" id="modalentrar">
-                                    <div class="modalentrar-content">
-                                        <span class="close" onclick="hideModalentrar()">&times;</span>
-                                        <ul>
-                                            <li><a href="pages/formUser/registerUser.html">Pessoa Física</a></li>
-                                            <li><a href="pages/formCompany/registerCompany.html">Pessoa Jurídica</a></li>
-                                            <li><a href="pages/formEmployee/registerEmployee.html">Funcionário</a></li>
-                                        </ul>
-                                    </div>
+                            <div class="dropdown">
+                                <button class="dropbtn">Entrar
+                                <i class="lista"></i></button>
+                                <div class="dropdown-content">
+                                            <a href="pages/formUser/registerUser.html">Pessoa Física</a>
+                                            <a href="pages/formCompany/registerCompany.html">Pessoa Jurídica</a>
+                                            <a href="pages/formEmployee/registerEmployee.html">Funcionário</a>
                                 </div>
                             </div>
-                        </li>
-
+                    </div>
+            </div>
+                       
                     </div><div class="barDesign5" id="w"><hr></div>
                 </span>
             </div>
@@ -63,30 +59,157 @@
                     <div class="siteSeparation">
                         <div class="separation1">
 
-                            <div class="square1"><a class="designLink1" href="#">Certificado de origem
-                            </a>
-                            <button onclick="showModal()">Adicione seu documento</button>
-                            <div class="modal" id="modal">
-                                <div class="modal-content">
-                                    <span onclick="hideModal()">&times;</span>
-                                    <h1>TELA DOC</h1>
+                            <div class="square1">
+                                <a class="designLink1" href="#">Certificado de origem</a>
+                                <button class="btn-adc" onclick="showModal()">+</button>
+                                
+                                <div class="modal" id="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="hideModal()">&times;</span>
+                                        <h1>Adicionar Documento</h1>
+                                        <div class="modal-body">
+                                            <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                            <input class="file" type="file" id="documentFile" name="documentFile">
+                                            <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                            <input type="date" id="expirationDate" name="expirationDate">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button onclick="saveDocument()">Salvar</button>
+                                            <button class="cancel" onclick="hideModal()">Fechar</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="square2"><a class="designLink1" href="#">Licenciamento de importação</a>
+                                <button class="btn-adc" onclick="showModal()">+</button>
+                                
+                                <div class="modal" id="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="hideModal()">&times;</span>
+                                        <h1>Adicionar Documento</h1>
+                                        <div class="modal-body">
+                                            <label for="documentFile">Escolha o arquivo desejado:</label>
+                                            <input type="file" id="documentFile" name="documentFile">
+                                            <label for="expirationDate">Data de validade do documento:</label>
+                                            <input type="date" id="expirationDate" name="expirationDate">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="salvar" onclick="saveDocument()">Salvar</button>
+                                            <!--Não sei se precisa, mas caso precise (y)-->
+                                            <button class="cancel" onclick="hideModal()">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="square2"><a class="designLink1" href="#">Licenciamento de importação</a></div>
-                            <div class="square3"><a class="designLink1" href="#">Romaneio de carga</a></div>
-                            <div class="square4"><a class="designLink1" href="#">Fatura proforma</a></div>
+                            
+                            
+                            <div class="square3"><a class="designLink1" href="#">Romaneio de carga</a>
+                                <button class="btn-adc" onclick="showModal()">+</button>
+                                <div class="modal" id="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="hideModal()">&times;</span>
+                                        <h1>Adicionar Documento</h1>
+                                        <div class="modal-body">
+                                            <label for="documentFile">Escolha o arquivo desejado:</label>
+                                            <input type="file" id="documentFile" name="documentFile">
+                                            <label for="expirationDate">Data de validade do documento:</label>
+                                            <input type="date" id="expirationDate" name="expirationDate">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="salvar" onclick="saveDocument()">Salvar</button>
+                                            <!--Não sei se precisa, mas caso precise (y)-->
+                                            <button class="cancel" onclick="hideModal()">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="square4"><a class="designLink1" href="#">Fatura proforma</a>
+                                <button class="btn-adc" onclick="showModal()">+</button>
+                                <div class="modal" id="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="hideModal()">&times;</span>
+                                        <h1>Adicionar Documento</h1>
+                                        <div class="modal-body">
+                                            <label for="documentFile">Escolha o arquivo desejado:</label>
+                                            <input type="file" id="documentFile" name="documentFile">
+                                            <label for="expirationDate">Data de validade do documento:</label>
+                                            <input type="date" id="expirationDate" name="expirationDate">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="salvar" onclick="saveDocument()">Salvar</button>
+                                            <!--Não sei se precisa, mas caso precise (y)-->
+                                            <button class="cancel" onclick="hideModal()">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>    
                         <div class="barDesign"><hr></div>
                     <div class="siteSeparation">    
                         <div class="separation2">
 
-                            <div class="square5"><a class="designLink1" href="#">Fatura comercial</a></div>
-                            <div class="square6"><a class="designLink1" href="#">Conhecimento de embarque</a></div>
-                            <div class="square7"><a class="designLink1" href="#">Declaração de importação</a></div>
-                            <div class="square8"><a class="designLink1" href="#">Adicionar</a></div>
-
+                            <div class="square5"><a class="designLink1" href="#">Fatura comercial</a>
+                                <button class="btn-adc" onclick="showModal()">+</button>
+                                <div class="modal" id="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="hideModal()">&times;</span>
+                                        <h1>Adicionar Documento</h1>
+                                        <div class="modal-body">
+                                            <label for="documentFile">Escolha o arquivo desejado:</label>
+                                            <input type="file" id="documentFile" name="documentFile">
+                                            <label for="expirationDate">Data de validade do documento:</label>
+                                            <input type="date" id="expirationDate" name="expirationDate">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="salvar" onclick="saveDocument()">Salvar</button>
+                                            <!--Não sei se precisa, mas caso precise (y)-->
+                                            <button class="cancel" onclick="hideModal()">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="square6"><a class="designLink1" href="#">Conhecimento de embarque</a>
+                                <button class="btn-adc" onclick="showModal()">+</button>
+                                <div class="modal" id="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="hideModal()">&times;</span>
+                                        <h1>Adicionar Documento</h1>
+                                        <div class="modal-body">
+                                            <label for="documentFile">Escolha o arquivo desejado:</label>
+                                            <input type="file" id="documentFile" name="documentFile">
+                                            <label for="expirationDate">Data de validade do documento:</label>
+                                            <input type="date" id="expirationDate" name="expirationDate">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="salvar" onclick="saveDocument()">Salvar</button>
+                                            <!--Não sei se precisa, mas caso precise (y)-->
+                                            <button class="cancel" onclick="hideModal()">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="square7"><a class="designLink1" href="#">Declaração de importação</a>
+                                <button class="btn-adc" onclick="showModal()">+</button>
+                                <div class="modal" id="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="hideModal()">&times;</span>
+                                        <h1>Adicionar Documento</h1>
+                                        <div class="modal-body">
+                                            <label for="documentFile">Escolha o arquivo desejado:</label>
+                                            <input type="file" id="documentFile" name="documentFile">
+                                            <label for="expirationDate">Data de validade do documento:</label>
+                                            <input type="date" id="expirationDate" name="expirationDate">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="salvar" onclick="saveDocument()">Salvar</button>
+                                            <!--Não sei se precisa, mas caso precise (y)-->
+                                            <button class="cancel" onclick="hideModal()">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
