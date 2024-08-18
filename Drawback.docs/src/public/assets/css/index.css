@@ -47,7 +47,7 @@ header {
     border: 1px solid #434343;
     margin-top: -17px;
     margin-left: 2rem;
-    margin-right: 0.5rem;
+    margin-right: 3.5rem;
     height: 50px;
 }
 
@@ -112,7 +112,7 @@ nav {
 
 .signIn {
     position: absolute;
-    margin-left: 210%;
+    margin-left: 475%;
     margin-top: -14px;
 }
 
