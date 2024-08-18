@@ -58,19 +58,17 @@ header {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 237%;
+    margin-left: 25rem;
     height: 50px;
-    
 }
 
 .barDesign5 hr {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 292%;
+    margin-left: 32.5rem;
     height: 50px;
 }
-
 
 #w {
     margin-left: 1.2rem;
@@ -79,7 +77,6 @@ header {
 nav {
     justify-content: space-around;
 }
-
 
 .group {
     margin-top: 0.5rem;
@@ -111,7 +108,7 @@ nav {
 
 .signIn {
     position: absolute;
-    margin-left: 355%;
+    margin-left: 48rem;
 }
 
 .websiteLogo  {
@@ -474,7 +471,14 @@ footer {
 .Others {
     color: black;
 }
- 
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 .modal {
     display: none;
@@ -558,117 +562,12 @@ footer {
     margin-right: 185px;
 }
 
-.file{
-
-
-}
-
 .btn-adc{
 
     border-radius: 100%;
     height: 40px;
     width: 40px;
 
-}
-
-
-
-
-.dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-  .dropdown .dropbtn {
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: rgb(172, 171, 171);
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.modal {
-    font-size: 13px;
-    display: none;
-    position: fixed; 
-    width: auto; 
-    z-index: 3;
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; 
-}
-
-#black {
-    position:fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Escurece o fundo */
-    z-index: 1; /* Certifique-se de que o overlay esteja acima do conteúdo */
-    display: none;
-}
-
-.modal-content {
-    background-color: #ffffff;
-    margin: 0; 
-    margin-top: -1px;
-    border-radius: 10px;
-    width: 600px; 
-    height: 700px;
-    position: relative;
-}
-
-.modal ul {
-    list-style-type: none;
-    padding: 0;
-}
-.modal ul li {
-    margin: 10px 0;
-}
-
-.fileOptions a {
-    color: white;
-    margin-left: -1px;
 }
 
 .modalentrar {

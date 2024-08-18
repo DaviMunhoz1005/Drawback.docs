@@ -7,7 +7,7 @@
     <title>Drawback</title>
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../scripts/index/index.js"></script>
+    <script src="../scripts/index/index.js" defer></script>
     <link rel="icon" href="assets/images/logopretomini.png">
     
 
@@ -40,11 +40,11 @@
                                     <div class="options">
                                         <ul>
                                             <div class="barDesign6" id="w"><hr></div>
-                                            <li><a href="pages/formUser/registerUser.html">Pessoa Física</a></li>
+                                            <li><a href="pages/formUser/loginUser.html">Pessoa Física</a></li>
                                             <div class="barDesign6" id="w"><hr></div>
-                                            <li><a href="pages/formCompany/registerCompany.html">Pessoa Jurídica</a></li>
+                                            <li><a href="pages/formCompany/loginCompany.html">Pessoa Jurídica</a></li>
                                             <div class="barDesign6" id="w"><hr></div>
-                                            <li><a href="pages/formEmployee/registerEmployee.html">Funcionário</a></li>
+                                            <li><a href="pages/formEmployee/loginEmployee.html">Funcionário</a></li>
                                             <div class="barDesign6" id="w"><hr></div>
                                         </ul>
                                     </div>
@@ -67,18 +67,23 @@
                         
                             <div class="siteSeparation">
                                 <div class="separation1">
-                               
+                                    
                                     <div class="square1" onclick="showModal()"><a class="designLink1" href="#">Certificado de origem</a>
                                     <button class="add" >+</button></div>
                                     <div id="black" onclick="hideModal()"></div>
                                         <div class="modal" id="modal">
                                             <div class="modal-content">
-                                                <div class="fileOptions">
-                                                    <ul>
-                                                        EDITAR<br>
-                                                        <input class="inpt" type="email" name="email" placeholder=" Documento"><br>
-                                                        Arraste o arquivo até aqui
-                                                    </ul>
+                                                <span class="close" onclick="hideModal()">&times;</span>
+                                                <h1>Adicionar Documento</h1>
+                                                <div class="modal-body">
+                                                    <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                                    <input class="file" type="file" id="documentFile" name="documentFile">
+                                                    <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                                    <input type="date" id="expirationDate" name="expirationDate">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button onclick="saveDocument()">Salvar</button>
+                                                    <button class="cancel" onclick="hideModal()">Fechar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,10 +94,17 @@
                                         <div id="black" onclick="hideModal()"></div>
                                             <div class="modal" id="modal">
                                                 <div class="modal-content">
-                                                    <div class="fileOptions">
-                                                        <ul>
-     
-                                                        </ul>
+                                                    <span class="close" onclick="hideModal()">&times;</span>
+                                                    <h1>Adicionar Documento</h1>
+                                                    <div class="modal-body">
+                                                        <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                                        <input class="file" type="file" id="documentFile" name="documentFile">
+                                                        <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                                        <input type="date" id="expirationDate" name="expirationDate">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button onclick="saveDocument()">Salvar</button>
+                                                        <button class="cancel" onclick="hideModal()">Fechar</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,10 +114,17 @@
                                         <div id="black" onclick="hideModal()"></div>
                                             <div class="modal" id="modal">
                                                 <div class="modal-content">
-                                                    <div class="fileOptions">
-                                                        <ul>
-     
-                                                        </ul>
+                                                    <span class="close" onclick="hideModal()">&times;</span>
+                                                    <h1>Adicionar Documento</h1>
+                                                    <div class="modal-body">
+                                                        <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                                        <input class="file" type="file" id="documentFile" name="documentFile">
+                                                        <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                                        <input type="date" id="expirationDate" name="expirationDate">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button onclick="saveDocument()">Salvar</button>
+                                                        <button class="cancel" onclick="hideModal()">Fechar</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,10 +134,17 @@
                                         <div id="black" onclick="hideModal()"></div>
                                             <div class="modal" id="modal">
                                                 <div class="modal-content">
-                                                    <div class="fileOptions">
-                                                        <ul>
-     
-                                                        </ul>
+                                                    <span class="close" onclick="hideModal()">&times;</span>
+                                                    <h1>Adicionar Documento</h1>
+                                                    <div class="modal-body">
+                                                        <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                                        <input class="file" type="file" id="documentFile" name="documentFile">
+                                                        <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                                        <input type="date" id="expirationDate" name="expirationDate">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button onclick="saveDocument()">Salvar</button>
+                                                        <button class="cancel" onclick="hideModal()">Fechar</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -135,10 +161,17 @@
                                         <div id="black" onclick="hideModal()"></div>
                                             <div class="modal" id="modal">
                                                 <div class="modal-content">
-                                                    <div class="fileOptions">
-                                                        <ul>
-     
-                                                        </ul>
+                                                    <span class="close" onclick="hideModal()">&times;</span>
+                                                    <h1>Adicionar Documento</h1>
+                                                    <div class="modal-body">
+                                                        <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                                        <input class="file" type="file" id="documentFile" name="documentFile">
+                                                        <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                                        <input type="date" id="expirationDate" name="expirationDate">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button onclick="saveDocument()">Salvar</button>
+                                                        <button class="cancel" onclick="hideModal()">Fechar</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,10 +181,17 @@
                                         <div id="black" onclick="hideModal()"></div>
                                             <div class="modal" id="modal">
                                                 <div class="modal-content">
-                                                    <div class="fileOptions">
-                                                        <ul>
-     
-                                                        </ul>
+                                                    <span class="close" onclick="hideModal()">&times;</span>
+                                                    <h1>Adicionar Documento</h1>
+                                                    <div class="modal-body">
+                                                        <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                                        <input class="file" type="file" id="documentFile" name="documentFile">
+                                                        <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                                        <input type="date" id="expirationDate" name="expirationDate">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button onclick="saveDocument()">Salvar</button>
+                                                        <button class="cancel" onclick="hideModal()">Fechar</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -161,10 +201,17 @@
                                         <div id="black" onclick="hideModal()"></div>
                                             <div class="modal" id="modal">
                                                 <div class="modal-content">
-                                                    <div class="fileOptions">
-                                                        <ul>
-     
-                                                        </ul>
+                                                    <span class="close" onclick="hideModal()">&times;</span>
+                                                    <h1>Adicionar Documento</h1>
+                                                    <div class="modal-body">
+                                                        <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                                        <input class="file" type="file" id="documentFile" name="documentFile">
+                                                        <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                                        <input type="date" id="expirationDate" name="expirationDate">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button onclick="saveDocument()">Salvar</button>
+                                                        <button class="cancel" onclick="hideModal()">Fechar</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,10 +221,17 @@
                                         <div id="black" onclick="hideModal()"></div>
                                             <div class="modal" id="modal">
                                                 <div class="modal-content">
-                                                    <div class="fileOptions">
-                                                        <ul>
-     
-                                                        </ul>
+                                                    <span class="close" onclick="hideModal()">&times;</span>
+                                                    <h1>Adicionar Documento</h1>
+                                                    <div class="modal-body">
+                                                        <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                                                        <input class="file" type="file" id="documentFile" name="documentFile">
+                                                        <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                                                        <input type="date" id="expirationDate" name="expirationDate">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button onclick="saveDocument()">Salvar</button>
+                                                        <button class="cancel" onclick="hideModal()">Fechar</button>
                                                     </div>
                                                 </div>
                                             </div>
