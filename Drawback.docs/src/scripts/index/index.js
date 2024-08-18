@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
+//MODAL PARA INDEX
 function showModal() {
     document.getElementById('modal').style.display = 'block';
 }
@@ -51,7 +51,5 @@ window.onclick = function(event) {
         hideModal();
     }
 }
-
-// Modal para header 
 
 

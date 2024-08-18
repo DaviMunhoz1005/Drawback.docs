@@ -46,9 +46,9 @@ header {
 .barDesign3 hr {
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 2rem;
-    margin-right: 3.5rem;
-    height: 50px;
+    margin-left: 3rem;
+    margin-right: 1.5rem;
+    height: 50px;   
 }
 
 
@@ -112,7 +112,7 @@ nav {
 
 .signIn {
     position: absolute;
-    margin-left: 475%;
+    margin-left: 43rem;
     margin-top: -14px;
 }
 
@@ -120,7 +120,7 @@ nav {
     letter-spacing: 3px;
     margin-top: -30px;
     font-size: 23px;
-    margin-left: -55rem;
+    margin-left: -50rem;
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }
@@ -472,6 +472,8 @@ footer {
     color: black;
 }
  
+
+/*MODAL*/
 .modal {
     display: none;
     position: fixed; 
@@ -566,6 +568,10 @@ footer {
     width: 40px;
 
 }
+/*FINAL DO MODAL*/
+
+
+
 
 .dropdown {
     float: left;
