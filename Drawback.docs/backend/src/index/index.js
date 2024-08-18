@@ -17,34 +17,28 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-//Modal para documentos
-function showModal(){
-    var element = document.getElementById("modal");
-    element.classList.add("show-modal");
-}
-
-function hideModal(){
-    var element = document.getElementById("modal"); 
-    element.classList.remove("show-modal");
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+let y = 0;
+let x = 0;
+function showModal() {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('black').style.display = 'block';
+    y++;
+    console.log(y)
+    if(y>=2){
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('black').style.display = 'none';
+            y=0;
     }
 }
 
-
-//Modal para header 
-
-
-
-var modal = document.getElementById("modalentrar");
-let x = 0;
-btn.onclick = function(){
-    modal.style.display = "block"
+// Função para ocultar o modal
+function hideModal() {
+    document.getElementById('modal').style.display = 'none';   
+    document.getElementById('black').style.display = 'none';
+    y=0;
 }
 
+//Modal para header 
 
 function showModalentrar() {
     document.getElementById('modalentrar').style.display = 'block';
@@ -61,9 +55,3 @@ function hideModalentrar() {
     x=0;
 }
 
-// Fechar o modal se o usuário clicar fora dele
-window.onclick = function(event) {
-    if (event.target === document.getElementById('modalentrar')) {
-        hideModalentrar();
-    }
-}

@@ -27,16 +27,17 @@
                         <div class="barDesign8"><hr></div>
                             <li><a class="hv" href="../public/pages/otherPages/FAQ.html">Dúvidas</a></li><div class="barDesign3"><hr></div>
                             <li><a class="hv" href="#footer" id="contato-link">Contato</a></li><div class="barDesign3"><hr></div>
-                    </div><div class="barDesign4" id="w"><hr></div>
+                    </span>
+                </div>
+                    <div class="barDesign4" id="w"><hr></div>
                     <div class="signIn" >
-
                         <li>
-                            <div class="list-login">
-                                <button class="butlog" onclick="showModalentrar()">Entrar</button>
-                                <div class="modalentrar" id="modalentrar">
-                                    <div class="modalentrar-content">
-                                        <div class="options">
-                                        <ul><div class="barDesign6" id="w"><hr></div>
+                            <span onclick="hideModal()"><button class="butlog" onclick="showModalentrar()">Entrar</button></span>
+                            <div class="modalentrar" id="modalentrar">
+                                <div class="modalentrar-content">
+                                    <div class="options">
+                                        <ul>
+                                            <div class="barDesign6" id="w"><hr></div>
                                             <li><a href="pages/formUser/registerUser.html">Pessoa Física</a></li>
                                             <div class="barDesign6" id="w"><hr></div>
                                             <li><a href="pages/formCompany/registerCompany.html">Pessoa Jurídica</a></li>
@@ -44,195 +45,296 @@
                                             <li><a href="pages/formEmployee/registerEmployee.html">Funcionário</a></li>
                                             <div class="barDesign6" id="w"><hr></div>
                                         </ul>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                    </div><div class="barDesign5" id="w"><hr></div>
-                </span>
+                    </div>
+                    <div class="barDesign5" id="w"><hr></div>
+                </div>
             </div>
         </nav>
     </header>
-    <span class="close" onclick="hideModalentrar()">
-    <div class="bodyDiv">
-        <main class="centralSquareToPlaceContent">
-            <section class="content">
-                <br>
-                <br>
-                <div class="amountSquares" id="amount">
-                    <div class="siteSeparation">
-                        <div class="separation1">
-
-                            <div class="square1"><a class="designLink1" href="#">Certificado de origem</a></div>
-                            <div class="square2"><a class="designLink1" href="#">Licenciamento de importação</a></div>
-                            <div class="square3"><a class="designLink1" href="#">Romaneio de carga</a></div>
-                            <div class="square4"><a class="designLink1" href="#">Fatura proforma</a></div>
-
-                        </div>
-                    </div>    
-                        <div class="barDesign"><hr></div>
-                    <div class="siteSeparation">    
-                        <div class="separation2">
-
-                            <div class="square5"><a class="designLink1" href="#">Fatura comercial</a></div>
-                            <div class="square6"><a class="designLink1" href="#">Conhecimento de embarque</a></div>
-                            <div class="square7"><a class="designLink1" href="#">Declaração de importação</a></div>
-                            <div class="square8"><a class="designLink1" href="#">Adicionar</a></div>
-
-                        </div>
-                    </div>
-                </div>
-                    <div class="barDesign"><hr></div>
-                <div class="siteSeparation">    
-                    <div class="otherContents">
-                        <div class="other">
-                            <p>
-                            <a class="Others" href="#">Outros</a>
-                            </p>
-                        </div>
-                        <div class="addFile">
-                            <p>
-                            <a class="designLink2" href="#"><div class="plusIcon">+</div>&nbsp;&nbsp;&nbsp;Adicionar arquivo</a>
-                            </p>
-                        </div>
+        <span onclick="hideModalentrar()">
+            <div class="bodyDiv">
+                <main class="centralSquareToPlaceContent">
+                    <section class="content">
+                        <br>
+                        <br>
+                        <div class="amountSquares" id="amount">
                         
-                        <div class="progression">
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <p>
-                                <div class="barDesign"><hr></div>
-                            <a class="progressionText" href="#">Progresso</a>
-                            <p>
-                            <div class="wholeArea">
-                                <div class="circleProg">
-                                    <div class="outer">
-                                        <div class="inner">
-                                            <div id="number">
-                                                
+                            <div class="siteSeparation">
+                                <div class="separation1">
+                               
+                                    <div class="square1" onclick="showModal()"><a class="designLink1" href="#">Certificado de origem</a>
+                                    <button class="add" >+</button></div>
+                                    <div id="black" onclick="hideModal()"></div>
+                                        <div class="modal" id="modal">
+                                            <div class="modal-content">
+                                                <div class="fileOptions">
+                                                    <ul>
+                                                        EDITAR<br>
+                                                        <input class="inpt" type="email" name="email" placeholder=" Documento"><br>
+                                                        Arraste o arquivo até aqui
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="circle">
-                                        <svg width="160px" height="160px">
-                                            <defs>
-                                            <linearGradient id="GradientColor">
-                                                <stop offset="0%" stop-color="#a60df1" />
-                                            </linearGradient>
-                                            </defs>
-                                            <circle cx="80" cy="80" r="70" stroke-linecap="round" style="stroke-width:11px" />/>
-                                        </svg>
-                                    </div>
-                                    <div class="reports">
 
-                                        <div class="report1">
-                                            <label>
-                                                Fatura comercial
-                                            </label><br>
-                                            <div class="sameLine">
-                                                <div class="progress-bar" id="pb1">
-                                                    <progress value="1" max="1" style="visibility:hidden;height:0;width:0;"></progress>
-                                                </div> 
-                                                <span class="sizeAmount" id="a1">(1/1)</span>
-                                            </div>                           
-                                        </div><br>
 
-                                        <div class="report2">
-                                            <label>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                Conhecimento de embarque
-                                            </label><br>
-                                                <div class="sameLine">
-                                                    <div class="progress-bar" id="pb2">
-                                                        <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress>
+                                    <div class="square2" onclick="showModal()"><a class="designLink1" href="#">Licenciamento de importação</a>
+                                        <button class="add" >+</button></div>
+                                        <div id="black" onclick="hideModal()"></div>
+                                            <div class="modal" id="modal">
+                                                <div class="modal-content">
+                                                    <div class="fileOptions">
+                                                        <ul>
+     
+                                                        </ul>
                                                     </div>
-                                                <span class="sizeAmount" id="a2">(0/1)</span>
-                                            </div>
-                                        </div><br>
-
-                                        <div class="report3">
-                                            <label>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                Romaneio de carga
-                                            </label><br>
-                                            <div class="sameLine">
-                                                <div class="progress-bar" id="pb3">
-                                                    <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress>
                                                 </div>
-                                                <span class="sizeAmount" id="a3">(0/1)</span>
                                             </div>
-                                        </div><br>
 
-                                        <div class="report4">
-                                            <label>
-                                                &nbsp;
-                                                Outros
-                                            </label><br>
-                                            <div class="sameLine">
-                                                <div class="progress-bar" id="pb4">
-                                                    <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress> 
+                                    <div class="square3" onclick="showModal()"><a class="designLink1" href="#">Romaneio de carga</a>
+                                        <button class="add" >+</button></div>
+                                        <div id="black" onclick="hideModal()"></div>
+                                            <div class="modal" id="modal">
+                                                <div class="modal-content">
+                                                    <div class="fileOptions">
+                                                        <ul>
+     
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <span class="sizeAmount" id="a4">(0/4)</span>
+                                            </div>
+            
+                                    <div class="square4" onclick="showModal()"><a class="designLink1" href="#">Fatura proforma</a>
+                                        <button class="add" >+</button></div>
+                                        <div id="black" onclick="hideModal()"></div>
+                                            <div class="modal" id="modal">
+                                                <div class="modal-content">
+                                                    <div class="fileOptions">
+                                                        <ul>
+     
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                </div>
+                            </div>    
+                                <div class="barDesign"><hr></div>
+                            <div class="siteSeparation">    
+                                <div class="separation2">
+
+                                    <div class="square5" onclick="showModal()"><a class="designLink1" href="#">Fatura comercial</a>
+                                        <button class="add" >+</button></div>
+                                        <div id="black" onclick="hideModal()"></div>
+                                            <div class="modal" id="modal">
+                                                <div class="modal-content">
+                                                    <div class="fileOptions">
+                                                        <ul>
+     
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                    <div class="square6" onclick="showModal()"><a class="designLink1" href="#">Conhecimento de embarque</a>
+                                        <button class="add" >+</button></div>
+                                        <div id="black" onclick="hideModal()"></div>
+                                            <div class="modal" id="modal">
+                                                <div class="modal-content">
+                                                    <div class="fileOptions">
+                                                        <ul>
+     
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    <div class="square7" onclick="showModal()"><a class="designLink1" href="#">Declaração de importação</a>
+                                        <button class="add" >+</button></div>
+                                        <div id="black" onclick="hideModal()"></div>
+                                            <div class="modal" id="modal">
+                                                <div class="modal-content">
+                                                    <div class="fileOptions">
+                                                        <ul>
+     
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                    <div class="square8" onclick="showModal()"><a class="designLink1" href="#">Adicionar</a>
+                                        <button class="add" >+</button></div>
+                                        <div id="black" onclick="hideModal()"></div>
+                                            <div class="modal" id="modal">
+                                                <div class="modal-content">
+                                                    <div class="fileOptions">
+                                                        <ul>
+     
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                            <div class="barDesign"><hr></div>
+                        <div class="siteSeparation">    
+                            <div class="otherContents">
+                                <div class="other">
+                                    <p>
+                                    <a class="Others" href="#">Outros</a>
+                                    </p>
+                                </div>
+                                <div class="addFile">
+                                    <p>
+                                    <a class="designLink2" href="#"><div class="plusIcon">+</div>&nbsp;&nbsp;&nbsp;Adicionar arquivo</a>
+                                    </p>
+                                </div>
+                                
+                                <div class="progression">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <p>
+                                        <div class="barDesign"><hr></div>
+                                    <a class="progressionText" href="#">Progresso</a>
+                                    <p>
+                                    <div class="wholeArea">
+                                        <div class="circleProg">
+                                            <div class="outer">
+                                                <div class="inner">
+                                                    <div id="number">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="circle">
+                                                <svg width="160px" height="160px">
+                                                    <defs>
+                                                    <linearGradient id="GradientColor">
+                                                        <stop offset="0%" stop-color="#a60df1" />
+                                                    </linearGradient>
+                                                    </defs>
+                                                    <circle cx="80" cy="80" r="70" stroke-linecap="round" style="stroke-width:11px" />/>
+                                                </svg>
+                                            </div>
+                                            <div class="reports">
+
+                                                <div class="report1">
+                                                    <label>
+                                                        Fatura comercial
+                                                    </label><br>
+                                                    <div class="sameLine">
+                                                        <div class="progress-bar" id="pb1">
+                                                            <progress value="1" max="1" style="visibility:hidden;height:0;width:0;"></progress>
+                                                        </div> 
+                                                        <span class="sizeAmount" id="a1">(1/1)</span>
+                                                    </div>                           
+                                                </div><br>
+
+                                                <div class="report2">
+                                                    <label>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        Conhecimento de embarque
+                                                    </label><br>
+                                                        <div class="sameLine">
+                                                            <div class="progress-bar" id="pb2">
+                                                                <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress>
+                                                            </div>
+                                                        <span class="sizeAmount" id="a2">(0/1)</span>
+                                                    </div>
+                                                </div><br>
+
+                                                <div class="report3">
+                                                    <label>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        Romaneio de carga
+                                                    </label><br>
+                                                    <div class="sameLine">
+                                                        <div class="progress-bar" id="pb3">
+                                                            <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress>
+                                                        </div>
+                                                        <span class="sizeAmount" id="a3">(0/1)</span>
+                                                    </div>
+                                                </div><br>
+
+                                                <div class="report4">
+                                                    <label>
+                                                        &nbsp;
+                                                        Outros
+                                                    </label><br>
+                                                    <div class="sameLine">
+                                                        <div class="progress-bar" id="pb4">
+                                                            <progress value="0" max="1" style="visibility:hidden;height:0;width:0;"></progress> 
+                                                        </div>
+                                                        <span class="sizeAmount" id="a4">(0/4)</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="barDesign2"><hr></div>
+                                <div class="wholeArea2">
+                                    Entrar em uma equipe<br>
+                                    <input class="inpt" type="email" name="email" placeholder=" Email ou CNPJ da empresa"><br>
+                                    <a class="designLink3" href="../src/pages/formCompany/registerCompany.html">Registrar empresa</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="barDesign2"><hr></div>
-                        <div class="wholeArea2">
-                            Entrar em uma equipe<br>
-                            <input class="inpt" type="email" name="email" placeholder=" Email ou CNPJ da empresa"><br>
-                            <a class="designLink3" href="../src/pages/formCompany/registerCompany.html">Registrar empresa</a>
+                    </section>
+                </main>
+                <footer id="footer" class="zindex">
+                    <div id="footer_content">
+                        <ul class="footer-list" id="one">
+                            <li>
+                                <h3>Front & Back end</h3>
+                            </li>
+                            <li>
+                                <a href="#" class="footer-link"> Davi Marques </a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer-link"> Erick Jooji </a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer-link"> Pedro Lôbo </a>
+                            </li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li>
+                                <h3>Documentação & Desing</h3>
+                            </li>
+                            <li>
+                                <a href="#" class="footer-link"> Kaique Castro </a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer-link"> Samantha Keyla </a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer-link"> Talita Ferreira </a>
+                            </li>
+                        </ul>
+                    </div>
+                        <div id="footer_copyright">
+                            &#169
+                            2024 all rights reserved
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
-        <footer id="footer" class="zindex">
-            <div id="footer_content">
-                <ul class="footer-list">
-                    <li>
-                        <h3>Front & Back end</h3>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link"> Davi Marques </a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link"> Erick Jooji </a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link"> Pedro Lôbo </a>
-                    </li>
-                </ul>
-                <ul class="footer-list">
-                    <li>
-                        <h3>Documentação & Desing</h3>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link"> Kaique Castro </a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link"> Samantha Keyla </a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link"> Talita Ferreira </a>
-                    </li>
-                </ul>
+                </footer>
             </div>
-                <div id="footer_copyright">
-                    &#169
-                    2024 all rights reserved
-                </div>
-            </div>
-        </footer>
-    </div>
-    </span>
+        </span>
+
     <script>
         document.getElementById("contato-link").addEventListener("click", function(event){
             event.preventDefault(); // Previne o comportamento padrão do link
@@ -241,6 +343,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 

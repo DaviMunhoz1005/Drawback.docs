@@ -171,8 +171,8 @@ nav {
 .square1, .square2, .square3, .square4, .square5, .square6, .square7, .square8 { 
     font-weight: 100;
     margin: 0px auto;
-    width: 240px;
-    height: 150px;
+    width: 245px;
+    height: 160px;
     background-color: #fffdf9;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
@@ -417,15 +417,20 @@ footer {
 
 #footer_content {
     background-color: var(--color-neutral-10);
-    display: grid;
+    display: flex;
+    justify-content: center;
     grid-template-columns: repeat(4, 1fr);
     padding: 2.5rem 3.5rem;
 }
 
+#one {
+    margin-right: 300px;
+}
+
+
 .footer-list {
-    margin-left: auto;
-    margin-right: -20.3rem;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     gap: 0.75rem;
     list-style:none;
@@ -470,53 +475,57 @@ footer {
     color: black;
 }
 
-.modal{
+.modal {
+    font-size: 13px;
+    display: none;
+    position: fixed; 
+    width: auto; 
+    z-index: 3;
+}
+
+#overlay {
     position: fixed;
-    padding: 0;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0,0,0,0.5);
-    transform: scale(1.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: visibility 0.25s ease-in-out, tranform 0.25s ease-in-out, opacity 0.25s ease-in-out;
-    z-index: 3;
-    
+    z-index: 0; 
 }
 
-.modal-content{
-
-    background-color: white;
-    padding: 16px 24px;
-    width: 368px;
-    border-radius: 0.5rem;
-    float: right;
+#black {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Escurece o fundo */
+    z-index: 1; /* Certifique-se de que o overlay esteja acima do conteúdo */
+    display: none;
 }
 
-.span{
-    float: right;
-    width: 30px;
-    cursor: pointer;
-    background-color: lightblue;
-    text-align: center;
-    line-height: 24px;
+.modal-content {
+    background-color: #ffffff;
+    margin: 0; 
+    margin-top: -1px;
+    border-radius: 10px;
+    width: 600px; 
+    height: 700px;
+    position: relative;
 }
 
-.span:hover{
-    background-color: darkgray;
 
 
-
+.modal ul {
+    list-style-type: none;
+    padding: 0;
 }
-.show-modal{
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
+.modal ul li {
+    margin: 10px 0;
+}
+
+.fileOptions a {
+    color: white;
+    margin-left: -1px;
 }
 
 
@@ -583,7 +592,7 @@ button:focus {
 .barDesign6 hr {
     margin-left: -22px;
     width: 155px; 
-    border: 1px solid #fbfafb;;
+    border: 1px solid #fbfafb;
 }
 
 #doc {
@@ -604,4 +613,11 @@ button:focus {
     margin-left: 1rem;
     margin-right: 0.5rem;
     height: 50px;
+}
+
+
+.add {
+    margin-top: -20px;
+    font-size: 70px;
+    opacity: 0.3;
 }
