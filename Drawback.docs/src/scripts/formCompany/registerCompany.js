@@ -22,3 +22,23 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(cnae);
     });
 });
+
+
+let x = 0;
+
+//Modal para header 
+
+function showModalentrar() {
+    document.getElementById('modalentrar').style.display = 'block';
+    x++;
+    if(x>=2){
+            document.getElementById('modalentrar').style.display = 'none';
+            x=0; 
+    }
+}
+
+// Função para ocultar o modal
+function hideModalentrar() {
+    document.getElementById('modalentrar').style.display = 'none';
+    x=0;
+}
