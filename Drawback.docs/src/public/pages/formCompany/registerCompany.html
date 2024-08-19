@@ -6,34 +6,54 @@
     <title>Cadastro Pessoa Jurídica</title>
     <link rel="stylesheet" href="../../assets/css/formCompany/registerCompany.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../../../scripts/formCompany/registerCompany.js"></script>
-
+    <script src="../../../scripts/formEmployee/loginEmployee.js"></script>
+    <link rel="icon" href="../../assets/images/logopretomini.png">
 </head>
 <body>
     <header>  
         <nav class="menuLinks">
             <ul class="listMenu">
                 <div class="websiteLogo">
-                    
+
                     <a href="../otherPages/homepage.html"><span class="title1">D</span><img id="logo" src="../../assets/images/logo.png" alt="logoImg"><span class="title2">ocs</span></a>
 
                 </div>
-                <div class="group">
-                    <div class="groupText">
-                        <span class="links">
-                            <div class="barDesign3"><hr></div><li><a class="hv" href="../../../public/index.html">Documentos</a></li><div class="barDesign3"><hr></div>
-                                <li><a class="hv" href="../../frontend/src/pages/FAQ.html">Dúvidas</a></li><div class="barDesign3"><hr></div>
-                                <li><a class="hv" href="#">Contato</a></li><div class="barDesign3"><hr></div>
-                                <li><a class="hv" href="#">Configurações</a></li><div class="barDesign3"><hr></div>
-                        </div><div class="barDesign4" id="w"><hr></div>
-                        <div class="signIn" >
-    
-                            <li><a href="../../frontend/src/pages/typeLogin.html" class="hv" id="w1">Entrar</a></li>
-    
-                        </div><div class="barDesign5" id="w"><hr></div>
+            <div class="group">
+                <div class="groupText">
+                    <span class="links">
+                        <div class="barDesign3"><hr></div><li><a class="hv" id="doc" href="../../index.html">Documentos</a></li>
+                        <div class="barDesign7" id="w"><hr></div>
+                        <div class="barDesign8"><hr></div>
+                            <li><a class="hv" href="../otherPages/FAQ.html" id="mid">Dúvidas</a></li><div class="barDesign3"><hr></div>
+                            <li><a class="hv" href="#footer" id="contato-link">Contato</a></li><div class="barDesign3"><hr></div>
                     </span>
                 </div>
-            </nav>
+                    <div class="barDesign4" id="w"><hr></div>
+                    <div class="signIn" >
+                        <li>
+                            <div class="barDesign9"><hr></div>
+                            <span onclick="hideModal()"><button class="butlog" onclick="showModalentrar()" id="p">Entrar</button></span>
+                            <div class="modalentrar" id="modalentrar">
+                                <div class="modalentrar-content">
+                                    <div class="options">
+                                        <ul>
+                                            <div class="barDesign6" id="w"><hr></div>
+                                            <li><a href="pages/formUser/loginUser.html" id="i">Pessoa Física</a></li>
+                                            <div class="barDesign6" id="w"><hr></div>
+                                            <li><a href="pages/formCompany/loginCompany.html" id="i">Pessoa Jurídica</a></li>
+                                            <div class="barDesign6" id="w"><hr></div>
+                                            <li><a href="pages/formEmployee/loginEmployee.html" id="i">Funcionário</a></li>
+                                            <div class="barDesign6" id="w"><hr></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                    <div class="barDesign5" id="w"><hr></div>
+                </div>
+            </div>
+        </nav>
     </header>
     <main class="centralSquareToPlaceContent">
         <section class="content">
@@ -119,7 +139,7 @@
             </form>
         </section>
     </main>
-    <footer class="zindex">
+    <footer id="footer" class="zindex">
         <div id="footer_content">
             <ul class="footer-list" id="one">
                 <li>
@@ -156,5 +176,13 @@
             </div>
         </div>
     </footer>
+</div>
+</span>
+<script>
+    document.getElementById("contato-link").addEventListener("click", function(event){
+        event.preventDefault(); // Previne o comportamento padrão do link
+        document.getElementById("footer").scrollIntoView({ behavior: "smooth" });
+    });
+</script>
 </body>
 </html>

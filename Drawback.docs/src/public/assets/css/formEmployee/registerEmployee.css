@@ -11,11 +11,7 @@
    
 }
 
-body {
-    background-color: #fbfafb;
-    text-align: center;
-    color: black;
-}
+/* header */
 
 header {
     background-color: #242223;
@@ -25,9 +21,17 @@ header {
     padding: 1.1rem 0;
     text-align: center;
     height: 4.6rem;
-    z-index: 2;
+    z-index: 4;
 }
 
+.options a {
+    color: white;
+    margin-left: -1px;
+}
+
+.options {
+    margin-top: 0px;
+}
 
 .title1 {
     font-size: 27px;
@@ -42,24 +46,87 @@ header {
     margin-top: 41.8px;
 }
 
-.barDesign3 hr {
+
+.barDesign6 hr {
+    margin-left: -22px;
+    width: 155px; 
+    border: 1px solid #fbfafb;
+}
+
+.barDesign9 hr {
+    margin-top: 25px;
+    width: 80px; 
+    position: absolute;
+    margin-left: -29px;
+    border: 1px solid #eee5d1;
+}
+
+button:focus {
+    outline: none;    
+}
+
+
+#doc {
+    margin-left: 10px;
+}
+
+#p {
+    color: #eee5d1;
+}
+
+.barDesign7 hr {
+    margin-top: 25px;
+    width: 120px; 
+    position: absolute;
+    margin-left: -122px;
+    border: 1px solid #242223;
+}
+
+.barDesign8 hr {
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-right: 0.5rem;
     height: 50px;
 }
 
+.barDesign3 hr {
+    border: 1px solid #434343;
+    margin-top: -17px;
+    margin-left: 3rem;
+    margin-right: 1.5rem;
+    height: 50px;   
+}
+
+
+.butlog {
+    margin-left: -9px;
+    color: white;
+}
+
+.butlog:hover {
+    color: #eee5d1;
+}
+
+button {
+    background: none;
+    border: none;     
+    padding: 0;      
+    margin: 0;    
+    font: inherit;   
+    cursor: pointer;  
+    outline: none;  
+}
 
 .hv:hover {
     color: #eee5d1;
 }
 
-.barDesign4 hr {
+.barDesign4  hr {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 144%;
+    margin-left: 27.8rem;
     height: 50px;
 }
 
@@ -67,9 +134,18 @@ header {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 168%;
+    margin-left: 35.7rem;
     height: 50px;
 }
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 #w {
     margin-left: 1.2rem;
@@ -79,12 +155,10 @@ nav {
     justify-content: space-around;
 }
 
-
 .group {
     margin-top: 0.5rem;
     position: absolute;
     margin-left: 0%;
-
 }
 
 .menuLinks {
@@ -111,7 +185,7 @@ nav {
 
 .signIn {
     position: absolute;
-    margin-left: 240%;
+    margin-left: 48rem;
 }
 
 .websiteLogo  {
@@ -121,6 +195,34 @@ nav {
     margin-left: -55rem;
     justify-content: space-around;
     color: rgb(255, 255, 255);
+}
+
+
+.modalentrar {
+    font-size: 13px;
+    display: none;
+    position: absolute; 
+    right: -53px; 
+    top: 2.85rem;
+    width: auto; 
+}
+
+.modalentrar-content {
+    background-color: #242223;
+    margin: 0; 
+    margin-top: -1px;
+    border: 1px solid #242223;
+    width: 148px; 
+    height: 114px;
+    position: relative;
+}
+
+.modalentrar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.modalentrar ul li {
+    margin: 10px 0;
 }
 
 #logo {
@@ -136,12 +238,34 @@ nav {
 
 .groupText{ 
     position: relative;
-    margin-left: -19rem;
+    margin-left: -18.3rem;
 }
 
+#mid {
+    display: flex;
+    margin-left: 40px;
+}
+
+#i {
+    margin-left: 0px;
+}
+
+/* header */
+
+
+
+
+
+
+
+body {
+    background-color: #fbfafb;
+    text-align: center;
+    color: black;
+}
 
 .centralSquareToPlaceContent {
-    width: 1300px;
+    width: 1350px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -367,6 +491,8 @@ svg {
     --color-neutral-40: #f5f5f5;
 }
 
+/* footer */
+
 footer {
     position: absolute;
     margin: 0;
@@ -435,6 +561,10 @@ footer {
         padding: 3rem 2rem;
     }
 }
+
+
+/* footer */
+
 
 .Others {
     color: black;
