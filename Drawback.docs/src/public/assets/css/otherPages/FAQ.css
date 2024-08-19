@@ -69,7 +69,7 @@ button:focus {
 
 .barDesign10 hr {
     margin-top: 25px;
-    width: 80px; 
+    width: 75px; 
     position: absolute;
     margin-left: -140px;
     border: 1px solid #eee5d1;
@@ -135,7 +135,7 @@ button {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 35.7rem;
+    margin-left: 35rem;
     height: 50px;
 }
 
