@@ -14,7 +14,6 @@ number.innerHTML = counter + "/" + progress;
 document.body.style.setProperty('--size', 472 - size * totalAmount);
 
 let y = 0;
-let x = 0;
 
 function showModal() {
     document.getElementById('modal').style.display = 'block';
@@ -34,22 +33,22 @@ function hideModal() {
     y=0;
 }
 
-function showSelectionsForms() {
+let x = 0;
+
+window.hideSelectionsForms = function() {
+    document.getElementById('modalentrar').style.display = 'none';
+    x = 0;
+};
+
+window.showSelectionsForms = function() {
     document.getElementById('modalentrar').style.display = 'block';
     x++;
-    if(x>=2){
-            document.getElementById('modalentrar').style.display = 'none';
-            x=0; 
+    if (x >= 2) {
+        window.hideSelectionsForms(); 
     }
-}
+};
 
-function hideSelectionsForms() {
-    document.getElementById('modalentrar').style.display = 'none';
-    x=0;
-}
 
-number.innerHTML = counter + "/" + progress;
-document.body.style.setProperty('--size', 472 - size * totalAmount);
 
 
 /*

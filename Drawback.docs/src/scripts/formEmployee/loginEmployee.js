@@ -13,22 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 let x = 0;
 
-//Modal para header 
+window.hideSelectionsForms = function() {
+    document.getElementById('modalentrar').style.display = 'none';
+    x = 0;
+};
 
-function showModalentrar() {
+window.showSelectionsForms = function() {
     document.getElementById('modalentrar').style.display = 'block';
     x++;
-    if(x>=2){
-            document.getElementById('modalentrar').style.display = 'none';
-            x=0; 
+    if (x >= 2) {
+        window.hideSelectionsForms(); 
     }
-}
-
-// Função para ocultar o modal
-function hideModalentrar() {
-    document.getElementById('modalentrar').style.display = 'none';
-    x=0;
-}
+};
