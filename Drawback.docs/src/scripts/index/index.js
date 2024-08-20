@@ -28,16 +28,13 @@ function showModal() {
     }
 }
 
-// Função para ocultar o modal
 function hideModal() {
     document.getElementById('modal').style.display = 'none';   
     document.getElementById('black').style.display = 'none';
     y=0;
 }
 
-//Modal para header 
-
-function showModalentrar() {
+function showSelectionsForms() {
     document.getElementById('modalentrar').style.display = 'block';
     x++;
     if(x>=2){
@@ -46,8 +43,7 @@ function showModalentrar() {
     }
 }
 
-// Função para ocultar o modal
-function hideModalentrar() {
+function hideSelectionsForms() {
     document.getElementById('modalentrar').style.display = 'none';
     x=0;
 }
@@ -57,14 +53,6 @@ document.body.style.setProperty('--size', 472 - size * totalAmount);
 
 
 /*
-//MODAL PARA INDEX
-function showModal() {
-    document.getElementById('modal').style.display = 'block';
-}
-
-function hideModal() {
-    document.getElementById('modal').style.display = 'none';
-}
 
 // Não sei se você vai salvar assim mas ta aí
 function saveDocument() {

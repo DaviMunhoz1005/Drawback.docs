@@ -1,44 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    const registerButton = document.getElementById("register");
+import { handleCreateAccountAndToken } from "./../services/apiRequests.js"; 
 
-    registerButton.addEventListener('click', function(event) {
-        event.preventDefault(); // não atualiza a página quando é clicado o botão 
+const registerButton = document.getElementById("register");
 
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const checkPassword = document.getElementById("checkPassword").value;
-        const cnpj = document.getElementById("cnpj").value;
-        const nameCorporateReason = document.getElementById("nameCorporateReason").value;
-        const cnae = document.getElementById("cnae").value;
+registerButton.addEventListener('click', async function(event) {
 
-        console.log(username);
-        console.log(password);
-        console.log(checkPassword);
-        console.log(cnpj);
-        console.log(email);
-        console.log(nameCorporateReason);
-        console.log(cnae);
-    });
+    event.preventDefault();
+    const formData = getFormData(); 
+    await handleCreateAccountAndToken(formData);  
+    window.location.replace("/Drawback.docs/src/public/index.html");
 });
 
+function getFormData() {
 
-let x = 0;
+    const password = document.getElementById("password").value;
+    const checkPassword = document.getElementById("checkPassword").value;
 
-//Modal para header 
+    if(password === checkPassword) {
 
-function showModalentrar() {
-    document.getElementById('modalentrar').style.display = 'block';
-    x++;
-    if(x>=2){
-            document.getElementById('modalentrar').style.display = 'none';
-            x=0; 
+        return {
+            username: document.getElementById("username").value,
+            nameCorporateReason : document.getElementById("nameCorporateReason").value,
+            email: document.getElementById("email").value,
+            password: password,
+            cnpjCpf: document.getElementById("cnpj").value, 
+            cnae : document.getElementById("cnae").value
+        };
+    } else {
+
+        throw new Error("As senhas informadas não coincidem");
     }
 }
 
-// Função para ocultar o modal
-function hideModalentrar() {
+let x = 0;
+
+window.hideSelectionsForms = function() {
     document.getElementById('modalentrar').style.display = 'none';
-    x=0;
-}
+    x = 0;
+};
+
+window.showSelectionsForms = function() {
+    document.getElementById('modalentrar').style.display = 'block';
+    x++;
+    if (x >= 2) {
+        window.hideSelectionsForms(); 
+    }
+};

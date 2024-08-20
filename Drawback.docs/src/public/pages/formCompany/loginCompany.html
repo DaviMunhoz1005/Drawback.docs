@@ -6,7 +6,7 @@
     <title>Login Empresa</title>
     <link rel="stylesheet" href="../../assets/css/formCompany/loginCompany.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../../../scripts/formEmployee/loginEmployee.js"></script>
+    <script type="module" src="../../../scripts/formCompany/loginCompany.js" defer></script>
     <link rel="icon" href="../../assets/images/logopretomini.png">
 </head>
 <body>
@@ -33,7 +33,7 @@
                     <div class="signIn" >
                         <li>
                             <div class="barDesign9"><hr></div>
-                            <span onclick="hideModal()"><button class="butlog" onclick="showModalentrar()" id="p">Entrar</button></span>
+                            <span><button class="butlog" onclick="showSelectionsForms()" id="p">Entrar</button></span>
                             <div class="modalentrar" id="modalentrar">
                                 <div class="modalentrar-content">
                                     <div class="options">
@@ -56,7 +56,7 @@
             </div>
         </nav>
     </header>
-    <span onclick="hideModalentrar()">
+    <span onclick="hideSelectionsForms()">
     <main class="centralSquareToPlaceContent">
         <section class="content">
             <br>
