@@ -19,7 +19,6 @@ function showModal() {
     document.getElementById('modal').style.display = 'block';
     document.getElementById('black').style.display = 'block';
     y++;
-    console.log(y)
     if(y>=2){
             document.getElementById('modal').style.display = 'none';
             document.getElementById('black').style.display = 'none';
