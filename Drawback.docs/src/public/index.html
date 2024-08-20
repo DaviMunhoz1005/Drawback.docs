@@ -7,7 +7,7 @@
     <title>Drawback</title>
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../scripts/index/index.js" defer></script>
+    <script type="module" src="../scripts/index/index.js" defer></script>
     <link rel="icon" href="assets/images/logopretomini.png">
     
 
@@ -66,24 +66,8 @@
                         <div class="amountSquares" id="amount">
                         
                             <div class="siteSeparation">
-                                <div class="separation1">
-                                    
-                                    <div class="square1" onclick="showModal()"><a class="designLink1" href="#">Certificado de origem</a>
-                                    <button class="add" >+</button></div>
-                                    <div id="black" onclick="hideModal()"></div>
-                                
-                                    <div class="square2" onclick="showModal()"><a class="designLink1" href="#">Licenciamento de importação</a>
-                                        <button class="add" >+</button></div>
-                                        <div id="black" onclick="hideModal()"></div>
-                                            
-
-                                    <div class="square3" onclick="showModal()"><a class="designLink1" href="#">Romaneio de carga</a>
-                                        <button class="add" >+</button></div>
-                                        <div id="black" onclick="hideModal()"></div>
-            
-                                    <div class="square4" onclick="showModal()"><a class="designLink1" href="#">Fatura proforma</a>
-                                        <button class="add" >+</button></div>
-                                        <div id="black" onclick="hideModal()"></div>
+                                <div class="separation1" id="separation1">
+        
                     
                                 </div>
                             </div>    
@@ -91,21 +75,18 @@
                             <div class="siteSeparation">    
                                 <div class="separation2">
 
-                                    <div class="square5" onclick="showModal()"><a class="designLink1" href="#">Fatura comercial</a>
+                                    <div class="square" onclick="showModal()"><a class="designLink1" href="#">Fatura comercial</a>
                                         <button class="add" >+</button></div>
-                                        <div id="black" onclick="hideModal()"></div>
-                                                        
-                                    <div class="square6" onclick="showModal()"><a class="designLink1" href="#">Conhecimento de embarque</a>
+                                                                                                
+                                    <div class="square" onclick="showModal()"><a class="designLink1" href="#">Conhecimento de embarque</a>
                                         <button class="add" >+</button></div>
-                                        <div id="black" onclick="hideModal()"></div>
-                                            
-                                    <div class="square7" onclick="showModal()"><a class="designLink1" href="#">Declaração de importação</a>
+                                                                                    
+                                    <div class="square" onclick="showModal()"><a class="designLink1" href="#">Declaração de importação</a>
                                         <button class="add" >+</button></div>
-                                        <div id="black" onclick="hideModal()"></div>
-        
-                                    <div class="square8" onclick="showModal()"><a class="designLink1" href="#">Adicionar</a>
+                                                
+                                    <div class="square" onclick="showModal()"><a class="designLink1" href="#">Adicionar</a>
                                         <button class="add" >+</button></div>
-                                        <div id="black" onclick="hideModal()"></div>
+                                        
                                 </div>
                             </div>
                         </div>
@@ -252,6 +233,7 @@
                 </div>
             </div>
         </div>
+        <div id="black" onclick="hideModal()"></div>
 
     <script>
         document.getElementById("contato-link").addEventListener("click", function(event){

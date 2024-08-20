@@ -1,21 +1,86 @@
-let totalAmount, progress, number, amount, size, counter; 
+import { handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, getToken } from "./../services/apiRequests.js";
 
-totalAmount = 1;
-progress = 7;
+async function documentListFromUser() {
 
-number = document.getElementById("number");
-amount = document.querySelectorAll(".amountSquares");
+    try {
+        
+        const listDocuments = await handleListDocuments();
+        const blockDocumentList = document.getElementById("separation1");
 
-size = (472 / progress);
+        blockDocumentList.innerHTML = '';
 
-for (counter = 0; counter < totalAmount; counter++);
-    
-number.innerHTML = counter + "/" + progress;
-document.body.style.setProperty('--size', 472 - size * totalAmount);
+        if (listDocuments.length === 0) {
+            
+            const docHtml = document.createElement("div");
+            docHtml.className = "square"; 
+            docHtml.onclick = showModal;
+
+            docHtml.innerHTML = `
+                <a class="designLink1">Adicionar</a>
+                <button class="add" >+</button></div>
+            `;
+
+            blockDocumentList.appendChild(docHtml);
+        } else {
+            
+            listDocuments.forEach(documentUser => {
+
+                const docHtml = document.createElement("div");
+
+                docHtml.innerHTML = `
+                    <h3>${documentUser.name} (${documentUser.extension})</h3>
+                    <p>Criação: ${documentUser.creation}</p>
+                    <button class="downloadDocument" data-url="${documentUser.url}">Baixar</button>
+                    <button class="deleteDocument" data-id="${documentUser.id}">Excluir</button>
+                    <button class="editDocument" data-id="${documentUser.id}">Editar</button>
+                `;
+
+                blockDocumentList.appendChild(docHtml);
+            });
+
+            const docHtml = document.createElement("div");
+            docHtml.className = "square"; 
+            docHtml.onclick = showModal;
+
+            docHtml.innerHTML = `
+                <a class="designLink1">Adicionar</a>
+                <button class="add" >+</button></div>
+            `;
+
+            blockDocumentList.appendChild(docHtml);
+        }
+    } catch(error) {
+
+        console.error('Erro ao carregar documentos:', error);
+    }
+}
+
+documentListFromUser();
+
+function progressBar() {
+
+    let totalAmount, progress, number, amount, size, counter; 
+
+    totalAmount = 1;
+    progress = 7;
+
+    number = document.getElementById("number");
+    amount = document.querySelectorAll(".amountSquares");
+
+    size = (472 / progress);
+
+    for (counter = 0; counter < totalAmount; counter++);
+        
+    number.innerHTML = counter + "/" + progress;
+    document.body.style.setProperty('--size', 472 - size * totalAmount);
+}
+
+progressBar();
 
 let y = 0;
 
-function showModal() {
+window.showModal = function() {
+
     document.getElementById('modal').style.display = 'block';
     document.getElementById('black').style.display = 'block';
     y++;
@@ -24,13 +89,14 @@ function showModal() {
             document.getElementById('black').style.display = 'none';
             y=0;
     }
-}
+};
 
-function hideModal() {
+window.hideModal = function() {
+
     document.getElementById('modal').style.display = 'none';   
     document.getElementById('black').style.display = 'none';
     y=0;
-}
+};
 
 let x = 0;
 

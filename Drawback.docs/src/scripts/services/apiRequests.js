@@ -264,7 +264,7 @@ async function handleListDocuments() {
     try {
         
         const documentList = await listDocuments();
-        console.log(documentList);
+        return documentList;
     } catch(error) {
 
         console.error("Erro ao listar documentos do usuário:", error.message);
@@ -577,5 +577,5 @@ async function handleApiResponse(response) {
 // TAKE TOKEN STORAGE IN THE 
 
 export { 
-    handleFindUser, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument
+    handleFindUser, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument, getToken
 };

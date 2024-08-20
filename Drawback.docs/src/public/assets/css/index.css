@@ -274,7 +274,7 @@ body {
     margin-bottom: 70px;
 }
 
-.square1, .square2, .square3, .square4, .square5, .square6, .square7, .square8 { 
+.square { 
     font-weight: 100;
     margin: 0px auto;
     width: 245px;
