@@ -11,38 +11,49 @@ registerButton.addEventListener('click', async function(event) {
 
 function getFormData() {
 
+    const username = document.getElementsById("username").value;
     const password = document.getElementById("password").value;
     const checkPassword = document.getElementById("checkPassword").value;
 
     if(password == "") {
 
-        Swal.fire({
-            title: "Algo deu errado!",
-            text: "Não é permitido uma senha vazia.",
-            icon: "error",
-            confirmButtonText: "Ok"
-        }).then(() => {
-            throw new Error("An empty password is not allowed");
-        });
+        alertFromPasswordExecption();
     } else if(password === checkPassword) {
 
         return {
-            username: document.getElementById("username").value,
+            username: username,
             email: document.getElementById("email").value,
             password: password,
             cnpjCpf: document.getElementById("cpf").value
         };
     } else {
 
-        Swal.fire({
-            title: "Algo deu errado!",
-            text: "As senhas informadas não coincidem.",
-            icon: "error",
-            confirmButtonText: "Ok"
-        }).then(() => {
-            throw new Error("As senhas informadas não coincidem");
-        });
+       alertFromCheckPasswordException();
     }
+}
+
+function alertFromPasswordExecption() {
+    
+    Swal.fire({
+        title: "Algo deu errado!",
+        text: "Não é permitido uma senha vazia.",
+        icon: "error",
+        confirmButtonText: "Ok"
+    }).then(() => {
+        throw new Error("An empty password is not allowed");
+    });
+}
+
+function alertFromCheckPasswordException() {
+    
+    Swal.fire({
+        title: "Algo deu errado!",
+        text: "As senhas informadas não coincidem.",
+        icon: "error",
+        confirmButtonText: "Ok"
+    }).then(() => {
+        throw new Error("As senhas informadas não coincidem");
+    });
 }
 
 let x = 0;
