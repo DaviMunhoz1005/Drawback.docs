@@ -20,12 +20,12 @@ async function findUser(username) {
     let result; 
     const response = await fetch(`${url}/user/find?username=${username}`);
         
-    if(!response.ok) {
+    if(response.ok) {
 
-        result = null;
+        result = true;
     } else {
 
-        result = await response.json();
+        result = false;
     } 
 
     return result;
@@ -33,47 +33,33 @@ async function findUser(username) {
 
 async function handleCreateAccountAndToken(data) {
 
-    const responseUser = await handleCreateUser(data);
+    const response = await createUser(data);
     const dataForToken = getUsernameAndPassword(data);
     await handleTakeUserToken(dataForToken);
-    return responseUser;
-}
-
-async function handleCreateUser(data) {
-
-    const response = await createUser(data);
-    console.log(response);
     return response;
 }
 
 async function createUser(data) {
 
-    try {
+    let result;
+    const response = await fetch(`${url}/user/create`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
 
-        let result;
-        const response = await fetch(`${url}/user/create`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
+    if(response.ok) {
 
-        if(!response.ok) {
+        result = true;
+    } else {
 
-            result = null;
-        } else {
-
-            result = await response.json();
-        }
-
-        return result;
-    } catch(error) {
-
-        console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
+        result = false;
     }
+
+    return result;
 }
 
 function getUsernameAndPassword(data) {
@@ -124,6 +110,7 @@ async function handleTakeUserTokenButton(data) {
 
     try {
 
+        
         const dataForToken = getUsernameAndPassword(data);
         await handleTakeUserToken(dataForToken);
     } catch(error) {
