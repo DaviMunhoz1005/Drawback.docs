@@ -3,13 +3,12 @@ const url = 'http://localhost:8080';
 // USERS
 
 
-async function handleFindUser() {
+async function handleFindUser(username) {
 
     try {
 
-        const usernameToFind = document.getElementById("usernameToFind").value;
-        const user = await findUser(usernameToFind);
-        console.log(user);
+        const response = await findUser(username);
+        return response;
     } catch(error) {
 
         console.error("Erro ao buscar usuários:", error.message);
@@ -18,48 +17,40 @@ async function handleFindUser() {
 
 async function findUser(username) {
 
-    try {
+    let result; 
+    const response = await fetch(`${url}/user/find?username=${username}`);
+        
+    if(!response.ok) {
 
-        const response = await fetch(`${url}/user/find?username=${username}`);
-        handleApiResponse(response);
+        result = null;
+    } else {
 
-        return await response.json();
-    } catch(error) {
+        result = await response.json();
+    } 
 
-        console.error("Erro ao fazer a requisição:", error.message);
-        throw error;
-    }
+    return result;
 }
 
 async function handleCreateAccountAndToken(data) {
 
-    try {
-
-        await handleCreateUser(data);
-        const dataForToken = getUsernameAndPassword(data);
-        await handleTakeUserToken(dataForToken);
-    } catch(error) {
-
-        console.error("Erro ao processar a requisição:", error.message);
-    }
+    const responseUser = await handleCreateUser(data);
+    const dataForToken = getUsernameAndPassword(data);
+    await handleTakeUserToken(dataForToken);
+    return responseUser;
 }
 
 async function handleCreateUser(data) {
 
-    try {
-
-        const user = await createUser(data);
-        console.log(user);
-    } catch(error) {
-
-        console.error("Erro ao criar usuário:", error.message);
-    }
+    const response = await createUser(data);
+    console.log(response);
+    return response;
 }
 
 async function createUser(data) {
 
     try {
 
+        let result;
         const response = await fetch(`${url}/user/create`, {
             method: 'POST',
             headers: {
@@ -69,9 +60,15 @@ async function createUser(data) {
             body: JSON.stringify(data)
         });
 
-        handleApiResponse(response);
+        if(!response.ok) {
 
-        return await response.json();
+            result = null;
+        } else {
+
+            result = await response.json();
+        }
+
+        return result;
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
@@ -333,16 +330,14 @@ async function listDocumentsByName(documentName) {
     }
 }
 
-async function handleSendDocument() {
+async function handleSendDocument(userDocument, validity) {
 
     try {
 
-        const userDocument = document.getElementById("userDocument").files[0]; 
-
         const validityDocument = {
-            validity: getFormattedDate("validity")
+            validity: getFormattedDate(validity)
         };
-        
+
         const documentSaved = await sendDocument(userDocument, validityDocument);
         console.log(documentSaved);
     } catch(error) {
@@ -431,9 +426,8 @@ async function updateDocument(userDocument, validityDocument) {
     }
 }
 
-function getFormattedDate(id) {
+function getFormattedDate(dateInput) {
 
-    const dateInput = document.getElementById(id).value; 
     const dateObject = new Date(dateInput);
 
     const year = dateObject.getFullYear();
@@ -566,11 +560,9 @@ async function downloadDocument(documentName) {
 
 async function handleApiResponse(response) {
 
-    if(!response.ok) {
-
-        const errorData = await response.json();
-        console.log(`${response.status} - ${errorData.title} - ${errorData.cause}`);
-    }
+    const errorData = await response.json();
+    console.log(`${errorData.status} - ${errorData.title} - ${errorData.cause}`);
+    return errorData;
 }
 
 

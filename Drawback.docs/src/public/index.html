@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="module" src="../scripts/index/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" href="assets/images/logopretomini.png">
-    
 
 </head>
 <body>
@@ -228,7 +228,7 @@
                     <input type="date" id="expirationDate" name="expirationDate">
                 </div>
                 <div class="modal-footer">
-                    <button onclick="saveDocument()">Salvar</button>
+                    <button id="sendDocument">Salvar</button>
                     <button class="cancel" onclick="hideModal()">Fechar</button>
                 </div>
             </div>

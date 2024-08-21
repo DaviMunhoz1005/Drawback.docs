@@ -7,7 +7,6 @@ registerButton.addEventListener('click', async function(event) {
     event.preventDefault();
     const formData = getFormData(); 
     await handleCreateAccountAndToken(formData);  
-    window.location.replace("/Drawback.docs/src/public/index.html");
 });
 
 function getFormData() {
@@ -15,7 +14,17 @@ function getFormData() {
     const password = document.getElementById("password").value;
     const checkPassword = document.getElementById("checkPassword").value;
 
-    if(password === checkPassword) {
+    if(password == "") {
+
+        Swal.fire({
+            title: "Algo deu errado!",
+            text: "Não é permitido uma senha vazia.",
+            icon: "error",
+            confirmButtonText: "Ok"
+        }).then(() => {
+            throw new Error("An empty password is not allowed");
+        });
+    } else if(password === checkPassword) {
 
         return {
             username: document.getElementById("username").value,
@@ -25,7 +34,14 @@ function getFormData() {
         };
     } else {
 
-        throw new Error("As senhas informadas não coincidem");
+        Swal.fire({
+            title: "Algo deu errado!",
+            text: "As senhas informadas não coincidem.",
+            icon: "error",
+            confirmButtonText: "Ok"
+        }).then(() => {
+            throw new Error("As senhas informadas não coincidem");
+        });
     }
 }
 

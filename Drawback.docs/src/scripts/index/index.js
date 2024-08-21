@@ -1,61 +1,102 @@
-import { handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, getToken } from "./../services/apiRequests.js";
+import { handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, getExpiryToken } from "./../services/apiRequests.js";
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    }
+});
+
+Toast.fire({
+    icon: "success",
+    title: "Login feito com sucesso!"
+});
+
+documentListFromUser();
+
+document.getElementById("sendDocument").addEventListener('click', () => {
+
+    addNewDocument();
+    hideModal();
+});
 
 async function documentListFromUser() {
 
+    const blockDocumentList = document.getElementById("separation1");
+
     try {
         
+        
         const listDocuments = await handleListDocuments();
-        const blockDocumentList = document.getElementById("separation1");
-
         blockDocumentList.innerHTML = '';
 
         if (listDocuments.length === 0) {
             
-            const docHtml = document.createElement("div");
-            docHtml.className = "square"; 
-            docHtml.onclick = showModal;
-
-            docHtml.innerHTML = `
-                <a class="designLink1">Adicionar</a>
-                <button class="add" >+</button></div>
-            `;
-
-            blockDocumentList.appendChild(docHtml);
+            createAddNewFileHtml();
         } else {
             
-            listDocuments.forEach(documentUser => {
-
-                const docHtml = document.createElement("div");
-
-                docHtml.innerHTML = `
-                    <h3>${documentUser.name} (${documentUser.extension})</h3>
-                    <p>Criação: ${documentUser.creation}</p>
-                    <button class="downloadDocument" data-url="${documentUser.url}">Baixar</button>
-                    <button class="deleteDocument" data-id="${documentUser.id}">Excluir</button>
-                    <button class="editDocument" data-id="${documentUser.id}">Editar</button>
-                `;
-
-                blockDocumentList.appendChild(docHtml);
-            });
-
-            const docHtml = document.createElement("div");
-            docHtml.className = "square"; 
-            docHtml.onclick = showModal;
-
-            docHtml.innerHTML = `
-                <a class="designLink1">Adicionar</a>
-                <button class="add" >+</button></div>
-            `;
-
-            blockDocumentList.appendChild(docHtml);
+            showFilesFromUserHtml(listDocuments);
+            createAddNewFileHtml();
         }
     } catch(error) {
 
         console.error('Erro ao carregar documentos:', error);
     }
+
+    function createAddNewFileHtml() {
+
+        const docHtml = document.createElement("div");
+        docHtml.className = "square"; 
+        docHtml.onclick = showModal;
+    
+        docHtml.innerHTML = `
+            <a class="designLink1">Adicionar</a>
+            <button class="add" >+</button></div>
+        `;
+    
+        blockDocumentList.appendChild(docHtml);
+    }
+    
+    function showFilesFromUserHtml(array) {
+    
+        array.forEach(documentUser => {
+    
+            const docHtml = document.createElement("div");
+            docHtml.className = "square"; 
+    
+            docHtml.innerHTML = `
+                <a class="designLink1">${documentUser.name} (${documentUser.extension})</a>
+                <p>Criação: ${documentUser.creation}</p>
+                <button>Baixar</button>
+                <button>Excluir</button>
+                <button>Editar</button>
+                <button>Usar Versão Anterior</button>
+            `;
+    
+            blockDocumentList.appendChild(docHtml);
+        });
+    }
 }
 
-documentListFromUser();
+async function addNewDocument() {
+    
+    try {
+        
+        const documentFile = document.getElementById("documentFile").files[0];
+        const validity = document.getElementById("expirationDate").value;
+
+        await handleSendDocument(documentFile, validity);
+        setTimeout(2000, documentListFromUser());
+    } catch(error) {
+        
+        console.error('Erro ao adicionar um novo documento:', error);
+    }
+}
 
 function progressBar() {
 
