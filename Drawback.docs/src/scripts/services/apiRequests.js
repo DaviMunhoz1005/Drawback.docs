@@ -172,7 +172,13 @@ async function handleTakeUserToken(data) {
     try {
 
         const token = await takeUserToken(data);
+        if(!token) {
+
+            return false;
+        }
+        
         localStorage.setItem("authToken", JSON.stringify(token));
+        return true;
     } catch(error) {
 
         console.error("Erro ao criar token de acesso:", error.message);
@@ -194,7 +200,15 @@ async function takeUserToken(data) {
 
         if(response.ok) {
 
-            return await response.json();
+            const responseText = await response.text();
+
+            if(responseText) { 
+
+                const responseJson = JSON.parse(responseText);
+                return responseJson;
+            }
+
+            return false;
         } else {
 
             handleApiResponse(response);
@@ -211,7 +225,8 @@ async function handleTakeUserTokenButton(data) {
     try {
 
         const dataForToken = getUsernameAndPassword(data);
-        await handleTakeUserToken(dataForToken);
+        const response = await handleTakeUserToken(dataForToken);
+        return response;
     } catch(error) {
 
         console.error("Erro ao processar a requisição:", error.message);

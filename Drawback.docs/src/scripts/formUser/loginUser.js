@@ -6,8 +6,23 @@ loginButton.addEventListener('click', async function(event) {
         
     event.preventDefault();
     const formData = getFormData(); 
-    await handleTakeUserTokenButton(formData);  
-    window.location.replace("/Drawback.docs/src/public/index.html");
+    const response = await handleTakeUserTokenButton(formData);  
+    
+    if(response) {
+
+        window.location.replace("/Drawback.docs/src/public/index.html");
+    } else {
+
+        Swal.fire({
+            title: "Algo deu errado!",
+            text: "Usuário ou Senha inválidos.",
+            icon: "error",
+            confirmButtonText: "Ok"
+        }).then(() => {
+            console.error("Invalid username or password.");
+            return false;
+        });
+    }
 });
 
 function getFormData() {
