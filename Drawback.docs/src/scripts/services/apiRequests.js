@@ -1,5 +1,6 @@
 const url = 'http://localhost:8080';
 
+
 // USERS
 
 
@@ -29,6 +30,96 @@ async function findUser(username) {
     } 
 
     return result;
+}
+
+async function handleFindByCnpjCpf(cnpjCpf) {
+
+    const response = await findByCnpjCpf();
+    return response;
+}
+
+async function findByCnpjCpf(cnpjCpf) {
+    
+    let result;
+    const response = await fetch(`${url}/user/findCnpjCpf?cnpjCpf=${cnpjCpf}`)
+
+    if(response.ok) {
+
+        const responseJson = await response.json();
+
+        if(responseJson.length == 0) {
+
+            result = false;
+        } else {
+
+            result = true;
+        }
+    
+        return result;
+    } else {
+        
+        handleApiResponse(response);
+    }
+}
+
+async function handleFindByCnae(cnae) {
+    
+    const response = await findByCnae(cnae);
+    return response;
+}
+
+async function findByCnae(cnae) {
+    
+    let result;
+    const response = await fetch(`${url}/user/findCnae?cnae=${cnae}`)
+
+    if(response.ok) {
+
+        const responseJson = await response.json();
+
+        if(responseJson.length == 0) {
+
+            result = false;
+        } else {
+
+            result = true;
+        }
+    
+        return result;
+    } else {
+        
+        handleApiResponse(response);
+    }
+}
+
+async function handlelFindByNameCorporateReason(nameCorporateReason) {
+    
+    const response = await findByNameCorporateReason(nameCorporateReason);
+    return response;
+}
+
+async function findByNameCorporateReason(nameCorporateReason) {
+    
+    let result;
+    const response = await fetch(`${url}/user/findNameCorporateReason?nameCorporateReason=${nameCorporateReason}`)
+
+    if(response.ok) {
+
+        const responseJson = await response.json();
+
+        if(responseJson.length == 0) {
+
+            result = false;
+        } else {
+
+            result = true;
+        }
+    
+        return result;
+    } else {
+        
+        handleApiResponse(response);
+    }
 }
 
 async function handleCreateAccountAndToken(data) {
@@ -574,5 +665,5 @@ async function handleApiResponse(response) {
 // TAKE TOKEN STORAGE IN THE 
 
 export { 
-    handleFindUser, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument, getToken, getExpiryToken
+    handleFindUser, handleFindByCnpjCpf, handleFindByCnae, handlelFindByNameCorporateReason, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument, getToken, getExpiryToken
 };
