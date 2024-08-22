@@ -50,7 +50,7 @@ async function createUser(data) {
         },
         body: JSON.stringify(data)
     });
-
+    
     if(response.ok) {
 
         result = true;
