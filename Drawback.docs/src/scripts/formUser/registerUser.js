@@ -1,4 +1,4 @@
-import { handleFindUser, handleCreateAccountAndToken } from "./../services/apiRequests.js"; 
+import { handleFindUser, handleFindByCnpjCpf, handleCreateAccountAndToken } from "./../services/apiRequests.js"; 
 
 const registerButton = document.getElementById("register");
 
@@ -19,22 +19,20 @@ async function getFormData() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     const checkPassword = document.getElementById("checkPassword").value;
+    const cnpjCpf = document.getElementById("cpf").value;
 
-    let response = await checkUsernameAlreadyExists(username);
+    const booleanUsername = await checkUsernameAlreadyExists(username);
+    const booleanPassword = checkPasswordExistOrNull(password, checkPassword);
+    const booleanCnpjCpf = await checkCnpjCpfAlreadyExists(cnpjCpf);
 
-    if(response) {
+    if(booleanUsername && booleanPassword && booleanCnpjCpf) {
 
-        response = checkPasswordExistOrNull(password, checkPassword);
-
-        if(response) {
-
-            return {
-                username: username,
-                email: document.getElementById("email").value,
-                password: password,
-                cnpjCpf: document.getElementById("cpf").value
-            };
-        }
+        return {
+            username: username,
+            email: document.getElementById("email").value,
+            password: password,
+            cnpjCpf: cnpjCpf
+        };
     }
 }
 
@@ -67,6 +65,27 @@ function checkPasswordExistOrNull(password, checkPassword) {
     } else if(password != checkPassword) {
 
         return alertFromCheckPasswordException();
+    } else {
+
+        return true;
+    }
+}
+
+async function checkCnpjCpfAlreadyExists(cnpjCpf) {
+    
+    const response = await handleFindByCnpjCpf(cnpjCpf);
+    
+    if(response) {
+    
+        Swal.fire({
+            title: "Algo deu errado!",
+            text: "Já existe um usuário com esse CPF.",
+            icon: "error",
+            confirmButtonText: "Ok"
+        }).then(() => {
+            console.error("There is already a user with that CPF");
+            return false;
+        });
     } else {
 
         return true;

@@ -6,35 +6,38 @@ const url = 'http://localhost:8080';
 
 async function handleFindUser(username) {
 
-    try {
-
-        const response = await findUser(username);
-        return response;
-    } catch(error) {
-
-        console.error("Erro ao buscar usuários:", error.message);
-    }
+    const response = await findUser(username);
+    return response;
 }
 
 async function findUser(username) {
-
-    let result; 
-    const response = await fetch(`${url}/user/find?username=${username}`);
-        
+    
+    let result;
+    const response = await fetch(`${url}/user/findUser?username=${username}`);
+    
     if(response.ok) {
+        
+        const responseText = await response.text();
 
-        result = true;
+        if(!responseText) { 
+
+            result = false;
+        } else {
+
+            const responseJson = JSON.parse(responseText);
+            result = responseJson.length !== 0;
+        }
     } else {
 
-        result = false;
-    } 
+        await handleApiResponse(response);
+    }
 
     return result;
 }
 
 async function handleFindByCnpjCpf(cnpjCpf) {
 
-    const response = await findByCnpjCpf();
+    const response = await findByCnpjCpf(cnpjCpf);
     return response;
 }
 
@@ -44,22 +47,23 @@ async function findByCnpjCpf(cnpjCpf) {
     const response = await fetch(`${url}/user/findCnpjCpf?cnpjCpf=${cnpjCpf}`)
 
     if(response.ok) {
+        
+        const responseText = await response.text();
 
-        const responseJson = await response.json();
-
-        if(responseJson.length == 0) {
+        if(!responseText) { 
 
             result = false;
         } else {
 
-            result = true;
+            const responseJson = JSON.parse(responseText);
+            result = responseJson.length !== 0;
         }
-    
-        return result;
     } else {
         
-        handleApiResponse(response);
+        await handleApiResponse(response);
     }
+
+    return result;
 }
 
 async function handleFindByCnae(cnae) {
@@ -74,22 +78,23 @@ async function findByCnae(cnae) {
     const response = await fetch(`${url}/user/findCnae?cnae=${cnae}`)
 
     if(response.ok) {
+        
+        const responseText = await response.text();
 
-        const responseJson = await response.json();
-
-        if(responseJson.length == 0) {
+        if(!responseText) { 
 
             result = false;
         } else {
 
-            result = true;
+            const responseJson = JSON.parse(responseText);
+            result = responseJson.length !== 0;
         }
-    
-        return result;
     } else {
         
-        handleApiResponse(response);
+        await handleApiResponse(response);
     }
+
+    return result;
 }
 
 async function handlelFindByNameCorporateReason(nameCorporateReason) {
@@ -104,22 +109,23 @@ async function findByNameCorporateReason(nameCorporateReason) {
     const response = await fetch(`${url}/user/findNameCorporateReason?nameCorporateReason=${nameCorporateReason}`)
 
     if(response.ok) {
+        
+        const responseText = await response.text();
 
-        const responseJson = await response.json();
-
-        if(responseJson.length == 0) {
+        if(!responseText) { 
 
             result = false;
         } else {
 
-            result = true;
+            const responseJson = JSON.parse(responseText);
+            result = responseJson.length !== 0;
         }
-    
-        return result;
     } else {
         
-        handleApiResponse(response);
+        await handleApiResponse(response);
     }
+
+    return result;
 }
 
 async function handleCreateAccountAndToken(data) {
