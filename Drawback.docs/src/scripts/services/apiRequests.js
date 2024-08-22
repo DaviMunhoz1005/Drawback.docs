@@ -6,139 +6,135 @@ const url = 'http://localhost:8080';
 
 async function handleFindUser(username) {
 
-    const response = await findUser(username);
-    return response;
+    return await findUser(username);
 }
 
 async function findUser(username) {
     
-    let result;
+    let userExists;
     const response = await fetch(`${url}/user/findUser?username=${username}`);
     
     if(response.ok) {
         
         const responseText = await response.text();
 
-        if(!responseText) { 
+        if(responseText) { 
 
-            result = false;
+            
+            const responseJson = JSON.parse(responseText);
+            userExists = responseJson.length !== 0;
         } else {
 
-            const responseJson = JSON.parse(responseText);
-            result = responseJson.length !== 0;
+            userExists = false;
         }
     } else {
 
         await handleApiResponse(response);
     }
 
-    return result;
+    return userExists;
 }
 
 async function handleFindByCnpjCpf(cnpjCpf) {
 
-    const response = await findByCnpjCpf(cnpjCpf);
-    return response;
+    return await findByCnpjCpf(cnpjCpf);
 }
 
 async function findByCnpjCpf(cnpjCpf) {
     
-    let result;
+    let cnpjCpfExists;
     const response = await fetch(`${url}/user/findCnpjCpf?cnpjCpf=${cnpjCpf}`)
 
     if(response.ok) {
         
         const responseText = await response.text();
 
-        if(!responseText) { 
-
-            result = false;
-        } else {
+        if(responseText) { 
 
             const responseJson = JSON.parse(responseText);
-            result = responseJson.length !== 0;
+            cnpjCpfExists = responseJson.length !== 0;
+        } else {
+
+            cnpjCpfExists = false;
         }
     } else {
         
         await handleApiResponse(response);
     }
 
-    return result;
+    return cnpjCpfExists;
 }
 
 async function handleFindByCnae(cnae) {
     
-    const response = await findByCnae(cnae);
-    return response;
+    return await findByCnae(cnae);
 }
 
 async function findByCnae(cnae) {
     
-    let result;
+    let cnaeExists;
     const response = await fetch(`${url}/user/findCnae?cnae=${cnae}`)
 
     if(response.ok) {
         
         const responseText = await response.text();
 
-        if(!responseText) { 
-
-            result = false;
-        } else {
+        if(responseText) { 
 
             const responseJson = JSON.parse(responseText);
-            result = responseJson.length !== 0;
+            cnaeExists = responseJson.length !== 0;
+        } else {
+
+            cnaeExists = false;
         }
     } else {
         
         await handleApiResponse(response);
     }
 
-    return result;
+    return cnaeExists;
 }
 
 async function handlelFindByNameCorporateReason(nameCorporateReason) {
     
-    const response = await findByNameCorporateReason(nameCorporateReason);
-    return response;
+    return await findByNameCorporateReason(nameCorporateReason);
 }
 
 async function findByNameCorporateReason(nameCorporateReason) {
     
-    let result;
+    let nameCorporateReasonExists;
     const response = await fetch(`${url}/user/findNameCorporateReason?nameCorporateReason=${nameCorporateReason}`)
 
     if(response.ok) {
         
         const responseText = await response.text();
 
-        if(!responseText) { 
-
-            result = false;
-        } else {
+        if(responseText) { 
 
             const responseJson = JSON.parse(responseText);
-            result = responseJson.length !== 0;
+            nameCorporateReasonExists = responseJson.length !== 0;
+        } else {
+
+            nameCorporateReasonExists = false;
         }
     } else {
         
         await handleApiResponse(response);
     }
 
-    return result;
+    return nameCorporateReasonExists;
 }
 
 async function handleCreateAccountAndToken(data) {
 
-    const response = await createUser(data);
-    const dataForToken = getUsernameAndPassword(data);
-    await handleTakeUserToken(dataForToken);
-    return response;
+    const userCreated = await createUser(data);
+    await handleTakeUserToken(getUsernameAndPassword(data));
+    return userCreated;
 }
 
 async function createUser(data) {
 
-    let result;
+    let userCreated;
     const response = await fetch(`${url}/user/create`, {
         method: 'POST',
         headers: {
@@ -150,13 +146,13 @@ async function createUser(data) {
     
     if(response.ok) {
 
-        result = true;
+        userCreated = true;
     } else {
 
-        result = false;
+        userCreated = false;
     }
 
-    return result;
+    return userCreated;
 }
 
 function getUsernameAndPassword(data) {
@@ -171,14 +167,15 @@ async function handleTakeUserToken(data) {
 
     try {
 
+        const tokenExists = false;
         const token = await takeUserToken(data);
-        if(!token) {
+        if(token) {
 
-            return false;
+            localStorage.setItem("authToken", JSON.stringify(token));
+            return !tokenExists;
         }
         
-        localStorage.setItem("authToken", JSON.stringify(token));
-        return true;
+        return tokenExists;
     } catch(error) {
 
         console.error("Erro ao criar token de acesso:", error.message);
@@ -216,7 +213,6 @@ async function takeUserToken(data) {
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -224,9 +220,8 @@ async function handleTakeUserTokenButton(data) {
 
     try {
 
-        const dataForToken = getUsernameAndPassword(data);
-        const response = await handleTakeUserToken(dataForToken);
-        return response;
+        const tokenExists = await handleTakeUserToken(getUsernameAndPassword(data));
+        return tokenExists;
     } catch(error) {
 
         console.error("Erro ao processar a requisição:", error.message);
@@ -273,23 +268,28 @@ async function deleteUser() {
 
     try {
 
-        const token = getToken();
         const response = await fetch(`${url}/user`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             }
         });
 
-        handleApiResponse(response);
+        if(response.ok) {
 
-        return await response.json();
+            return await response.json();
+        } else {
+
+            handleApiResponse(response);
+        }
+        
+
+        
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -309,31 +309,32 @@ async function listOfUsersToLink() {
 
     try {
         
-        const token = getToken();
         const response = await fetch(`${url}/user/allowUserLink`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             }
         });
 
-        handleApiResponse(response);
+        if(response.ok) {
 
-        return await response.json();
+            return await response.json();
+        } else {
+
+            handleApiResponse(response);
+        }
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
 async function handleAllowEmployee() {
     
     try {
-
-        const usernameEmployee = document.getElementById("employeeName").value;        
-        const employee = await allowEmployee(usernameEmployee);
+    
+        const employee = await allowEmployee(document.getElementById("employeeName").value);
         console.log(employee);
     } catch(error) {
         
@@ -345,23 +346,25 @@ async function allowEmployee(username) {
     
     try {
 
-        const token = getToken();
         const response = await fetch(`${url}/user/allowUserLink?usernameToAllowLinking=${username}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             }
         });
         
-        handleApiResponse(response);
+        if(response.ok) {
 
-        return await response.json();
+            return await response.json();
+        } else {
+
+            handleApiResponse(response);
+        }        
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -373,8 +376,7 @@ async function handleListDocuments() {
     
     try {
         
-        const documentList = await listDocuments();
-        return documentList;
+        return await listDocuments();
     } catch(error) {
 
         console.error("Erro ao listar documentos do usuário:", error.message);
@@ -385,13 +387,12 @@ async function listDocuments() {
     
     try {
         
-        const token = getToken();
         const response = await fetch(`${url}/document/find`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             }
         });
 
@@ -405,7 +406,6 @@ async function listDocuments() {
     } catch(error) {
         
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -413,9 +413,7 @@ async function handleListDocumentsByName() {
     
     try {
         
-        const documentName = document.getElementById("nameDocument").value; 
-        const documentListByName = await listDocumentsByName(documentName);
-        
+        const documentListByName = await listDocumentsByName(document.getElementById("nameDocument").value);
         console.log(documentListByName);
     } catch(error) {
 
@@ -427,23 +425,25 @@ async function listDocumentsByName(documentName) {
     
     try {
         
-        const token = getToken();
         const response = await fetch(`${url}/document/findName?documentName=${documentName}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             }
         });
 
-        handleApiResponse(response);
+        if(response.ok) {
 
-        return await response.json();
+            return await response.json();
+        } else {
+
+            handleApiResponse(response);
+        } 
     } catch(error) {
         
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -467,7 +467,6 @@ async function sendDocument(userDocument, validityDocument) {
 
     try {
 
-        const token = getToken();
         const formData = new FormData();
 
         formData.append('document', userDocument);
@@ -479,18 +478,21 @@ async function sendDocument(userDocument, validityDocument) {
         const response = await fetch(`${url}/document/upload`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}` 
+                'Authorization': `Bearer ${getToken()}` 
             },
             body: formData
         });
         
-        handleApiResponse(response);
+        if(response.ok) {
 
-        return await response.json();
+            return await response.json();
+        } else {
+
+            handleApiResponse(response);
+        } 
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -498,13 +500,11 @@ async function handleUpdateDocument() {
 
     try {
 
-        const userDocumentUpload = document.getElementById("userDocumentUpload").files[0]; 
-
         const validityDocument = {
             validity: getFormattedDate("validityUpload")
         };
         
-        const documentUploaded = await updateDocument(userDocumentUpload, validityDocument);
+        const documentUploaded = await updateDocument(document.getElementById("userDocumentUpload").files[0], validityDocument);
         console.log(documentUploaded);
     } catch(error) {
 
@@ -516,7 +516,6 @@ async function updateDocument(userDocument, validityDocument) {
 
     try {
 
-        const token = getToken();
         const formData = new FormData();
 
         formData.append('document', userDocument);
@@ -528,18 +527,21 @@ async function updateDocument(userDocument, validityDocument) {
         const response = await fetch(`${url}/document/upload`, {
             method: 'PUT',
             headers: {
-                'Authorization': `Bearer ${token}` 
+                'Authorization': `Bearer ${getToken()}` 
             },
             body: formData
         });
         
-        handleApiResponse(response);
+        if(response.ok) {
 
-        return await response.json();
+            return await response.json();
+        } else {
+
+            handleApiResponse(response);
+        } 
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -558,10 +560,8 @@ function getFormattedDate(dateInput) {
 async function handleUsePreviousVersion() {
     
     try {
-        
-        const documentName = document.getElementById("nameDocumentPreviousVersion").value;
 
-        await usePreviousVersion(documentName);
+        await usePreviousVersion(document.getElementById("nameDocumentPreviousVersion").value);
         console.log("Funcionou");
     } catch(error) {
 
@@ -573,19 +573,20 @@ async function usePreviousVersion(documentName) {
     
     try {
         
-        const token = getToken();
         const response = await fetch(`${url}/document/previousVersion?documentName=${documentName}`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             }
         });
 
-        handleApiResponse(response);
+        if(!response.ok) {
+
+            handleApiResponse(response);
+        }
     } catch(error) {
         
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -593,8 +594,7 @@ async function handleDeleteDocuments() {
     
     try {
         
-        const documentName = document.getElementById("nameDocumentToDelete").value; 
-        await deleteDocuments(documentName);
+        await deleteDocuments(document.getElementById("nameDocumentToDelete").value);
         console.log("Funcionou");
     } catch(error) {
 
@@ -606,19 +606,20 @@ async function deleteDocuments(documentName) {
     
     try {
         
-        const token = getToken();
         const response = await fetch(`${url}/document?documentName=${documentName}`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             }
         });
 
-        handleApiResponse(response);
+        if(response.ok) {
+
+            handleApiResponse(response);
+        }
     } catch(error) {
         
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -626,8 +627,7 @@ async function handleDownloadDocument() {
 
     try {
 
-        const documentName = document.getElementById("nameDocumentDownload").value; 
-        await downloadDocument(documentName);
+        await downloadDocument(document.getElementById("nameDocumentDownload").value);
     } catch(error) {
 
         console.error("Erro ao Baixar documento:", error.message);
@@ -638,36 +638,35 @@ async function downloadDocument(documentName) {
 
     try {
 
-        const token = getToken();
         const response = await fetch(`${url}/document/download/${documentName}`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             }
         });
 
         handleApiResponse(response);
 
-        if (!response.ok) {
+        if (response.ok) {
+
+            const blob = await response.blob(); 
+            const blobUrl = window.URL.createObjectURL(blob); 
+
+            const link = document.createElement('a');
+            link.href = blobUrl; 
+            link.download = documentName; 
+            document.body.appendChild(link);
+            link.click(); 
+            document.body.removeChild(link); 
+
+            window.URL.revokeObjectURL(blobUrl); 
+        } else {
 
             throw new Error(`Erro na requisição: ${response.statusText}`);
         }
-
-        const blob = await response.blob(); 
-        const blobUrl = window.URL.createObjectURL(blob); 
-
-        const link = document.createElement('a');
-        link.href = blobUrl; 
-        link.download = documentName; 
-        document.body.appendChild(link);
-        link.click(); 
-        document.body.removeChild(link); 
-
-        window.URL.revokeObjectURL(blobUrl); 
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
-        throw error;
     }
 }
 
@@ -681,9 +680,6 @@ async function handleApiResponse(response) {
     console.log(`${errorData.status} - ${errorData.title} - ${errorData.cause}`);
     return errorData;
 }
-
-
-// TAKE TOKEN STORAGE IN THE 
 
 export { 
     handleFindUser, handleFindByCnpjCpf, handleFindByCnae, handlelFindByNameCorporateReason, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument, getToken, getExpiryToken
