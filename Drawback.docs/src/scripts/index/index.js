@@ -1,21 +1,69 @@
 import { handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, getExpiryToken } from "./../services/apiRequests.js";
 
-const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-    }
-});
+function convertDateTimeToMillis(dateTimeString) {
+    
+    const [datePart, timePart] = dateTimeString.split(' ');
+    const [day, month, year] = datePart.split('/').map(Number);
+    const [hours, minutes, seconds] = timePart.split(':').map(Number);
 
-Toast.fire({
-    icon: "success",
-    title: "Login feito com sucesso!"
-});
+    return new Date(year, month - 1, day, hours, minutes, seconds).getTime();
+}
+
+function checkTokenFromUser() {
+
+    const expiryTime = getExpiryToken(); 
+
+    if(expiryTime == null) {
+
+        alertFromExpiresTokenException();
+    }
+
+    const currentTimeMillis = Date.now(); // Tempo atual em milissegundos
+    const expiryTimeMillis = convertDateTimeToMillis(expiryTime); // Expiry time convertido para milissegundos
+
+    if (expiryTimeMillis < currentTimeMillis) {
+
+        alertFromExpiresTokenException();
+    } else {
+        
+        alertFromTokenAccepted();
+    }
+}
+
+function alertFromExpiresTokenException() {
+
+    Swal.fire({
+        title: "Algo deu errado!",
+        text: "Faça login para acessar essa página.",
+        icon: "warning",
+        confirmButtonText: 'Ok'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.replace("/Drawback.docs/src/public/pages/otherPages/homepage.html");
+            throw new Error("Log in to access this page.");
+        }
+    });
+}
+
+function alertFromTokenAccepted() {
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
+    Toast.fire({
+        icon: "success",
+        title: "Login feito com sucesso!"
+    });
+}
 
 documentListFromUser();
 
@@ -27,6 +75,7 @@ document.getElementById("sendDocument").addEventListener('click', () => {
 
 async function documentListFromUser() {
 
+    checkTokenFromUser();
     const blockDocumentList = document.getElementById("separation1");
 
     try {

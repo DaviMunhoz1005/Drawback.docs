@@ -76,7 +76,6 @@ async function handleTakeUserToken(data) {
 
         const token = await takeUserToken(data);
         localStorage.setItem("authToken", JSON.stringify(token));
-        console.log(token);
     } catch(error) {
 
         console.error("Erro ao criar token de acesso:", error.message);
@@ -96,9 +95,13 @@ async function takeUserToken(data) {
             body: data
         });
 
-        handleApiResponse(response);
-        
-        return await response.json();
+        if(response.ok) {
+
+            return await response.json();
+        } else {
+
+            handleApiResponse(response);
+        }
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
@@ -110,7 +113,6 @@ async function handleTakeUserTokenButton(data) {
 
     try {
 
-        
         const dataForToken = getUsernameAndPassword(data);
         await handleTakeUserToken(dataForToken);
     } catch(error) {
@@ -127,6 +129,18 @@ function getToken() {
 
         const tokenObject = JSON.parse(tokenString);
         return tokenObject.accessToken;
+    }
+    return null; 
+}
+
+function getExpiryToken() {
+
+    const tokenString = localStorage.getItem("authToken");
+    
+    if(tokenString) {
+
+        const tokenObject = JSON.parse(tokenString);
+        return tokenObject.expiresIn;
     }
     return null; 
 }
@@ -269,9 +283,13 @@ async function listDocuments() {
             }
         });
 
-        handleApiResponse(response);
+        if(response.ok) {
 
-        return await response.json();
+            return await response.json();
+        } else {
+
+            handleApiResponse(response);
+        } 
     } catch(error) {
         
         console.error("Erro ao realizar a requisição:", error.message);
@@ -556,5 +574,5 @@ async function handleApiResponse(response) {
 // TAKE TOKEN STORAGE IN THE 
 
 export { 
-    handleFindUser, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument, getToken
+    handleFindUser, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument, getToken, getExpiryToken
 };
