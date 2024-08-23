@@ -10,6 +10,7 @@ documentListFromUser();
 
 async function documentListFromUser() {
 
+    let totalFilesFromUser, filesWithValidityOk = 0;
     checkTokenFromUser();
     const blockDocumentList = document.getElementById("separation1");
 
@@ -26,9 +27,11 @@ async function documentListFromUser() {
 
         if (listDocuments.length === 0) {
             
+            totalFilesFromUser = 0;
             createAddNewFileHtml();
         } else {
             
+            totalFilesFromUser = listDocuments.length;
             showFilesFromUserHtml(listDocuments);
         }
     } catch(error) {
@@ -67,6 +70,11 @@ async function documentListFromUser() {
 
         blockDocumentList.appendChild(docHtml);
 
+        if(new Date(documentUser.validity).getTime() >= Date.now()) {
+            
+            filesWithValidityOk++;
+        }
+
         if((index + 1) % 4 === 0) {
             const barHtml = `
                 <div class="barDesign"><hr></div>
@@ -77,7 +85,26 @@ async function documentListFromUser() {
     });
 
     createAddNewFileHtml();
-}
+    }
+
+    function progressBar() {
+
+        let totalAmount, progress, number, size, counter; 
+    
+        totalAmount = filesWithValidityOk; 
+        progress = totalFilesFromUser;
+    
+        number = document.getElementById("number");
+    
+        size = (472 / progress);
+    
+        for (counter = 0; counter < totalAmount; counter++);
+            
+        number.innerHTML = counter + "/" + progress;
+        document.body.style.setProperty('--size', 472 - size * totalAmount);
+    }
+    
+    progressBar();
 }
 
 function checkTokenFromUser() {
@@ -174,25 +201,6 @@ async function addNewDocument() {
         console.error('Erro ao adicionar um novo documento:', error);
     }
 }
-
-function progressBar() {
-
-    let totalAmount, progress, number, size, counter; 
-
-    totalAmount = 1;
-    progress = 7;
-
-    number = document.getElementById("number");
-
-    size = (472 / progress);
-
-    for (counter = 0; counter < totalAmount; counter++);
-        
-    number.innerHTML = counter + "/" + progress;
-    document.body.style.setProperty('--size', 472 - size * totalAmount);
-}
-
-progressBar();
 
 let y = 0;
 
