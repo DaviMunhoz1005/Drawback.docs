@@ -30,7 +30,6 @@ async function documentListFromUser() {
         } else {
             
             showFilesFromUserHtml(listDocuments);
-            createAddNewFileHtml();
         }
     } catch(error) {
 
@@ -45,31 +44,40 @@ async function documentListFromUser() {
     
         docHtml.innerHTML = `
             <a class="designLink1">Adicionar</a>
-            <button class="add" >+</button></div>
+            <button class="add">+</button>
         `;
-    
+
         blockDocumentList.appendChild(docHtml);
     }
     
     function showFilesFromUserHtml(array) {
-    
-        array.forEach(documentUser => {
-    
-            const docHtml = document.createElement("div");
-            docHtml.className = "square"; 
-    
-            docHtml.innerHTML = `
-                <a class="designLink1">${documentUser.name} (${documentUser.extension})</a>
-                <p>Criação: ${documentUser.creation}</p>
-                <button>Baixar</button>
-                <button>Excluir</button>
-                <button>Editar</button>
-                <button>Usar Versão Anterior</button>
+    array.forEach((documentUser, index) => {
+
+        const docHtml = document.createElement("div");
+        docHtml.className = "square"; 
+
+        docHtml.innerHTML = `
+            <a class="designLink1">${documentUser.name} (${documentUser.extension})</a>
+            <p>Criação: ${documentUser.creation}</p>
+            <button>Baixar</button>
+            <button>Excluir</button>
+            <button>Editar</button>
+            <button>Usar Versão Anterior</button>
+        `;
+
+        blockDocumentList.appendChild(docHtml);
+
+        if((index + 1) % 4 === 0) {
+            const barHtml = `
+                <div class="barDesign"><hr></div>
+                <div class="siteSeparation"></div>
             `;
-    
-            blockDocumentList.appendChild(docHtml);
-        });
-    }
+            blockDocumentList.insertAdjacentHTML('beforeend', barHtml);
+        }
+    });
+
+    createAddNewFileHtml();
+}
 }
 
 function checkTokenFromUser() {
@@ -133,7 +141,7 @@ function alertFromTokenAccepted() {
 
     Toast.fire({
         icon: "success",
-        title: "Login feito com sucesso!"
+        title: "Conectado com sucesso!"
     });
 }
 
@@ -169,13 +177,12 @@ async function addNewDocument() {
 
 function progressBar() {
 
-    let totalAmount, progress, number, amount, size, counter; 
+    let totalAmount, progress, number, size, counter; 
 
     totalAmount = 1;
     progress = 7;
 
     number = document.getElementById("number");
-    amount = document.querySelectorAll(".amountSquares");
 
     size = (472 / progress);
 

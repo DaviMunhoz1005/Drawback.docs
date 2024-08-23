@@ -250,7 +250,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    height: 108vh;
+    height: 100%;
     border: 1px solid rgba(133, 133, 133, 0.589);
     background-color: white;
     padding: 20px;
@@ -272,16 +272,19 @@ body {
     display: flex;
     justify-content: space-around;
     margin-bottom: 70px;
+    flex-wrap: wrap;
 }
 
 .square { 
     font-weight: 100;
-    margin: 0px auto;
-    width: 245px;
+    margin: 0px;
+    margin-bottom: 0px;
+    width: calc(25% - 20px); 
     height: 160px;
     background-color: #fffdf9;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .designLink1 {
@@ -294,10 +297,7 @@ body {
     width: 1160px;
     height: 0px;
     border: 2px solid #dbdde2;
-    margin-top: -40px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 40px auto;
     border-radius: 5px;
 }
 
@@ -330,7 +330,7 @@ body {
     display: flex;
     margin-left: 40px;
     font-weight: 0;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .outer {
