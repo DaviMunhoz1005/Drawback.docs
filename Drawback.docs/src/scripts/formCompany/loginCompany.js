@@ -1,13 +1,18 @@
 import { handleTakeUserTokenButton } from "./../services/apiRequests.js"; 
 
-const loginButton = document.getElementById("login");
-
-loginButton.addEventListener('click', async function(event) {
-        
+document.getElementById("login").addEventListener('click', async function(event) {
+    
     event.preventDefault();
     const formData = getFormData(); 
-    await handleTakeUserTokenButton(formData);  
-    window.location.replace("/Drawback.docs/src/public/index.html");
+    const tokenCreated = await handleTakeUserTokenButton(formData);  
+    
+    if(tokenCreated) {
+
+        window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
+    } else {
+
+        alertFromUsernameOrPasswordInvalid();
+    }
 });
 
 function getFormData() {
@@ -16,6 +21,19 @@ function getFormData() {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value
     }
+}
+
+function alertFromUsernameOrPasswordInvalid() {
+    
+    Swal.fire({
+        title: "Algo deu errado!",
+        text: "Usuário ou Senha inválidos.",
+        icon: "error",
+        confirmButtonText: "Ok"
+    }).then(() => {
+        console.error("Invalid username or password.");
+        return false;
+    });
 }
 
 let x = 0;

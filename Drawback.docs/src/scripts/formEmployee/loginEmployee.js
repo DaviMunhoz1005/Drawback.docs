@@ -1,17 +1,40 @@
-document.addEventListener('DOMContentLoaded', () => {
+import { handleTakeUserTokenButton } from "./../services/apiRequests.js"; 
+
+document.getElementById("login").addEventListener('click', async function(event) {
     
-    const loginButton = document.getElementById("login");
+    event.preventDefault();
+    const formData = getFormData(); 
+    const tokenCreated = await handleTakeUserTokenButton(formData);  
+    
+    if(tokenCreated) {
 
-    loginButton.addEventListener('click', function(event) {
-        event.preventDefault(); // não atualiza a página quando é clicado o botão
+        window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
+    } else {
 
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        console.log(username);
-        console.log(password);
-    });
+        alertFromUsernameOrPasswordInvalid();
+    }
 });
+
+function getFormData() {
+
+    return {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value
+    }
+}
+
+function alertFromUsernameOrPasswordInvalid() {
+    
+    Swal.fire({
+        title: "Algo deu errado!",
+        text: "Usuário ou Senha inválidos.",
+        icon: "error",
+        confirmButtonText: "Ok"
+    }).then(() => {
+        console.error("Invalid username or password.");
+        return false;
+    });
+}
 
 let x = 0;
 

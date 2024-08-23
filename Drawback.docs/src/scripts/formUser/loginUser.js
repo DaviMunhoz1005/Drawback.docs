@@ -8,10 +8,10 @@ document.getElementById("login").addEventListener('click', async function(event)
     
     if(tokenCreated) {
 
-        window.location.replace("/Drawback.docs/src/public/index.html");
+        window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
     } else {
 
-        alertFromUserOrPasswordInvalid();
+        alertFromUsernameOrPasswordInvalid();
     }
 });
 
@@ -23,7 +23,7 @@ function getFormData() {
     }
 }
 
-function alertFromUserOrPasswordInvalid() {
+function alertFromUsernameOrPasswordInvalid() {
     
     Swal.fire({
         title: "Algo deu errado!",

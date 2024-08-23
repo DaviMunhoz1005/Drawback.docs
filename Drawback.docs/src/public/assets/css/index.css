@@ -25,10 +25,7 @@ header {
 
 .options a {
     color: white;
-}
-
-#i {
-    margin-left: 0px;
+    margin-left: -1px;
 }
 
 .options {
@@ -55,21 +52,29 @@ header {
     border: 1px solid #fbfafb;
 }
 
+.barDesign9 hr {
+    margin-top: 25px;
+    width: 80px; 
+    position: absolute;
+    margin-left: -29px;
+    border: 1px solid #242223;
+}
+
 button:focus {
     outline: none;    
 }
 
+
 #doc {
     margin-left: 10px;
-    color: #eee5d1;
 }
 
 .barDesign7 hr {
     margin-top: 25px;
-    width: 117px; 
+    width: 120px; 
     position: absolute;
     margin-left: -122px;
-    border: 1px solid #eee5d1;;
+    border: 1px solid #242223;
 }
 
 .barDesign8 hr {
@@ -236,13 +241,16 @@ nav {
     margin-left: 40px;
 }
 
+#i {
+    margin-left: 0px;
+}
+
 /* header */
 
 body {
     background-color: #fbfafb;
     text-align: center;
     color: black;
-    overflow-x: hidden;
 }
 
 .centralSquareToPlaceContent {
@@ -274,11 +282,11 @@ body {
     margin-bottom: 70px;
 }
 
-.square { 
+.square1, .square2, .square3, .square4, .square5, .square6, .square7, .square8 { 
     font-weight: 100;
     margin: 0px auto;
-    width: 245px;
-    height: 160px;
+    width: 240px;
+    height: 150px;
     background-color: #fffdf9;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
@@ -507,98 +515,6 @@ svg {
     display: flex;
 }
 
-.Others {
-    color: black;
-}
-
-.modal {
-    display: none;
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.5);  
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-body {
-    margin: 20px 0;
-}
-
-.modal-body input,
-.modal-body button {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.modal-footer {
-    text-align: right;
-}
-
-.modal-footer button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #5cb85c;
-    color: white;
-    cursor: pointer;
-    /*Não sei como fica melhor            
-    background-color: rgb(0, 0, 0);*/
-}
-
-.modal-footer button.cancel {
-    background-color: #d9534f;
-    color: white;
-    cursor: pointer;
-    /*Não sei como fica melhor
-    background-color: rgb(0, 0, 0);*/
-}
-.text-modal1{
-
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-right: 220px;
-}
-.text-modal2{
-
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-right: 185px;
-}
-
-.add {
-    margin-top: -20px;
-    font-size: 70px;
-    opacity: 0.3;
-}
-
 /* footer */
 
 footer {
@@ -669,3 +585,64 @@ footer {
         padding: 3rem 2rem;
     }
 }
+
+
+/* footer */
+
+.Others {
+    color: black;
+}
+
+.modal{
+    position: fixed;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    transform: scale(1.1);
+    opacity: 0;
+    z-index: 3;
+    visibility: hidden;
+    transition: visibility 0.25s ease-in-out, tranform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+
+}
+
+.modal-content{
+    height: 500px;
+    background-color: white;
+    padding: 16px 24px;
+    width: 550px;
+    border-radius: 0.5rem;
+    
+}
+
+.span{
+    float: right;
+    width: 30px;
+    cursor: pointer;
+    background-color: lightblue;
+    text-align: center;
+    line-height: 24px;
+}
+
+.span:hover{
+    background-color: darkgray;
+
+
+
+}
+.show-modal{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+}
+
+
+
+
+

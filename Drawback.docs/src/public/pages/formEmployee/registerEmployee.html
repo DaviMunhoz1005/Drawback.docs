@@ -6,7 +6,8 @@
     <title>Cadastro Funcionário</title>
     <link rel="stylesheet" href="../../../public/assets/css/formEmployee/registerEmployee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../../../scripts/formEmployee/loginEmployee.js"></script>
+    <script type="module" src="../../../scripts/formEmployee/registerEmployee.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" href="../../assets/images/logopretomini.png">
 </head>
 <body>
@@ -15,13 +16,13 @@
             <ul class="listMenu">
                 <div class="websiteLogo">
 
-                    <a href="../otherPages/homepage.html"><span class="title1">D</span><img id="logo" src="../../assets/images/logo.png" alt="logoImg"><span class="title2">ocs</span></a>
+                    <a href="../../index.html"><span class="title1">D</span><img id="logo" src="../../assets/images/logo.png" alt="logoImg"><span class="title2">ocs</span></a>
 
                 </div>
             <div class="group">
                 <div class="groupText">
                     <span class="links">
-                        <div class="barDesign3"><hr></div><li><a class="hv" id="doc" href="../../index.html">Documentos</a></li>
+                        <div class="barDesign3"><hr></div><li><a class="hv" id="doc" href="../otherPages/documents.html">Documentos</a></li>
                         <div class="barDesign7" id="w"><hr></div>
                         <div class="barDesign8"><hr></div>
                             <li><a class="hv" href="../otherPages/FAQ.html" id="mid">Dúvidas</a></li><div class="barDesign3"><hr></div>
@@ -115,15 +116,10 @@
                                 <br> 
 
                                 <div class="absolute5">
-                                    <span class="telephoneMover"><input class="inpt" type="text" name="cnpj" placeholder="CNPJ *" id="cnpj"></span>
+                                    <span class="telephoneMover"><input class="inpt" type="text" name="cnpj" placeholder="CNPJ da Pessoa Jurídica *" id="cnpj"></span>
                                 </div>
                                 <br> 
                             </div>  
-                                <div class="sameLine">
-                                    <input class="nt" type="checkbox" id="manteracesso">
-                                    <label class="linear" for="manteracesso"> Lembrar de mim</label>
-                                </div>
-                                <br>
                                 <button class="button" id="register">Cadastrar</button> 
                         </div>
                         <br>

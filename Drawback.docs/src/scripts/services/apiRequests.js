@@ -150,6 +150,7 @@ async function createUser(data) {
     } else {
 
         userCreated = false;
+        await handleApiResponse(response);
     }
 
     return userCreated;
@@ -208,7 +209,7 @@ async function takeUserToken(data) {
             return false;
         } else {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         }
     } catch(error) {
 
@@ -282,11 +283,8 @@ async function deleteUser() {
             return await response.json();
         } else {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         }
-        
-
-        
     } catch(error) {
 
         console.error("Erro ao realizar a requisição:", error.message);
@@ -322,7 +320,7 @@ async function listOfUsersToLink() {
             return await response.json();
         } else {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         }
     } catch(error) {
 
@@ -360,7 +358,7 @@ async function allowEmployee(username) {
             return await response.json();
         } else {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         }        
     } catch(error) {
 
@@ -387,6 +385,7 @@ async function listDocuments() {
     
     try {
         
+        let isNotEmployee;
         const response = await fetch(`${url}/document/find`, {
             method: 'GET',
             headers: {
@@ -401,7 +400,8 @@ async function listDocuments() {
             return await response.json();
         } else {
 
-            handleApiResponse(response);
+            isNotEmployee = await handleApiResponse(response);
+            return isNotEmployee;
         } 
     } catch(error) {
         
@@ -439,7 +439,7 @@ async function listDocumentsByName(documentName) {
             return await response.json();
         } else {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         } 
     } catch(error) {
         
@@ -488,7 +488,7 @@ async function sendDocument(userDocument, validityDocument) {
             return await response.json();
         } else {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         } 
     } catch(error) {
 
@@ -537,7 +537,7 @@ async function updateDocument(userDocument, validityDocument) {
             return await response.json();
         } else {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         } 
     } catch(error) {
 
@@ -582,7 +582,7 @@ async function usePreviousVersion(documentName) {
 
         if(!response.ok) {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         }
     } catch(error) {
         
@@ -615,7 +615,7 @@ async function deleteDocuments(documentName) {
 
         if(response.ok) {
 
-            handleApiResponse(response);
+            await handleApiResponse(response);
         }
     } catch(error) {
         
@@ -645,7 +645,7 @@ async function downloadDocument(documentName) {
             }
         });
 
-        handleApiResponse(response);
+        await handleApiResponse(response);
 
         if (response.ok) {
 
@@ -677,8 +677,8 @@ async function downloadDocument(documentName) {
 async function handleApiResponse(response) {
 
     const errorData = await response.json();
-    console.log(`${errorData.status} - ${errorData.title} - ${errorData.cause}`);
-    return errorData;
+    console.log(`${errorData.statusCode} - ${errorData.title} - ${errorData.cause}`);
+    return errorData.statusCode != 400;
 }
 
 export { 

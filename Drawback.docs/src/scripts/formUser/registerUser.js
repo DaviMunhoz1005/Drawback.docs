@@ -7,7 +7,7 @@ document.getElementById("register").addEventListener('click', async function(eve
 
     if(await handleCreateAccountAndToken(formData)) {
 
-        window.location.replace("/Drawback.docs/src/public/index.html");
+        window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
     }
 });
 
@@ -16,17 +16,17 @@ async function getFormData() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     const checkPassword = document.getElementById("checkPassword").value;
-    const cnpjCpf = document.getElementById("cpf").value;
+    const cpf = document.getElementById("cpf").value;
 
     if(await checkUsernameAlreadyExists(username) && 
     checkPasswordExistOrNull(password, checkPassword) && 
-    await checkCnpjCpfAlreadyExists(cnpjCpf)) {
+    await checkCpfAlreadyExists(cpf)) {
 
         return {
             username: username,
             email: document.getElementById("email").value,
             password: password,
-            cnpjCpf: cnpjCpf
+            cnpjCpf: cpf
         };
     }
 }
@@ -97,9 +97,9 @@ function alertFromCheckPasswordException() {
     });
 }
 
-async function checkCnpjCpfAlreadyExists(cnpjCpf) {
+async function checkCpfAlreadyExists(cpf) {
     
-    const cpfExists = await handleFindByCnpjCpf(cnpjCpf);
+    const cpfExists = await handleFindByCnpjCpf(cpf);
     
     if(cpfExists) {
         
