@@ -13,6 +13,7 @@ async function documentListFromUser() {
     let totalFilesFromUser, filesWithValidityOk = 0;
     checkTokenFromUser();
     const blockDocumentList = document.getElementById("separation1");
+    const progressionText = document.getElementById("progressionText");
 
     try {
         
@@ -51,48 +52,59 @@ async function documentListFromUser() {
         `;
 
         blockDocumentList.appendChild(docHtml);
+
+        document.getElementById("wholeArea").style.display = "none";
+        progressionText.innerHTML = "Adicione um Documento para começar a acompanhar seu progresso";
+        progressionText.style.display = "inline"
     }
     
     function showFilesFromUserHtml(array) {
-    array.forEach((documentUser, index) => {
 
-        const docHtml = document.createElement("div");
-        docHtml.className = "square"; 
+        array.forEach((documentUser, index) => {
 
-        docHtml.innerHTML = `
-            <a class="designLink1">${documentUser.name} (${documentUser.extension})</a>
-            <p>Criação: ${documentUser.creation}</p>
-            <button>Baixar</button>
-            <button>Excluir</button>
-            <button>Editar</button>
-            <button>Usar Versão Anterior</button>
-        `;
+            const docHtml = document.createElement("div");
+            docHtml.className = "square"; 
 
-        blockDocumentList.appendChild(docHtml);
-
-        if(new Date(documentUser.validity).getTime() >= Date.now()) {
-            
-            filesWithValidityOk++;
-        }
-
-        if((index + 1) % 4 === 0) {
-            const barHtml = `
-                <div class="barDesign"><hr></div>
-                <div class="siteSeparation"></div>
+            docHtml.innerHTML = `
+                <a class="designLink1">${documentUser.name} (${documentUser.extension})</a>
+                <p>Criação: ${documentUser.creation}</p>
+                <button>Baixar</button>
+                <button>Excluir</button>
+                <button>Editar</button>
+                <button>Usar Versão Anterior</button>
             `;
-            blockDocumentList.insertAdjacentHTML('beforeend', barHtml);
-        }
-    });
 
-    createAddNewFileHtml();
+            blockDocumentList.appendChild(docHtml);
+
+            if(new Date(documentUser.validity).getTime() >= Date.now()) {
+                
+                filesWithValidityOk++;
+            }
+
+            if((index + 1) % 4 === 0) {
+
+                const barHtml = `
+                    <div class="barDesign"><hr></div>
+                    <div class="siteSeparation"></div>
+                `;
+                blockDocumentList.insertAdjacentHTML('beforeend', barHtml);
+            }
+        });
+
+        createAddNewFileHtml();
+
+        progressionText.innerHTML = "Progresso";
+        progressionText.style.display = "flex"
+        progressCircle();
     }
 
-    function progressBar() {
+    function progressCircle() {
 
+        document.getElementById("wholeArea").style.display = "";
         let totalAmount, progress, number, size, counter; 
     
-        totalAmount = filesWithValidityOk; 
-        progress = totalFilesFromUser;
+        totalAmount = filesWithValidityOk | 0; 
+        progress = totalFilesFromUser | 0;
     
         number = document.getElementById("number");
     
@@ -102,9 +114,28 @@ async function documentListFromUser() {
             
         number.innerHTML = counter + "/" + progress;
         document.body.style.setProperty('--size', 472 - size * totalAmount);
+
+        updateProgressBar();
     }
-    
-    progressBar();
+
+    function updateProgressBar(array) {
+        
+        const nameDocumentProgressBar = document.getElementById("firstDocument");
+        const progressBar = document.getElementById("pb1");
+        const valueProgressBar = document.getElementById("firstProgress").value;
+
+        //nameDocumentProgressBar.innerHTML = array[0].name; 
+
+        if(valueProgressBar == 1) {
+
+            progressBar.style.backgroundColor = "#98a5eb";
+            document.getElementById("a1").innerHTML = "(1/1)";
+        } else {
+
+            progressBar.style.backgroundColor = "#e4e6f2";
+            document.getElementById("a1").innerHTML = "(0/1)";
+        }
+    }
 }
 
 function checkTokenFromUser() {
