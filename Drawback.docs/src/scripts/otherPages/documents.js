@@ -11,33 +11,35 @@ documentListFromUser();
 async function documentListFromUser() {
 
     let totalFilesFromUser, filesWithValidityOk = 0;
-    checkTokenFromUser();
     const blockDocumentList = document.getElementById("separation1");
     const progressionText = document.getElementById("progressionText");
 
-    try {
+    if(checkTokenFromUser()) {
+
+        try {
         
-        const listDocuments = await handleListDocuments();
-        
-        if(!listDocuments) {
-
-            alertFromEmployeeDoesNotLinked();
-        }
-
-        blockDocumentList.innerHTML = '';
-
-        if (listDocuments.length === 0) {
+            const listDocuments = await handleListDocuments();
             
-            totalFilesFromUser = 0;
-            createAddNewFileHtml();
-        } else {
-            
-            totalFilesFromUser = listDocuments.length;
-            showFilesFromUserHtml(listDocuments);
+            if(!listDocuments) {
+    
+                alertFromEmployeeDoesNotLinked();
+            }
+    
+            blockDocumentList.innerHTML = '';
+    
+            if (listDocuments.length === 0) {
+                
+                totalFilesFromUser = 0;
+                createAddNewFileHtml();
+            } else {
+                
+                totalFilesFromUser = listDocuments.length;
+                showFilesFromUserHtml(listDocuments);
+            }
+        } catch(error) {
+    
+            console.error('Erro ao carregar documentos:', error);
         }
-    } catch(error) {
-
-        console.error('Erro ao carregar documentos:', error);
     }
 
     function createAddNewFileHtml() {
@@ -120,7 +122,7 @@ async function documentListFromUser() {
 
     function updateProgressBar(array) {
         
-        const nameDocumentProgressBar = document.getElementById("firstDocument");
+        // const nameDocumentProgressBar = document.getElementById("firstDocument");
         const progressBar = document.getElementById("pb1");
         const valueProgressBar = document.getElementById("firstProgress").value;
 
@@ -140,22 +142,27 @@ async function documentListFromUser() {
 
 function checkTokenFromUser() {
 
-    const expiryTime = getExpiryToken(); 
+    const expiryTime = getExpiryToken();     
 
     if(expiryTime == null) {
 
         alertFromExpiresTokenException();
+        return false;
     }
 
     const currentTimeMillis = Date.now(); 
     const expiryTimeMillis = convertDateTimeToMillis(expiryTime); 
 
-    if (expiryTimeMillis < currentTimeMillis) {
+    console.log(currentTimeMillis);
+    console.log(expiryTimeMillis);
+    if (currentTimeMillis > expiryTimeMillis) {
 
         alertFromExpiresTokenException();
+        return false;
     } else {
         
         alertFromTokenAccepted();
+        return true;
     }
 }
 
