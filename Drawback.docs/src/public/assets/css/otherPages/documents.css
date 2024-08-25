@@ -389,7 +389,7 @@ circle {
     stroke-dashoffset: var(--size);
 }
 
-svg {
+.circle {
     position: relative;
     display: flex;
     transform: rotate(263deg);
@@ -402,7 +402,7 @@ svg {
     margin-left: 70px;
 }
 
-.circle {
+.circleProgress {
     transform: scale(1.3);
 }
 
@@ -518,25 +518,36 @@ svg {
 .Others {
     color: black;
 }
-
+/* Estilos para o input de arquivo */
 input[type="file"] {
     position: relative;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 input[type="file"]::file-selector-button {
-    width: 75px;
-    margin-left: -9px;
-    border: solid;
+    width: 100px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
     color: transparent;
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 35px;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    transition: background-color 200ms;
 }
 
-input[type="file"]::before{
+input[type="file"]::before {
     position: absolute;
     pointer-events: none;
-    height: 20px;
-    width: 20px;
-    left: 2px;
-    top: 12px;
+    height: 30px;
+    width: 30px;
+    top: 13px;
+    left: 18px;
     content: "";
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
 }
@@ -545,57 +556,47 @@ input[type="file"]::after {
     position: absolute;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     pointer-events: none;
-    top: 15px;
-    left: 25px;
+    left: 55px;
+    top: 20px;
     color: #0964b0;
     content: "Upload";
+    font-size: 15px;
 }
-
-input[type="file"]::file-selector-button {
-    border-radius: 4px;
-    border: solid;
-    padding: 0 16px;
-    height: 25px;
-    width: 85px;
-    cursor: pointer;
-    background-color: white;
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
-    margin-right: 16px;
-    transition: background-color 200ms;
-  }
 
 input[type="file"]::file-selector-button:hover {
     background-color: #c6c7c95c;
 }
 
-input[type="date"]{
+/* Estilos para o input de data */
+input[type="date"] {
     position: relative;
-    border: none;
-    right: 7px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
 }
 
-
-
+/* Estilos do modal */
 .modal {
     display: none;
-    position: fixed; 
-    z-index: 1; 
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.5);  
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
     position: relative;
+    border-radius: 4px;
 }
 
 .close {
@@ -612,6 +613,7 @@ input[type="date"]{
     cursor: pointer;
 }
 
+/* Estilos do corpo do modal */
 .modal-body {
     margin: 20px 0;
 }
@@ -621,17 +623,15 @@ input[type="date"]{
     width: calc(100% - 22px);
     padding: 10px;
     margin: 5px 0;
-
 }
 
-.date{
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin: 5px 0;
-
-
+.text-modal {
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    display: block;
+    margin-bottom: 10px;
 }
 
+/* Estilos do rodapé do modal */
 .modal-footer {
     text-align: right;
 }
@@ -643,28 +643,15 @@ input[type="date"]{
     background-color: #0964b0;
     color: white;
     cursor: pointer;
-    /*Não sei como fica melhor            
-    background-color: rgb(0, 0, 0);*/
 }
 
 .modal-footer button.cancel {
     background-color: #fa0800;
     color: white;
     cursor: pointer;
-    /*Não sei como fica melhor
-    background-color: rgb(0, 0, 0);*/
-}
-.text-modal1{
-
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-right: 210px;
-}
-.text-modal2{
-
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-right: 175px;
 }
 
+/* Estilo do ícone de adicionar */
 .add {
     margin-top: -20px;
     font-size: 70px;
@@ -743,6 +730,5 @@ footer {
     #footer_content {
         grid-template-columns: repeat(1, 1fr);
         padding: 3rem 2rem;
-       
     }
 }

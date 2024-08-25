@@ -152,9 +152,6 @@ function checkTokenFromUser() {
 
     const currentTimeMillis = Date.now(); 
     const expiryTimeMillis = convertDateTimeToMillis(expiryTime); 
-
-    console.log(currentTimeMillis);
-    console.log(expiryTimeMillis);
     if (currentTimeMillis > expiryTimeMillis) {
 
         alertFromExpiresTokenException();
@@ -206,7 +203,7 @@ function alertFromTokenAccepted() {
 
     Toast.fire({
         icon: "success",
-        title: "Conectado com sucesso!"
+        title: "Sucesso!"
     });
 }
 

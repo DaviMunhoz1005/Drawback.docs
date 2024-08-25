@@ -88,7 +88,7 @@
                                                 </div>
                                             </div>
                                             <div class="circle">
-                                                <svg width="160px" height="160px">
+                                                <svg width="160px" height="160px" id="circleProgress">
                                                     <defs>
                                                     <linearGradient id="GradientColor">
                                                         <stop offset="0%" stop-color="#a60df1" />
@@ -202,10 +202,10 @@
                 <span class="close" onclick="hideModal()">&times;</span>
                 <h1>Adicionar Documento</h1>
                 <div class="modal-body">
-                    <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                    <label class="text-modal" for="documentFile">Escolha o arquivo desejado:</label>
                     <input type="file" id="documentFile" name="documentFile">
-                    
-                    <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                    <br><br>
+                    <label class="text-modal" for="expirationDate">Data de validade do documento:</label>
                     <input type="date" id="expirationDate" name="expirationDate">
                 </div>
                 <div class="modal-footer">
