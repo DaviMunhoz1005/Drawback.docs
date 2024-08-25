@@ -203,7 +203,8 @@
                 <h1>Adicionar Documento</h1>
                 <div class="modal-body">
                     <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
-                    <input class="file" type="file" id="documentFile" name="documentFile">
+                    <input type="file" id="documentFile" name="documentFile">
+                    
                     <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
                     <input type="date" id="expirationDate" name="expirationDate">
                 </div>
@@ -214,7 +215,6 @@
             </div>
         </div>
         <div id="black" onclick="hideModal()"></div>
-
     <script>
         document.getElementById("contato-link").addEventListener("click", function(event){
             event.preventDefault(); // Previne o comportamento padrão do link
