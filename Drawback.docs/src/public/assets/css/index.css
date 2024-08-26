@@ -282,16 +282,6 @@ body {
     margin-bottom: 70px;
 }
 
-.square1, .square2, .square3, .square4, .square5, .square6, .square7, .square8 { 
-    font-weight: 100;
-    margin: 0px auto;
-    width: 240px;
-    height: 150px;
-    background-color: #fffdf9;
-    border: 1px solid #d9d9d9;
-    border-radius: 5px;
-}
-
 .designLink1 {
     display: block;
     padding: 10% 0;
@@ -632,17 +622,9 @@ footer {
 
 .span:hover{
     background-color: darkgray;
-
-
-
 }
 .show-modal{
     opacity: 1;
     visibility: visible;
     transform: scale(1.0);
 }
-
-
-
-
-
