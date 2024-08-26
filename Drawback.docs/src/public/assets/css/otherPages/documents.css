@@ -464,20 +464,29 @@ svg {
     border: 1px solid #dbdde2;
     margin-top: -240px;
     margin-bottom: 30px;
-    margin-left: 800px;
+    margin-left: 700px;
     border-radius: 5px;
 }
 .wholeArea2 {
-    margin-left: 850px;
-    margin-top: -300px;
+    margin-left: 750px;
+    margin-top: -225px;
     font-size: 16px;
     background-color: rgb(255, 255, 255);
-    border: 1px solid #3e3e2e8c;
     border-radius: 3px;
     padding: 8px 8px 8px;  
     margin-bottom: 15px;
-    /*Não esquecer de trocar depois, não é necessário puxar o src aqui, apenas lá em cima YAHOOOOOOOOOO */    
-    src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+}
+
+.otherContents {
+    margin-bottom: 70px;
+}
+
+.buttonEmployeeLink {
+    border: 1px solid #3e3e2e8c;
+    border-radius: 3px;
+    padding: 15px;  
+    background-color: #0964b0;
+    color: white;
 }
 
 .wholeArea2 a {
