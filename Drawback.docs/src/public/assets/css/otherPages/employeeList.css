@@ -757,19 +757,35 @@ footer {
 }
 
 .buttons button {
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 0 50px;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative; /* Para o efeito de aumento */
+    transition: transform 0.3s, background-color 0.3s; /* Transições suaves */
 }
 
-.accept {
-    background-color: #28a745;
-    color: white;
+.accept svg, .reject svg {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s, fill 0.3s;
 }
 
-.reject {
-    background-color: #dc3545;
-    color: white;
+.accept svg {
+    width: 50px;
+    height: 50px;
+}
+
+.accept:hover svg, .reject:hover svg {
+    transform: scale(1.2); 
+}
+
+.reject:hover svg {
+    fill:#bb0c06;
 }
 
 .name {
@@ -782,4 +798,3 @@ footer {
     margin-top: 20px;
     font-size: 20px;
 }
-

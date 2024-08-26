@@ -58,6 +58,9 @@ async function documentListFromUser() {
         document.getElementById("wholeArea").style.display = "none";
         progressionText.innerHTML = "Adicione um Documento para começar a acompanhar seu progresso";
         progressionText.style.display = "inline"
+
+        document.getElementById("wholeArea2").style.display = "none";
+        document.getElementById("barDesign2").style.display = "none";
     }
     
     function showFilesFromUserHtml(array) {
@@ -97,6 +100,8 @@ async function documentListFromUser() {
 
         progressionText.innerHTML = "Progresso";
         progressionText.style.display = "flex"
+        document.getElementById("wholeArea2").style.display = "";
+        document.getElementById("barDesign2").style.display = "";
         progressCircle();
     }
 
