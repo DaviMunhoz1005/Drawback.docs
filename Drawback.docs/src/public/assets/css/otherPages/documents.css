@@ -289,16 +289,16 @@ body {
     margin: 0px;
     margin-bottom: 0px;
     width: calc(25% - 20px); 
-    height: 160px;
     background-color: #fffdf9;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     box-sizing: border-box;
+    padding-bottom: 20px;
 }
 
 .designLink1 {
     display: block;
-    padding: 10% 0;
+    padding: 20px;
     color: black; 
 }
 
@@ -710,4 +710,28 @@ footer {
         grid-template-columns: repeat(1, 1fr);
         padding: 3rem 2rem;
     }
+}
+
+.fieldValidity, .textValidity {
+    border: solid 1px rgb(216, 216, 216);
+    border-radius: 0 4px 4px 0;
+    display: inline;
+    padding: 6px;
+    background-color: white;  
+    font-size: 15px;  
+}
+
+.textValidity {
+    border-radius: 4px 0 0 4px;
+}
+
+.buttonUpdate, .buttonDelete, .buttonEdit, .buttonUseLastVersion{
+    transform: rotate(360deg);
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+}
+
+.buttonUseLastVersion {
+    width: 25px;
 }
