@@ -1,4 +1,4 @@
-import { handleListDocuments, handleSendDocument, getExpiryToken } from "../services/apiRequests.js";
+import { handleListDocuments, handleSendDocument, getExpiryToken, handleDownloadDocument, handleDeleteDocuments } from "../services/apiRequests.js";
 
 document.getElementById("sendDocument").addEventListener('click', () => {
 
@@ -67,15 +67,64 @@ async function documentListFromUser() {
 
         array.forEach((documentUser, index) => {
 
-            const docHtml = document.createElement("div");
-            docHtml.className = "square"; 
+            const blockDocument = createBlockDocumentHtml(documentUser);
+            blockDocumentList.appendChild(blockDocument);
 
-            docHtml.innerHTML = `
+            createSeparationForDocuments(index);
+
+            blockDocument.querySelectorAll(".buttonDownload").forEach(button => {
+
+                button.addEventListener('click', function() {
+
+                    downloadDocument(documentUser.name + "." + documentUser.extension);
+                });
+            });
+        
+            blockDocument.querySelectorAll(".buttonDelete").forEach(button => {
+
+                button.addEventListener('click', function() {
+
+                    deleteDocument(documentUser.name);
+                });
+            });
+        
+            blockDocument.querySelectorAll(".buttonEdit").forEach(button => {
+
+                button.addEventListener('click', function() {
+
+                    editDocument(documentUser.name);
+                });
+            });
+        
+            blockDocument.querySelectorAll(".buttonUseLastVersion").forEach(button => {
+
+                button.addEventListener('click', function() {
+
+                    usePreviousVersionDocument(documentUser.name);
+                });
+            });
+
+            if(new Date(documentUser.validity).getTime() >= Date.now()) {
+                
+                filesWithValidityOk++;
+            }
+        });
+
+        createAddNewFileHtml();
+        progressCircle();
+    }
+
+    function createBlockDocumentHtml(documentUser) {
+        
+        const blockDocument = document.createElement("div");
+            blockDocument.className = "square"; 
+
+            blockDocument.innerHTML = `
                 <a class="designLink1">${documentUser.name}</a>
                 <p class="textValidity">Validade <p class="fieldValidity">${documentUser.validity}</p></p>
                 <br>
                 <button>
-                    <svg class="buttonUpdate" width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="buttonDownload" width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
@@ -96,33 +145,64 @@ async function documentListFromUser() {
                 </button>
             `;
 
-            blockDocumentList.appendChild(docHtml);
+        return blockDocument;
+    }
 
-            if(new Date(documentUser.validity).getTime() >= Date.now()) {
+    function createSeparationForDocuments(index) {
+        
+        if((index + 1) % 4 === 0) {
+
+            const barHtml = `
+                <div class="barDesign"><hr></div>
+                <div class="siteSeparation"></div>
+            `;
+            blockDocumentList.insertAdjacentHTML('beforeend', barHtml);
+        }
+    }
+
+    async function downloadDocument(documentNameWithExtension) {
+        
+        await handleDownloadDocument(documentNameWithExtension);
+    }
+
+    async function deleteDocument(documentName) {
+        
+        Swal.fire({
+            title: "Tem Certeza?",
+            text: "O documento será excluído permanentemente.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Ok',
+            cancelButtonText: 'Cancelar', 
+            customClass: {
+                cancelButton: 'swal2-cancel-button-red' 
+            }
+        }).then(async (result) => {
+            if(result.isConfirmed) {
                 
-                filesWithValidityOk++;
-            }
-
-            if((index + 1) % 4 === 0) {
-
-                const barHtml = `
-                    <div class="barDesign"><hr></div>
-                    <div class="siteSeparation"></div>
-                `;
-                blockDocumentList.insertAdjacentHTML('beforeend', barHtml);
-            }
+                await handleDeleteDocuments(documentName); 
+                await documentListFromUser(); 
+                alertFromRequestAccepted("Documento Excluído!");
+            } 
         });
+    }
 
-        createAddNewFileHtml();
+    async function editDocument(documentName) {
+        
+        console.log(documentName);
+    }
+
+    async function usePreviousVersionDocument(documentName) {
+        
+        console.log(documentName);
+    }
+
+    function progressCircle() {
 
         progressionText.innerHTML = "Progresso";
         progressionText.style.display = "flex"
         document.getElementById("wholeArea2").style.display = "";
         document.getElementById("barDesign2").style.display = "";
-        progressCircle();
-    }
-
-    function progressCircle() {
 
         document.getElementById("wholeArea").style.display = "";
         let totalAmount, progress, number, size, counter; 
@@ -180,7 +260,7 @@ function checkTokenFromUser() {
         return false;
     } else {
         
-        alertFromRequestAccepted();
+        alertFromRequestAccepted("Requisição Aceita!");
         return true;
     }
 }
@@ -209,7 +289,7 @@ function convertDateTimeToMillis(dateTimeString) {
     return new Date(year, month - 1, day, hours, minutes, seconds).getTime();
 }
 
-function alertFromRequestAccepted() {
+function alertFromRequestAccepted(text) {
 
     const Toast = Swal.mixin({
         toast: true,
@@ -225,7 +305,7 @@ function alertFromRequestAccepted() {
 
     Toast.fire({
         icon: "success",
-        title: "Requisição Aceita!"
+        title: `${text}`
     });
 }
 

@@ -98,37 +98,11 @@ async function employeeList() {
 
             if(employeeAllowed) {
 
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-            
-                Toast.fire({
-                    icon: "success",
-                    title: `O pedido de ${username} foi permitido!`
-                });
-
+                alertFromEmployeeAllowed(username);
                 employeeList();
             } else {
 
-                Swal.fire({
-                    title: "Algo deu errado!",
-                    text: "Algum erro no sistema ocorreu.",
-                    icon: "error",
-                    confirmButtonText: 'Ok'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.replace("/Drawback.docs/src/public/pages/otherPages/employeeList.html");
-                        throw new Error("Some system error has occurred");
-                    }
-                });
+                alertFromSystemError();
             }
         } catch(error) {
             
@@ -144,46 +118,16 @@ async function employeeList() {
 
             if(true) {
 
-                Swal.fire({
-                    title: "Pedido Negado!",
-                    text: `Caso queria permitir o usuário ${username} vamos deixar o pedido nessa lista.`,
-                    icon: "success",
-                    confirmButtonText: 'Ok'
-                });
+                alertFromEmployeeDeny();
             } else {
 
-                Swal.fire({
-                    title: "Algo deu errado!",
-                    text: "Algum erro no sistema ocorreu.",
-                    icon: "error",
-                    confirmButtonText: 'Ok'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.replace("/Drawback.docs/src/public/pages/otherPages/employeeList.html");
-                        throw new Error("Some system error has occurred");
-                    }
-                });
+                alertFromSystemError();
             }
         } catch(error) {
             
             console.error("Erro ao proibir usuário " + error);
         }
     }
-}
-
-function alertFromAccountTypeEmployee() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Sua conta é do tipo Funcionário, você não tem acesso a essa página.",
-        icon: "error",
-        confirmButtonText: 'Ok'
-    }).then((result) => {
-        if(result.isConfirmed) {
-            window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
-            throw new Error("Your account is of type Employee, you do not have access to this page");
-        }
-    });
 }
 
 function checkTokenFromUser() {
@@ -227,6 +171,66 @@ function convertDateTimeToMillis(dateTimeString) {
     const [hours, minutes, seconds] = timePart.split(':').map(Number);
 
     return new Date(year, month - 1, day, hours, minutes, seconds).getTime();
+}
+
+function alertFromAccountTypeEmployee() {
+    
+    Swal.fire({
+        title: "Algo deu errado!",
+        text: "Sua conta é do tipo Funcionário, você não tem acesso a essa página.",
+        icon: "error",
+        confirmButtonText: 'Ok'
+    }).then((result) => {
+        if(result.isConfirmed) {
+            window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
+            throw new Error("Your account is of type Employee, you do not have access to this page");
+        }
+    });
+}
+
+function alertFromEmployeeAllowed(username) {
+    
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
+    Toast.fire({
+        icon: "success",
+        title: `O pedido de ${username} foi permitido!`
+    });
+}
+
+function alertFromSystemError() {
+    
+    Swal.fire({
+        title: "Algo deu errado!",
+        text: "Algum erro no sistema ocorreu.",
+        icon: "error",
+        confirmButtonText: 'Ok'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.replace("/Drawback.docs/src/public/pages/otherPages/employeeList.html");
+            throw new Error("Some system error has occurred");
+        }
+    });
+}
+
+function alertFromEmployeeDeny(username) {
+    
+    Swal.fire({
+        title: "Pedido Negado!",
+        text: `Caso queria permitir o usuário ${username} vamos deixar o pedido nessa lista.`,
+        icon: "success",
+        confirmButtonText: 'Ok'
+    });
 }
 
 let x = 0;

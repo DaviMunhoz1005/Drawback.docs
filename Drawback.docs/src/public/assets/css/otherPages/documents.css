@@ -724,7 +724,7 @@ footer {
     border-radius: 4px 0 0 4px;
 }
 
-.buttonUpdate, .buttonDelete, .buttonEdit, .buttonUseLastVersion{
+.buttonDownload, .buttonDelete, .buttonEdit, .buttonUseLastVersion{
     transform: rotate(360deg);
     width: 30px;
     height: 30px;
@@ -733,4 +733,9 @@ footer {
 
 .buttonUseLastVersion {
     width: 25px;
+}
+
+.swal2-cancel-button-red {
+    background-color: red !important; 
+    color: white !important; 
 }

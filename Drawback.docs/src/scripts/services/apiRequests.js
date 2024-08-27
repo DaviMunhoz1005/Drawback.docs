@@ -257,7 +257,7 @@ async function handleDeleteUser() {
 
     try {
 
-        const userDeleted = await deleteUser();
+        await deleteUser();
     } catch(error) {
 
         console.error("Erro ao deletar usuário:", error.message);
@@ -455,8 +455,7 @@ async function handleSendDocument(userDocument, validity) {
             validity: getFormattedDate(validity)
         };
 
-        const documentSaved = await sendDocument(userDocument, validityDocument);
-        console.log(documentSaved);
+        await sendDocument(userDocument, validityDocument);
     } catch(error) {
 
         console.error("Erro ao enviar um documento:", error.message);
@@ -590,12 +589,11 @@ async function usePreviousVersion(documentName) {
     }
 }
 
-async function handleDeleteDocuments() {
+async function handleDeleteDocuments(documentName) {
     
     try {
         
-        await deleteDocuments(document.getElementById("nameDocumentToDelete").value);
-        console.log("Funcionou");
+        await deleteDocuments(documentName);
     } catch(error) {
 
         console.error("Erro ao deletar documento:", error.message);
@@ -613,7 +611,7 @@ async function deleteDocuments(documentName) {
             }
         });
 
-        if(response.ok) {
+        if(!response.ok) {
 
             await handleApiResponse(response);
         }
@@ -623,11 +621,11 @@ async function deleteDocuments(documentName) {
     }
 }
 
-async function handleDownloadDocument() {
+async function handleDownloadDocument(documentName) {
 
     try {
 
-        await downloadDocument(document.getElementById("nameDocumentDownload").value);
+        await downloadDocument(documentName);
     } catch(error) {
 
         console.error("Erro ao Baixar documento:", error.message);
@@ -645,9 +643,7 @@ async function downloadDocument(documentName) {
             }
         });
 
-        await handleApiResponse(response);
-
-        if (response.ok) {
+        if(response.ok) {
 
             const blob = await response.blob(); 
             const blobUrl = window.URL.createObjectURL(blob); 
@@ -662,7 +658,7 @@ async function downloadDocument(documentName) {
             window.URL.revokeObjectURL(blobUrl); 
         } else {
 
-            throw new Error(`Erro na requisição: ${response.statusText}`);
+            await handleApiResponse(response);
         }
     } catch(error) {
 
