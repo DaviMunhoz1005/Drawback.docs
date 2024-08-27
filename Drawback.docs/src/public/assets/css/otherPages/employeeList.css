@@ -270,7 +270,7 @@ body {
     padding: 20px;
     color: black; 
     flex: 1;
-    min-height: calc(100vh - 300px);
+    min-height: calc(100vh - 200px);
 }
 
 .content {
@@ -717,7 +717,6 @@ footer {
     font-size: 0.9rem;
     padding: 2rem;
     font-weight: 100;
-    margin-right: 20px;
 }
 
 @media screen and (max-width:768px) {

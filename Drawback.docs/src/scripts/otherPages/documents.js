@@ -27,7 +27,7 @@ async function documentListFromUser() {
     
             blockDocumentList.innerHTML = '';
     
-            if (listDocuments.length === 0) {
+            if(listDocuments.length === 0) {
                 
                 totalFilesFromUser = 0;
                 createAddNewFileHtml();
@@ -174,13 +174,13 @@ function checkTokenFromUser() {
 
     const currentTimeMillis = Date.now(); 
     const expiryTimeMillis = convertDateTimeToMillis(expiryTime); 
-    if (currentTimeMillis > expiryTimeMillis) {
+    if(currentTimeMillis > expiryTimeMillis) {
 
         alertFromExpiresTokenException();
         return false;
     } else {
         
-        alertFromTokenAccepted();
+        alertFromRequestAccepted();
         return true;
     }
 }
@@ -195,7 +195,7 @@ function alertFromExpiresTokenException() {
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.replace("/Drawback.docs/src/public/index.html");
-            throw new Error("Log in to access this page.");
+            throw new Error("Log in to access this page");
         }
     });
 }
@@ -209,7 +209,7 @@ function convertDateTimeToMillis(dateTimeString) {
     return new Date(year, month - 1, day, hours, minutes, seconds).getTime();
 }
 
-function alertFromTokenAccepted() {
+function alertFromRequestAccepted() {
 
     const Toast = Swal.mixin({
         toast: true,
@@ -225,7 +225,7 @@ function alertFromTokenAccepted() {
 
     Toast.fire({
         icon: "success",
-        title: "Sucesso!"
+        title: "Requisição Aceita!"
     });
 }
 
@@ -239,7 +239,7 @@ function alertFromEmployeeDoesNotLinked() {
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.replace("/Drawback.docs/src/public/index.html");
-            throw new Error("Log in to access this page.");
+            throw new Error("Its link with the Legal Entity has not yet been permitted");
         }
     });
 }

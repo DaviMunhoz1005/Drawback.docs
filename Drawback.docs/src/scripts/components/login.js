@@ -31,7 +31,7 @@ function alertFromUsernameOrPasswordInvalid() {
         icon: "error",
         confirmButtonText: "Ok"
     }).then(() => {
-        console.error("Invalid username or password.");
+        console.error("Invalid username or password");
         return false;
     });
 }

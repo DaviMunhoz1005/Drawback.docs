@@ -258,7 +258,6 @@ async function handleDeleteUser() {
     try {
 
         const userDeleted = await deleteUser();
-        console.log(userDeleted);
     } catch(error) {
 
         console.error("Erro ao deletar usuário:", error.message);
@@ -296,7 +295,7 @@ async function handleListOfUsersToLink() {
     try {
 
         const listEmployees = await listOfUsersToLink();
-        console.log(listEmployees);
+        return listEmployees;
     } catch(error) {
 
         console.error("Erro ao listar usuários que querem se vincular:", error.message);
@@ -321,6 +320,7 @@ async function listOfUsersToLink() {
         } else {
 
             await handleApiResponse(response);
+            return false;
         }
     } catch(error) {
 
@@ -328,12 +328,11 @@ async function listOfUsersToLink() {
     }
 }
 
-async function handleAllowEmployee() {
+async function handleAllowEmployee(username) {
     
     try {
     
-        const employee = await allowEmployee(document.getElementById("employeeName").value);
-        console.log(employee);
+        return await allowEmployee(username);
     } catch(error) {
         
         console.error("Erro ao permitir funcionário para vínculo:", error.message);
@@ -355,10 +354,11 @@ async function allowEmployee(username) {
         
         if(response.ok) {
 
-            return await response.json();
+            return true;
         } else {
 
             await handleApiResponse(response);
+            return false;
         }        
     } catch(error) {
 

@@ -92,7 +92,7 @@ function alertFromCheckPasswordException() {
         icon: "error",
         confirmButtonText: "Ok"
     }).then(() => {
-        console.error("As senhas informadas não coincidem");
+        console.error("The passwords entered do not match");
         return false;
     });
 }
