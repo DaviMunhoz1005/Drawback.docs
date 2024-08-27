@@ -1,10 +1,20 @@
 import { handleListOfUsersToLink, handleAllowEmployee, handleDeleteUser, getExpiryToken } from "../services/apiRequests.js";
+import { alertWarningRedirectToIndex, alertWarningRedirectDocuments, alertFromRequestAccepted, alertFromRequestDeny } 
+from "../components/alerts.js";
 
 employeeList();
 
 async function employeeList() {
 
     checkTokenFromUser();
+
+    const message = localStorage.getItem('showAlert');
+    if(message) {
+        
+        alertFromRequestAccepted(message);
+        localStorage.removeItem('showAlert');
+    }
+
     const bodyCentralHtml = document.getElementById("content");
     const textTitle = document.getElementById("textTitle");
 
@@ -14,7 +24,7 @@ async function employeeList() {
 
         if(!listEmployee) {
 
-            alertFromAccountTypeEmployee();
+            alertWarningRedirectDocuments("Sua conta é do tipo Funcionário, você não tem acesso a essa página.");
         } else {
 
             if(listEmployee.length === 0) {
@@ -38,12 +48,10 @@ async function employeeList() {
         textTitle.innerHTML = "Funcionários que querem se vincular a Você";
 
         const barHtmlBefore = createBarDesignHtml();
-        const barHtmlAfter = createBarDesignHtml();
         const employeeHtml = createEmployeeHtml(employee);
     
         bodyCentralHtml.appendChild(barHtmlBefore);
         bodyCentralHtml.appendChild(employeeHtml);
-        bodyCentralHtml.appendChild(barHtmlAfter);
 
         document.querySelectorAll('.accept, .reject').forEach(button => {
             button.addEventListener('click', async function() {
@@ -98,12 +106,10 @@ async function employeeList() {
 
             if(employeeAllowed) {
 
-                alertFromEmployeeAllowed(username);
-                employeeList();
-            } else {
+                localStorage.setItem('showAlert', `O pedido de ${username} foi permitido!`);
+                window.location.reload();
+            } 
 
-                alertFromSystemError();
-            }
         } catch(error) {
             
             console.error("Erro ao permitir usuário " + error);
@@ -113,16 +119,11 @@ async function employeeList() {
     async function denyEmployee(username) {
         
         try {
-            
             // const employeeDeleted = await handleDeleteUser(username);
-
             if(true) {
 
-                alertFromEmployeeDeny();
-            } else {
-
-                alertFromSystemError();
-            }
+                alertFromRequestDeny("Pedido Negado!", `Caso queria permitir o usuário ${username} vamos deixar o pedido nessa lista.`);
+            } 
         } catch(error) {
             
             console.error("Erro ao proibir usuário " + error);
@@ -136,7 +137,7 @@ function checkTokenFromUser() {
 
     if(expiryTime == null) {
 
-        alertFromExpiresTokenException();
+        alertWarningRedirectToIndex("Faça login para acessar essa página.");
         return false;
     }
 
@@ -144,24 +145,9 @@ function checkTokenFromUser() {
     const expiryTimeMillis = convertDateTimeToMillis(expiryTime); 
     if (currentTimeMillis > expiryTimeMillis) {
 
-        alertFromExpiresTokenException();
+        alertWarningRedirectToIndex("Faça login para acessar essa página.");
         return false;
     } 
-}
-
-function alertFromExpiresTokenException() {
-
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Faça login para acessar essa página.",
-        icon: "warning",
-        confirmButtonText: 'Ok'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.replace("/Drawback.docs/src/public/index.html");
-            throw new Error("Log in to access this page.");
-        }
-    });
 }
 
 function convertDateTimeToMillis(dateTimeString) {
@@ -171,66 +157,6 @@ function convertDateTimeToMillis(dateTimeString) {
     const [hours, minutes, seconds] = timePart.split(':').map(Number);
 
     return new Date(year, month - 1, day, hours, minutes, seconds).getTime();
-}
-
-function alertFromAccountTypeEmployee() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Sua conta é do tipo Funcionário, você não tem acesso a essa página.",
-        icon: "error",
-        confirmButtonText: 'Ok'
-    }).then((result) => {
-        if(result.isConfirmed) {
-            window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
-            throw new Error("Your account is of type Employee, you do not have access to this page");
-        }
-    });
-}
-
-function alertFromEmployeeAllowed(username) {
-    
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-        }
-    });
-
-    Toast.fire({
-        icon: "success",
-        title: `O pedido de ${username} foi permitido!`
-    });
-}
-
-function alertFromSystemError() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Algum erro no sistema ocorreu.",
-        icon: "error",
-        confirmButtonText: 'Ok'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.replace("/Drawback.docs/src/public/pages/otherPages/employeeList.html");
-            throw new Error("Some system error has occurred");
-        }
-    });
-}
-
-function alertFromEmployeeDeny(username) {
-    
-    Swal.fire({
-        title: "Pedido Negado!",
-        text: `Caso queria permitir o usuário ${username} vamos deixar o pedido nessa lista.`,
-        icon: "success",
-        confirmButtonText: 'Ok'
-    });
 }
 
 let x = 0;

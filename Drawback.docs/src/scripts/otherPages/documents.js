@@ -1,4 +1,7 @@
-import { handleListDocuments, handleSendDocument, getExpiryToken, handleDownloadDocument, handleDeleteDocuments } from "../services/apiRequests.js";
+import { handleListDocuments, handleSendDocument, getExpiryToken, handleDownloadDocument, handleDeleteDocuments } 
+from "../services/apiRequests.js";
+import { alertWarningRedirectToIndex, alertFromRequestAccepted, alertWarningRedirectDocuments } 
+from "../components/alerts.js";
 
 document.getElementById("sendDocument").addEventListener('click', () => {
 
@@ -22,7 +25,7 @@ async function documentListFromUser() {
             
             if(!listDocuments) {
     
-                alertFromEmployeeDoesNotLinked();
+                alertWarningRedirectToIndex("Ainda não foi permitido o seu vínculo com a Pessoa Jurídica.");
             }
     
             blockDocumentList.innerHTML = '';
@@ -162,11 +165,13 @@ async function documentListFromUser() {
 
     async function downloadDocument(documentNameWithExtension) {
         
+        checkTokenFromUser();
         await handleDownloadDocument(documentNameWithExtension);
     }
 
     async function deleteDocument(documentName) {
         
+        checkTokenFromUser();
         Swal.fire({
             title: "Tem Certeza?",
             text: "O documento será excluído permanentemente.",
@@ -180,20 +185,27 @@ async function documentListFromUser() {
         }).then(async (result) => {
             if(result.isConfirmed) {
                 
-                await handleDeleteDocuments(documentName); 
-                await documentListFromUser(); 
-                alertFromRequestAccepted("Documento Excluído!");
+                if(await handleDeleteDocuments(documentName)) {
+
+                    await documentListFromUser(); 
+                    alertFromRequestAccepted("Documento Excluído!");
+                } else {
+
+                    alertWarningRedirectDocuments("Você não tem permissão para essa ação.");
+                }
             } 
         });
     }
 
     async function editDocument(documentName) {
         
+        checkTokenFromUser();
         console.log(documentName);
     }
 
     async function usePreviousVersionDocument(documentName) {
         
+        checkTokenFromUser();
         console.log(documentName);
     }
 
@@ -248,7 +260,7 @@ function checkTokenFromUser() {
 
     if(expiryTime == null) {
 
-        alertFromExpiresTokenException();
+        alertWarningRedirectToIndex("Faça login para acessar essa página.");
         return false;
     }
 
@@ -256,28 +268,13 @@ function checkTokenFromUser() {
     const expiryTimeMillis = convertDateTimeToMillis(expiryTime); 
     if(currentTimeMillis > expiryTimeMillis) {
 
-        alertFromExpiresTokenException();
+        alertWarningRedirectToIndex("Faça login para acessar essa página.");
         return false;
     } else {
         
         alertFromRequestAccepted("Requisição Aceita!");
         return true;
     }
-}
-
-function alertFromExpiresTokenException() {
-
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Faça login para acessar essa página.",
-        icon: "warning",
-        confirmButtonText: 'Ok'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.replace("/Drawback.docs/src/public/index.html");
-            throw new Error("Log in to access this page");
-        }
-    });
 }
 
 function convertDateTimeToMillis(dateTimeString) {
@@ -289,43 +286,9 @@ function convertDateTimeToMillis(dateTimeString) {
     return new Date(year, month - 1, day, hours, minutes, seconds).getTime();
 }
 
-function alertFromRequestAccepted(text) {
-
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-        }
-    });
-
-    Toast.fire({
-        icon: "success",
-        title: `${text}`
-    });
-}
-
-function alertFromEmployeeDoesNotLinked() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Ainda não foi permitido o seu vínculo com a Pessoa Jurídica.",
-        icon: "warning",
-        confirmButtonText: 'Ok'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.replace("/Drawback.docs/src/public/index.html");
-            throw new Error("Its link with the Legal Entity has not yet been permitted");
-        }
-    });
-}
-
 async function addNewDocument() {
     
+    checkTokenFromUser();
     try {
         
         const documentFile = document.getElementById("documentFile").files[0];
@@ -358,19 +321,4 @@ window.hideModal = function() {
     document.getElementById('modal').style.display = 'none';   
     document.getElementById('black').style.display = 'none';
     y=0;
-};
-
-let x = 0;
-
-window.hideSelectionsForms = function() {
-    document.getElementById('modalentrar').style.display = 'none';
-    x = 0;
-};
-
-window.showSelectionsForms = function() {
-    document.getElementById('modalentrar').style.display = 'block';
-    x++;
-    if (x >= 2) {
-        window.hideSelectionsForms(); 
-    }
 };

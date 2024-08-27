@@ -1,5 +1,5 @@
-import { handleFindUser, handleFindByCnpjCpf, handleCreateAccountAndToken } 
-from "./../services/apiRequests.js"; 
+import { handleFindUser, handleFindByCnpjCpf, handleCreateAccountAndToken } from "./../services/apiRequests.js"; 
+import { alertError } from "../components/alerts.js";
 
 document.getElementById("register").addEventListener('click', async function(event) {
 
@@ -11,7 +11,7 @@ document.getElementById("register").addEventListener('click', async function(eve
         window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
     } else {
 
-        alertFromTryToLinkCpfExeption();
+        alertError("Não é possível ser funcionário de uma conta do tipo Pessoa Física.");
     }
 });
 
@@ -24,7 +24,7 @@ async function getFormData() {
 
     if(await checkUsernameAlreadyExists(username) && 
     checkPasswordExistOrNull(password, checkPassword) && 
-    await checkCnpjAlreadyExists(cnpj)) {
+    await checkCnpjExists(cnpj)) {
 
         return {
             username: username,
@@ -41,67 +41,28 @@ async function checkUsernameAlreadyExists(username) {
     
     if(userExists) {
 
-        alertFromUserAlreadyExists();
+        alertError("Já existe um usuário com esse nome.");
     } else {
 
         return true;
     }
-}
-
-function alertFromUserAlreadyExists() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Já existe um usuário com esse nome.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("There is already a user with that name");
-        return false;
-    });
 }
 
 function checkPasswordExistOrNull(password, checkPassword) {
     
     if(password == "") {
 
-        return alertFromPasswordExecption();  
+        return alertError("Não é permitido uma senha vazia.");   
     } else if(password != checkPassword) {
 
-        return alertFromCheckPasswordException();
+        return alertError("As senhas informadas não coincidem.");
     } else {
 
         return true;
     }
 }
 
-function alertFromPasswordExecption() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Não é permitido uma senha vazia.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("An empty password is not allowed");
-        return false
-    });
-}
-
-function alertFromCheckPasswordException() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "As senhas informadas não coincidem.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("As senhas informadas não coincidem");
-        return false;
-    });
-}
-
-async function checkCnpjAlreadyExists(cnpj) { // ver se realmente existe, fazer o contrário
+async function checkCnpjExists(cnpj) { // ver se realmente existe, fazer o contrário
     
     const cnpjExists = await handleFindByCnpjCpf(cnpj);
     
@@ -110,47 +71,6 @@ async function checkCnpjAlreadyExists(cnpj) { // ver se realmente existe, fazer 
         return true;
     } else {
 
-        alertFromNonExistCnpjExeption();
+        alertError("Não existe um usuário com esse CNPJ.");
     }
 }
-
-function alertFromNonExistCnpjExeption() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Não existe um usuário com esse CNPJ.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("There is no user with this CNPJ");
-        return false;
-    });
-}
-
-function alertFromTryToLinkCpfExeption() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Não é possível ser funcionário de uma conta do tipo Pessoa Física.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("It is not possible to be an employee of an Individual account type");
-        return false;
-    });
-}
-
-let x = 0;
-
-window.hideSelectionsForms = function() {
-    document.getElementById('modalentrar').style.display = 'none';
-    x = 0;
-};
-
-window.showSelectionsForms = function() {
-    document.getElementById('modalentrar').style.display = 'block';
-    x++;
-    if (x >= 2) {
-        window.hideSelectionsForms(); 
-    }
-};

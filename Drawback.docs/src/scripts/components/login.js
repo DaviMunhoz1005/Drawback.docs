@@ -1,4 +1,5 @@
 import { handleTakeUserTokenButton } from "./../services/apiRequests.js"; 
+import { alertError } from "./alerts.js";
 
 document.getElementById("login").addEventListener('click', async function(event) {
     
@@ -11,7 +12,7 @@ document.getElementById("login").addEventListener('click', async function(event)
         window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
     } else {
 
-        alertFromUsernameOrPasswordInvalid();
+        alertError("Usuário ou Senha inválidos.");
     }
 });
 
@@ -22,33 +23,3 @@ function getFormData() {
         password: document.getElementById("password").value
     }
 }
-
-function alertFromUsernameOrPasswordInvalid() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Usuário ou Senha inválidos.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("Invalid username or password");
-        return false;
-    });
-}
-
-let x = 0;
-
-window.hideSelectionsForms = function() {
-    document.getElementById('modalentrar').style.display = 'none';
-    x = 0;
-};
-
-window.showSelectionsForms = function() {
-    document.getElementById('modalentrar').style.display = 'block';
-    x++;
-    if (x >= 2) {
-        window.hideSelectionsForms(); 
-    }
-};
-
-

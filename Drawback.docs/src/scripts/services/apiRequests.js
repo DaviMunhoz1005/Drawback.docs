@@ -593,7 +593,7 @@ async function handleDeleteDocuments(documentName) {
     
     try {
         
-        await deleteDocuments(documentName);
+        return await deleteDocuments(documentName);
     } catch(error) {
 
         console.error("Erro ao deletar documento:", error.message);
@@ -611,9 +611,14 @@ async function deleteDocuments(documentName) {
             }
         });
 
-        if(!response.ok) {
+        if(response.ok) {
+
+            return true;
+        }
+        else {
 
             await handleApiResponse(response);
+            return false;
         }
     } catch(error) {
         

@@ -1,4 +1,5 @@
 import { handleFindUser, handleFindByCnpjCpf, handleCreateAccountAndToken } from "./../services/apiRequests.js"; 
+import { alertError } from "../components/alerts.js";
 
 document.getElementById("register").addEventListener('click', async function(event) {
     
@@ -37,64 +38,25 @@ async function checkUsernameAlreadyExists(username) {
     
     if(userExists) {
 
-        alertFromUserAlreadyExists();
+        alertError("Já existe um usuário com esse nome.");
     } else {
 
         return true;
     }
-}
-
-function alertFromUserAlreadyExists() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Já existe um usuário com esse nome.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("There is already a user with that name");
-        return false;
-    });
 }
 
 function checkPasswordExistOrNull(password, checkPassword) {
     
     if(password == "") {
 
-        return alertFromPasswordExecption();  
+        return alertError("Não é permitido uma senha vazia.");   
     } else if(password != checkPassword) {
 
-        return alertFromCheckPasswordException();
+        return alertError("As senhas informadas não coincidem.");
     } else {
 
         return true;
     }
-}
-
-function alertFromPasswordExecption() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Não é permitido uma senha vazia.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("An empty password is not allowed");
-        return false
-    });
-}
-
-function alertFromCheckPasswordException() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "As senhas informadas não coincidem.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("The passwords entered do not match");
-        return false;
-    });
 }
 
 async function checkCpfAlreadyExists(cpf) {
@@ -103,38 +65,10 @@ async function checkCpfAlreadyExists(cpf) {
     
     if(cpfExists) {
         
-        alertFromCpfAlreadyExists();
+        alertError("Já existe um usuário com esse CPF.");
     } else {
 
         return true;
     }
 }
-
-function alertFromCpfAlreadyExists() {
-    
-    Swal.fire({
-        title: "Algo deu errado!",
-        text: "Já existe um usuário com esse CPF.",
-        icon: "error",
-        confirmButtonText: "Ok"
-    }).then(() => {
-        console.error("There is already a user with that CPF");
-        return false;
-    });
-}
-
-let x = 0;
-
-window.hideSelectionsForms = function() {
-    document.getElementById('modalentrar').style.display = 'none';
-    x = 0;
-};
-
-window.showSelectionsForms = function() {
-    document.getElementById('modalentrar').style.display = 'block';
-    x++;
-    if (x >= 2) {
-        window.hideSelectionsForms(); 
-    }
-};
 
