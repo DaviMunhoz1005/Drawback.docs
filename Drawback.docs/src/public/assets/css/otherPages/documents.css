@@ -416,14 +416,6 @@ svg {
     position: absolute;
     font-size: 12px;
 }
-.progress-bar {
-    margin-top: 3px;
-    width: 200px;
-    height: 10px;
-    border-radius: 10px;
-    margin-left: 0px;
-    background-color: #e4e6f2;
-}
 .sameLine {
     display: flex;
 }
@@ -738,4 +730,31 @@ footer {
 
 #reportDocument {
     margin-left: 10px;
+}
+
+progress { 
+    border-radius: 10px; 
+    background-color: #e4e6f2;
+    width: 200px;
+    height: 10px;
+    margin-bottom: 4px;
+}
+
+.progress-bar {
+    background-color: white !important;
+}
+
+.specialBar::-webkit-progress-bar {
+    background-color: #e4e6f2;
+    border-radius: 5px;
+}
+
+.specialBar::-webkit-progress-value {
+    background-color: #98a5eb;
+    border-radius: 5px;
+}
+
+.specialBar::-moz-progress-bar {
+    background-color: #98a5eb;
+    border-radius: 5px;
 }

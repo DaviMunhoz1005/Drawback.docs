@@ -266,8 +266,8 @@ async function documentListFromUser() {
                     divReportHtml.innerHTML = `
                     <label class="nameDocumentMid"></label><br>
                     <div class="sameLine">
-                        <div class="progress-bar" id="pbMid">
-                            <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
+                        <div class="progress-bar" id="pbMid" style="background-color: white">
+                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
                         </div> 
                         <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
                     </div>
@@ -279,7 +279,7 @@ async function documentListFromUser() {
                     <label class="nameDocument"></label><br>
                     <div class="sameLine">
                         <div class="progress-bar" id="pb1">
-                            <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
+                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
                         </div> 
                         <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
                     </div>
@@ -296,7 +296,7 @@ async function documentListFromUser() {
     
                 if(documentName.length > 24) {
 
-                    documentName = documentName.slice(0, 21) + "..." + i;
+                    documentName = documentName.slice(0, 21) + "...";
                 }
     
                 labelReport.textContent = documentName; 
@@ -326,7 +326,7 @@ async function documentListFromUser() {
                     <label class="nameDocumentMid"></label><br>
                     <div class="sameLine">
                         <div class="progress-bar" id="pbMid">
-                            <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
+                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
                         </div> 
                         <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
                     </div>
@@ -338,7 +338,7 @@ async function documentListFromUser() {
                     <label class="nameDocument"></label><br>
                     <div class="sameLine">
                         <div class="progress-bar" id="pb1">
-                            <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
+                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
                         </div> 
                         <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
                     </div>
@@ -380,7 +380,7 @@ async function documentListFromUser() {
                     <label class="nameDocument"></label><br>
                     <div class="sameLine">
                         <div class="progress-bar" id="pb1">
-                            <progress value="1" max="${listDocuments.length - 3}" class="specialBar" style="height:0;width:0;"></progress>
+                            <progress value="1" max="${listDocuments.length - 3}" class="specialBar"></progress>
                         </div> 
                         <span class="sizeAmount" id="a4"></span>
                     </div>
@@ -407,11 +407,6 @@ async function documentListFromUser() {
             
             progressElement.value = countDocumentsValids;
             document.getElementById("a4").innerHTML = `(${countDocumentsValids}/${listDocuments.length - 3})`;
-
-            console.log(progressElement.value);
-            console.log(progressElement.max);
-
-            // modificar todas as progressBar para que apareça o progress não a div
         }
     }
 }
