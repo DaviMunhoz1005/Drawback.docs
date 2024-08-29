@@ -114,7 +114,7 @@ async function documentListFromUser() {
         });
 
         createAddNewFileHtml();
-        progressCircle();
+        progressCircle(array);
     }
 
     function createBlockDocumentHtml(documentUser) {
@@ -209,7 +209,7 @@ async function documentListFromUser() {
         console.log(documentName);
     }
 
-    function progressCircle() {
+    function progressCircle(listDocuments) {
 
         progressionText.innerHTML = "Progresso";
         progressionText.style.display = "flex"
@@ -231,25 +231,71 @@ async function documentListFromUser() {
         number.innerHTML = counter + "/" + progress;
         document.body.style.setProperty('--size', 472 - size * totalAmount);
 
-        updateProgressBar();
+        updateProgressBar(listDocuments);
     }
 
-    function updateProgressBar(array) {
+    function updateProgressBar(listDocuments) {
         
-        // const nameDocumentProgressBar = document.getElementById("firstDocument");
-        const progressBar = document.getElementById("pb1");
-        const valueProgressBar = document.getElementById("firstProgress").value;
+        const reportsHtml = document.querySelector(".reports");
+    
+        if(listDocuments.length <= 4) {
+    
+            for(let i = 0; i < listDocuments.length; i++) { 
+    
+                const divReportHtml = document.createElement("div");
+                divReportHtml.className = "report" + i;
+                divReportHtml.id = "reportDocument";
+    
+                if(i == 1 || i == 2) {
 
-        //nameDocumentProgressBar.innerHTML = array[0].name; 
+                    divReportHtml.innerHTML = `
+                    <label class="nameDocumentMid"></label><br>
+                    <div class="sameLine">
+                        <div class="progress-bar" id="pbMid">
+                            <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
+                        </div> 
+                        <span class="sizeAmount" id="a${i + 1}">(1/1)</span>
+                    </div>
+                    <br>
+                `;
+                } else {
 
-        if(valueProgressBar == 1) {
+                    divReportHtml.innerHTML = `
+                    <label class="nameDocument"></label><br>
+                    <div class="sameLine">
+                        <div class="progress-bar" id="pb1">
+                            <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
+                        </div> 
+                        <span class="sizeAmount" id="a${i + 1}">(1/1)</span>
+                    </div>
+                    <br>
+                `;
+                }    
+    
+                reportsHtml.appendChild(divReportHtml);
 
-            progressBar.style.backgroundColor = "#98a5eb";
-            document.getElementById("a1").innerHTML = "(1/1)";
+                const divReport = document.querySelector(".report" + i);
+                const labelReport = divReport.querySelector("label");          
+    
+                let documentName = listDocuments[i].name;
+    
+                if (documentName.length > 24) {
+                    documentName = documentName.slice(0, 21) + "..." + i;
+                }
+    
+                labelReport.textContent = documentName; 
+
+                if(new Date(listDocuments[i].validity).getTime() <= Date.now()) {
+                    
+                    const progressBar = document.querySelectorAll(".progress-bar");
+                    progressBar[i].style.backgroundColor = "#e4e6f2";
+                    divReportHtml.querySelector("progress").value = 0;
+                    document.getElementById(`a${i + 1}`).innerHTML = "(0/1)";
+                }
+            }
         } else {
 
-            progressBar.style.backgroundColor = "#e4e6f2";
-            document.getElementById("a1").innerHTML = "(0/1)";
+            // Método que transforma o último campo em "Outros" e, ao clicar, mostra um modal com os documentos restantes
         }
     }
 }

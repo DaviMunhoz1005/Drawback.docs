@@ -427,31 +427,23 @@ svg {
 .sameLine {
     display: flex;
 }
-#pb1 {
-    margin-left: 10px;
-}
-#pb2 {
-    margin-left: 35px;
-    background-color: #e4e6f2;
-}
-#pb3 {
-    margin-left: 35px;
-    background-color: #e4e6f2;
+#pbMid {
+    margin-left: 20px;
 }
 #pb4 {
     background-color: #e4e6f2;
 }
 #a1 {
-    margin-left: 215px;
+    margin-left: 202px;
 }
 #a2 {
-    margin-left: 242px;
+    margin-left: 222px;
 }
 #a3 {
-    margin-left: 242px;
+    margin-left: 222px;
 }
 #a4 {
-    margin-left: 206px;
+    margin-left: 202px;
 }
 .wholeArea {
     width: 600px;
@@ -738,4 +730,12 @@ footer {
 .swal2-cancel-button-red {
     background-color: red !important; 
     color: white !important; 
+}
+
+.nameDocumentMid {
+    margin-left: 20px;
+}
+
+#reportDocument {
+    margin-left: 10px;
 }
