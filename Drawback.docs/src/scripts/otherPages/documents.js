@@ -238,10 +238,83 @@ async function documentListFromUser() {
         
         const reportsHtml = document.querySelector(".reports");
         reportsHtml.innerHTML = "";
-    
+
         if(listDocuments.length <= 4) {
     
             for(let i = 0; i < listDocuments.length; i++) { 
+    
+                const divReportHtml = document.createElement("div");
+                divReportHtml.className = "report" + i;
+                divReportHtml.id = "reportDocument";
+
+                if(i == 0) {
+
+                    document.querySelector(".barDesign2").style.marginTop = "145px";
+                } else if(i == 1) {
+
+                    document.querySelector(".barDesign2").style.marginTop = "96px";
+                } else if(i == 2) {
+
+                    document.querySelector(".barDesign2").style.marginTop = "52px";
+                } else {
+
+                    document.querySelector(".barDesign2").style.marginTop = "0px";
+                }
+    
+                if(i == 1 || i == 2) {
+
+                    divReportHtml.innerHTML = `
+                    <label class="nameDocumentMid"></label><br>
+                    <div class="sameLine">
+                        <div class="progress-bar" id="pbMid">
+                            <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
+                        </div> 
+                        <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
+                    </div>
+                    <br>
+                `;
+                } else {
+
+                    divReportHtml.innerHTML = `
+                    <label class="nameDocument"></label><br>
+                    <div class="sameLine">
+                        <div class="progress-bar" id="pb1">
+                            <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
+                        </div> 
+                        <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
+                    </div>
+                    <br>
+                `;
+                }    
+    
+                reportsHtml.appendChild(divReportHtml);
+
+                const divReport = document.querySelector(".report" + i);
+                const labelReport = divReport.querySelector("label");          
+    
+                let documentName = listDocuments[i].name;
+    
+                if(documentName.length > 24) {
+
+                    documentName = documentName.slice(0, 21) + "..." + i;
+                }
+    
+                labelReport.textContent = documentName; 
+
+                if(new Date(listDocuments[i].validity).getTime() > Date.now()) {
+                    
+                    const progressBar = document.querySelectorAll(".progress-bar");
+                    progressBar[i].style.backgroundColor = "#98a5eb";
+
+                    divReportHtml.querySelector("progress").value = 1;
+                    document.getElementById(`a${i + 1}`).innerHTML = "(1/1)";
+                }
+            }
+        } else {
+
+            document.querySelector(".barDesign2").style.marginTop = "0px";
+
+            for(let i = 0; i < 3; i++) { 
     
                 const divReportHtml = document.createElement("div");
                 divReportHtml.className = "report" + i;
@@ -255,7 +328,7 @@ async function documentListFromUser() {
                         <div class="progress-bar" id="pbMid">
                             <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
                         </div> 
-                        <span class="sizeAmount" id="a${i + 1}">(1/1)</span>
+                        <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
                     </div>
                     <br>
                 `;
@@ -267,7 +340,7 @@ async function documentListFromUser() {
                         <div class="progress-bar" id="pb1">
                             <progress value="0" max="1" id="firstProgress" style="visibility:hidden;height:0;width:0;"></progress>
                         </div> 
-                        <span class="sizeAmount" id="a${i + 1}">(1/1)</span>
+                        <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
                     </div>
                     <br>
                 `;
@@ -280,23 +353,65 @@ async function documentListFromUser() {
     
                 let documentName = listDocuments[i].name;
     
-                if (documentName.length > 24) {
+                if(documentName.length > 24) {
+
                     documentName = documentName.slice(0, 21) + "..." + i;
                 }
     
                 labelReport.textContent = documentName; 
 
-                if(new Date(listDocuments[i].validity).getTime() <= Date.now()) {
+                if(new Date(listDocuments[i].validity).getTime() > Date.now()) {
                     
                     const progressBar = document.querySelectorAll(".progress-bar");
-                    progressBar[i].style.backgroundColor = "#e4e6f2";
-                    divReportHtml.querySelector("progress").value = 0;
-                    document.getElementById(`a${i + 1}`).innerHTML = "(0/1)";
+                    progressBar[i].style.backgroundColor = "#98a5eb";
+
+                    divReportHtml.querySelector("progress").value = 1;
+                    document.getElementById(`a${i + 1}`).innerHTML = "(1/1)";
                 }
             }
-        } else {
+            
+            let countDocumentsValids = 0;
 
-            // Método que transforma o último campo em "Outros" e, ao clicar, mostra um modal com os documentos restantes
+            const divReportHtml = document.createElement("div");
+            divReportHtml.className = "report3";
+            divReportHtml.id = "reportDocument";
+
+            divReportHtml.innerHTML = `
+                    <label class="nameDocument"></label><br>
+                    <div class="sameLine">
+                        <div class="progress-bar" id="pb1">
+                            <progress value="1" max="${listDocuments.length - 3}" class="specialBar" style="height:0;width:0;"></progress>
+                        </div> 
+                        <span class="sizeAmount" id="a4"></span>
+                    </div>
+                    <br>
+                `;
+
+            reportsHtml.appendChild(divReportHtml);
+
+            const divReport = document.querySelector(".report3");
+            const labelReport = divReport.querySelector("label");          
+    
+            labelReport.textContent = "Outros..."; 
+
+            const progressBar = document.querySelectorAll(".progress-bar")[3];
+            const progressElement = progressBar.querySelector("progress");
+
+            for(let i = 3; i < listDocuments.length; i++) {
+
+                if(new Date(listDocuments[i].validity).getTime() >= Date.now()) {
+
+                    countDocumentsValids++;
+                }
+            }
+            
+            progressElement.value = countDocumentsValids;
+            document.getElementById("a4").innerHTML = `(${countDocumentsValids}/${listDocuments.length - 3})`;
+
+            console.log(progressElement.value);
+            console.log(progressElement.max);
+
+            // modificar todas as progressBar para que apareça o progress não a div
         }
     }
 }
