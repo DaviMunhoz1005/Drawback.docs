@@ -231,12 +231,13 @@ async function documentListFromUser() {
         number.innerHTML = counter + "/" + progress;
         document.body.style.setProperty('--size', 472 - size * totalAmount);
 
-        updateProgressBar(listDocuments);
+        updateProgressReports(listDocuments);
     }
 
-    function updateProgressBar(listDocuments) {
+    function updateProgressReports(listDocuments) {
         
         const reportsHtml = document.querySelector(".reports");
+        reportsHtml.innerHTML = "";
     
         if(listDocuments.length <= 4) {
     
