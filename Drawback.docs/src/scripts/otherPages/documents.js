@@ -231,60 +231,38 @@ async function documentListFromUser() {
         number.innerHTML = counter + "/" + progress;
         document.body.style.setProperty('--size', 472 - size * totalAmount);
 
-        updateProgressReports(listDocuments);
+        createProgressReports(listDocuments);
     }
 
-    function updateProgressReports(listDocuments) {
+    function createProgressReports(listDocuments) {
         
         const reportsHtml = document.querySelector(".reports");
         reportsHtml.innerHTML = "";
 
-        if(listDocuments.length <= 4) {
+        if(listDocuments.length <= 4) { 
     
+            generateUpToFourFieldsOfProgress();
+        } else {
+
+            generateUpToMoreThanFourFieldsOfProgress();
+        }
+
+        function generateUpToFourFieldsOfProgress() {
+
             for(let i = 0; i < listDocuments.length; i++) { 
     
                 const divReportHtml = document.createElement("div");
                 divReportHtml.className = "report" + i;
                 divReportHtml.id = "reportDocument";
 
-                if(i == 0) {
-
-                    document.querySelector(".barDesign2").style.marginTop = "145px";
-                } else if(i == 1) {
-
-                    document.querySelector(".barDesign2").style.marginTop = "96px";
-                } else if(i == 2) {
-
-                    document.querySelector(".barDesign2").style.marginTop = "52px";
-                } else {
-
-                    document.querySelector(".barDesign2").style.marginTop = "0px";
-                }
+                changeMarginTopFromBarDesingTwo(i);
     
                 if(i == 1 || i == 2) {
 
-                    divReportHtml.innerHTML = `
-                    <label class="nameDocumentMid"></label><br>
-                    <div class="sameLine">
-                        <div class="progress-bar" id="pbMid" style="background-color: white">
-                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
-                        </div> 
-                        <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
-                    </div>
-                    <br>
-                `;
+                    createHtmlFromMidFields(divReportHtml, i);
                 } else {
 
-                    divReportHtml.innerHTML = `
-                    <label class="nameDocument"></label><br>
-                    <div class="sameLine">
-                        <div class="progress-bar" id="pb1">
-                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
-                        </div> 
-                        <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
-                    </div>
-                    <br>
-                `;
+                    createHtmlFromFields(divReportHtml, i);
                 }    
     
                 reportsHtml.appendChild(divReportHtml);
@@ -301,17 +279,29 @@ async function documentListFromUser() {
     
                 labelReport.textContent = documentName; 
 
-                if(new Date(listDocuments[i].validity).getTime() > Date.now()) {
-                    
-                    const progressBar = document.querySelectorAll(".progress-bar");
-                    progressBar[i].style.backgroundColor = "#98a5eb";
-
-                    divReportHtml.querySelector("progress").value = 1;
-                    document.getElementById(`a${i + 1}`).innerHTML = "(1/1)";
-                }
+                checkValidityOfDocumentsToFillProgressBar(divReportHtml, i);
             }
-        } else {
+        }
 
+        function changeMarginTopFromBarDesingTwo(index) {
+            
+            if(index == 0) { 
+
+                document.querySelector(".barDesign2").style.marginTop = "145px";
+            } else if(index == 1) {
+
+                document.querySelector(".barDesign2").style.marginTop = "96px";
+            } else if(index == 2) {
+
+                document.querySelector(".barDesign2").style.marginTop = "52px";
+            } else {
+
+                document.querySelector(".barDesign2").style.marginTop = "0px";
+            }
+        }
+
+        function generateUpToMoreThanFourFieldsOfProgress() {
+            
             document.querySelector(".barDesign2").style.marginTop = "0px";
 
             for(let i = 0; i < 3; i++) { 
@@ -320,30 +310,12 @@ async function documentListFromUser() {
                 divReportHtml.className = "report" + i;
                 divReportHtml.id = "reportDocument";
     
-                if(i == 1 || i == 2) {
+                if(i == 1 || i == 2) { 
 
-                    divReportHtml.innerHTML = `
-                    <label class="nameDocumentMid"></label><br>
-                    <div class="sameLine">
-                        <div class="progress-bar" id="pbMid">
-                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
-                        </div> 
-                        <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
-                    </div>
-                    <br>
-                `;
-                } else {
+                    createHtmlFromMidFields(divReportHtml, i);
+                } else { 
 
-                    divReportHtml.innerHTML = `
-                    <label class="nameDocument"></label><br>
-                    <div class="sameLine">
-                        <div class="progress-bar" id="pb1">
-                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
-                        </div> 
-                        <span class="sizeAmount" id="a${i + 1}">(0/1)</span>
-                    </div>
-                    <br>
-                `;
+                    createHtmlFromFields(divReportHtml, i);
                 }    
     
                 reportsHtml.appendChild(divReportHtml);
@@ -355,24 +327,61 @@ async function documentListFromUser() {
     
                 if(documentName.length > 24) {
 
-                    documentName = documentName.slice(0, 21) + "..." + i;
+                    documentName = documentName.slice(0, 21) + "...";
                 }
     
                 labelReport.textContent = documentName; 
 
-                if(new Date(listDocuments[i].validity).getTime() > Date.now()) {
-                    
-                    const progressBar = document.querySelectorAll(".progress-bar");
-                    progressBar[i].style.backgroundColor = "#98a5eb";
-
-                    divReportHtml.querySelector("progress").value = 1;
-                    document.getElementById(`a${i + 1}`).innerHTML = "(1/1)";
-                }
+                checkValidityOfDocumentsToFillProgressBar(divReportHtml, i);
             }
-            
-            let countDocumentsValids = 0;
 
             const divReportHtml = document.createElement("div");
+            createHtmlFromFieldOthers(divReportHtml);
+
+            reportsHtml.appendChild(divReportHtml);
+
+            changingInfosFromFieldOthers();
+        }
+
+        function createHtmlFromMidFields(divReportHtml, index) {
+            
+            divReportHtml.innerHTML = `
+                    <label class="nameDocumentMid"></label><br>
+                    <div class="sameLine">
+                        <div class="progress-bar" id="pbMid">
+                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
+                        </div> 
+                        <span class="sizeAmount" id="a${index + 1}">(0/1)</span>
+                    </div>
+                    <br>
+                `; 
+        }
+
+        function createHtmlFromFields(divReportHtml, index) {
+            
+            divReportHtml.innerHTML = `
+                    <label class="nameDocument"></label><br>
+                    <div class="sameLine">
+                        <div class="progress-bar" id="pb1">
+                            <progress value="0" max="1" id="firstProgress" class="specialBar"></progress>
+                        </div> 
+                        <span class="sizeAmount" id="a${index + 1}">(0/1)</span>
+                    </div>
+                    <br>
+                `;
+        }
+
+        function checkValidityOfDocumentsToFillProgressBar(divReportHtml, index) {
+
+            if(new Date(listDocuments[index].validity).getTime() > Date.now()) {
+
+                divReportHtml.querySelector("progress").value = 1;
+                document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
+            }
+        }
+
+        function createHtmlFromFieldOthers(divReportHtml) {
+            
             divReportHtml.className = "report3";
             divReportHtml.id = "reportDocument";
 
@@ -380,16 +389,19 @@ async function documentListFromUser() {
                     <label class="nameDocument"></label><br>
                     <div class="sameLine">
                         <div class="progress-bar" id="pb1">
-                            <progress value="1" max="${listDocuments.length - 3}" class="specialBar"></progress>
+                            <progress value="0" max="0" class="specialBar"></progress>
                         </div> 
                         <span class="sizeAmount" id="a4"></span>
                     </div>
                     <br>
                 `;
+        }
+        
+        function changingInfosFromFieldOthers() {
 
-            reportsHtml.appendChild(divReportHtml);
-
-            const divReport = document.querySelector(".report3");
+            let countDocumentsValids = 0;
+            
+            const divReport = document.querySelector(".report3"); 
             const labelReport = divReport.querySelector("label");          
     
             labelReport.textContent = "Outros..."; 
@@ -406,6 +418,7 @@ async function documentListFromUser() {
             }
             
             progressElement.value = countDocumentsValids;
+            progressElement.max = listDocuments.length - 3;
             document.getElementById("a4").innerHTML = `(${countDocumentsValids}/${listDocuments.length - 3})`;
         }
     }
