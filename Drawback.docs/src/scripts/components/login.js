@@ -9,6 +9,7 @@ document.getElementById("login").addEventListener('click', async function(event)
     
     if(tokenCreated) {
 
+        sessionStorage.setItem('loginSuccess', true);
         window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
     } else {
 

@@ -9,6 +9,7 @@ document.getElementById("register").addEventListener('click', async function(eve
 
     if(await handleCreateAccountAndToken(formData)) {
 
+        sessionStorage.setItem('registerSuccess', true);
         window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
     }
 });

@@ -42,7 +42,7 @@ function alertWarningRedirectDocuments(textAlert) {
 }
 
 function alertFromRequestAccepted(textAlert) {
-
+    
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -72,7 +72,7 @@ function alertFromRequestDeny(titleAlert, textAlert) {
 }
 
 function alertFromSequencialToasts(documentName, index) {
-
+    
     setTimeout(() => {
         Swal.fire({
             title: 'Documento expirado!',

@@ -1,6 +1,6 @@
 import { handleListDocuments, handleSendDocument, getExpiryToken, handleDownloadDocument, handleDeleteDocuments } 
 from "../services/apiRequests.js";
-import { alertWarningRedirectToIndex, alertFromRequestAccepted, alertWarningRedirectDocuments, alertFromSequencialToasts } 
+import { alertWarningRedirectToIndex, alertFromRequestAccepted, alertWarningRedirectDocuments, alertFromSequencialToasts, alertError } 
 from "../components/alerts.js";
 
 document.getElementById("sendDocument").addEventListener('click', () => {
@@ -12,6 +12,8 @@ document.getElementById("sendDocument").addEventListener('click', () => {
 documentListFromUser();
 
 async function documentListFromUser() {
+
+    checkLocalStorageForAlert();
 
     let totalFilesFromUser, filesWithValidityOk = 0;
     const blockDocumentList = document.getElementById("separation1");
@@ -384,8 +386,8 @@ async function documentListFromUser() {
                 divReportHtml.querySelector("progress").value = 1;
                 document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
             } else {
-
-                alertFromSequencialToasts(listDocuments[index].name, index);
+            
+                alertFromSequencialToasts(listDocuments[index].name, index + 1);
             }
         }
 
@@ -436,6 +438,19 @@ async function documentListFromUser() {
     }
 }
 
+function checkLocalStorageForAlert() {
+
+    if(sessionStorage.getItem('loginSuccess')) {
+
+        alertFromRequestAccepted("Usuário Logado com Sucesso!");
+        sessionStorage.removeItem('loginSuccess'); 
+    } else if(sessionStorage.getItem('registerSuccess')) {
+
+        alertFromRequestAccepted("Usuário Cadastrado com Sucesso!");
+        sessionStorage.removeItem('registerSuccess'); 
+    }
+}
+
 function checkTokenFromUser() {
 
     const expiryTime = getExpiryToken();     
@@ -454,7 +469,6 @@ function checkTokenFromUser() {
         return false;
     } else {
         
-        alertFromRequestAccepted("Requisição Aceita!");
         return true;
     }
 }
@@ -469,20 +483,27 @@ function convertDateTimeToMillis(dateTimeString) {
 }
 
 async function addNewDocument() {
-    
-    checkTokenFromUser();
+
     try {
-        
+
         const documentFile = document.getElementById("documentFile").files[0];
         const validity = document.getElementById("expirationDate").value;
 
+        console.log(await handleSendDocument(documentFile, validity));
         if(!(await handleSendDocument(documentFile, validity))) {
 
-            alert("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
+            alertError("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
+
+            setTimeout(() => {
+
+                documentListFromUser();
+            }, 7000);
+        } else {
+
+            documentListFromUser();
         }
-        setTimeout(2000, documentListFromUser());
     } catch(error) {
-        
+
         console.error('Erro ao adicionar um novo documento:', error);
     }
 }
