@@ -120,7 +120,12 @@ async function documentListFromUser() {
     function createBlockDocumentHtml(documentUser) {
         
         const blockDocument = document.createElement("div");
-            blockDocument.className = "square"; 
+            blockDocument.className = "square";
+    
+                if(documentUser.name.length > 24) {
+
+                    documentUser.name = documentUser.name.slice(0, 21) + "...";
+                }
 
             blockDocument.innerHTML = `
                 <a class="designLink1">${documentUser.name}</a>
@@ -470,7 +475,10 @@ async function addNewDocument() {
         const documentFile = document.getElementById("documentFile").files[0];
         const validity = document.getElementById("expirationDate").value;
 
-        await handleSendDocument(documentFile, validity);
+        if(!(await handleSendDocument(documentFile, validity))) {
+
+            alert("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
+        }
         setTimeout(2000, documentListFromUser());
     } catch(error) {
         

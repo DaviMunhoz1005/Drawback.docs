@@ -455,7 +455,7 @@ async function handleSendDocument(userDocument, validity) {
             validity: getFormattedDate(validity)
         };
 
-        await sendDocument(userDocument, validityDocument);
+        return await sendDocument(userDocument, validityDocument);
     } catch(error) {
 
         console.error("Erro ao enviar um documento:", error.message);
@@ -484,10 +484,11 @@ async function sendDocument(userDocument, validityDocument) {
         
         if(response.ok) {
 
-            return await response.json();
+            return true;
         } else {
 
             await handleApiResponse(response);
+            return false;
         } 
     } catch(error) {
 
