@@ -1,6 +1,6 @@
 import { handleListDocuments, handleSendDocument, getExpiryToken, handleDownloadDocument, handleDeleteDocuments } 
 from "../services/apiRequests.js";
-import { alertWarningRedirectToIndex, alertFromRequestAccepted, alertWarningRedirectDocuments } 
+import { alertWarningRedirectToIndex, alertFromRequestAccepted, alertWarningRedirectDocuments, alertFromSequencialToasts } 
 from "../components/alerts.js";
 
 document.getElementById("sendDocument").addEventListener('click', () => {
@@ -377,6 +377,9 @@ async function documentListFromUser() {
 
                 divReportHtml.querySelector("progress").value = 1;
                 document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
+            } else {
+
+                alertFromSequencialToasts(listDocuments[index].name, index);
             }
         }
 
@@ -411,9 +414,12 @@ async function documentListFromUser() {
 
             for(let i = 3; i < listDocuments.length; i++) {
 
-                if(new Date(listDocuments[i].validity).getTime() >= Date.now()) {
+                if(new Date(listDocuments[i].validity).getTime() > Date.now()) {
 
                     countDocumentsValids++;
+                } else {
+
+                    alertFromSequencialToasts(listDocuments[i].name, i - 1);
                 }
             }
             

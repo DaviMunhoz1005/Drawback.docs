@@ -71,5 +71,25 @@ function alertFromRequestDeny(titleAlert, textAlert) {
     });
 }
 
+function alertFromSequencialToasts(documentName, index) {
 
-export { alertError, alertWarningRedirectToIndex, alertWarningRedirectDocuments, alertFromRequestAccepted, alertFromRequestDeny };
+    setTimeout(() => {
+        Swal.fire({
+            title: 'Documento expirado!',
+            text: `O documento ${documentName} está expirado.`,
+            icon: 'warning',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+    }, 3000 * index);
+}
+
+
+export { alertError, alertWarningRedirectToIndex, alertWarningRedirectDocuments, alertFromRequestAccepted, alertFromRequestDeny, alertFromSequencialToasts };
