@@ -489,8 +489,8 @@ async function addNewDocument() {
         const documentFile = document.getElementById("documentFile").files[0];
         const validity = document.getElementById("expirationDate").value;
 
-        console.log(await handleSendDocument(documentFile, validity));
-        if(!(await handleSendDocument(documentFile, validity))) {
+        const documentAddSuccess = await handleSendDocument(documentFile, validity);
+        if(!documentAddSuccess) {
 
             alertError("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
 
