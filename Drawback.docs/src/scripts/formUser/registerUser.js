@@ -75,15 +75,23 @@ function checkPasswordExistOrNull(password, checkPassword) {
 }
 
 async function checkCpfAlreadyExists(cpf) {
-    
-    const cpfExists = await handleFindByCnpjCpf(cpf);
-    
-    if(cpfExists) {
-        
-        alertError("Já existe um usuário com esse CPF.");
+
+    if(/\D/.test(cpf)) {
+
+        alertError("O CPF deve conter apenas números.");
+        return false;
     } else {
 
-        return true;
+        const cpfExists = await handleFindByCnpjCpf(cpf);
+    
+        if(cpfExists) {
+
+            alertError("Já existe um usuário com esse CPF.");
+            return false;
+        } else {
+            
+            return true;
+        }
     }
 }
 

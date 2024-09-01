@@ -69,15 +69,22 @@ function checkCharsFromEmail(email) {
 
 async function checkNameCorporateReasonAlreadyExists(nameCorporateReason) {
     
-    const nameCorporateReasonExists = await handlelFindByNameCorporateReason(nameCorporateReason);
+    if(/\D/.test(nameCorporateReason)) {
 
-    if(nameCorporateReasonExists) {
+        const nameCorporateReasonExists = await handlelFindByNameCorporateReason(nameCorporateReason);
 
-        alertError("Já existe um usuário com esse razão social.");
+        if(nameCorporateReasonExists) {
+
+            alertError("Já existe um usuário com esse razão social.");
+        } else {
+
+            return true;
+        }
     } else {
 
-        return true;
-    }
+        alertError("A Razão Social precisa contar letras.");
+        return false;
+    } 
 }
 
 function checkPasswordExistOrNull(password, checkPassword) {
@@ -96,26 +103,40 @@ function checkPasswordExistOrNull(password, checkPassword) {
 
 async function checkCnpjAlreadyExists(cnpj) {
     
-    const cnpjExists = await handleFindByCnpjCpf(cnpj);
-    
-    if(cnpjExists) {
-        
-        alertError("Já existe um usuário com esse CNPJ.");
+    if(/\D/.test(cnpj)) {
+
+        alertError("O CNPJ deve conter apenas números.");
+        return false;
     } else {
 
-        return true;
+        const cnpjExists = await handleFindByCnpjCpf(cnpj);
+    
+        if(cnpjExists) {
+            
+            alertError("Já existe um usuário com esse CNPJ.");
+        } else {
+
+            return true;
+        }
     }
 }
 
 async function checkCnaeAlreadyExists(cnae) {
     
-    const cnaeExists = await handleFindByCnae(cnae);
+    if(/\D/.test(cnae)) {
 
-    if(cnaeExists) {
-
-        alertError("Já existe um usuário com essa CNAE.");
+        alertError("A CNAE deve conter apenas números.");
+        return false;
     } else {
 
-        return true;
+        const cnaeExists = await handleFindByCnae(cnae);
+
+        if(cnaeExists) {
+
+            alertError("Já existe um usuário com essa CNAE.");
+        } else {
+
+            return true;
+        }
     }
 }
