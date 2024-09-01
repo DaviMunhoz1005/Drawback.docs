@@ -17,6 +17,7 @@ document.getElementById("register").addEventListener('click', async function(eve
 async function getFormData() {
 
     const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const checkPassword = document.getElementById("checkPassword").value;
     const nameCorporateReason = document.getElementById("nameCorporateReason").value;
@@ -24,6 +25,7 @@ async function getFormData() {
     const cnae = document.getElementById("cnae").value;
 
     if(await checkUsernameAlreadyExists(username) && 
+    checkCharsFromEmail(email) &&
     await checkNameCorporateReasonAlreadyExists(nameCorporateReason) &&
     checkPasswordExistOrNull(password, checkPassword) && 
     await checkCnpjAlreadyExists(cnpj) && 
@@ -32,7 +34,7 @@ async function getFormData() {
         return {
             username: username,
             nameCorporateReason : nameCorporateReason,
-            email: document.getElementById("email").value,
+            email: email,
             password: password,
             cnpjCpf: cnpj, 
             cnae : cnae
@@ -53,17 +55,36 @@ async function checkUsernameAlreadyExists(username) {
     }
 }
 
-async function checkNameCorporateReasonAlreadyExists(nameCorporateReason) {
-    
-    const nameCorporateReasonExists = await handlelFindByNameCorporateReason(nameCorporateReason);
+function checkCharsFromEmail(email) {
 
-    if(nameCorporateReasonExists) {
-
-        alertError("Já existe um usuário com esse razão social.");
-    } else {
+    if(email.includes("@")) {
 
         return true;
+    } else {
+        
+        alertError("O email precisa ter o caractere \"@\".");
+        return false
     }
+}
+
+async function checkNameCorporateReasonAlreadyExists(nameCorporateReason) {
+    
+    if(/\D/.test(nameCorporateReason)) {
+
+        const nameCorporateReasonExists = await handlelFindByNameCorporateReason(nameCorporateReason);
+
+        if(nameCorporateReasonExists) {
+
+            alertError("Já existe um usuário com esse razão social.");
+        } else {
+
+            return true;
+        }
+    } else {
+
+        alertError("A Razão Social precisa contar letras.");
+        return false;
+    } 
 }
 
 function checkPasswordExistOrNull(password, checkPassword) {
@@ -82,26 +103,40 @@ function checkPasswordExistOrNull(password, checkPassword) {
 
 async function checkCnpjAlreadyExists(cnpj) {
     
-    const cnpjExists = await handleFindByCnpjCpf(cnpj);
-    
-    if(cnpjExists) {
-        
-        alertError("Já existe um usuário com esse CNPJ.");
+    if(/\D/.test(cnpj)) {
+
+        alertError("O CNPJ deve conter apenas números.");
+        return false;
     } else {
 
-        return true;
+        const cnpjExists = await handleFindByCnpjCpf(cnpj);
+    
+        if(cnpjExists) {
+            
+            alertError("Já existe um usuário com esse CNPJ.");
+        } else {
+
+            return true;
+        }
     }
 }
 
 async function checkCnaeAlreadyExists(cnae) {
     
-    const cnaeExists = await handleFindByCnae(cnae);
+    if(/\D/.test(cnae)) {
 
-    if(cnaeExists) {
-
-        alertError("Já existe um usuário com essa CNAE.");
+        alertError("A CNAE deve conter apenas números.");
+        return false;
     } else {
 
-        return true;
+        const cnaeExists = await handleFindByCnae(cnae);
+
+        if(cnaeExists) {
+
+            alertError("Já existe um usuário com essa CNAE.");
+        } else {
+
+            return true;
+        }
     }
 }

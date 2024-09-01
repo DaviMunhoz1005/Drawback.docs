@@ -483,21 +483,31 @@ function convertDateTimeToMillis(dateTimeString) {
 }
 
 async function addNewDocument() {
-
+    
     try {
 
         const documentFile = document.getElementById("documentFile").files[0];
         const validity = document.getElementById("expirationDate").value;
 
-        console.log(await handleSendDocument(documentFile, validity));
-        if(!(await handleSendDocument(documentFile, validity))) {
+        const documentAddSuccess = await handleSendDocument(documentFile, validity);
+        const documentListFromUser = await handleListDocuments();
+        
+        for(const document of documentListFromUser) {
+            
+            if(documentFile.name === `${document.name}.${document.extension}`) {
+
+                alertError("Não é possível adicionar dois Documentos com o mesmo nome.");
+                return;
+            }
+        }
+
+        if(!documentAddSuccess) {
 
             alertError("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
 
             setTimeout(() => {
-
                 documentListFromUser();
-            }, 7000);
+            }, 6000);
         } else {
 
             documentListFromUser();

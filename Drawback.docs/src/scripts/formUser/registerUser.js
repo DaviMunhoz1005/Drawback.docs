@@ -16,17 +16,19 @@ document.getElementById("register").addEventListener('click', async function(eve
 async function getFormData() {
 
     const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const checkPassword = document.getElementById("checkPassword").value;
     const cpf = document.getElementById("cpf").value;
 
     if(await checkUsernameAlreadyExists(username) && 
+    checkCharsFromEmail(email) &&
     checkPasswordExistOrNull(password, checkPassword) && 
     await checkCpfAlreadyExists(cpf)) {
 
         return {
             username: username,
-            email: document.getElementById("email").value,
+            email: email,
             password: password,
             cnpjCpf: cpf
         };
@@ -46,6 +48,18 @@ async function checkUsernameAlreadyExists(username) {
     }
 }
 
+function checkCharsFromEmail(email) {
+
+    if(email.includes("@")) {
+
+        return true;
+    } else {
+        
+        alertError("O email precisa ter o caractere \"@\".");
+        return false
+    }
+}
+
 function checkPasswordExistOrNull(password, checkPassword) {
     
     if(password == "") {
@@ -61,15 +75,23 @@ function checkPasswordExistOrNull(password, checkPassword) {
 }
 
 async function checkCpfAlreadyExists(cpf) {
-    
-    const cpfExists = await handleFindByCnpjCpf(cpf);
-    
-    if(cpfExists) {
-        
-        alertError("Já existe um usuário com esse CPF.");
+
+    if(/\D/.test(cpf)) {
+
+        alertError("O CPF deve conter apenas números.");
+        return false;
     } else {
 
-        return true;
+        const cpfExists = await handleFindByCnpjCpf(cpf);
+    
+        if(cpfExists) {
+
+            alertError("Já existe um usuário com esse CPF.");
+            return false;
+        } else {
+            
+            return true;
+        }
     }
 }
 
