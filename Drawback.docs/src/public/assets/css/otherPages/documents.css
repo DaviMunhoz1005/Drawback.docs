@@ -630,12 +630,13 @@ input[type="date"] {
 /* footer */
 
 footer {
-    position: relative;
-    background-color: var(--color-neutral-10);
-    width: 100%;
-    color: var(--color-neutral-40);
+    position: absolute;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     letter-spacing: 1px;
+    width: 100%;
+    color: var(--color-neutral-40);
 }
 
 .footer-link {

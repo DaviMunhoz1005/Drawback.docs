@@ -73,3 +73,4 @@ async function checkCpfAlreadyExists(cpf) {
     }
 }
 
+

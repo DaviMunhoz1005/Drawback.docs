@@ -20,7 +20,7 @@ header {
     padding: 1.1rem 0;
     text-align: center;
     height: 4.6rem;
-    z-index: 4;
+    z-index: 20;
 }
 
 .options a {
@@ -247,118 +247,125 @@ nav {
 
 /* header */
 
+/* body */
+.image-container {
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    position: relative;
+}
+.image-container img {
+    width: 100%; /* Ajusta a largura da imagem para preencher o contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+#wk {
+    width: 100%;
+    filter: brightness(0.5);
+}
 body {
     background-color: #fbfafb;
     text-align: center;
     color: black;
+    overflow-x: hidden;
 }
 
-.centralSquareToPlaceContent {
-    width: 1350px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    height: 108vh;
-    border: 1px solid rgba(133, 133, 133, 0.589);
-    background-color: white;
-    padding: 20px;
-    color: black; 
-}
-
-.content {
-    margin: 7vh auto;
+.image-container {
+    position: relative;
     width: 100%;
+    height: 100vh; /* Altura da viewport */
+    overflow: hidden;
 }
 
-.siteSeparation {
-    margin-left: auto;
-    margin-right: auto;
-    width:1220px;
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir todo o contêiner sem distorção */
+    filter: brightness(0.6); /* Ajuste o brilho conforme necessário */
 }
 
-.separation1, .separation2 {
+.main-content {
+    background-color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+.main-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.main-content p {
+    font-size: 1rem;
+    color: #333;
+}
+.highlights {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 70px;
+    padding: 2rem;
+    background-color: #f4f4f4;
 }
 
-.designLink1 {
-    display: block;
-    padding: 10% 0;
-    color: black; 
+.highlight-item {
+    width: 30%;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-.barDesign hr {
-    width: 1160px;
-    height: 0px;
-    border: 2px solid #dbdde2;
-    margin-top: -40px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
+.highlight-item img {
+    width: 100%;
+    height: auto;
     border-radius: 5px;
 }
 
-.other {
+.highlight-item h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+.overlay {
     position: absolute;
-    margin-left: 2%;
-    margin-top: -15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; /* Cor do texto */
+    text-align: center;
+    z-index: 10; /* Garante que o texto fique sobre a imagem */
 }
 
-.designLink2 {
-    display: block;
-    margin: 10px 0;
-    color: black; 
-    font-size: 16px;
+.overlay h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-.addFile {
-    position: absolute;
-    margin-left: 2%;
-    margin-top: 30px;
-    font-size: 16px;
-    display: flex;
+.overlay p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
 }
 
-.progressionText {
-    width: 200px;
-    text-align: none;
-    color: black; 
-    position: relative;
-    display: flex;
-    margin-left: 40px;
-    font-weight: 0;
-    font-size: 16px
+.start-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    background-color: #000000; /* Cor vermelha característica da Globoplay */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.outer {
-    height: 180px;
-    width: 180px;
-    border-radius: 50%;
-    margin-left: 0px;
-    padding: 20px;
-    border: 1px solid #cbd1da;
-    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.15),
-    0px 0px 10px -1px rgba(0,0,0,0.15);
+.start-button:hover {
+    background-color: #ffffff; /* Tom mais escuro ao passar o mouse */
+    color: #000000;
 }
 
-.inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 140px;
-    width: 140px;
-    border-radius: 50%;
 
-}
+/* body */
 
-#number {
-    font-size: 30px;
-    font-weight: 700px;
-    margin-top: -5px;
-    margin-left: 5px;
-    color: #97a6b9;
 
+/* footer */
+
+.Others {
+    color: black;
 }
 
 :root {
@@ -369,150 +376,40 @@ body {
     --color-neutral-40: #f5f5f5;
 }
 
-circle {
-    fill: none;
-    stroke: url(#GradientColor);
-    stroke-width: 20px;
-    stroke-dasharray: 472;
-    animation: anim 0s linear forwards;
-    stroke-dashoffset: var(--size);
+
+/* Estilos do rodapé do modal */
+.modal-footer {
+    text-align: right;
 }
 
-svg {
-    position: relative;
-    display: flex;
-    transform: rotate(263deg);
-    margin-top: -171px;
-    margin-left: 50px;
+.modal-footer button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0964b0;
+    color: white;
+    cursor: pointer;
 }
 
-.circleProg {
-    margin-top: 50px;
-    margin-left: 70px;
+.modal-footer button.cancel {
+    background-color: #fa0800;
+    color: white;
+    cursor: pointer;
 }
 
-.circle {
-    transform: scale(1.3);
+/* Estilo do ícone de adicionar */
+.add {
+    margin-top: -20px;
+    font-size: 70px;
+    opacity: 0.3;
 }
 
-.reports {
-    text-align: start;
-    margin-top: -180px;
-    margin-left: 175px;
-    position: relative;
-}
-
-.sizeAmount {
-    position: absolute;
-    font-size: 12px;
-}
-
-.progress-bar {
-    margin-top: 3px;
-    width: 200px;
-    height: 10px;
-    border-radius: 10px;
-    margin-left: 0px;
-    background-color: #98a5eb;
-    
-}
-
-.sameLine {
-    display: flex;
-}
-
-#pb1 {
-    margin-left: 10px;
-}
-
-#pb2 {
-    margin-left: 35px;
-    background-color: #e4e6f2;
-}
-
-#pb3 {
-    margin-left: 35px;
-    background-color: #e4e6f2;
-}
-
-#pb4 {
-    background-color: #e4e6f2;
-}
-
-#a1 {
-    margin-left: 215px;
-}
-
-#a2 {
-    margin-left: 242px;
-}
-
-#a3 {
-    margin-left: 242px;
-}
-
-#a4 {
-    margin-left: 206px;
-}
-
-
-.wholeArea {
-    width: 600px;
-    margin-top: -10px;
-    margin-left: -20px;
-}
-
-.barDesign2 hr {
-    width: 1px;
-    height: 300px;
-    border: 1px solid #dbdde2;
-    margin-top: -240px;
-    margin-bottom: 30px;
-    margin-left: 800px;
-    border-radius: 5px;
-}
-
-.wholeArea2 {
-    margin-left: 850px;
-    margin-top: -300px;
-    font-size: 16px;
-    text-align: start;
-}
-
-.inpt {
-    margin-top: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    width: 300px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #3e3e2e8c;
-    border-radius: 3px;
-    padding: 8px 8px 8px;  
-    margin-bottom: 15px;
-    /*Não esquecer de trocar depois, não é necessário puxar o src aqui, apenas lá em cima YAHOOOOOOOOOO */    
-    src: url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-}
-
-.wholeArea2 a {
-    text-decoration: underline;
-    color: black;
-}
-
-.plusIcon {
-    transform:scale(1.6); 
-    margin-top: -1px;
-    display: flex;
-}
-
-/* footer */
 
 footer {
     position: absolute;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    letter-spacing: 1px;
     width: 100%;
     color: var(--color-neutral-40);
 }
@@ -521,6 +418,7 @@ footer {
     text-decoration: none;
 }
 
+
 #footer_content {
     background-color: var(--color-neutral-10);
     display: flex;
@@ -528,6 +426,7 @@ footer {
     grid-template-columns: repeat(4, 1fr);
     padding: 2.5rem 3.5rem;
 }
+
 
 #one {
     margin-right: 300px;
