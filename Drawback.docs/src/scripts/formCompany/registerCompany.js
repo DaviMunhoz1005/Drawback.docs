@@ -17,6 +17,7 @@ document.getElementById("register").addEventListener('click', async function(eve
 async function getFormData() {
 
     const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const checkPassword = document.getElementById("checkPassword").value;
     const nameCorporateReason = document.getElementById("nameCorporateReason").value;
@@ -24,6 +25,7 @@ async function getFormData() {
     const cnae = document.getElementById("cnae").value;
 
     if(await checkUsernameAlreadyExists(username) && 
+    checkCharsFromEmail(email) &&
     await checkNameCorporateReasonAlreadyExists(nameCorporateReason) &&
     checkPasswordExistOrNull(password, checkPassword) && 
     await checkCnpjAlreadyExists(cnpj) && 
@@ -32,7 +34,7 @@ async function getFormData() {
         return {
             username: username,
             nameCorporateReason : nameCorporateReason,
-            email: document.getElementById("email").value,
+            email: email,
             password: password,
             cnpjCpf: cnpj, 
             cnae : cnae
@@ -50,6 +52,18 @@ async function checkUsernameAlreadyExists(username) {
     } else {
 
         return true;
+    }
+}
+
+function checkCharsFromEmail(email) {
+
+    if(email.includes("@")) {
+
+        return true;
+    } else {
+        
+        alertError("O email precisa ter o caractere \"@\".");
+        return false
     }
 }
 

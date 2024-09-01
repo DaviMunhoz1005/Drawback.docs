@@ -16,17 +16,19 @@ document.getElementById("register").addEventListener('click', async function(eve
 async function getFormData() {
 
     const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const checkPassword = document.getElementById("checkPassword").value;
     const cpf = document.getElementById("cpf").value;
 
     if(await checkUsernameAlreadyExists(username) && 
+    checkCharsFromEmail(email) &&
     checkPasswordExistOrNull(password, checkPassword) && 
     await checkCpfAlreadyExists(cpf)) {
 
         return {
             username: username,
-            email: document.getElementById("email").value,
+            email: email,
             password: password,
             cnpjCpf: cpf
         };
@@ -43,6 +45,18 @@ async function checkUsernameAlreadyExists(username) {
     } else {
 
         return true;
+    }
+}
+
+function checkCharsFromEmail(email) {
+
+    if(email.includes("@")) {
+
+        return true;
+    } else {
+        
+        alertError("O email precisa ter o caractere \"@\".");
+        return false
     }
 }
 
