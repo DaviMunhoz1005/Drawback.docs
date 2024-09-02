@@ -558,3 +558,26 @@ footer {
     color: black;
 }
 
+#visibleIcon {
+    display: none;
+}
+
+#hiddenIcon {
+    display: inline;
+}
+
+.icon-visible #visibleIcon {
+    display: inline;
+}
+
+.icon-visible #hiddenIcon {
+    display: none;
+}
+
+.icon-hidden #visibleIcon {
+    display: none;
+}
+
+.icon-hidden #hiddenIcon {
+    display: inline;
+}

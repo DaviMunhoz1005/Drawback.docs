@@ -489,10 +489,9 @@ async function addNewDocument() {
         const documentFile = document.getElementById("documentFile").files[0];
         const validity = document.getElementById("expirationDate").value;
 
-        const documentAddSuccess = await handleSendDocument(documentFile, validity);
-        const documentListFromUser = await handleListDocuments();
+        const documentList = await handleListDocuments();
         
-        for(const document of documentListFromUser) {
+        for(const document of documentList) {
             
             if(documentFile.name === `${document.name}.${document.extension}`) {
 
@@ -500,6 +499,8 @@ async function addNewDocument() {
                 return;
             }
         }
+
+        const documentAddSuccess = await handleSendDocument(documentFile, validity);
 
         if(!documentAddSuccess) {
 
