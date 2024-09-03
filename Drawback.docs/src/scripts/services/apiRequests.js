@@ -401,7 +401,7 @@ async function listDocuments() {
         } else {
 
             isNotEmployee = await handleApiResponse(response);
-            return isNotEmployee;
+            return isNotEmployee != 400;
         } 
     } catch(error) {
         
@@ -557,12 +557,11 @@ function getFormattedDate(dateInput) {
     return formattedDate;
 }
 
-async function handleUsePreviousVersion() {
+async function handleUsePreviousVersion(documentName) {
     
     try {
 
-        await usePreviousVersion(document.getElementById("nameDocumentPreviousVersion").value);
-        console.log("Funcionou");
+        return await usePreviousVersion(documentName);
     } catch(error) {
 
         console.error("Erro ao pegar versão anterior do documento:", error.message);
@@ -580,9 +579,12 @@ async function usePreviousVersion(documentName) {
             }
         });
 
-        if(!response.ok) {
+        if(response.ok) {
 
-            await handleApiResponse(response);
+            return true;
+        } else {
+
+            return await handleApiResponse(response);
         }
     } catch(error) {
         
@@ -680,7 +682,7 @@ async function handleApiResponse(response) {
 
     const errorData = await response.json();
     console.log(`${errorData.statusCode} - ${errorData.title} - ${errorData.cause}`);
-    return errorData.statusCode != 400;
+    return errorData.statusCode;
 }
 
 export { 
