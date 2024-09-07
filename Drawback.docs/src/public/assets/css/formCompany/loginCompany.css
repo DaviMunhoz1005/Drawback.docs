@@ -381,6 +381,54 @@ body {
     margin-left: 25px;
 }
 
+.iconQuestion {
+    width: 18px;
+    margin-top: 95px;
+    height: auto;
+    margin-left: 445px;
+    z-index: 1;
+    position: absolute;
+}
+
+
+.iconEye{
+    position: absolute;
+    margin-top: -53.5px;
+    margin-left: 365px;
+    width:18px;
+    height:auto;
+}
+svg {
+    filter: opacity(0.3);
+}
+
+.Others {
+    color: black;
+}
+
+#visibleIcon {
+    display: none;
+}
+
+#hiddenIcon {
+    display: inline;
+}
+
+.icon-visible #visibleIcon {
+    display: inline;
+}
+
+.icon-visible #hiddenIcon {
+    display: none;
+}
+
+.icon-hidden #visibleIcon {
+    display: none;
+}
+
+.icon-hidden #hiddenIcon {
+    display: inline;
+}
 :root {
     --color-neutral-0: #0e0c0c;
     --color-neutral-10: #171717;

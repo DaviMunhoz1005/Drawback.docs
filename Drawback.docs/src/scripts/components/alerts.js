@@ -1,4 +1,4 @@
-function alertError(textAlert) {
+/*function alertError(textAlert) {
 
     Swal.fire({
         title: "Algo deu errado!",
@@ -92,4 +92,4 @@ function alertFromSequencialToasts(documentName, index) {
 }
 
 
-export { alertError, alertWarningRedirectToIndex, alertWarningRedirectDocuments, alertFromRequestAccepted, alertFromRequestDeny, alertFromSequencialToasts };
+export { alertError, alertWarningRedirectToIndex, alertWarningRedirectDocuments, alertFromRequestAccepted, alertFromRequestDeny, alertFromSequencialToasts };*/

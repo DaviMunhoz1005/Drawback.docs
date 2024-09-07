@@ -4,12 +4,7 @@ Corrigir responsividade do site usando a forma de medida rem no css;
 
 Modificar font e tamanho da font de todas as páginas; 
 
-Colocar os links certos de redirecionamento das páginas;
 
-Fazer html das páginas: 
-    - Dúvidas;
-    - Configurações;
-    - Homepage do site sobre quem nós somos e o que é o Drawback;
 
 Fazer js das páginas: 
 

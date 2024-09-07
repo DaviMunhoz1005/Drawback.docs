@@ -348,6 +348,58 @@ body {
     text-align: start;
 }
 
+svg {
+    filter: opacity(0.3);
+}
+
+
+.iconQuestion {
+    width: 18px;
+    margin-top: 95px;
+    height: auto;
+    margin-left: 445px;
+    z-index: 1;
+    position: absolute;
+}
+
+
+.Others {
+    color: black;
+}
+
+#visibleIcon {
+    display: none;
+}
+
+#hiddenIcon {
+    display: inline;
+}
+
+.icon-visible #visibleIcon {
+    display: inline;
+}
+
+.icon-visible #hiddenIcon {
+    display: none;
+}
+
+.icon-hidden #visibleIcon {
+    display: none;
+}
+
+.icon-hidden #hiddenIcon {
+    display: inline;
+}
+
+.iconEye {
+    width: 18px;
+    margin-top: -53px;
+    height: auto;
+    margin-left: 365px;
+    z-index: 1;
+    position: absolute;
+}
+
 .size {
     margin-top: 18px;
     margin-left: -20px;
