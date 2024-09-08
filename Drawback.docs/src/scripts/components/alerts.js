@@ -1,4 +1,4 @@
-/*function alertError(textAlert) {
+function alertError(textAlert) {
 
     Swal.fire({
         title: "Algo deu errado!",
@@ -20,7 +20,7 @@ function alertWarningRedirectToIndex(textAlert) {
         confirmButtonText: 'Ok'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.replace("/Drawback.docs/src/public/index.html");
+            window.location.replace("/src/public/index.html");
             throw new Error(`${textAlert}`);
         }
     });
@@ -92,4 +92,4 @@ function alertFromSequencialToasts(documentName, index) {
 }
 
 
-export { alertError, alertWarningRedirectToIndex, alertWarningRedirectDocuments, alertFromRequestAccepted, alertFromRequestDeny, alertFromSequencialToasts };*/
+export { alertError, alertWarningRedirectToIndex, alertWarningRedirectDocuments, alertFromRequestAccepted, alertFromRequestDeny, alertFromSequencialToasts };
