@@ -6,7 +6,7 @@ from "../components/alerts.js";
 document.getElementById("sendDocument").addEventListener('click', () => {
 
     addNewDocument();
-    hideModal();
+    hideAddModal();
 });
 
 documentListFromUser();
@@ -51,7 +51,7 @@ async function documentListFromUser() {
 
         const docHtml = document.createElement("div");
         docHtml.className = "square"; 
-        docHtml.onclick = showModal;
+        docHtml.onclick = showAddModal;
     
         docHtml.innerHTML = `
             <a class="designLink1">Adicionar</a>
@@ -97,7 +97,7 @@ async function documentListFromUser() {
 
                 button.addEventListener('click', function() {
 
-                    editDocument(documentUser.name);
+                    editDocument(documentUser.name, documentUser.extension);
                 });
             });
         
@@ -205,9 +205,33 @@ async function documentListFromUser() {
         });
     }
 
-    async function editDocument(documentName) {
+    async function editDocument(documentName, extension) {
         
         checkTokenFromUser();
+
+        showEditModal();    
+        document.querySelector('#documentNameEdit').innerHTML = `<b><i>${documentName + "." + extension}</i></b>`;
+        
+        /*
+
+        Fazer a lógica de checar se o nome do documento passado é o mesmo que esta sendo atualizado, senão, lançar um alerta
+        Fazer a atualização do documento
+        Fazer com que não mande o form vazio, nem o de update nem o de add
+
+        try {
+        
+            const documentFile = document.getElementById("documentFile").files[0];
+            const validity = document.getElementById("expirationDate").value;
+        
+            const documentAddSuccess = await handleSendDocument(documentFile, validity);
+        } catch(error) {
+        
+            console.error('Erro ao atualizar o documento ' + documentName, error);
+        }
+        
+
+        */
+
         console.log(documentName);
     }
 
@@ -216,7 +240,7 @@ async function documentListFromUser() {
         checkTokenFromUser();
         Swal.fire({
             title: "Tem Certeza?",
-            text: "O documento atual será sobreescrevido pela versão anterior.",
+            text: "O documento atual será sobrescrito pela versão anterior.",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: 'Ok',
@@ -547,21 +571,42 @@ async function addNewDocument() {
 
 let y = 0;
 
-window.showModal = function() {
+window.showAddModal = function() {
 
-    document.getElementById('modal').style.display = 'block';
+    document.getElementById('addModal').style.display = 'block';
     document.getElementById('black').style.display = 'block';
     y++;
     if(y>=2){
-            document.getElementById('modal').style.display = 'none';
+            document.getElementById('addModal').style.display = 'none';
             document.getElementById('black').style.display = 'none';
             y=0;
     }
 };
 
-window.hideModal = function() {
+window.hideAddModal = function() {
 
-    document.getElementById('modal').style.display = 'none';   
+    document.getElementById('addModal').style.display = 'none';   
     document.getElementById('black').style.display = 'none';
     y=0;
+};
+
+let z = 0;
+
+window.showEditModal = function() {
+
+    document.getElementById('editModal').style.display = 'block';
+    document.getElementById('black').style.display = 'block';
+    z++;
+    if(z>=2){
+            document.getElementById('editModal').style.display = 'none';
+            document.getElementById('black').style.display = 'none';
+            z=0;
+    }
+};
+
+window.hideEditModal = function() {
+
+    document.getElementById('editModal').style.display = 'none';  
+    document.getElementById('black').style.display = 'none';
+    z=0;
 };

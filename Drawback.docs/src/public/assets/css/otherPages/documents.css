@@ -544,7 +544,7 @@ input[type="date"] {
     border-radius: 4px;
 }
 
-/* Estilos do modal */
+/* Estilos do modal add*/
 .modal {
     display: none;
     position: fixed;
@@ -557,7 +557,7 @@ input[type="date"] {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.add-modal-content {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -583,29 +583,30 @@ input[type="date"] {
 }
 
 /* Estilos do corpo do modal */
-.modal-body {
+.add-modal-body {
     margin: 20px 0;
 }
 
-.modal-body input,
-.modal-body button {
+.add-modal-body input,
+.add-modal-body button {
     width: calc(100% - 22px);
     padding: 10px;
     margin: 5px 0;
 }
 
-.text-modal {
+.add-text-modal {
     font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
     display: block;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 /* Estilos do rodapé do modal */
-.modal-footer {
+.add-modal-footer {
     text-align: right;
 }
 
-.modal-footer button {
+.add-modal-footer button {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -614,7 +615,58 @@ input[type="date"] {
     cursor: pointer;
 }
 
-.modal-footer button.cancel {
+.add-modal-footer button.cancel {
+    background-color: #fa0800;
+    color: white;
+    cursor: pointer;
+}
+
+
+.edit-modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    border-radius: 4px;
+}
+
+/* Estilos do corpo do modal */
+.edit-modal-body {
+    margin: 20px 0;
+}
+
+.edit-modal-body input,
+.edit-modal-body button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.edit-text-modal {
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* Estilos do rodapé do modal */
+.edit-modal-footer {
+    text-align: right;
+}
+
+.edit-modal-footer button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0964b0;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-modal-footer button.cancel {
     background-color: #fa0800;
     color: white;
     cursor: pointer;

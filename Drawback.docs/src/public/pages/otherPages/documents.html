@@ -155,24 +155,45 @@
             </div>
         </span>
 
-        <div class="modal" id="modal">
-            <div class="modal-content">
-                <span class="close" onclick="hideModal()">&times;</span>
+        <div class="modal" id="addModal">
+            <div class="add-modal-content">
+                <span class="close" onclick="hideAddModal()">&times;</span>
                 <h1>Adicionar Documento</h1>
-                <div class="modal-body">
-                    <label class="text-modal1" for="documentFile">Escolha o arquivo desejado:</label>
+                <div class="add-modal-body">
+                    <label class="add-text-modal" for="documentFile">Escolha o arquivo desejado:</label>
                     <input type="file" id="documentFile" name="documentFile">
                     
-                    <label class="text-modal2" for="expirationDate">Data de validade do documento:</label>
+                    <label class="add-text-modal" for="expirationDate">Data de validade do documento:</label>
                     <input type="date" id="expirationDate" name="expirationDate">
                 </div>
-                <div class="modal-footer">
+                <div class="add-modal-footer">
                     <button id="sendDocument">Salvar</button>
-                    <button class="cancel" onclick="hideModal()">Fechar</button>
+                    <button class="cancel" onclick="hideAddModal()">Fechar</button>
                 </div>
             </div>
         </div>
-        <div id="black" onclick="hideModal()"></div>
+        <div id="black" onclick="hideAddModal()"></div>
+
+        <div class="modal" id="editModal">
+            <div class="edit-modal-content">
+                <span class="close" onclick="hideEditModal()">&times;</span>
+                <h1>Atualizar Documento</h1>
+                <br>
+                <span id="documentNameEdit"></span>
+                <div class="edit-modal-body">
+                    <label class="edit-text-modal" for="documentFileEdit">Escolha o arquivo que você Editou:</label>
+                    <input type="file" id="documentFileEdit" name="documentFileEdit">
+                    
+                    <label class="edit-text-modal" for="expirationDateEdit">Data de Validade Atual do Documento:</label>
+                    <input type="date" id="expirationDateEdit" name="expirationDateEdit">
+                </div>
+                <div class="edit-modal-footer">
+                    <button id="updateDocument">Salvar</button>
+                    <button class="cancel" onclick="hideEditModal()">Fechar</button>
+                </div>
+            </div>
+        </div>
+        <div id="black" onclick="hideEditModal()"></div>
 </body>
 </html>
 
