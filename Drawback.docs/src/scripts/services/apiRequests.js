@@ -496,16 +496,15 @@ async function sendDocument(userDocument, validityDocument) {
     }
 }
 
-async function handleUpdateDocument() {
+async function handleUpdateDocument(userDocument, validity) {
 
     try {
-
-        const validityDocument = {
-            validity: getFormattedDate("validityUpload")
-        };
         
-        const documentUploaded = await updateDocument(document.getElementById("userDocumentUpload").files[0], validityDocument);
-        console.log(documentUploaded);
+        const validityDocument = {
+            validity: getFormattedDate(validity)
+        };
+
+        return await updateDocument(userDocument, validityDocument);
     } catch(error) {
 
         console.error("Erro ao atualizar documento:", error.message);
@@ -534,10 +533,11 @@ async function updateDocument(userDocument, validityDocument) {
         
         if(response.ok) {
 
-            return await response.json();
+            return true;
         } else {
 
             await handleApiResponse(response);
+            return false;
         } 
     } catch(error) {
 

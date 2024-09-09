@@ -1,4 +1,4 @@
-import { handleListDocuments, handleSendDocument, getExpiryToken, handleDownloadDocument, handleDeleteDocuments, handleUsePreviousVersion } 
+import { handleListDocuments, handleSendDocument, getExpiryToken, handleDownloadDocument, handleDeleteDocuments, handleUsePreviousVersion, handleUpdateDocument } 
 from "../services/apiRequests.js";
 import { alertWarningRedirectToIndex, alertFromRequestAccepted, alertWarningRedirectDocuments, alertFromSequencialToasts, alertError } 
 from "../components/alerts.js";
@@ -97,15 +97,37 @@ async function documentListFromUser() {
 
                 button.addEventListener('click', function() {
 
-                    editDocument(documentUser.name, documentUser.extension);
+                    showEditModal();
+
+                    document.querySelector('#documentNameEdit').innerHTML = `<b><i>${documentUser.name + "." + documentUser.extension}</i></b>`;
+
+                    document.getElementById('updateDocument').addEventListener('click', async () => {
+
+                        const documentFile = document.getElementById("documentFileEdit").files[0];
+                        const validity = document.getElementById("expirationDateEdit").value;
+
+                        if(!documentFile || !validity) {
+
+                            alertError("Preencha o Formulário de Edição corretamente para atualizar o Documento.");
+                        } else if(documentFile.name !== documentUser.name + "." + documentUser.extension) {
+
+                            alertError("Para Atualizar esse Documento é necessário que o Nome do Documento informado seja o mesmo.");
+                        } else {
+
+                            await updateDocument(documentFile, validity);
+
+                            hideEditModal();
+                            documentListFromUser();
+                        }
+                    });
                 });
             });
         
             blockDocument.querySelectorAll(".buttonUseLastVersion").forEach(button => {
 
-                button.addEventListener('click', function() {
+                button.addEventListener('click', async function() {
 
-                    usePreviousVersionDocument(documentUser.name);
+                    await usePreviousVersionDocument(documentUser.name);
                 });
             });
 
@@ -205,34 +227,24 @@ async function documentListFromUser() {
         });
     }
 
-    async function editDocument(documentName, extension) {
+    async function updateDocument(documentFile, validity) {
         
         checkTokenFromUser();
-
-        showEditModal();    
-        document.querySelector('#documentNameEdit').innerHTML = `<b><i>${documentName + "." + extension}</i></b>`;
         
-        /*
-
-        Fazer a lógica de checar se o nome do documento passado é o mesmo que esta sendo atualizado, senão, lançar um alerta
-        Fazer a atualização do documento
-        Fazer com que não mande o form vazio, nem o de update nem o de add
-
         try {
-        
-            const documentFile = document.getElementById("documentFile").files[0];
-            const validity = document.getElementById("expirationDate").value;
-        
-            const documentAddSuccess = await handleSendDocument(documentFile, validity);
+            
+            if(await handleUpdateDocument(documentFile, validity)) {
+
+                await documentListFromUser(); 
+                alertFromRequestAccepted("Documento Atualizado!");
+            } else {
+
+                alertWarningRedirectDocuments("Você não tem permissão para essa ação.");
+            }
         } catch(error) {
-        
-            console.error('Erro ao atualizar o documento ' + documentName, error);
+            
+            console.error('Erro ao atualizar o documento ', error);
         }
-        
-
-        */
-
-        console.log(documentName);
     }
 
     async function usePreviousVersionDocument(documentName) {
@@ -541,27 +553,33 @@ async function addNewDocument() {
 
         const documentList = await handleListDocuments();
         
-        for(const document of documentList) {
-            
-            if(documentFile.name === `${document.name}.${document.extension}`) {
+        if(!documentFile || !validity) {
 
-                alertError("Não é possível adicionar dois Documentos com o mesmo nome.");
-                return;
-            }
-        }
-
-        const documentAddSuccess = await handleSendDocument(documentFile, validity);
-
-        if(!documentAddSuccess) {
-
-            alertError("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
-
-            setTimeout(() => {
-                documentListFromUser();
-            }, 6000);
+            alertError("Preencha o Formulário de Adição corretamente para adicionar o Documento.");
         } else {
 
-            documentListFromUser();
+            for(const document of documentList) {
+            
+                if(documentFile.name === `${document.name}.${document.extension}`) {
+    
+                    alertError("Não é possível adicionar dois Documentos com o mesmo nome.");
+                    return;
+                }
+            }
+    
+            const documentAddSuccess = await handleSendDocument(documentFile, validity);
+    
+            if(!documentAddSuccess) {
+    
+                alertError("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
+    
+                setTimeout(() => {
+                    documentListFromUser();
+                }, 6000);
+            } else {
+    
+                documentListFromUser();
+            }
         }
     } catch(error) {
 
