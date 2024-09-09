@@ -443,15 +443,25 @@ async function documentListFromUser() {
 
         function checkValidityOfDocumentsToFillProgressBar(divReportHtml, index) {
 
+            const oneMonthInMs = 30 * 24 * 60 * 60 * 1000; 
+        
             if(new Date(listDocuments[index].validity).getTime() > Date.now()) {
 
-                divReportHtml.querySelector("progress").value = 1;
-                document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
+                if(new Date(listDocuments[index].validity).getTime() - Date.now() > oneMonthInMs) {
+
+                    divReportHtml.querySelector("progress").value = 1;
+                    document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
+                } else {
+
+                    divReportHtml.querySelector("progress").value = 1;
+                    document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
+                    alertFromSequencialToasts(listDocuments[index].name, index + 1, false);
+                }
             } else {
-            
-                alertFromSequencialToasts(listDocuments[index].name, index + 1);
+
+                alertFromSequencialToasts(listDocuments[index].name, index + 1, true);
             }
-        }
+        }  
 
         function createHtmlFromFieldOthers(divReportHtml) {
             

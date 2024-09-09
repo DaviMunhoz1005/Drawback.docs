@@ -71,12 +71,12 @@ function alertFromRequestDeny(titleAlert, textAlert) {
     });
 }
 
-function alertFromSequencialToasts(documentName, index) {
+function alertFromSequencialToasts(documentName, index, isExpired) {
     
     setTimeout(() => {
         Swal.fire({
             title: 'Documento expirado!',
-            text: `O documento ${documentName} está expirado.`,
+            text: isExpired ? `O Documento ${documentName} passou da Validade!` : `O Documento ${documentName} está perto de passar da Validade!`,
             icon: 'warning',
             toast: true,
             position: 'top-end',
