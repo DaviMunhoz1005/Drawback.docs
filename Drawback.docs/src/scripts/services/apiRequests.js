@@ -530,7 +530,7 @@ async function updateDocument(userDocument, validityDocument) {
             },
             body: formData
         });
-        
+
         if(response.ok) {
 
             return true;

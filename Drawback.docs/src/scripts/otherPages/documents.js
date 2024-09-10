@@ -9,6 +9,13 @@ document.getElementById("sendDocument").addEventListener('click', () => {
     hideAddModal();
 });
 
+window.onload = function() {
+    if (sessionStorage.getItem('documentUpdated')) {
+        alertFromRequestAccepted("Documento Atualizado!");
+        sessionStorage.removeItem('documentUpdated'); // Remove a chave para evitar múltiplos alertas
+    }
+};
+
 documentListFromUser();
 
 async function documentListFromUser() {
@@ -117,7 +124,7 @@ async function documentListFromUser() {
                             await updateDocument(documentFile, validity);
 
                             hideEditModal();
-                            documentListFromUser();
+                            await documentListFromUser();
                         }
                     });
                 });
@@ -228,24 +235,24 @@ async function documentListFromUser() {
     }
 
     async function updateDocument(documentFile, validity) {
-        
+
         checkTokenFromUser();
-        
+    
         try {
-            
+
             if(await handleUpdateDocument(documentFile, validity)) {
 
-                await documentListFromUser(); 
-                alertFromRequestAccepted("Documento Atualizado!");
+                sessionStorage.setItem('documentUpdated', 'true');
+                window.location.reload(); 
             } else {
 
                 alertWarningRedirectDocuments("Você não tem permissão para essa ação.");
             }
         } catch(error) {
-            
+
             console.error('Erro ao atualizar o documento ', error);
         }
-    }
+    }    
 
     async function usePreviousVersionDocument(documentName) {
         
