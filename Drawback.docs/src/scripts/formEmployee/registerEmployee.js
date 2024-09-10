@@ -10,10 +10,10 @@ document.getElementById("register").addEventListener('click', async function(eve
 
         sessionStorage.setItem('registerSuccess', true);
         window.location.replace("/Drawback.docs/src/public/pages/otherPages/documents.html");
-    } else {
+        return;
+    } 
 
-        alertError("Não é possível ser funcionário de uma conta do tipo Pessoa Física.");
-    }
+    return alertError("Não é possível ser funcionário de uma conta do tipo Pessoa Física.");
 });
 
 async function getFormData() {
@@ -44,11 +44,10 @@ async function checkUsernameAlreadyExists(username) {
     
     if(userExists) {
 
-        alertError("Já existe um usuário com esse nome.");
-    } else {
-
-        return true;
+        return alertError("Já existe um usuário com esse nome.");
     }
+
+    return true;
 }
 
 function checkCharsFromEmail(email) {
@@ -56,11 +55,10 @@ function checkCharsFromEmail(email) {
     if(email.includes("@")) {
 
         return true;
-    } else {
+    } 
         
-        alertError("O email precisa ter o caractere \"@\".");
-        return false
-    }
+    alertError("O email precisa ter o caractere \"@\".");
+    return false;
 }
 
 function checkPasswordExistOrNull(password, checkPassword) {
@@ -77,15 +75,14 @@ function checkPasswordExistOrNull(password, checkPassword) {
     }
 }
 
-async function checkCnpjExists(cnpj) { // ver se realmente existe, fazer o contrário
+async function checkCnpjExists(cnpj) { 
     
     const cnpjExists = await handleFindByCnpjCpf(cnpj);
     
     if(cnpjExists) {
         
         return true;
-    } else {
-
-        alertError("Não existe um usuário com esse CNPJ.");
     }
+
+    return alertError("Não existe um usuário com esse CNPJ.");
 }

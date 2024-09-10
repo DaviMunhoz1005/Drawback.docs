@@ -41,11 +41,10 @@ async function checkUsernameAlreadyExists(username) {
     
     if(userExists) {
 
-        alertError("Já existe um usuário com esse nome.");
-    } else {
-
-        return true;
+        return alertError("Já existe um usuário com esse nome.");
     }
+
+    return true;
 }
 
 function checkCharsFromEmail(email) {
@@ -53,11 +52,10 @@ function checkCharsFromEmail(email) {
     if(email.includes("@")) {
 
         return true;
-    } else {
+    } 
         
-        alertError("O email precisa ter o caractere \"@\".");
-        return false
-    }
+    alertError("O email precisa ter o caractere \"@\".");
+    return false
 }
 
 function checkPasswordExistOrNull(password, checkPassword) {
@@ -80,19 +78,17 @@ async function checkCpfAlreadyExists(cpf) {
 
         alertError("O CPF deve conter apenas números.");
         return false;
-    } else {
-
-        const cpfExists = await handleFindByCnpjCpf(cpf);
+    } 
     
-        if(cpfExists) {
+    const cpfExists = await handleFindByCnpjCpf(cpf);
+    
+    if(cpfExists) {
 
-            alertError("Já existe um usuário com esse CPF.");
-            return false;
-        } else {
+        alertError("Já existe um usuário com esse CPF.");
+        return false;
+    } 
             
-            return true;
-        }
-    }
+    return true;
 }
 
 

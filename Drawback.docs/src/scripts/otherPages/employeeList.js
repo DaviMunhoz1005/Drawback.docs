@@ -24,20 +24,19 @@ async function employeeList() {
 
         if(!listEmployee) {
 
-            alertWarningRedirectDocuments("Sua conta é do tipo Funcionário, você não tem acesso a essa página.");
-        } else {
-
-            if(listEmployee.length === 0) {
-
-                textTitle.innerHTML = "Não existe usuários que querem se vincular a Você";
-            } else {
-    
-                listEmployee.forEach(employee => {
-    
-                    createInfosHtml(employee);
-                });
-            }
+            return alertWarningRedirectDocuments("Sua conta é do tipo Funcionário, você não tem acesso a essa página.");
         }
+
+        if(listEmployee.length === 0) {
+
+            textTitle.innerHTML = "Não existe usuários que querem se vincular a Você";
+            return;
+        } 
+    
+        listEmployee.forEach(employee => {
+    
+            createInfosHtml(employee);
+        });
     } catch(error) {
 
         console.error("Erro ao listar funcionários " + error);

@@ -8,12 +8,12 @@ document.getElementById("toglePassword").addEventListener('click', () => {
         inputPassword.type = 'text';
         iconSvg.classList.add('icon-visible');
         iconSvg.classList.remove('icon-hidden');
-    } else {
+        return;
+    } 
 
-        inputPassword.type = 'password';
-        iconSvg.classList.add('icon-hidden');
-        iconSvg.classList.remove('icon-visible');
-    }
+    inputPassword.type = 'password';
+    iconSvg.classList.add('icon-hidden');
+    iconSvg.classList.remove('icon-visible');
 });
 
 document.getElementById("toglCheckPassword").addEventListener('click', () => {
@@ -26,10 +26,10 @@ document.getElementById("toglCheckPassword").addEventListener('click', () => {
         inputPassword.type = 'text';
         iconSvg.classList.add('icon-visible');
         iconSvg.classList.remove('icon-hidden');
-    } else {
-        
-        inputPassword.type = 'password';
-        iconSvg.classList.add('icon-hidden');
-        iconSvg.classList.remove('icon-visible');
+        return;
     }
+        
+    inputPassword.type = 'password';
+    iconSvg.classList.add('icon-hidden');
+    iconSvg.classList.remove('icon-visible');
 });

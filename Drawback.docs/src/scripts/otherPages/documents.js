@@ -42,12 +42,11 @@ async function documentListFromUser() {
             if(listDocuments.length === 0) {
                 
                 totalFilesFromUser = 0;
-                createAddNewFileHtml();
-            } else {
-                
-                totalFilesFromUser = listDocuments.length;
-                showFilesFromUserHtml(listDocuments);
+                return createAddNewFileHtml();
             }
+                
+            totalFilesFromUser = listDocuments.length;
+            showFilesFromUserHtml(listDocuments);
         } catch(error) {
     
             console.error('Erro ao carregar documentos:', error);
@@ -225,11 +224,10 @@ async function documentListFromUser() {
                 if(await handleDeleteDocuments(documentName)) {
 
                     await documentListFromUser(); 
-                    alertFromRequestAccepted("Documento Excluído!");
-                } else {
+                    return alertFromRequestAccepted("Documento Excluído!");
+                } 
 
-                    alertWarningRedirectDocuments("Você não tem permissão para essa ação.");
-                }
+                alertWarningRedirectDocuments("Você não tem permissão para essa ação.");
             } 
         });
     }
@@ -243,11 +241,11 @@ async function documentListFromUser() {
             if(await handleUpdateDocument(documentFile, validity)) {
 
                 sessionStorage.setItem('documentUpdated', 'true');
-                window.location.reload(); 
-            } else {
+                window.location.reload();
+                return; 
+            } 
 
-                alertWarningRedirectDocuments("Você não tem permissão para essa ação.");
-            }
+            alertWarningRedirectDocuments("Você não tem permissão para essa ação.");
         } catch(error) {
 
             console.error('Erro ao atualizar o documento ', error);
@@ -458,16 +456,16 @@ async function documentListFromUser() {
 
                     divReportHtml.querySelector("progress").value = 1;
                     document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
-                } else {
-
-                    divReportHtml.querySelector("progress").value = 1;
-                    document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
-                    alertFromSequencialToasts(listDocuments[index].name, index + 1, false);
+                    return;
                 }
-            } else {
 
-                alertFromSequencialToasts(listDocuments[index].name, index + 1, true);
-            }
+                divReportHtml.querySelector("progress").value = 1;
+                document.getElementById(`a${index + 1}`).innerHTML = "(1/1)";
+                alertFromSequencialToasts(listDocuments[index].name, index + 1, false);
+                return;
+            } 
+
+            alertFromSequencialToasts(listDocuments[index].name, index + 1, true);
         }  
 
         function createHtmlFromFieldOthers(divReportHtml) {
@@ -546,10 +544,9 @@ function checkTokenFromUser() {
 
         alertWarningRedirectToIndex("Faça login para acessar essa página.");
         return false;
-    } else {
-        
-        return true;
     }
+        
+    return true;
 }
 
 function convertDateTimeToMillis(dateTimeString) {
@@ -572,32 +569,32 @@ async function addNewDocument() {
         
         if(!documentFile || !validity) {
 
-            alertError("Preencha o Formulário de Adição corretamente para adicionar o Documento.");
-        } else {
+            return alertError("Preencha o Formulário de Adição corretamente para adicionar o Documento.");
+        }
 
-            for(const document of documentList) {
+        for(const document of documentList) {
             
-                if(documentFile.name === `${document.name}.${document.extension}`) {
+            if(documentFile.name === `${document.name}.${document.extension}`) {
     
-                    alertError("Não é possível adicionar dois Documentos com o mesmo nome.");
-                    return;
-                }
-            }
-    
-            const documentAddSuccess = await handleSendDocument(documentFile, validity);
-    
-            if(!documentAddSuccess) {
-    
-                alertError("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
-    
-                setTimeout(() => {
-                    documentListFromUser();
-                }, 6000);
-            } else {
-    
-                documentListFromUser();
+                alertError("Não é possível adicionar dois Documentos com o mesmo nome.");
+                return;
             }
         }
+    
+        const documentAddSuccess = await handleSendDocument(documentFile, validity);
+    
+        if(!documentAddSuccess) {
+    
+            alertError("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
+    
+            setTimeout(() => {
+                documentListFromUser();
+            }, 6000);
+
+            return;
+        }
+    
+        documentListFromUser();
     } catch(error) {
 
         console.error('Erro ao adicionar um novo documento:', error);

@@ -48,11 +48,10 @@ async function checkUsernameAlreadyExists(username) {
     
     if(userExists) {
 
-        alertError("Já existe um usuário com esse nome.");
-    } else {
-
-        return true;
+        return alertError("Já existe um usuário com esse nome.");
     }
+
+    return true;
 }
 
 function checkCharsFromEmail(email) {
@@ -60,11 +59,10 @@ function checkCharsFromEmail(email) {
     if(email.includes("@")) {
 
         return true;
-    } else {
+    } 
         
-        alertError("O email precisa ter o caractere \"@\".");
-        return false
-    }
+    alertError("O email precisa ter o caractere \"@\".");
+    return false
 }
 
 async function checkNameCorporateReasonAlreadyExists(nameCorporateReason) {
@@ -75,16 +73,14 @@ async function checkNameCorporateReasonAlreadyExists(nameCorporateReason) {
 
         if(nameCorporateReasonExists) {
 
-            alertError("Já existe um usuário com esse razão social.");
-        } else {
+            return alertError("Já existe um usuário com esse razão social.");
+        } 
 
-            return true;
-        }
-    } else {
-
-        alertError("A Razão Social precisa contar letras.");
-        return false;
+        return true;
     } 
+
+    alertError("A Razão Social precisa contar letras.");
+    return false;
 }
 
 function checkPasswordExistOrNull(password, checkPassword) {
@@ -107,18 +103,16 @@ async function checkCnpjAlreadyExists(cnpj) {
 
         alertError("O CNPJ deve conter apenas números.");
         return false;
-    } else {
+    } 
 
-        const cnpjExists = await handleFindByCnpjCpf(cnpj);
+    const cnpjExists = await handleFindByCnpjCpf(cnpj);
     
-        if(cnpjExists) {
+    if(cnpjExists) {
             
-            alertError("Já existe um usuário com esse CNPJ.");
-        } else {
-
-            return true;
-        }
+        return alertError("Já existe um usuário com esse CNPJ.");
     }
+
+    return true;
 }
 
 async function checkCnaeAlreadyExists(cnae) {
@@ -127,16 +121,14 @@ async function checkCnaeAlreadyExists(cnae) {
 
         alertError("A CNAE deve conter apenas números.");
         return false;
-    } else {
+    } 
 
-        const cnaeExists = await handleFindByCnae(cnae);
+    const cnaeExists = await handleFindByCnae(cnae);
 
-        if(cnaeExists) {
+    if(cnaeExists) {
 
-            alertError("Já existe um usuário com essa CNAE.");
-        } else {
-
-            return true;
-        }
+        return alertError("Já existe um usuário com essa CNAE.");
     }
+
+    return true;
 }
