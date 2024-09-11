@@ -416,6 +416,7 @@ async function documentListFromUser() {
             reportsHtml.appendChild(divReportHtml);
 
             changingInfosFromFieldOthers();
+            document.getElementById('offCanvasTest').classList.remove = "open";
         }
 
         function createHtmlFromMidFields(divReportHtml, index) {
@@ -483,30 +484,39 @@ async function documentListFromUser() {
                 </div>
                 <br>
             `;
-        
+
             const link = divReportHtml.querySelector('.nameDocument');
             const offCanvas = document.getElementById('offCanvasTest');
+            const overlay = document.getElementById('overlay');
             const closeOffCanvas = document.querySelector('.close-off-canvas');
+            
+            console.log(offCanvas);
+            if(link && offCanvas && overlay && closeOffCanvas) {
+
+                link.addEventListener('click', function(event) {
+
+                    event.preventDefault(); 
+                    offCanvas.classList.add('open'); 
+                    overlay.classList.add('open'); 
+                });
         
-            link.addEventListener('click', function(event) {
-
-                event.preventDefault(); 
-                offCanvas.classList.add('open'); 
-            });
-    
-            closeOffCanvas.addEventListener('click', function() {
-
-                offCanvas.classList.remove('open'); 
-            });
+                closeOffCanvas.addEventListener('click', function() {
+                    
+                    offCanvas.className = 'off-canvas';
+                    overlay.classList.remove('open');
+                });
         
-            window.addEventListener('click', function(event) {
+                overlay.addEventListener('click', function() {
 
-                if(event.target === offCanvas) {
+                    offCanvas.className = 'off-canvas';
+                    overlay.classList.remove('open');
+                });
+            } else {
 
-                    offCanvas.classList.remove('open');
-                }
-            });
+                console.error('Um ou mais elementos necessários não foram encontrados.');
+            }
         }
+        
         
         function changingInfosFromFieldOthers() {
 
@@ -519,24 +529,46 @@ async function documentListFromUser() {
             tagReport.style.textDecoration = "underline";  
             tagReport.style.fontStyle = "italic";      
 
-
             const progressBar = document.querySelectorAll(".progress-bar")[3];
             const progressElement = progressBar.querySelector("progress");
+            const divOffCanvas = document.querySelector(".contentDocuments");
+            divOffCanvas.innerHTML = "";
 
             for(let i = 3; i < listDocuments.length; i++) {
+
+                const documentName = listDocuments[i].name.length > 24 ? listDocuments[i].name.slice(0, 21) + "..." : listDocuments[i].name;
+                const divDocumentOffCanvas = document.createElement("div");
+                divDocumentOffCanvas.className = "documentFieldOffCanvas";
 
                 if(new Date(listDocuments[i].validity).getTime() > Date.now()) {
 
                     countDocumentsValids++;
+
+                    divDocumentOffCanvas.innerHTML = createHtmlFromOffCanvasDocuments(documentName, 1);
+                    divOffCanvas.appendChild(divDocumentOffCanvas);
                 } else {
 
                     alertFromSequencialToasts(listDocuments[i].name, i - 1);
+                    divDocumentOffCanvas.innerHTML = createHtmlFromOffCanvasDocuments(documentName, 0);
+                    divOffCanvas.appendChild(divDocumentOffCanvas);
                 }
             }
             
             progressElement.value = countDocumentsValids;
             progressElement.max = listDocuments.length - 3;
             document.getElementById("a4").innerHTML = `(${countDocumentsValids}/${listDocuments.length - 3})`;
+        }
+
+        function createHtmlFromOffCanvasDocuments(documentName, itsOk) {
+            
+            return `
+                <h3>${documentName}</h3>
+                <div class="progress-bar" id="pb1">
+                    <progress value="${itsOk}" max="1" class="specialBar"></progress>
+                    <span class="sizeAmount">(${itsOk}/1)</span>
+                </div> 
+                <br>
+            `;
         }
     }
 }

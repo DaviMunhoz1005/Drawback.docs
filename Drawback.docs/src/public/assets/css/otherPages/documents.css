@@ -415,6 +415,7 @@ svg {
 .sizeAmount {
     position: absolute;
     font-size: 12px;
+    margin-left: 2px;
 }
 .sameLine {
     display: flex;
@@ -815,8 +816,8 @@ progress {
 .off-canvas {
     position: fixed;
     top: 0;
-    right: -400px; 
-    width: 400px;
+    right: -300px; 
+    width: 300px;
     height: 100%;
     background-color: white;
     box-shadow: -2px 0 5px rgba(0,0,0,0.5);
@@ -840,6 +841,24 @@ progress {
     position: absolute;
     top: 15px;
     right: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* Semi-transparente para destacar o off-canvas */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999; /* Deve estar abaixo do off-canvas */
+}
+
+.overlay.open {
+    opacity: 1;
+    visibility: visible;
 }
 
 /*Scroolbar*/
