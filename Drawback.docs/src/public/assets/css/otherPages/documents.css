@@ -842,9 +842,9 @@ progress {
     right: 10px;
 }
 
-/* Personalizando a barra de rolagem para navegadores WebKit */
+/*Scroolbar*/
 ::-webkit-scrollbar {
-    width: 15px; /* Largura da barra de rolagem */
+    width: 15px; 
 }
 
 ::-webkit-scrollbar-thumb {
