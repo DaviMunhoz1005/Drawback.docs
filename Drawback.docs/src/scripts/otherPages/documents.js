@@ -343,7 +343,7 @@ async function documentListFromUser() {
                 reportsHtml.appendChild(divReportHtml);
 
                 const divReport = document.querySelector(".report" + i);
-                const labelReport = divReport.querySelector("label");          
+                const tagReport = divReport.querySelector("label");          
     
                 let documentName = listDocuments[i].name;
     
@@ -352,7 +352,7 @@ async function documentListFromUser() {
                     documentName = documentName.slice(0, 21) + "...";
                 }
     
-                labelReport.textContent = documentName; 
+                tagReport.textContent = documentName;                 
 
                 checkValidityOfDocumentsToFillProgressBar(divReportHtml, i);
             }
@@ -396,7 +396,7 @@ async function documentListFromUser() {
                 reportsHtml.appendChild(divReportHtml);
 
                 const divReport = document.querySelector(".report" + i);
-                const labelReport = divReport.querySelector("label");          
+                const tagReport = divReport.querySelector("label");          
     
                 let documentName = listDocuments[i].name;
     
@@ -405,7 +405,7 @@ async function documentListFromUser() {
                     documentName = documentName.slice(0, 21) + "...";
                 }
     
-                labelReport.textContent = documentName; 
+                tagReport.textContent = documentName;            
 
                 checkValidityOfDocumentsToFillProgressBar(divReportHtml, i);
             }
@@ -469,20 +469,43 @@ async function documentListFromUser() {
         }  
 
         function createHtmlFromFieldOthers(divReportHtml) {
-            
+
             divReportHtml.className = "report3";
             divReportHtml.id = "reportDocument";
-
+        
             divReportHtml.innerHTML = `
-                    <label class="nameDocument"></label><br>
-                    <div class="sameLine">
-                        <div class="progress-bar" id="pb1">
-                            <progress value="0" max="0" class="specialBar"></progress>
-                        </div> 
-                        <span class="sizeAmount" id="a4"></span>
-                    </div>
-                    <br>
-                `;
+                <a href="#" class="nameDocument">Abrir Off-Canvas</a><br>
+                <div class="sameLine">
+                    <div class="progress-bar" id="pb1">
+                        <progress value="0" max="0" class="specialBar"></progress>
+                    </div> 
+                    <span class="sizeAmount" id="a4"></span>
+                </div>
+                <br>
+            `;
+        
+            const link = divReportHtml.querySelector('.nameDocument');
+            const offCanvas = document.getElementById('offCanvasTest');
+            const closeOffCanvas = document.querySelector('.close-off-canvas');
+        
+            link.addEventListener('click', function(event) {
+
+                event.preventDefault(); 
+                offCanvas.classList.add('open'); 
+            });
+    
+            closeOffCanvas.addEventListener('click', function() {
+
+                offCanvas.classList.remove('open'); 
+            });
+        
+            window.addEventListener('click', function(event) {
+
+                if(event.target === offCanvas) {
+
+                    offCanvas.classList.remove('open');
+                }
+            });
         }
         
         function changingInfosFromFieldOthers() {
@@ -490,9 +513,12 @@ async function documentListFromUser() {
             let countDocumentsValids = 0;
             
             const divReport = document.querySelector(".report3"); 
-            const labelReport = divReport.querySelector("label");          
+            const tagReport = divReport.querySelector("a");          
     
-            labelReport.textContent = "Outros..."; 
+            tagReport.textContent = "Outros...";            
+            tagReport.style.textDecoration = "underline";  
+            tagReport.style.fontStyle = "italic";      
+
 
             const progressBar = document.querySelectorAll(".progress-bar")[3];
             const progressElement = progressBar.querySelector("progress");
