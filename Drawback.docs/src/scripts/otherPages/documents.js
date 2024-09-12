@@ -138,6 +138,14 @@ async function documentListFromUser() {
                 });
             });
 
+            blockDocument.querySelectorAll(".buttonInfosUpdate").forEach(button => {
+
+                button.addEventListener('click', async function() {
+
+                    console.log("Função para abrir off canvas, modificar as informações dele e colocar as informações de modificações do documento clicado");
+                });
+            });
+
             if(new Date(documentUser.validity).getTime() >= Date.now()) {
                 
                 filesWithValidityOk++;
@@ -181,6 +189,11 @@ async function documentListFromUser() {
             <button>
                 <svg class="buttonUseLastVersion" width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#000000" fill-rule="evenodd" d="M20 10a1 1 0 0 1-1 1h-7a1 1 0 0 1 0-2h7a1 1 0 0 1 1 1zM7 14.019zm5 2.001a1 1 0 0 1-1 1 1.021 1.021 0 0 1-.79-.38l-.04-.06A6.177 6.177 0 0 0 7 14.15 3.663 3.663 0 0 0 6 14v1.02a.976.976 0 0 1-.55.87 1 1 0 0 1-1.05-.09l-4-3a1 1 0 0 1 0-1.6l4-3a.99.99 0 0 1 1.05-.09.988.988 0 0 1 .55.87V10c2.15 0 5.91 3.1 6 6.02zM20 14a1 1 0 0 1-1 1h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 1 1zm0 4a1 1 0 0 1-1 1h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 1 1zm0-12a1 1 0 0 1-1 1h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 1 1z"/> <path fill="#000000" fill-rule="evenodd" d="M24 2v20a2.006 2.006 0 0 1-2 2H8a2.006 2.006 0 0 1-2-2v-3a1 1 0 0 1 2 0v2.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-19a.487.487 0 0 0-.49-.5H8.5a.5.5 0 0 0-.5.5V5a1 1 0 0 1-2 0V2a2.006 2.006 0 0 1 2-2h14a2.006 2.006 0 0 1 2 2z"/>
+                </svg>
+            </button>
+            <button>
+                <svg class="buttonInfosUpdate" width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_iconCarrier"> <title/> <g id="Complete"> <g id="info-square"> <g> <rect data-name="--Rectangle" fill="none" height="20" id="_--Rectangle" rx="2" ry="2" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" x="2" y="2"/> <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="12" y2="16"/> <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="8"/> </g> </g> </g> </g>
                 </svg>
             </button>
         `;

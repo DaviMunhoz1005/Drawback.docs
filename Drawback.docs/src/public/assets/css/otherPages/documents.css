@@ -762,7 +762,7 @@ footer {
     border-radius: 4px 0 0 4px;
 }
 
-.buttonDownload, .buttonDelete, .buttonEdit, .buttonUseLastVersion{
+.buttonDownload, .buttonDelete, .buttonEdit, .buttonUseLastVersion, .buttonInfosUpdate{
     transform: rotate(360deg);
     width: 30px;
     height: 30px;
