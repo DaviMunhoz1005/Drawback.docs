@@ -688,6 +688,8 @@ async function downloadDocument(documentName) {
             }
         });
 
+        console.log(response);
+
         if(response.ok) {
 
             const blob = await response.blob(); 
