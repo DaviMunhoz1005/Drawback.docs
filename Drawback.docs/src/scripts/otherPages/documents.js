@@ -517,7 +517,6 @@ async function documentListFromUser() {
             }
         }
         
-        
         function changingInfosFromFieldOthers() {
 
             let countDocumentsValids = 0;

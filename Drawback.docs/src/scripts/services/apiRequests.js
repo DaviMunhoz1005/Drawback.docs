@@ -447,6 +447,43 @@ async function listDocumentsByName(documentName) {
     }
 }
 
+async function handlelistUpdateInfos(documentName) {
+    
+    try {
+        
+        return await listUpdateInfos(documentName);
+    } catch(error) {
+
+        console.error("Erro ao listar informações de atualização dos documentos do usuário:", error.message);
+    }
+}
+
+async function listUpdateInfos(documentName) {
+    
+    try {
+        
+        const response = await fetch(`${url}/document/infosUpdate?documentName=${documentName}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${getToken()}`
+            }
+        });
+
+        if(response.ok) {
+
+            return await response.json();
+        } else {
+
+            await handleApiResponse(response);
+        } 
+    } catch(error) {
+        
+        console.error("Erro ao realizar a requisição:", error.message);
+    }
+}
+
 async function handleSendDocument(userDocument, validity) {
 
     try {
