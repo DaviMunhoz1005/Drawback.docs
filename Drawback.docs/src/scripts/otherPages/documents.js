@@ -1,9 +1,9 @@
-import { handleListDocuments, handleSendDocument, handleListUpdateInfos } from "../services/apiRequests.js";
+import { handleListDocuments } from "../services/apiRequests.js";
 import { alertWarningRedirectToIndex, alertFromRequestAccepted, alertError } from "../components/alerts.js";
 import { progressCircle } from "../components/progressCircle.js";
-import { downloadDocument, deleteDocument, updateDocument, usePreviousVersionDocument } from "../components/buttonRequests.js";
+import { downloadDocument, deleteDocument, updateDocument, usePreviousVersionDocument, addNewDocument, infosUpdate } 
+from "../components/buttonRequests.js";
 import { checkTokenFromUser } from "../components/checkTokenFromUser.js";
-import { openCloseOffCanvas } from "../components/offCanvas.js";
 
 document.getElementById("sendDocument").addEventListener('click', () => {
 
@@ -143,36 +143,7 @@ async function documentListFromUser() {
 
                 button.addEventListener('click', async function(event) {
                     
-                    openCloseOffCanvas(event);
-
-                    document.getElementById("titleOffCanvas").textContent = "Infos. Atualizações"; 
-                    const divOffCanvas = document.querySelector(".contentDocuments");
-                    divOffCanvas.innerHTML = "";
-
-                    const listInfosUpdates = await handleListUpdateInfos(documentUser.name);
-                    const documentName = documentUser.name.length > 24 ? documentUser.name.slice(0, 21) + "..." : documentUser.name;
-
-                    divOffCanvas.innerHTML = `
-                        <h3>${documentName}</h3>
-                    `;
-
-                    for(let json of listInfosUpdates) {
-
-                        const divInfosUpdate = document.createElement('div');
-
-                        divInfosUpdate.innerHTML = `
-                            <div>
-                                <br>
-                                <p><span id="textInfoUpdate"><i><b>Versão:</b></i></span> ${json.version}</p>
-                                <p><span id="textInfoUpdate"><i><b>Data de Criação:</b></i></span> ${json.creation}</p>
-                                <p>${json.updated == null ? "" : `
-                                    <span id="textInfoUpdate"><i><b>Data de Atualização:</b></i></span> ${json.updated}
-                                    `}</p>
-                            </div>
-                        `;
-
-                        divOffCanvas.appendChild(divInfosUpdate);
-                    }   
+                    infosUpdate(event, documentUser);
                 });
             });
 
@@ -254,49 +225,6 @@ function checkLocalStorageForAlert() {
 
         alertFromRequestAccepted("Usuário Cadastrado com Sucesso!");
         sessionStorage.removeItem('registerSuccess'); 
-    }
-}
-
-async function addNewDocument() {
-    
-    try {
-
-        const documentFile = document.getElementById("documentFile").files[0];
-        const validity = document.getElementById("expirationDate").value;
-
-        const documentList = await handleListDocuments();
-        
-        if(!documentFile || !validity) {
-
-            return alertError("Preencha o Formulário de Adição corretamente para adicionar o Documento.");
-        }
-
-        for(const document of documentList) {
-            
-            if(documentFile.name === `${document.name}.${document.extension}`) {
-    
-                alertError("Não é possível adicionar dois Documentos com o mesmo nome.");
-                return;
-            }
-        }
-    
-        const documentAddSuccess = await handleSendDocument(documentFile, validity);
-    
-        if(!documentAddSuccess) {
-    
-            alertError("Não é permitido que o nome do documento possua \".\" além da própria extensão.");
-    
-            setTimeout(() => {
-                documentListFromUser();
-            }, 6000);
-
-            return;
-        }
-    
-        documentListFromUser();
-    } catch(error) {
-
-        console.error('Erro ao adicionar um novo documento:', error);
     }
 }
 
