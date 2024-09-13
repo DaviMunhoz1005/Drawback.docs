@@ -875,3 +875,7 @@ progress {
 ::-webkit-scrollbar-track {
     background: #242223; 
 }
+
+.nameDocument {
+    cursor: pointer;
+}

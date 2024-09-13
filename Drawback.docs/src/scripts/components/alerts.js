@@ -75,7 +75,7 @@ function alertFromSequencialToasts(documentName, index, isExpired) {
     
     setTimeout(() => {
         Swal.fire({
-            title: 'Documento expirado!',
+            title: isExpired ? 'Documento expirado!' : 'Cuidado com o prazo!',
             text: isExpired ? `O Documento ${documentName} passou da Validade!` : `O Documento ${documentName} está perto de passar da Validade!`,
             icon: 'warning',
             toast: true,

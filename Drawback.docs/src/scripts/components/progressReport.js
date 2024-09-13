@@ -1,4 +1,5 @@
 import { alertFromSequencialToasts } from "./alerts.js";
+import { openCloseOffCanvasWithLink } from "./offCanvas.js";
 
 function createProgressReports(listDocuments) {
         
@@ -166,7 +167,7 @@ function createProgressReports(listDocuments) {
         divReportHtml.id = "reportDocument";
     
         divReportHtml.innerHTML = `
-            <a href="#" class="nameDocument">Abrir Off-Canvas</a><br>
+            <span href="#" class="nameDocument">Abrir Off-Canvas</span><br>
             <div class="sameLine">
                 <div class="progress-bar" id="pb1">
                     <progress value="0" max="0" class="specialBar"></progress>
@@ -176,36 +177,14 @@ function createProgressReports(listDocuments) {
             <br>
         `;
 
-        const link = divReportHtml.querySelector('.nameDocument');
-        const offCanvas = document.getElementById('offCanvasTest');
-        const overlay = document.getElementById('overlay');
-        const closeOffCanvas = document.querySelector('.close-off-canvas');
-        
-        console.log(offCanvas);
-        if(link && offCanvas && overlay && closeOffCanvas) {
+        const spanOpenOffCanvas = divReportHtml.querySelector(".nameDocument");
+        spanOpenOffCanvas.addEventListener("click", (event) => {
 
-            link.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            changingInfosFromFieldOthers(); 
+        });
 
-                event.preventDefault(); 
-                offCanvas.classList.add('open'); 
-                overlay.classList.add('open'); 
-            });
-    
-            closeOffCanvas.addEventListener('click', function() {
-                
-                offCanvas.className = 'off-canvas';
-                overlay.classList.remove('open');
-            });
-    
-            overlay.addEventListener('click', function() {
-
-                offCanvas.className = 'off-canvas';
-                overlay.classList.remove('open');
-            });
-        } else {
-
-            console.error('Um ou mais elementos necessários não foram encontrados.');
-        }
+        openCloseOffCanvasWithLink(divReportHtml);
     }
     
     function changingInfosFromFieldOthers() {
@@ -213,7 +192,7 @@ function createProgressReports(listDocuments) {
         let countDocumentsValids = 0;
         
         const divReport = document.querySelector(".report3"); 
-        const tagReport = divReport.querySelector("a");  
+        const tagReport = divReport.querySelector("span");  
         document.getElementById("titleOffCanvas").textContent = "Outros Documentos"        
 
         tagReport.textContent = "Outros...";            

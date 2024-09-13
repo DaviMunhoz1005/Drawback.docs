@@ -1,8 +1,9 @@
-import { handleListDocuments, handleSendDocument } from "../services/apiRequests.js";
+import { handleListDocuments, handleSendDocument, handleListUpdateInfos } from "../services/apiRequests.js";
 import { alertWarningRedirectToIndex, alertFromRequestAccepted, alertError } from "../components/alerts.js";
 import { progressCircle } from "../components/progressCircle.js";
 import { downloadDocument, deleteDocument, updateDocument, usePreviousVersionDocument } from "../components/buttonRequests.js";
 import { checkTokenFromUser } from "../components/checkTokenFromUser.js";
+import { openCloseOffCanvas } from "../components/offCanvas.js";
 
 document.getElementById("sendDocument").addEventListener('click', () => {
 
@@ -140,9 +141,38 @@ async function documentListFromUser() {
 
             blockDocument.querySelectorAll(".buttonInfosUpdate").forEach(button => {
 
-                button.addEventListener('click', async function() {
+                button.addEventListener('click', async function(event) {
+                    
+                    openCloseOffCanvas(event);
 
-                    console.log("Função para abrir off canvas, modificar as informações dele e colocar as informações de modificações do documento clicado");
+                    document.getElementById("titleOffCanvas").textContent = "Infos. Atualizações"; 
+                    const divOffCanvas = document.querySelector(".contentDocuments");
+                    divOffCanvas.innerHTML = "";
+
+                    const listInfosUpdates = await handleListUpdateInfos(documentUser.name);
+                    const documentName = documentUser.name.length > 24 ? documentUser.name.slice(0, 21) + "..." : documentUser.name;
+
+                    divOffCanvas.innerHTML = `
+                        <h3>${documentName}</h3>
+                    `;
+
+                    for(let json of listInfosUpdates) {
+
+                        const divInfosUpdate = document.createElement('div');
+
+                        divInfosUpdate.innerHTML = `
+                            <div>
+                                <br>
+                                <p><span id="textInfoUpdate"><i><b>Versão:</b></i></span> ${json.version}</p>
+                                <p><span id="textInfoUpdate"><i><b>Data de Criação:</b></i></span> ${json.creation}</p>
+                                <p>${json.updated == null ? "" : `
+                                    <span id="textInfoUpdate"><i><b>Data de Atualização:</b></i></span> ${json.updated}
+                                    `}</p>
+                            </div>
+                        `;
+
+                        divOffCanvas.appendChild(divInfosUpdate);
+                    }   
                 });
             });
 

@@ -447,7 +447,7 @@ async function listDocumentsByName(documentName) {
     }
 }
 
-async function handlelistUpdateInfos(documentName) {
+async function handleListUpdateInfos(documentName) {
     
     try {
         
@@ -725,5 +725,5 @@ async function handleApiResponse(response) {
 }
 
 export { 
-    handleFindUser, handleFindByCnpjCpf, handleFindByCnae, handlelFindByNameCorporateReason, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument, getToken, getExpiryToken
+    handleFindUser, handleFindByCnpjCpf, handleFindByCnae, handlelFindByNameCorporateReason, handleCreateAccountAndToken, handleTakeUserTokenButton, handleDeleteUser, handleListOfUsersToLink, handleAllowEmployee, handleListDocuments, handleListDocumentsByName, handleSendDocument, handleUpdateDocument, handleUsePreviousVersion, handleDeleteDocuments, handleDownloadDocument, getToken, getExpiryToken, handleListUpdateInfos
 };
