@@ -16,13 +16,13 @@ document.getElementById("register").addEventListener('click', async function(eve
 
 async function getFormData() {
 
-    const username = document.getElementById("username").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const checkPassword = document.getElementById("checkPassword").value;
-    const nameCorporateReason = document.getElementById("nameCorporateReason").value;
-    const cnpj = document.getElementById("cnpj").value;
-    const cnae = document.getElementById("cnae").value;
+    const username = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const checkPassword = document.getElementById("checkPassword").value.trim();
+    const nameCorporateReason = document.getElementById("nameCorporateReason").value.trim();
+    const cnpj = document.getElementById("cnpj").value.trim();
+    const cnae = document.getElementById("cnae").value.trim();
 
     if(await checkUsernameAlreadyExists(username) && 
     checkCharsFromEmail(email) &&

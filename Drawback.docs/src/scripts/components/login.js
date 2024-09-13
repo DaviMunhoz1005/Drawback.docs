@@ -20,7 +20,7 @@ document.getElementById("login").addEventListener('click', async function(event)
 function getFormData() {
 
     return {
-        username: document.getElementById("username").value,
-        password: document.getElementById("password").value
+        username: document.getElementById("username").value.trim(),
+        password: document.getElementById("password").value.trim()
     }
 }
