@@ -2,7 +2,7 @@ import {
     handleDownloadDocument, handleDeleteDocuments, handleUpdateDocument, handleUsePreviousVersion, handleSendDocument, handleListDocuments, handleListUpdateInfos 
 } 
 from "../services/apiRequests.js";
-import { alertWarningRedirectDocuments, alertFromRequestAccepted } from "./alerts.js";
+import { alertWarningRedirectDocuments, alertFromRequestAccepted, alertError } from "./alerts.js";
 import { checkTokenFromUser } from "./checkTokenFromUser.js";
 import { documentListFromUser } from "../otherPages/documents.js";
 import { openCloseOffCanvas } from "./offCanvas.js";
