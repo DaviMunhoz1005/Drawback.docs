@@ -132,8 +132,12 @@ button {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 35rem;
+    margin-left: 35.7rem;
     height: 50px;
+}
+
+#i:hover {
+    color: #eee5d1;
 }
 
 .dropdown-content a:hover {
@@ -190,7 +194,7 @@ nav {
     letter-spacing: 3px;
     margin-top: -30px;
     font-size: 23px;
-    margin-left: -55rem;
+    margin-left: -52.3rem;
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }
@@ -307,6 +311,7 @@ body {
     height: 0px;
     border: 2px solid #dbdde2;
     margin: 40px auto;
+    margin-top: -20px;
     border-radius: 5px;
 }
 

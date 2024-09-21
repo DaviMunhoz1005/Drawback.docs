@@ -60,13 +60,6 @@ header {
     border: 1px solid #fbfafb;
 }
 
-.barDesign9 hr {
-    margin-top: 25px;
-    width: 80px; 
-    position: absolute;
-    margin-left: -29px;
-    border: 1px solid #242223;
-}
 
 button:focus {
     outline: none;    
@@ -137,8 +130,12 @@ button {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 35rem;
+    margin-left: 35.7rem;
     height: 50px;
+}
+
+#i:hover {
+    color: #eee5d1;
 }
 
 .dropdown-content a:hover {
@@ -195,7 +192,7 @@ nav {
     letter-spacing: 3px;
     margin-top: -30px;
     font-size: 23px;
-    margin-left: -55rem;
+    margin-left: -52.3rem;
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }

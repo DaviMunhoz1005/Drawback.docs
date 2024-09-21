@@ -111,6 +111,7 @@ async function documentListFromUser() {
 
                     document.getElementById('updateDocument').addEventListener('click', async () => {
 
+           
                         const documentFile = document.getElementById("documentFileEdit").files[0];
                         const validity = document.getElementById("expirationDateEdit").value;
 

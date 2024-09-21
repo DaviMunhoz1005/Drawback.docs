@@ -55,9 +55,11 @@ header {
     margin-top: 25px;
     width: 80px; 
     position: absolute;
-    margin-left: -29px;
+    margin-left: -1.62rem;
     border: 1px solid #eee5d1;
 }
+
+
 
 button:focus {
     outline: none;    
@@ -132,7 +134,7 @@ button {
     position: absolute;
     border: 1px solid #434343;
     margin-top: -17px;
-    margin-left: 35rem;
+    margin-left: 35.7rem;
     height: 50px;
 }
 
@@ -144,6 +146,10 @@ button {
     display: block;
 }
 
+
+#i:hover {
+    color: #eee5d1;
+}
 
 #w {
     margin-left: 1.2rem;
@@ -190,7 +196,7 @@ nav {
     letter-spacing: 3px;
     margin-top: -30px;
     font-size: 23px;
-    margin-left: -55rem;
+    margin-left: -52.3rem;
     justify-content: space-around;
     color: rgb(255, 255, 255);
 }
