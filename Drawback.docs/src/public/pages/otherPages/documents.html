@@ -158,18 +158,25 @@
         <div class="modal" id="addModal">
             <div class="add-modal-content">
                 <span class="close" onclick="hideAddModal()">&times;</span>
-                <h1>Adicionar Documento</h1>
+                <h3 class="h3">Adicionar documento</h3>
                 <div class="add-modal-body">
-                    <label class="add-text-modal" for="documentFile">Escolha o arquivo desejado:</label>
-                    <input type="file" id="documentFile" name="documentFile">
-                    
-                    <label class="add-text-modal" for="expirationDate">Data de validade do documento:</label>
-                    <input type="date" id="expirationDate" name="expirationDate">
+                    <div class="positionChanger">
+                        <div class="barDesign10"><hr></div>
+                        <label class="add-text-modal" for="documentName">Alterar nome do arquivo</label>
+                        <input type="text" id="documentName" name="documentName"  placeholder="Caso desejado insira outro nome para o arquivo">
+
+                        <label class="add-text-modal" for="documentFile">Escolha o arquivo desejado</label>
+                        <input type="file" id="documentFile" name="documentFile">
+                        
+                        <label class="add-text-modal" for="expirationDate">Data de validade do documento</label>
+                        <input type="date" id="expirationDate" name="expirationDate">
+                    </div>
                 </div>
                 <div class="add-modal-footer">
-                    <button id="sendDocument">Salvar</button>
-                    <button class="cancel" onclick="hideAddModal()">Fechar</button>
+                    <button id="sendDocument">Concluir</button>
+                    <button class="cancel" onclick="hideAddModal()">Cancelar</button>
                 </div>
+                <div class="barDesign11"><hr></div>
             </div>
         </div>
         <div id="black" onclick="hideAddModal()"></div>
@@ -177,24 +184,30 @@
         <div class="modal" id="editModal">
             <div class="edit-modal-content">
                 <span class="close" onclick="hideEditModal()">&times;</span>
-                <h1>Atualizar Documento</h1>
+                <h3 class="h3">Atualizar documento</h3>
                 <br>
-                <span id="documentNameEdit"></span>
+                
                 <div class="edit-modal-body">
-
-                    <label class="edit-text-modal" for="documentNameChanger">Alterar nome do arquivo:</label>
-                    <input type="text" id="documentNameChanger" name="documentNameChanger">
-                    
-                    <label class="edit-text-modal" for="documentFileEdit">Escolha o arquivo que você Editou:</label>
-                    <input type="file" id="documentFileEdit" name="documentFileEdit">
-                    
-                    <label class="edit-text-modal" for="expirationDateEdit">Data de Validade Atual do Documento:</label>
-                    <input type="date" id="expirationDateEdit" name="expirationDateEdit">
+                    <span id="documentNameEdit"></span>
+                    <div class="barDesign12"><hr></div>
+                    <div class="positionChanger2">
+                      
+                       
+                        <label class="edit-text-modal" for="documentName2">Alterar nome do arquivo</label>
+                        <input type="text" id="documentName2" name="documentName2" placeholder="Caso desejado insira outro nome para o arquivo">
+                        
+                        <label class="edit-text-modal" for="documentFileEdit">Escolha o arquivo que você Editou</label>
+                        <input type="file" id="documentFileEdit" name="documentFileEdit">
+                        
+                        <label class="edit-text-modal" for="expirationDateEdit">Data de Validade Atual do Documento</label>
+                        <input type="date" id="expirationDateEdit" name="expirationDateEdit">
+                    </div>
                 </div>
                 <div class="edit-modal-footer">
-                    <button id="updateDocument">Salvar</button>
-                    <button class="cancel" onclick="hideEditModal()">Fechar</button>
+                    <button id="updateDocument">Concluir</button>
+                    <button class="cancel" onclick="hideEditModal()">Cancelar</button>
                 </div>
+                <div class="barDesign11"><hr></div>
             </div>
         </div>
         <div id="black" onclick="hideEditModal()"></div>
