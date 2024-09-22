@@ -327,7 +327,7 @@ body {
 
 
 .square.collapsed {
-    height: 60px; /* Definido para 60px quando fechado */
+    height:60px; /* Definido para 60px quando fechado */
     padding-bottom: 0;
 }
 
@@ -348,8 +348,16 @@ body {
 .contentJS {
     max-height: 50px; /* Altura máxima */
     overflow-y: auto; /* Permite rolagem vertical */
-    padding-right: 10px; /* Espaçamento à direita */
+    scroll-behavior: smooth;
+    padding: 0; /* Removido padding à direita */
     transition: max-height 0.3s ease; /* Transição suave */
+    margin: 0; /* Remover margens */
+    box-sizing: border-box; /* Inclui padding e border nas dimensões */
+}
+
+.extraContent, .validityContainer, .extraButtons {
+    margin: 0; /* Remove margens nos elementos internos */
+    padding: 0; /* Remove padding interno nos elementos */
 }
 
 .extraButtons {
@@ -1000,7 +1008,7 @@ footer {
 
 .buttonDownload {
     margin-left: -81px;
-    margin-top: -10px;
+    margin-top: -5px;
     font-size: 14px;
     background-color: #000000; /* Cor de fundo verde */
     color: white; /* Cor do texto */
@@ -1009,6 +1017,10 @@ footer {
     border-radius: 5px; /* Bordas arredondadas */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+.containerExtra {
+    margin-top: -3px;
 }
 
 .buttonUseLastVersion {

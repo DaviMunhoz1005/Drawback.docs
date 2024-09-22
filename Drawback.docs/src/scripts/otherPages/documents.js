@@ -179,7 +179,7 @@ async function documentListFromUser() {
         if(documentNameDisplay.length > 24) {
             documentNameDisplay = documentNameDisplay.slice(0, 21) + "...";
         }
-    
+
         blockDocument.innerHTML = `
         <a class="designLink1">
             <button class="buttonDelete">x</button>
@@ -198,15 +198,18 @@ async function documentListFromUser() {
                
                 <div class="extraButtons" style="display: none;">
                     <button class="buttonEdit">Editar arquivo</button><br><br>
+                    <div class="containerExtra">
                     <button class="buttonUseLastVersion">Usar Última Versão</button><br><br>
                     <button class="buttonDownload">Baixar</button><br><br>
+                    </div>
                     <div class="barDesign14"><hr></div>  
+                    
                 </div>
                
             </div>
         </div>
         `;
-    
+
         const icon = blockDocument.querySelector('#icon');
         icon.addEventListener('click', function(event) {
             const extraContent = blockDocument.querySelector('.extraContent');
@@ -236,6 +239,18 @@ async function documentListFromUser() {
         deleteButton.addEventListener('click', function(event) {
             event.stopPropagation(); 
         });
+        const contentJS = blockDocument.querySelector('.contentJS');
+
+        contentJS.addEventListener('wheel', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão de rolagem
+
+            // Define a quantidade de pixels para rolar
+            const delta = event.deltaY * 0.48; // Ajuste o fator (0.5) conforme necessário
+            contentJS.scrollBy({
+                top: delta,
+                behavior: 'smooth'
+            });
+        });
         
     
         return blockDocument;
@@ -253,6 +268,8 @@ async function documentListFromUser() {
         }
     }
 }
+
+
 
 function checkLocalStorageForAlert() {
 
