@@ -28,7 +28,7 @@ header {
     padding: 1.1rem 0;
     text-align: center;
     height: 4.6rem;
-    z-index: 4;
+     z-index: 1000;
 }
 
 .options a {
@@ -267,11 +267,13 @@ body {
     padding: 20px;
     color: black; 
     flex: 1;
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 270px);
 }
 
+
+
 .content {
-    margin: 7vh auto;
+    margin: 6vh auto;
     width: 100%;
 }
 
@@ -288,30 +290,80 @@ body {
     flex-wrap: wrap;
 }
 
-.square { 
+.square {
+    position: relative;
     font-weight: 100;
     margin: 0px;
-    margin-bottom: 0px;
-    width: calc(25% - 20px); 
+    margin-bottom: -30px;
+    height: auto; /* Ajustável, dependendo do conteúdo */
+    min-width: 270px;
     background-color: #fffdf9;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     box-sizing: border-box;
     padding-bottom: 20px;
+    transition: all 0.5s ease-out; /* Transição suave para altura e padding */
 }
+
+.square.collapsed {
+    height: 60px; /* Definido para 60px quando fechado */
+    padding-bottom: 0;
+}
+
+#icon {
+    position: absolute;
+    top: 22px;
+    right: 13px;
+    font-size: 16px; /* Tamanho ajustável do ícone */
+    transition: transform 0.05s ease;
+    cursor: pointer;
+}
+
+.icon-rotate {
+    transform: rotate(360deg); /* Rotaciona 90 graus para apontar para baixo */
+}
+
+
+.contentJS {
+    max-height: 110px; /* Altura máxima */
+    overflow-y: auto; /* Permite rolagem vertical */
+    padding-right: 10px; /* Espaçamento à direita */
+    transition: max-height 0.3s ease; /* Transição suave */
+}
+
+.extraButtons {
+    margin-top: -6px;
+    display: none; /* Inicialmente oculto */
+}
+
 
 .designLink1 {
     display: block;
+    position: relative;
     padding: 20px;
     color: black; 
+   
+}
+.buttonDelete {
+    position: absolute; /* Torna o botão posicionado em relação ao contêiner .square */
+    top: 14px; /* Distância do topo */
+    left: -2px; /* Distância da esquerda */
+    border: none; /* Remover borda */
+    background: none; /* Remover fundo */
+    font-size: 16px; /* Tamanho ajustável */
+    cursor: pointer; /* Muda o cursor para indicar clicável */
+}
+.buttonDelete :hover {
+    background: #ff8684
+
 }
 
 .barDesign hr {
-    width: 1160px;
+    width: 1210px;
     height: 0px;
     border: 2px solid #dbdde2;
     margin: 40px auto;
-    margin-top: -20px;
+    margin-top: 72px;
     border-radius: 5px;
 }
 
@@ -452,8 +504,8 @@ svg {
     width: 1px;
     height: 300px;
     border: 1px solid #dbdde2;
-    margin-top: -240px;
-    margin-bottom: 30px;
+    margin-top: -280px;
+    margin-bottom: 85px;
     margin-left: 700px;
     border-radius: 5px;
 }
@@ -469,6 +521,12 @@ svg {
 
 .otherContents {
     margin-bottom: 70px;
+}
+
+#employeeLink {
+    position: absolute;
+    margin-top: -45px;
+    margin-left: -190px;
 }
 
 .buttonEmployeeLink {
@@ -570,7 +628,7 @@ input[type="date"] {
     border: 1px solid #888;
     width: 80%;
     max-width: 800px;
-    height: 480px;
+    height: 400px;
     position: relative;
     border-radius: 4px;
 }
@@ -689,7 +747,7 @@ input[type="date"] {
     border: 1px solid #888;
     width: 80%;
     max-width: 800px;
-    height: 490px;
+    height: 400px;
     position: relative;
     border-radius: 4px;
 }
@@ -869,20 +927,146 @@ footer {
     font-size: 15px;  
 }
 
+.validityContainer {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    display: flex; /* Permite que os itens fiquem lado a lado */
+    align-items: center; /* Alinha verticalmente */
+    border-radius: 5px; /* Borda arredondada */
+    padding: 10px; /* Espaçamento interno */
+    margin-left: 30px;
+}
+.barDesign13 hr{
+    position: absolute; 
+    border: solid 1px rgb(0, 0, 0);
+    top: 59px; 
+    left: 0; 
+    right: 0; 
+    z-index: 0; 
+    height: 1px;
+
+}
+.barDesign14 hr {
+    border: solid 1px rgb(0, 0, 0);
+    position: absolute; 
+    top: 169px; 
+    left: 0; 
+    right: 0; 
+    z-index: 0; 
+    height: 1px; 
+
+}
+
+.textValidity {
+    margin: 0; /* Remove margens do parágrafo */
+    padding-right: 10px; /* Espaçamento à direita */
+}
+
+
+
+
 .textValidity {
     border-radius: 4px 0 0 4px;
 }
 
-.buttonDownload, .buttonDelete, .buttonEdit, .buttonUseLastVersion, .buttonInfosUpdate{
+.buttonDelete{
     transform: rotate(360deg);
     width: 30px;
     height: 30px;
     margin: 0 10px;
 }
 
-.buttonUseLastVersion {
-    width: 25px;
+.buttonDownload {
+    margin-left: -81px;
+    margin-top: -10px;
+    font-size: 14px;
+    background-color: #000000; /* Cor de fundo verde */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 20px; /* Espaçamento interno (padding) */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
 }
+
+.buttonUseLastVersion {
+    margin-left: -1px;
+    margin-top: -10px;
+    font-size: 14px;
+    background-color: #000000; /* Cor de fundo verde */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 20px; /* Espaçamento interno (padding) */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+.buttonInfosUpdate {
+    margin-left: -43px;
+    margin-top: 0px;
+    font-size: 14px;
+    background-color: #000000; /* Cor de fundo verde */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 20px; /* Espaçamento interno (padding) */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+.buttonEdit {
+    margin-left: -31px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    background-color: #000000; /* Cor de fundo verde */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 20px; /* Espaçamento interno (padding) */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+
+
+
+.buttonDownload:hover {
+    transform: scale(1.03); /* Leve aumento de tamanho ao passar o mouse */
+}
+
+.buttonDownload:focus {
+    outline: none; /* Remove a borda de foco */
+   
+}
+
+.buttonUseLastVersion:hover {
+    transform: scale(1.03); /* Leve aumento de tamanho ao passar o mouse */
+}
+
+.buttonUseLastVersion:focus {
+    outline: none; /* Remove a borda de foco */
+   
+}
+
+.buttonInfosUpdate:hover {
+    transform: scale(1.03); /* Leve aumento de tamanho ao passar o mouse */
+}
+
+.buttonInfosUpdate:focus {
+    outline: none; /* Remove a borda de foco */
+   
+}
+
+.buttonEdit:hover {
+    transform: scale(1.03); /* Leve aumento de tamanho ao passar o mouse */
+}
+
+.buttonEdit:focus {
+    outline: none; /* Remove a borda de foco */
+   
+}
+
 
 .swal2-cancel-button-red {
     background-color: red !important; 

@@ -13,8 +13,9 @@ async function downloadDocument(documentNameWithExtension) {
     await handleDownloadDocument(documentNameWithExtension);
 }
 
+
 async function deleteDocument(documentName) {
-    
+
     checkTokenFromUser();
     Swal.fire({
         title: "Tem Certeza?",
