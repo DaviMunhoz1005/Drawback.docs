@@ -58,7 +58,7 @@ async function documentListFromUser() {
     function createAddNewFileHtml() {
 
         const docHtml = document.createElement("div");
-        docHtml.className = "square"; 
+        docHtml.className = "square2"; 
         docHtml.onclick = showAddModal;
     
         docHtml.innerHTML = `
@@ -74,6 +74,8 @@ async function documentListFromUser() {
 
         document.getElementById("wholeArea2").style.display = "none";
         document.getElementById("barDesign2").style.display = "none";
+
+        
     }
     
     function showFilesFromUserHtml(array) {

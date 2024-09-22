@@ -305,6 +305,27 @@ body {
     transition: all 0.5s ease-out; /* Transição suave para altura e padding */
 }
 
+.square2 {
+    position: relative;
+    font-weight: 100;
+    margin: 0px;
+    margin-bottom: -30px;
+    height: 150px; /* Ajustável, dependendo do conteúdo */
+    width: 270px;
+    background-color: #fffdf9;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    transition: all 0.5s ease-out; /* Transição suave para altura e padding */
+}
+.square2.collapsed {
+    position: absolute;
+    margin-top: 100px;
+}
+
+
+
 .square.collapsed {
     height: 60px; /* Definido para 60px quando fechado */
     padding-bottom: 0;
@@ -846,6 +867,7 @@ input[type="date"] {
 .add {
     margin-top: -20px;
     font-size: 70px;
+
     opacity: 0.3;
 }
 
