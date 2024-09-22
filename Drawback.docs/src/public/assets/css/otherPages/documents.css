@@ -346,7 +346,7 @@ body {
 
 
 .contentJS {
-    max-height: 110px; /* Altura máxima */
+    max-height: 50px; /* Altura máxima */
     overflow-y: auto; /* Permite rolagem vertical */
     padding-right: 10px; /* Espaçamento à direita */
     transition: max-height 0.3s ease; /* Transição suave */
@@ -950,7 +950,7 @@ footer {
 }
 
 .validityContainer {
-    margin-top: 8px;
+    margin-top: 1px;
     margin-bottom: 4px;
     display: flex; /* Permite que os itens fiquem lado a lado */
     align-items: center; /* Alinha verticalmente */
@@ -971,7 +971,7 @@ footer {
 .barDesign14 hr {
     border: solid 1px rgb(0, 0, 0);
     position: absolute; 
-    top: 169px; 
+    top: 109px; 
     left: 0; 
     right: 0; 
     z-index: 0; 
