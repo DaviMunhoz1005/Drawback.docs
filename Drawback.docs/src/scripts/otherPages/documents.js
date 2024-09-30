@@ -5,6 +5,8 @@ import { downloadDocument, deleteDocument, updateDocument, usePreviousVersionDoc
 from "../components/buttonRequests.js";
 import { checkTokenFromUser } from "../components/checkTokenFromUser.js";
 
+let hasContentMessageAdded = false; 
+let pogger = false;
 document.getElementById("sendDocument").addEventListener('click', () => {
 
     addNewDocument();
@@ -26,6 +28,7 @@ async function documentListFromUser() {
 
     let totalFilesFromUser, filesWithValidityOk = 0;
     const blockDocumentList = document.getElementById("separation1");
+    const blockDocumentList2 = document.getElementById("separation2");
     const progressionText = document.getElementById("progressionText");
 
     if(checkTokenFromUser()) {
@@ -150,7 +153,6 @@ async function documentListFromUser() {
             });
 
             if(new Date(documentUser.validity).getTime() >= Date.now()) {
-                
                 filesWithValidityOk++;
             }
         });
@@ -170,45 +172,57 @@ async function documentListFromUser() {
     }
 
 
-    function createBlockDocumentHtml(documentUser) {
-    
+    function createBlockDocumentHtml(documentUser, index) {
         const blockDocument = document.createElement("div");
         blockDocument.className = "square collapsed"; // Inicia como colapsado (60px de altura)
         let documentNameDisplay = documentUser.name;
     
-        if(documentNameDisplay.length > 24) {
+        if (documentNameDisplay.length > 24) {
             documentNameDisplay = documentNameDisplay.slice(0, 21) + "...";
         }
+    
 
         blockDocument.innerHTML = `
-        <a class="designLink1">
-            <button class="buttonDelete">x</button>
-            ${documentNameDisplay}
-            <i class="fa fa-chevron-right" id="icon"></i>
-        </a>
-        <div class="contentJS">
-            <div class="extraContent" style="display: none;">
-                <div class="barDesign13"><hr></div> 
-
+        <div class="container">  
+            <a class="designLink1">
+                <button class="buttonDelete">x</button>
+                <span class="nom">${documentNameDisplay}</span>
+                <i id="icon"></i>
+            </a>
+            <div class="barDesign13"><hr></div>
+            <div class="contentINSANO">
+                <div class="contentINSANO2">
+                    <div class="opc"> <span class="bt"><button>Opções</button></span> </div>
+                    <div class="notification-container">
+                        <span class="not"><button>Notificações:</button></span>
+                        <label class="switch">
+                            <input type="checkbox" id="toggleSwitch-${index}" class="toggleSwitch">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
                 <div class="validityContainer">
                     <p class="textValidity">&nbsp;Validade:</p>
                     <span class="fieldValidity">${formatDate(documentUser.validity)}</span>
                 </div>
-                <button class="buttonInfosUpdate">Informações</button><br><br>
-               
-                <div class="extraButtons" style="display: none;">
-                    <button class="buttonEdit">Editar arquivo</button><br><br>
-                    <div class="containerExtra">
-                    <button class="buttonUseLastVersion">Usar Última Versão</button><br><br>
-                    <button class="buttonDownload">Baixar</button><br><br>
-                    </div>
-                    <div class="barDesign14"><hr></div>  
-                    
-                </div>
-               
             </div>
+            <div class="barDesign14"><hr></div>
+            <div class="contentJS"></div>
         </div>
-        `;
+    `;
+
+        const toggleSwitch = blockDocument.querySelector(`#toggleSwitch-${index}`);
+        toggleSwitch.addEventListener('change', function () {
+            if (this.checked) {
+                filesWithValidityOk++; // Aumenta o valor quando marcado
+            } else {
+                filesWithValidityOk--; // Diminui o valor quando desmarcado
+            }
+            console.log(`Arquivos com validade OK: ${filesWithValidityOk}`);
+        });
+    
+
+        
 
         const icon = blockDocument.querySelector('#icon');
         icon.addEventListener('click', function(event) {
@@ -217,20 +231,17 @@ async function documentListFromUser() {
         
             extraContent.style.display = extraContent.style.display === 'none' ? 'block' : 'none';
             
-            // Se o conteúdo extra estiver visível, mostra os botões extras
             if (extraContent.style.display === 'block') {
                 extraButtons.style.display = 'block';
                 blockDocument.classList.toggle('collapsed');
-                icon.classList.toggle('icon-rotate'); 
-                icon.classList.toggle('fa-chevron-right'); 
-                icon.classList.toggle('fa-chevron-down');
+
+
                 icon.classList.toggle('rotate-active');
             } else {
                 extraButtons.style.display = 'none';
                 blockDocument.classList.toggle('collapsed');
-                icon.classList.toggle('icon-rotate'); 
-                icon.classList.toggle('fa-chevron-right'); 
-                icon.classList.toggle('fa-chevron-down');
+
+
                 icon.classList.toggle('rotate-active');
             }
         });
@@ -256,18 +267,48 @@ async function documentListFromUser() {
         return blockDocument;
     }
 
-    function createSeparationForDocuments(index) {
-        
-        if((index + 1) % 4 === 0) {
+   
 
+    function createSeparationForDocuments(index) { 
+        let O = index;
+    
+        if ((index + 1) % 4 === 0) {
             const barHtml = `
                 <div class="barDesign"><hr></div>
                 <div class="siteSeparation"></div>
             `;
             blockDocumentList.insertAdjacentHTML('beforeend', barHtml);
+            pogger = true; 
+        } else {
+            pogger = false; 
+        }
+    
+        if (O < 4 && !hasContentMessageAdded) {
+            while (!pogger) { // Enquanto pogger for false vapo reseba borabil
+                const a = `
+                    <span class="bara">
+                        <div class="barDesign"><hr></div>
+                        <div class="siteSeparation" id="pognog">Adicione mais documentos</div>
+                    </span>
+                `;
+                blockDocumentList2.insertAdjacentHTML('beforeend', a);
+                hasContentMessageAdded = true; 
+                break; 
+            }
+        }
+        while (pogger) {
+            const messageElement = document.getElementById("pognog");
+            const messageElement2 = document.getElementById("separation2");
+            if (messageElement) {
+                messageElement.parentElement.remove(); 
+            }
+            hasContentMessageAdded = false; 
+            break; 
         }
     }
+    
 }
+
 
 
 

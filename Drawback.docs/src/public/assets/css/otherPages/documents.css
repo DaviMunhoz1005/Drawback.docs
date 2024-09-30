@@ -267,7 +267,7 @@ body {
     padding: 20px;
     color: black; 
     flex: 1;
-    min-height: calc(100vh - 270px);
+    min-height: calc(112vh - 270px);
 }
 
 
@@ -290,19 +290,27 @@ body {
     flex-wrap: wrap;
 }
 
+.bara {
+    margin-top: -70px;
+}
+
 .square {
     position: relative;
     font-weight: 100;
     margin: 0px;
     margin-bottom: -30px;
-    height: auto; /* Ajustável, dependendo do conteúdo */
-    min-width: 270px;
+    min-width: 240px;
     background-color: #fffdf9;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     box-sizing: border-box;
-    padding-bottom: 20px;
-    transition: all 0.5s ease-out; /* Transição suave para altura e padding */
+}
+
+
+#pognog {
+    margin-top: 111px;
+    margin-bottom: 100px;
+
 }
 
 .square2 {
@@ -324,45 +332,160 @@ body {
     margin-top: 100px;
 }
 
+.opc {
+    position: absolute;
+    transform: scale(0.85);
+    margin-left: 34px;
+    margin-top: -30px;
+}
+.contentINSANO {
+    margin-top: 40px;
+    margin-left: -30px;
+}
+.contentINSANO2 {
+    margin-top: -2px;
+    margin-left: 10px;
+}
+
+
+.notification-container {
+    transform: scale(0.8);
+    margin-top: 20px;
+    display: flex; /* Alinha horizontalmente */
+    align-items: center; /* Alinha verticalmente ao centro */
+    margin-left: 10px; /* Espaçamento à esquerda se necessário */
+}
+
+.not {
+    margin-top: -4px;
+    margin-right: -4px; /* Espaçamento à direita do texto "Notificações" */
+}
+
+.switch {
+    margin-top: -1.9px;
+    position: relative;
+    display: inline-block;
+    width: 60px; 
+    height: 34px;
+    transform: scale(0.4);
+}
+
+.switch input {
+    opacity: 0; 
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; 
+    transition: .4s; 
+    border-radius: 34px; 
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px; 
+    width: 26px; 
+    left: 4px; 
+    bottom: 4px; 
+    background-color: white; 
+    border-radius: 50%; 
+    transition: .4s; 
+}
+
+
+input:checked + .slider {
+    background-color: rgb(182, 57, 244);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); 
+}
 
 
 .square.collapsed {
-    height:60px; /* Definido para 60px quando fechado */
+    height:150px; 
     padding-bottom: 0;
 }
 
 #icon {
     position: absolute;
-    top: 22px;
-    right: 13px;
-    font-size: 16px; /* Tamanho ajustável do ícone */
+    top: 8px;
+    right: -12px;
+    font-size: 16px; 
     transition: transform 0.05s ease;
     cursor: pointer;
 }
 
-.icon-rotate {
-    transform: rotate(360deg); /* Rotaciona 90 graus para apontar para baixo */
+
+.nom {
+    position: absolute;
+    width: 300px;
+    margin-left: -150px;
+    margin-top: -10px;
+    cursor: default;
 }
 
 
 .contentJS {
-    max-height: 50px; /* Altura máxima */
-    overflow-y: auto; /* Permite rolagem vertical */
+    position: absolute;
+    width: 100%;
+    min-width: 200px;
     scroll-behavior: smooth;
-    padding: 0; /* Removido padding à direita */
+    background-color: #000000;
+    z-index: 2;
     transition: max-height 0.3s ease; /* Transição suave */
     margin: 0; /* Remover margens */
-    box-sizing: border-box; /* Inclui padding e border nas dimensões */
-}
 
-.extraContent, .validityContainer, .extraButtons {
-    margin: 0; /* Remove margens nos elementos internos */
-    padding: 0; /* Remove padding interno nos elementos */
 }
 
 .extraButtons {
     margin-top: -6px;
     display: none; /* Inicialmente oculto */
+}
+
+.extra {
+    padding: 10px;
+    margin-top: -20px;
+    margin-left: 5px;
+    text-align: left;
+}
+.add-file-button {
+    font-size: 14px;
+    margin-left: 5px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+
+.item {
+    margin: 0;
+}
+
+.below-extra {
+    margin-top: -50px; 
+}
+
+.item + .item {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+span {
+    margin: 0;
+
 }
 
 
@@ -371,20 +494,23 @@ body {
     position: relative;
     padding: 20px;
     color: black; 
-   
+    margin: 0px 20px;
 }
-.buttonDelete {
-    position: absolute; /* Torna o botão posicionado em relação ao contêiner .square */
-    top: 14px; /* Distância do topo */
-    left: -2px; /* Distância da esquerda */
-    border: none; /* Remover borda */
-    background: none; /* Remover fundo */
-    font-size: 16px; /* Tamanho ajustável */
-    cursor: pointer; /* Muda o cursor para indicar clicável */
-}
-.buttonDelete :hover {
-    background: #ff8684
 
+.buttonDelete {
+    opacity: 01;
+    position: absolute; 
+    top: 0px; 
+    display: none;
+    left: -30px; 
+    border: none; 
+    background: none; 
+    font-size: 16px; 
+    cursor: pointer; 
+}
+
+.buttonDelete:hover { 
+    color: #ff0c0c;
 }
 
 .barDesign hr {
@@ -394,6 +520,11 @@ body {
     margin: 40px auto;
     margin-top: 72px;
     border-radius: 5px;
+}
+
+.barDesign {
+    position: relative;
+    z-index: 1;
 }
 
 .other {
@@ -415,6 +546,10 @@ body {
     margin-top: 30px;
     font-size: 16px;
     display: flex;
+}
+
+.progression {
+    margin-top: -60px;
 }
 
 .progressionText {
@@ -494,7 +629,7 @@ svg {
 
 .reports {
     text-align: start;
-    margin-top: -180px;
+    margin-top: -190px;
     margin-left: 175px;
     position: relative;
 }
@@ -527,16 +662,18 @@ svg {
 .wholeArea {
     width: 600px;
     margin-top: -10px;
+    margin-bottom: 20px;
     margin-left: -20px;
 }
 .barDesign2 hr {
     width: 1px;
     height: 300px;
-    border: 1px solid #dbdde2;
+    border: 1px solid #ffffff;
     margin-top: -280px;
     margin-bottom: 85px;
     margin-left: 700px;
     border-radius: 5px;
+    display: hidden;
 }
 .wholeArea2 {
     margin-left: 750px;
@@ -589,7 +726,7 @@ input[type="file"] {
 }
 
 input[type="file"]::file-selector-button {
-    width: 100px;
+    width: 110px;
     margin-left: 5px;
     border: 1px solid #ccc;
     color: transparent;
@@ -641,7 +778,7 @@ input[type="date"] {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;
@@ -719,9 +856,14 @@ input[type="date"] {
     border: 1px solid #ccc;
 }
 
+.document-name {
+    padding: 0 10px; 
+    flex: 1; 
+}
+
 #documentFile {
-    max-width: 400px;
-    margin-left: -330px; 
+    max-width: 500px;
+    margin-left: -230px; 
 }
 
 .h3 {
@@ -801,8 +943,8 @@ input[type="date"] {
 }
 
 #documentFileEdit {
-    max-width: 400px;
-    margin-left: -330px; 
+    max-width: 500px;
+    margin-left: -230px; 
 }
 
 
@@ -949,42 +1091,55 @@ footer {
 }
 
 .fieldValidity, .textValidity {
-    border: solid 1px rgb(216, 216, 216);
-    border-radius: 0 4px 4px 0;
     display: inline;
-    padding: 6px;
-    background-color: white;  
+    padding: 0px;
+    transform: scale(0.9);
+    margin-left: -14px;
     font-size: 15px;  
 }
 
+.bt {
+    position: absolute;
+    margin-top: 8px;
+    margin-left: -1px;
+}
+
 .validityContainer {
-    margin-top: 1px;
+    margin-top: 9px;
+    opacity: 0.4;
+    position: absolute;
     margin-bottom: 4px;
+    transform: scale(0.8);
     display: flex; /* Permite que os itens fiquem lado a lado */
     align-items: center; /* Alinha verticalmente */
     border-radius: 5px; /* Borda arredondada */
     padding: 10px; /* Espaçamento interno */
-    margin-left: 30px;
+    margin-left: 5px;
 }
 .barDesign13 hr{
     position: absolute; 
-    border: solid 1px rgb(0, 0, 0);
-    top: 59px; 
+    transform: scale(0.9);
+    margin: 0 auto;
+    border: solid 1px rgba(110, 110, 110, 0.096);
+    top: 33px; 
     left: 0; 
+    border-radius: 50%;
     right: 0; 
     z-index: 0; 
     height: 1px;
-
 }
-.barDesign14 hr {
-    border: solid 1px rgb(0, 0, 0);
+
+.barDesign14 hr{
     position: absolute; 
-    top: 109px; 
+    transform: scale(0.9);
+    margin: 0 auto;
+    border: solid 1px rgba(110, 110, 110, 0.096);
+    top: 123px; 
     left: 0; 
+    border-radius: 50%;
     right: 0; 
     z-index: 0; 
-    height: 1px; 
-
+    height: 1px;
 }
 
 .textValidity {
