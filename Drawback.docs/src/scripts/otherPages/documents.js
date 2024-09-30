@@ -192,7 +192,7 @@ async function documentListFromUser() {
             <div class="barDesign13"><hr></div>
             <div class="contentINSANO">
                 <div class="contentINSANO2">
-                    <div class="opc"> <span class="bt"><button>Opções</button></span> </div>
+                    <div class="opc"> <span class="buttonEdit"><button>Opções</button></span> </div>
                     <div class="notification-container">
                         <span class="not"><button>Notificações:</button></span>
                         <label class="switch">

@@ -334,7 +334,7 @@ body {
 
 .opc {
     position: absolute;
-    transform: scale(0.85);
+    transform: scale(0.82);
     margin-left: 34px;
     margin-top: -30px;
 }
@@ -500,18 +500,14 @@ span {
 .buttonDelete {
     opacity: 01;
     position: absolute; 
-    top: 0px; 
-    display: none;
-    left: -30px; 
+    top: -10px; 
+    left: -40px; 
     border: none; 
     background: none; 
-    font-size: 16px; 
+    font-size: 11px; 
     cursor: pointer; 
 }
 
-.buttonDelete:hover { 
-    color: #ff0c0c;
-}
 
 .barDesign hr {
     width: 1210px;
@@ -582,6 +578,11 @@ span {
     width: 140px;
     border-radius: 50%;
 
+}
+
+.swal2-cancel-button-red {
+    background-color: red !important; 
+    color: white !important; 
 }
 
 #number {
@@ -1098,10 +1099,10 @@ footer {
     font-size: 15px;  
 }
 
-.bt {
+.buttonEdit {
     position: absolute;
     margin-top: 8px;
-    margin-left: -1px;
+    margin-left: 0.8px;
 }
 
 .validityContainer {
@@ -1204,19 +1205,6 @@ footer {
     transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
 }
 
-.buttonEdit {
-    margin-left: -31px;
-    margin-bottom: 3px;
-    font-size: 14px;
-    background-color: #000000; /* Cor de fundo verde */
-    color: white; /* Cor do texto */
-    border: none; /* Remove a borda padrão */
-    padding: 10px 20px; /* Espaçamento interno (padding) */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
-}
-
 
 
 
@@ -1247,20 +1235,10 @@ footer {
    
 }
 
-.buttonEdit:hover {
-    transform: scale(1.03); /* Leve aumento de tamanho ao passar o mouse */
-}
-
-.buttonEdit:focus {
-    outline: none; /* Remove a borda de foco */
-   
-}
 
 
-.swal2-cancel-button-red {
-    background-color: red !important; 
-    color: white !important; 
-}
+
+
 
 .nameDocumentMid {
     margin-left: 20px;
