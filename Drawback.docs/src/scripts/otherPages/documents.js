@@ -73,9 +73,7 @@ async function documentListFromUser() {
         progressionText.style.display = "inline"
 
         document.getElementById("wholeArea2").style.display = "none";
-        document.getElementById("barDesign2").style.display = "none";
-
-        
+        document.getElementById("barDesign2").style.display = "none"; 
     }
     
     function showFilesFromUserHtml(array) {
@@ -160,6 +158,7 @@ async function documentListFromUser() {
     }
 
     function formatDate(dateString) {
+
         const parts = dateString.split('-');
         if (parts.length !== 3) return dateString; 
     
@@ -212,13 +211,15 @@ async function documentListFromUser() {
 
         const icon = blockDocument.querySelector('#icon');
         icon.addEventListener('click', function(event) {
+
             const extraContent = blockDocument.querySelector('.extraContent');
             const extraButtons = blockDocument.querySelector('.extraButtons');
         
             extraContent.style.display = extraContent.style.display === 'none' ? 'block' : 'none';
             
             // Se o conteúdo extra estiver visível, mostra os botões extras
-            if (extraContent.style.display === 'block') {
+            if(extraContent.style.display === 'block') {
+
                 extraButtons.style.display = 'block';
                 blockDocument.classList.toggle('collapsed');
                 icon.classList.toggle('icon-rotate'); 
@@ -226,6 +227,7 @@ async function documentListFromUser() {
                 icon.classList.toggle('fa-chevron-down');
                 icon.classList.toggle('rotate-active');
             } else {
+
                 extraButtons.style.display = 'none';
                 blockDocument.classList.toggle('collapsed');
                 icon.classList.toggle('icon-rotate'); 
@@ -237,14 +239,15 @@ async function documentListFromUser() {
         
         const deleteButton = blockDocument.querySelector('.buttonDelete');
         deleteButton.addEventListener('click', function(event) {
+
             event.stopPropagation(); 
         });
         const contentJS = blockDocument.querySelector('.contentJS');
 
         contentJS.addEventListener('wheel', function(event) {
-            event.preventDefault(); // Evita o comportamento padrão de rolagem
 
-            // Define a quantidade de pixels para rolar
+            event.preventDefault(); 
+
             const delta = event.deltaY * 0.48; // Ajuste o fator (0.5) conforme necessário
             contentJS.scrollBy({
                 top: delta,
@@ -252,7 +255,6 @@ async function documentListFromUser() {
             });
         });
         
-    
         return blockDocument;
     }
 
