@@ -158,22 +158,22 @@ async function documentListFromUser() {
         createAddNewFileHtml();
         progressCircle(array, totalFilesFromUser, filesWithValidityOk);
     }
+
     function formatDate(dateString) {
         const parts = dateString.split('-');
-        if (parts.length !== 3) return dateString; // Retorna a data original se não estiver no formato esperado
+        if (parts.length !== 3) return dateString; 
     
         const year = parts[0];
         const month = parts[1];
         const day = parts[2];
     
-        return `${day}/${month}/${year}`; // Retorna a data formatada
+        return `${day}/${month}/${year}`; 
     }
-
 
     function createBlockDocumentHtml(documentUser) {
     
         const blockDocument = document.createElement("div");
-        blockDocument.className = "square collapsed"; // Inicia como colapsado (60px de altura)
+        blockDocument.className = "square collapsed"; 
         let documentNameDisplay = documentUser.name;
     
         if(documentNameDisplay.length > 24) {
@@ -268,8 +268,6 @@ async function documentListFromUser() {
         }
     }
 }
-
-
 
 function checkLocalStorageForAlert() {
 
