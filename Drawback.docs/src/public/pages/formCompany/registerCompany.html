@@ -124,7 +124,9 @@
                             </div>
                             <div class="straightLine1">
                                 <div class="absolute5">
-                                    <span class="emailMover"><input class="inpt" type="text" name="cnpj" placeholder="CNPJ da empresa *" id="cnpj"></span>
+                                    <span class="emailMover">
+                                        <input class="inpt" type="text" name="cnpj" placeholder="CNPJ da empresa *" id="cnpj" minlength="18" maxlength="18" oninput="formatCNPJ(this)">
+                                    </span>
                                 </div>
                             </div> 
                             <br> 
@@ -133,7 +135,7 @@
                             </div>
                                 
                             <div class="absolute6">
-                                <input class="inpt" type="text" name="cnae" placeholder="CNAE da empresa *" id="cnae">
+                                <input class="inpt" type="text" name="cnae" placeholder="CNAE da empresa *" id="cnae" oninput="formatCNAE(this)" minlength="8" maxlength="8">
                             </div>
                             <br> 
                             <br>
@@ -199,5 +201,54 @@
     </footer>
 </div>
 </span>
+    <script>
+        function formatCNAE(input) {
+
+            let cnae = input.value.replace(/\D/g, '');
+
+            if(cnae.length > 6) {
+
+                cnae = cnae.slice(0, 6);
+            }
+            if(cnae.length > 2) {
+
+                cnae = cnae.replace(/(\d{2})(\d)/, '$1.$2');
+            }
+            if(cnae.length > 5) {
+
+                cnae = cnae.replace(/(\d{2})\.(\d{3})(\d)/, '$1.$2-$3');
+            }
+        
+            input.value = cnae;
+        }
+
+        function formatCNPJ(input) {
+
+            let cnpj = input.value.replace(/\D/g, '');
+
+            if(cnpj.length > 14) {
+
+                cnpj = cnpj.slice(0, 14);
+            }
+            if(cnpj.length > 2) {
+
+                cnpj = cnpj.replace(/(\d{2})(\d)/, '$1.$2');
+            }
+            if(cnpj.length > 5) {
+
+                cnpj = cnpj.replace(/(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            }
+            if(cnpj.length > 8) {
+
+                cnpj = cnpj.replace(/(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3/$4');
+            }
+            if(cnpj.length > 12) {
+
+                cnpj = cnpj.replace(/(\d{2})\.(\d{3})\.(\d{3})\/(\d{4})(\d)/, '$1.$2.$3/$4-$5');
+            }
+
+            input.value = cnpj;
+        }
+    </script>
 </body>
 </html>

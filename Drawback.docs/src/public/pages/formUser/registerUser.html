@@ -127,7 +127,9 @@
                                 <br> 
 
                                 <div class="absolute5">
-                                    <span class="telephoneMover"><input class="inpt" type="text" name="cpf" placeholder="CPF *" id="cpf" minlength="11" maxlength="14"></span>
+                                    <span class="telephoneMover">
+                                        <input class="inpt" type="text" name="cpf" placeholder="CPF *" id="cpf" minlength="14" maxlength="14" oninput="formatCPF(this)">
+                                    </span>
                                 </div>
                                 <br> 
                             </div>  
@@ -184,5 +186,30 @@
     </footer>
 </div>
 </span>
+    <script>
+        function formatCPF(input) {
+
+            let cpf = input.value.replace(/\D/g, '');
+
+            if(cpf.length > 11) {
+
+                cpf = cpf.slice(0, 11);
+            }
+            if(cpf.length > 3) {
+
+                cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            }
+            if(cpf.length > 6) {
+
+                cpf = cpf.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+            }
+            if(cpf.length > 9) {
+
+                cpf = cpf.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+            }
+        
+            input.value = cpf;
+        }
+    </script>
 </body>
 </html>

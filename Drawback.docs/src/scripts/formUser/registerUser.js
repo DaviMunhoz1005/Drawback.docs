@@ -19,7 +19,9 @@ async function getFormData() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const checkPassword = document.getElementById("checkPassword").value.trim();
-    const cpf = document.getElementById("cpf").value.trim();
+    let cpf = document.getElementById("cpf").value.trim();
+
+    cpf = cpf.replace(/\./g, "").replace(/-/g, "");
 
     if(await checkUsernameAlreadyExists(username) && 
     checkCharsFromEmail(email) &&
@@ -74,9 +76,9 @@ function checkPasswordExistOrNull(password, checkPassword) {
 
 async function checkCpfAlreadyExists(cpf) {
 
-    if(/\D/.test(cpf)) {
+    if(cpf.length < 11) {
 
-        alertError("O CPF deve conter apenas números.");
+        alertError("O CPF deve conter 11 números.")
         return false;
     } 
     
@@ -90,5 +92,3 @@ async function checkCpfAlreadyExists(cpf) {
             
     return true;
 }
-
-

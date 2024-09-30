@@ -22,7 +22,9 @@ async function getFormData() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const checkPassword = document.getElementById("checkPassword").value.trim();
-    const cnpj = document.getElementById("cnpj").value.trim();
+    let cnpj = document.getElementById("cnpj").value.trim();
+
+    cnpj = cnpj.replace(/\//g, "").replace(/\./g, "").replace(/-/g, "");
 
     if(await checkUsernameAlreadyExists(username) && 
     checkCharsFromEmail(email) &&
@@ -77,6 +79,12 @@ function checkPasswordExistOrNull(password, checkPassword) {
 
 async function checkCnpjExists(cnpj) { 
     
+    if(cnpj.length < 14) {
+
+        alertError("O CNPJ deve conter 14 números.")
+        return false;
+    } 
+
     const cnpjExists = await handleFindByCnpjCpf(cnpj);
     
     if(cnpjExists) {

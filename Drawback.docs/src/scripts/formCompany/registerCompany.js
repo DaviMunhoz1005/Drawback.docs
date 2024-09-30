@@ -21,8 +21,11 @@ async function getFormData() {
     const password = document.getElementById("password").value.trim();
     const checkPassword = document.getElementById("checkPassword").value.trim();
     const nameCorporateReason = document.getElementById("nameCorporateReason").value.trim();
-    const cnpj = document.getElementById("cnpj").value.trim();
-    const cnae = document.getElementById("cnae").value.trim();
+    let cnpj = document.getElementById("cnpj").value.trim();
+    let cnae = document.getElementById("cnae").value.trim();
+
+    cnpj = cnpj.replace(/\//g, "").replace(/\./g, "").replace(/-/g, "");
+    cnae = cnae.replace(/\./g, "").replace(/-/g, "");
 
     if(await checkUsernameAlreadyExists(username) && 
     checkCharsFromEmail(email) &&
@@ -98,10 +101,10 @@ function checkPasswordExistOrNull(password, checkPassword) {
 }
 
 async function checkCnpjAlreadyExists(cnpj) {
-    
-    if(/\D/.test(cnpj)) {
 
-        alertError("O CNPJ deve conter apenas números.");
+    if(cnpj.length < 14) {
+
+        alertError("O CNPJ deve conter 14 números.")
         return false;
     } 
 
@@ -116,10 +119,10 @@ async function checkCnpjAlreadyExists(cnpj) {
 }
 
 async function checkCnaeAlreadyExists(cnae) {
-    
-    if(/\D/.test(cnae)) {
 
-        alertError("A CNAE deve conter apenas números.");
+    if(cnae.length < 6) {
+
+        alertError("O CNAE deve conter 6 números.")
         return false;
     } 
 
