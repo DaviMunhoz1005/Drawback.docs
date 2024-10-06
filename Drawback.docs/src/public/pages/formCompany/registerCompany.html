@@ -11,6 +11,7 @@
     <script src="../../../scripts/components/forms.js"></script>
     <script src="../../../scripts/components/footer.js" defer></script>
     <script src="../../../scripts/components/register.js" defer></script>
+    <script src="../../../scripts/components/formHandles.js" defer></script>
     <link rel="icon" href="../../assets/images/logopretomini.png">
 </head>
 <body>
@@ -124,7 +125,9 @@
                             </div>
                             <div class="straightLine1">
                                 <div class="absolute5">
-                                    <span class="emailMover"><input class="inpt" type="text" name="cnpj" placeholder="CNPJ da empresa *" id="cnpj"></span>
+                                    <span class="emailMover">
+                                        <input class="inpt" type="text" name="cnpj" placeholder="CNPJ da empresa *" id="cnpj" minlength="18" maxlength="18" oninput="formatCNPJ(this)">
+                                    </span>
                                 </div>
                             </div> 
                             <br> 
@@ -133,7 +136,7 @@
                             </div>
                                 
                             <div class="absolute6">
-                                <input class="inpt" type="text" name="cnae" placeholder="CNAE da empresa *" id="cnae">
+                                <input class="inpt" type="text" name="cnae" placeholder="CNAE da empresa *" id="cnae" oninput="formatCNAE(this)" minlength="8" maxlength="8">
                             </div>
                             <br> 
                             <br>

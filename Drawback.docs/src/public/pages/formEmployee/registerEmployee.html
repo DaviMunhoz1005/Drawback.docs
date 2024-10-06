@@ -11,6 +11,7 @@
     <script src="../../../scripts/components/forms.js"></script>
     <script src="../../../scripts/components/footer.js" defer></script>
     <script src="../../../scripts/components/register.js" defer></script>
+    <script src="../../../scripts/components/formHandles.js" defer></script>
     <link rel="icon" href="../../assets/images/logopretomini.png">
 </head>
 <body>
@@ -127,9 +128,9 @@
                                 <br> 
                    
                                 <div class="absolute5">
-                                    <span class="telephoneMover"><input class="inpt" type="password" name="cnpj" placeholder="CNPJ da Pessoa Jurídica *" id="cnpj"></span>
-                                    
-                                    
+                                    <span class="telephoneMover">
+                                        <input class="inpt" type="text" name="cnpj" placeholder="CNPJ da Pessoa Jurídica *" id="cnpj" minlength="18" maxlength="18" oninput="formatCNPJ(this)">
+                                    </span>
                                 </div>
                                 <br> 
                             </div>  
@@ -185,6 +186,6 @@
             </div>
         </footer>
     </div>
-    </span>  
+    </span>
  </body>
 </html>
