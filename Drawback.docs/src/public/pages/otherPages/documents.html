@@ -83,10 +83,12 @@
                                         <div class="barDesign"><hr></div>
                                         <div class="extra">
                                             <div class="item">
-                                                <span>Outros</span>
+                                                <span class="k9">Outros</span>
                                             </div>
                                             <div class="item">
-                                                <button class="add-file-button" onclick="showAddModal()">+ Adicionar arquivo</button>
+                                                <a href="employeeList.html" id="employeeLink">
+                                                    <button class="buttonEmployeeLink">+  &nbsp;&nbsp;Lista de Pessoas que querem se Vincular</button>
+                                                </a>            
                                             </div>
                                         </div>
                                         <div class="barDesign below-extra"><hr></div>
@@ -214,6 +216,30 @@
             </div>
         </div>
         <div id="black" onclick="hideEditModal()"></div>
+        
+
+
+        
+        <div class="modal" id="optModal">
+            <div class="opt-modal-content">
+                <span class="close2" onclick="hideOptModal()">&times;</span>
+                <h3 class="h3"><span id="documentNameEdit2"></span></h3>
+                <br>
+                <div class="edit-modal-body">
+                    <div class="barDesign12" id="nov"><hr></div>
+                    <div class="positionChanger2">
+                        <button class="buttonDownload">Baixar</button>
+                        <button class="buttonEdit" onclick="showEditModal()">Editar</button>
+                        <button class="buttonUseLastVersion">Usar versão anterior</button>
+                    </div>
+                </div>
+                <div class="barDesign11" id="nov2"><hr></div>
+            </div>
+        </div>
+        <div id="black" onclick="hideOptModal()"></div>
+
+
+
 
         <div id="offCanvasTest" class="off-canvas">
             <div class="off-canvas-content">

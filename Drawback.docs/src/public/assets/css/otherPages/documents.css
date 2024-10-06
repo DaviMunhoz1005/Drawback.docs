@@ -319,7 +319,7 @@ body {
     margin: 0px;
     margin-bottom: -30px;
     height: 150px; /* Ajustável, dependendo do conteúdo */
-    width: 270px;
+    width: 240px;
     background-color: #fffdf9;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
@@ -367,6 +367,8 @@ body {
     display: inline-block;
     width: 60px; 
     height: 34px;
+    opacity: 0;
+    cursor:default;
     transform: scale(0.4);
 }
 
@@ -378,7 +380,7 @@ body {
 
 .slider {
     position: absolute;
-    cursor: pointer;
+
     top: 0;
     left: 0;
     right: 0;
@@ -699,9 +701,14 @@ svg {
 .buttonEmployeeLink {
     border: 1px solid #ffffff;
     border-radius: 5px;
-    padding: 15px;  
-    background-color: #0964b0;
-    color: white;
+    padding: 20px;  
+    margin-top: 2px;
+    color: rgb(0, 0, 0);
+    margin-left: 170px;
+}
+ 
+.k9 {
+    opacity: 0;
 }
 
 .wholeArea2 a {
@@ -788,6 +795,7 @@ input[type="date"] {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+
 .add-modal-content {
     background-color: #fefefe;
     margin: 10% auto;
@@ -810,6 +818,21 @@ input[type="date"] {
 
 .close:hover,
 .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -18px;
+}
+
+.close2:hover,
+.close2:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -924,6 +947,27 @@ input[type="date"] {
     border-radius: 4px;
 }
 
+.opt-modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    height: 295px;
+    position: relative;
+    border-radius: 4px;
+}
+
+#nov hr {
+    width: 598px;
+}
+
+#nov2 hr {
+    margin-top:20px;
+    width: 598px;
+}
+
 #expirationDateEdit {
     max-width: 140px;
     margin-left: -590px; 
@@ -988,6 +1032,14 @@ input[type="date"] {
     margin-top: -78px;
     margin-left: -150px;
     opacity: 0.3;
+}
+
+#documentNameEdit2 {
+    position: absolute;
+    margin-top: -10px;
+    font-size: 16px;
+    margin-left: 0px;
+    opacity: 1;
 }
 
 
@@ -1099,7 +1151,7 @@ footer {
     font-size: 15px;  
 }
 
-.buttonEdit {
+.optModal {
     position: absolute;
     margin-top: 8px;
     margin-left: 0.8px;
@@ -1175,6 +1227,19 @@ footer {
     transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
 }
 
+.buttonEdit {
+    margin-left: -81px;
+    margin-top: -7px;
+    font-size: 14px;
+    background-color: #000000; /* Cor de fundo verde */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 20px; /* Espaçamento interno (padding) */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
 .containerExtra {
     margin-top: -3px;
 }
@@ -1192,18 +1257,7 @@ footer {
     transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
 }
 
-.buttonInfosUpdate {
-    margin-left: -43px;
-    margin-top: 0px;
-    font-size: 14px;
-    background-color: #000000; /* Cor de fundo verde */
-    color: white; /* Cor do texto */
-    border: none; /* Remove a borda padrão */
-    padding: 10px 20px; /* Espaçamento interno (padding) */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
-}
+
 
 
 
@@ -1217,6 +1271,15 @@ footer {
    
 }
 
+.buttonEdit:hover {
+    transform: scale(1.03); /* Leve aumento de tamanho ao passar o mouse */
+}
+
+.buttonEdit:focus {
+    outline: none; /* Remove a borda de foco */
+   
+}
+
 .buttonUseLastVersion:hover {
     transform: scale(1.03); /* Leve aumento de tamanho ao passar o mouse */
 }
@@ -1225,18 +1288,6 @@ footer {
     outline: none; /* Remove a borda de foco */
    
 }
-
-.buttonInfosUpdate:hover {
-    transform: scale(1.03); /* Leve aumento de tamanho ao passar o mouse */
-}
-
-.buttonInfosUpdate:focus {
-    outline: none; /* Remove a borda de foco */
-   
-}
-
-
-
 
 
 

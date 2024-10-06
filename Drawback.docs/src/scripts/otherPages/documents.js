@@ -90,14 +90,18 @@ async function documentListFromUser() {
 
             createSeparationForDocuments(index);
 
-            blockDocument.querySelectorAll(".buttonDownload").forEach(button => {
-
-                button.addEventListener('click', function() {
-
+            function showOptModal() {
+                document.getElementById("optModal").style.display = "block";
+            
+                document.querySelector(".buttonDownload").addEventListener('click', function() {
                     downloadDocument(documentUser.name + "." + documentUser.extension);
                 });
-            });
-        
+
+                document.querySelector(".buttonUseLastVersion").addEventListener('click', async function() {
+                    await usePreviousVersionDocument(documentUser.name);
+                });              
+            }
+
             blockDocument.querySelectorAll(".buttonDelete").forEach(button => {
 
                 button.addEventListener('click', function() {
@@ -105,7 +109,20 @@ async function documentListFromUser() {
                     deleteDocument(documentUser.name);
                 });
             });
-        
+
+            blockDocument.querySelectorAll(".optModal").forEach(button => {
+                let documentNameDisplay = documentUser.name;
+    
+                if (documentNameDisplay.length > 24) {
+                    documentNameDisplay = documentNameDisplay.slice(0, 21) + "(...)";
+                }
+
+                button.addEventListener('click', function() {
+                    showOptModal();
+                    document.querySelector('#documentNameEdit2').innerHTML = `<b><i>${documentNameDisplay + "." + documentUser.extension}</i></b>`;
+                });
+            });
+
             blockDocument.querySelectorAll(".buttonEdit").forEach(button => {
 
                 button.addEventListener('click', function() {
@@ -136,13 +153,7 @@ async function documentListFromUser() {
                 });
             });
         
-            blockDocument.querySelectorAll(".buttonUseLastVersion").forEach(button => {
 
-                button.addEventListener('click', async function() {
-
-                    await usePreviousVersionDocument(documentUser.name);
-                });
-            });
 
             blockDocument.querySelectorAll(".buttonInfosUpdate").forEach(button => {
 
@@ -192,9 +203,9 @@ async function documentListFromUser() {
             <div class="barDesign13"><hr></div>
             <div class="contentINSANO">
                 <div class="contentINSANO2">
-                    <div class="opc"> <span class="buttonEdit"><button>Opções</button></span> </div>
+                    <div class="opc"> <span class="optModal"><button>Opções</button></span> </div>
                     <div class="notification-container">
-                        <span class="not"><button>Notificações:</button></span>
+                        <span class="not"><button class="buttonInfosUpdate">Informações</button></span>
                         <label class="switch">
                             <input type="checkbox" id="toggleSwitch-${index}" class="toggleSwitch">
                             <span class="slider"></span>
@@ -347,11 +358,15 @@ window.hideAddModal = function() {
 };
 
 let z = 0;
+let k = 0;
 
 window.showEditModal = function() {
 
     document.getElementById('editModal').style.display = 'block';
     document.getElementById('black').style.display = 'block';
+    document.getElementById('optModal').style.display = 'none';
+    document.getElementById('black').style.display = 'none';
+    k=0;
     z++;
     if(z>=2){
             document.getElementById('editModal').style.display = 'none';
@@ -366,5 +381,25 @@ window.hideEditModal = function() {
     document.getElementById('black').style.display = 'none';
     z=0;
 };
+
+window.showOptModal = function() {
+
+    document.getElementById('optModal').style.display = 'block';
+    document.getElementById('black').style.display = 'block';
+    k++;
+    if(k>=2){
+            document.getElementById('optModal').style.display = 'none';
+            document.getElementById('black').style.display = 'none';
+            k=0;
+    }
+};
+
+window.hideOptModal = function() {
+
+    document.getElementById('optModal').style.display = 'none';  
+    document.getElementById('black').style.display = 'none';
+    k=0;
+};
+
 
 export { documentListFromUser };
