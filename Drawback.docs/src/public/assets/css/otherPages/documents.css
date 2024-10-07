@@ -502,11 +502,11 @@ span {
 .buttonDelete {
     opacity: 01;
     position: absolute; 
-    top: -10px; 
-    left: -40px; 
+    top: -5px; 
+    left: -35px; 
     border: none; 
     background: none; 
-    font-size: 11px; 
+    font-size: 20px; 
     cursor: pointer; 
 }
 
