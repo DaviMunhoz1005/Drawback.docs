@@ -123,7 +123,7 @@ async function documentListFromUser() {
                 });
             });
 
-            blockDocument.querySelectorAll(".buttonEdit").forEach(button => {
+            document.querySelectorAll(".buttonEdit").forEach(button => {
 
                 button.addEventListener('click', function() {
 
@@ -131,8 +131,8 @@ async function documentListFromUser() {
 
                     document.querySelector('#documentNameEdit').innerHTML = `<b><i>${documentUser.name + "." + documentUser.extension}</i></b>`;
 
-                    document.getElementById('updateDocument').addEventListener('click', async () => {
-              
+                    document.querySelector('#updateDocument').addEventListener('click', async () => {
+                
                         const documentFile = document.getElementById("documentFileEdit").files[0];
                         const validity = document.getElementById("expirationDateEdit").value;
 
@@ -153,8 +153,6 @@ async function documentListFromUser() {
                 });
             });
         
-
-
             blockDocument.querySelectorAll(".buttonInfosUpdate").forEach(button => {
 
                 button.addEventListener('click', async function(event) {
@@ -231,9 +229,6 @@ async function documentListFromUser() {
             }
             console.log(`Arquivos com validade OK: ${filesWithValidityOk}`);
         });
-    
-
-        
 
         const icon = blockDocument.querySelector('#icon');
         icon.addEventListener('click', function(event) {
@@ -278,8 +273,6 @@ async function documentListFromUser() {
         return blockDocument;
     }
 
-   
-
     function createSeparationForDocuments(index) { 
         let O = index;
     
@@ -319,10 +312,6 @@ async function documentListFromUser() {
     }
     
 }
-
-
-
-
 function checkLocalStorageForAlert() {
 
     if(sessionStorage.getItem('loginSuccess')) {
