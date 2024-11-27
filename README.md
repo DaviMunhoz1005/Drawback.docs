@@ -22,3 +22,53 @@ Projeto em desenvolvimento para a conclusão do curso Técnico de Desenvolviment
   <img loading="lazy" src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/>
   <img loading="lazy" src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"/>
 </p>
+
+## 🎲 Pré-requisitos 
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+- [Git](https://git-scm.com) 
+- [Java](https://www.oracle.com/br/java/technologies/downloads/) 
+- [VSCode](https://code.visualstudio.com/)
+- [IntelliJ](https://www.jetbrains.com/idea/) ou [Eclipse](https://www.eclipse.org/)
+- [MySQL](https://www.mysql.com/)
+
+## 👾 Preparando o Back End (GED API)
+
+### Clonando a API (GED API)
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/DaviMunhoz1005/GedApi
+```
+
+- Abra o projeto com o IntelliJ ou Eclipse;
+- Entre na pasta Resource e abra o arquivo application.yaml;
+- Modifique o atributo database.username e database.password para se adequar as configurações do seu Banco de Dados;
+
+### Configuração do Banco de Dados (MySQL)
+
+```sql
+# Insira o seguinte comando no console
+CREATE DATABASE api_files;
+```
+
+- Após isso start a API;
+
+```sql
+# Insira os seguintes comandos no console
+INSERT INTO tb_roles (id, description, role_name) 
+VALUES (1, "client adm", 'CLIENT');
+INSERT INTO tb_roles (id, description, role_name) 
+VALUES (2, "employee", 'EMPLOYEE');
+```
+
+## Preparando o Front End (Drawback.docs)
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/DaviMunhoz1005/Drawback.docs
+```
+
+- Abra ele no VS Code;
+- Instale a extensão Live Server;
+- Acesse o arquivo <i>index.html</i> pelo Live Server;
